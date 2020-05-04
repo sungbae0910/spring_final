@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="news_s">
-	<div class="contatiner" style="border:1px solid black;">
+	<div class="container" style="border:1px solid black;">
 		<div class="row justify-content-md-center">
 			<div class="col" id="hlog">
 				<div class="logo_s">
@@ -29,7 +29,7 @@
 	<!-- container -->
 	</div>
 	
-	<div class="contatiner" style="border:1px solid black;">
+	<div class="container" style="border:1px solid black;">
 		<div class="row">
 			<div class="col-sm">
 				<div class="head_s">
@@ -47,7 +47,7 @@
 	<!-- container -->
 	</div>
 	
-	<div class="contatiner" style="border:1px solid black;">
+	<div class="container" style="border:1px solid black;">
 		<div class="row">
 			<div class="col-sm">
 				<nav class="navbar navbar-expand navbar-light">
@@ -84,97 +84,59 @@
 	</div>
 	
 	
-	<div class="contatiner" style="border:1px solid black;">
-		<div class="row">
-			<div class="col">
-				<nav class="navbar navbar-expand navbar-light">
-					<div class="collapse navbar-collapse" id="navbarNav">
-						<ul class="navbar-nav" id="card-posi">
-							<li class="nav-item active">
-								<div class="card">
-									<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-									</div>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>								
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>	
-							</li>
-							<li class="nav-item">
-								<div class="card">
-									<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-									</div>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>								
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>	
-							</li>
-							<li class="nav-item">
-								<div class="card">
-									<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-									</div>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>								
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>	
-							</li>
-							<li class="nav-item">
-								<div class="card">
-									<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-									</div>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>								
-								<div class="thumb_relate"> 
-									<a href="#" style="font-size: 25px;">asdasdasd</a><span class="info_news_s"> 머니투데이</span>
-								</div>								
-							</li>
-							<li class="nav-item">
-							</li>
-							<li class="nav-item">
-							</li>
-							<li class="nav-item">
-							</li>									
-						</ul>
+	<div class="container" style="border:1px solid black;">
+		<div class="row justify-content-md-center">
+			<div class="col-sm">
+				<div class="card-group">
+					<div class="card">
+					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해"</p>
+							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+						</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+					</ul>
 					</div>
-				</nav>
+					<div class="card">
+					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해"</p>
+							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+						</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+					</ul>						
+					</div>
+					<div class="card">
+					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해"</p>
+							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+						</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+					</ul>						
+					</div>
+					<div class="card">
+					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해" asdasdasdasda</p>
+							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+						</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+					</ul>						
+					</div>					
+				</div>
 			</div>
 		<!-- row -->
 		</div>
@@ -183,16 +145,17 @@
 	
 	
 	
-	<div class="contatiner" style="border:1px solid black;">
+	
+	<div class="container" style="border:1px solid black;">
 		<div class="row" id="li_news_s">
 			<div class="col-sm-8">
 				<nav class="navbar navbar-expand navbar-light">
 					<div class="" id="navbarNav">
 						<ul class="list_headline">
-							<li class="item_main" style="margin-left: 20px;">
+							<li class="item_main float-right" style="margin-left: 20px;">
 								<a href="#" class="link_cont">
 									<span class="wrap_thumb">
-										<img src="../image/sailboat.jpg">
+										<img src="../image/sailboat.jpg" class="img-responsive">
 										<strong class="tit_g">
 											asdasdasdasdasdasdds
 										</strong>
@@ -221,10 +184,10 @@
 							</li>
 						</ul>
 						<ul class="list_headline">
-							<li class="item_main" style="margin-left: 20px;">
+							<li class="item_main float-right" style="margin-left: 20px;">
 								<a href="#" class="link_cont">
 									<span class="wrap_thumb">
-										<img src="../image/sailboat.jpg">
+										<img src="../image/sailboat.jpg" class="img-responsive">
 										<strong class="tit_g">
 											asdasdasdasdasdasdds
 										</strong>
@@ -253,10 +216,10 @@
 							</li>
 						</ul>
 						<ul class="list_headline">
-							<li class="item_main" style="margin-left: 20px;">
+							<li class="item_main float-right" style="margin-left: 20px;">
 								<a href="#" class="link_cont">
 									<span class="wrap_thumb">
-										<img src="../image/sailboat.jpg">
+										<img src="../image/sailboat.jpg" class="img-responsive">
 										<strong class="tit_g">
 											asdasdasdasdasdasdds
 										</strong>
@@ -288,7 +251,7 @@
 				</nav>
 			</div>
 			<div class="col-sm-4">
-				<div class="card" style="width: 18rem;">
+				<div class="card">
 					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
 					<div class="card-body">
 						<h5 class="card-title">Card title</h5>
@@ -302,44 +265,44 @@
 	</div>
 	
 	
-	<div class="contatiner" style="border:1px solid black;">
+	<div class="container" style="border:1px solid black;">
 		<div class="row">
 			<div class="col-sm">
-				<ul class="list_headline" id="im-posi">
-					<li class="item_mai" style="margin-left: 20px;">
+				<ul class="list_headline " id="im-posi">
+					<li class="item_mai float-left" style="margin-left: 20px;">
 						<a href="#" class="link_cont">
 							<span class="wrap_thumb">
-								<img src="../image/sailboat.jpg">
+								<img src="../image/sailboat.jpg" >
 								<strong class="tit_g">
 									asdasdasdasdasdasdds
 								</strong>
 							</span>
 						</a>								
 					</li>
-					<li class="item_mai" style="margin-left: 20px;">
+					<li class="item_mai float-left" style="margin-left: 20px;">
 						<a href="#" class="link_cont">
 							<span class="wrap_thumb">
-								<img src="../image/sailboat.jpg">
+								<img src="../image/sailboat.jpg" >
 								<strong class="tit_g">
 									asdasdasdasdasdasdds
 								</strong>
 							</span>
 						</a>								
 					</li>
-					<li class="item_mai" style="margin-left: 20px;">
+					<li class="item_mai float-left" style="margin-left: 20px;">
 						<a href="#" class="link_cont">
 							<span class="wrap_thumb">
-								<img src="../image/sailboat.jpg">
+								<img src="../image/sailboat.jpg" >
 								<strong class="tit_g">
 									asdasdasdasdasdasdds
 								</strong>
 							</span>
 						</a>								
 					</li>
-					<li class="item_mai" style="margin-left: 20px;">
+					<li class="item_mai float-left" style="margin-left: 20px;">
 						<a href="#" class="link_cont">
 							<span class="wrap_thumb">
-								<img src="../image/sailboat.jpg">
+								<img src="../image/sailboat.jpg" >
 								<strong class="tit_g">
 									asdasdasdasdasdasdds
 								</strong>
@@ -354,54 +317,194 @@
 	</div>
 
 	
-<!-- 	<div class="contatiner" style="border:1px solid black;">
+	<div class="container" style="border:1px solid black;">
 		<div class="row">
-			<div class="col">
-				<div class="card-deck">
-					<div class="card">
-						<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-						</div>
-					</div>
-					<div class="test_s">
-						<h4>asdasdasdad</h4>
-					</div>
-					<div class="card">
-						<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-						</div>
-					</div>
-					<div class="card">
-						<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-						</div>
-					</div>
-					<div class="card">
-						<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-						</div>
-					</div>					
-				</div>				
+			<div class="col-sm-8">
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+				<p/>
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+				<p/>
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>								
 			</div>
-		row
+			<div class="col-sm-4">
+				<div class="card">
+					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+			</div>			
+		<!-- row -->
 		</div>
-	container
-	</div> -->
+	<!-- container -->
+	</div>
+	
+	
+	<div class="container" style="border:1px solid black;">
+		<div class="row justify-content-md-center">
+			<div class="col-sm-9" >
+				<div class="pop_news pop_cmt" style="margin-top: 20px;">
+					<h3 class="tit_news">댓글 많은 뉴스</h3>
+					<ol class="list_popcmt">
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num1">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num2">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num3">1위</span>
+								asdadada
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num4">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num5">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>																								
+					</ol>
+				</div>			
+				<div class="pop_news pop_cmt">
+					<h3 class="tit_news">댓글 많은 뉴스</h3>
+					<ol class="list_popcmt">
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num1">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num2">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num3">1위</span>
+								asdadada
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num4">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>
+						<li>
+							<a href="#" class="link_txt">
+								<span class="num_news num5">1위</span>
+								asdadadad
+							</a>
+							<span class="info_news">서울신문</span>
+						</li>																								
+					</ol>
+				</div>
+				<div class="pop_news pop_age">
+					<h3 class="tit_news"></h3>
+					<div class="agenews_list">
+						<span class="txt_news ico_female">여성</span>
+						<ul class="list_agenews list_female">
+							<li>
+								<span class="txt_news ico_age20">20대</span>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>
+							<li>
+								<span class="txt_news ico_age30">30대</span>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>
+							<li>
+								<span class="txt_news ico_age40">40대</span>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>
+							<li>
+								<span class="txt_news ico_age50">50대</span>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>	 																				
+						</ul>
+					</div>
+					<div class="agenews_list">
+						<span class="txt_news ico_male">남성</span>
+						<ul class="list_agenews list_male">
+							<li>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>
+							<li>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>
+							<li>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>
+							<li>
+								<a href="#" class="link_txt">국뽕코인이 뭐길래 외국어쩌구</a>
+							</li>																					
+						</ul>
+					</div>	
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="card">
+					<img src="../image/sailboat.jpg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+			</div>
+		<!-- row -->
+		</div>
+	<!-- container -->
+	</div>
+	
+	
+	
+	
 	
 <!-- news_s -->
 </div>
+
 
 <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
