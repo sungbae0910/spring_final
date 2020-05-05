@@ -405,3 +405,231 @@ a {
 .list_male li {
     width: 100%;
 }
+
+
+/* newsDatail */
+.head_view .info_view {
+    display: block;
+    margin-top: 9px;
+    line-height: 27px;
+    color: #919191;
+}
+
+.head_view .info_view .link_cmt {
+    display: inline-block;
+    overflow: hidden;
+    height: 25px;
+    margin-top: 1px;
+    line-height: 25px;
+    vertical-align: top;
+}
+
+.emph_g2, .emph_g2 .link_txt {
+    color: #1e88e5;
+}
+
+.info_view button {
+    border: 0 none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.news_view{
+	margin-top: 20px;
+}
+
+.news_view .figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+} 
+
+.aside_popular {
+    height: 415px;
+    padding-top: 19px;
+    border-top: 2px solid #141414;
+}
+
+.aside_g {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+
+/* .aside_g>.txt_newsview {
+    height: 15px;
+    margin-left: 2px;
+} */
+
+
+.link_tab:hover {
+	font-weight: bold;
+}
+
+.aside_popular .tab_aside {
+    top: 15px;
+    right: 20px;
+}
+/* .tab_aside {
+    position: absolute;
+    top: -5px;
+    right: 1px;
+    height: 23px;
+} */
+
+.tab_aside>li {
+    float: left;
+}
+
+.tab_aside .on .cont_aside {
+    display: block;
+}
+
+@media only screen and (max-width: 1180px)
+.aside_g .cont_aside {
+    width: 250px;
+}
+/* .aside_popular .cont_aside {
+    position: absolute;
+    top: 38px;
+    right: -1px;
+    margin-top: 0;
+    padding-top: 13px;
+    border-top: 1px solid #e5e5e5;
+} */
+
+
+@media only screen and (max-width: 1180px)
+.aside_popular .list_ranking li {
+    width: 226px;
+}
+
+.aside_popular .list_ranking li {
+    width: 272px;
+}
+
+.aside_g .list_ranking li {
+    overflow: hidden;
+    float: none;
+    position: relative;
+    width: 242px;
+    height: 30px;
+    padding-left: 24px;
+}
+
+.aside_g .list_ranking .num1 {
+    background-position: 0 0;
+}
+
+.aside_g .list_ranking .num_newsview {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    width: 18px;
+    height: 11px;
+    margin-top: -8px;
+}
+
+.num_newsview {
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background: url(//t1.daumcdn.net/media/common/newsview/num_newsview.png) 0 0 no-repeat;
+    vertical-align: top;
+    text-indent: -9999px;
+    background-size: 18px 600px;
+}
+
+.aside_g .list_ranking .tit_g {
+    overflow: hidden;
+    font-weight: normal;
+    line-height: 23px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tit_g{
+	display: block;
+}
+
+.aside_g .list_ranking .num2 {background-position: 0 -20px;}
+.aside_g .list_ranking .num3 {background-position: 0 -40px;}
+.aside_g .list_ranking .num4 {background-position: 0 -60px;}
+.aside_g .list_ranking .num5 {background-position: 0 -80px;}
+.aside_g .list_ranking .num6 {background-position: 0 -100px;}
+.aside_g .list_ranking .num7 {background-position: 0 -120px;}
+.aside_g .list_ranking .num8 {background-position: 0 -140px;}
+.aside_g .list_ranking .num9 {background-position: 0 -160px;}
+.aside_g .list_ranking .num10 {background-position: 0 -180px;}
+
+.list_category li{
+	float: left;
+	margin-right: 12px;
+}
+
+.cmt_box {
+    margin-top: 22px;
+}
+
+.com_body_s{margin-top: 40px;}
+
+.txt_id{
+	font-size: 12px;
+	color:#396dba;
+}
+
+.txt_date{
+	font-size: 11px;
+	color: #999;
+}
+
+.com_cont_s{
+	font-size: 15px;
+	line-height: 19px;
+}
+
+.box_reply{
+	font-size: 12.4px;
+    color: #555;
+    line-height: 1.7;
+    letter-spacing: -1px;
+    margin-top: 15px;
+}
+
+.box_reply .box_inner {
+    float: left;
+    margin-top: -1px;
+    padding-right: 1px;
+}
+
+.reply_count {
+	border: none;
+    font-size: 12px;
+    line-height: 21px;
+}
+.comment_recomm{
+	float: right;
+}
+
+.comment_recomm button{
+	background-color: white;
+} 
+
+.btn_recomm .num_txt {
+    color: #e8444f;
+}
+
+.btn_oppose .num_txt {
+    color: #4884e6;
+}
+
+.com_to_s{
+	padding-top: 10px;
+}
+
+/* .img_cmt {
+    background-image: url(//t1.daumcdn.net/media/common/alex/icon_pc_200204.png);
+    background-size: 250px 360px;
+} */
