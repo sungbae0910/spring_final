@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id='w_header'>
-     <img src='../image/w_longo.png'>
-
-</div>
-
-
-
+  
 </body>
 </html>

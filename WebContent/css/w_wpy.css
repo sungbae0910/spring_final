@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
-div w_header{
-	width: 1920px;
-	height: 500px;
-	
+
+#w_BrandName  {
+  position: relative;
+  left: 150px;
+  margin-left: 2px;
+  padding-left: 3px;
+   
+  
 }
