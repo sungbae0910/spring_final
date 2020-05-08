@@ -28,7 +28,7 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="w_index.html">Home</a></li>
+								<li><a href="w_index.jsp">Home</a></li>
 								<li>
 									<a href="">브랜드 소개</a>
 									<ul>
@@ -37,7 +37,7 @@
 										<li><a href="#">사이드 안주</a></li>							
 									</ul>
 								</li>
-								<li><a href="w_left-sidebar.html">창업문의</a></li>
+								<li><a href="w_founded.jsp">창업문의</a></li>
 								<li><a href="w_right-sidebar.html">고객문의</a></li>
 								<li><a href="w_no-sidebar.html">매장안내</a></li>
 							</ul>
@@ -91,7 +91,7 @@
 					<!-- Lists -->
 						<div class="row">
 							<div class="8u">
-							   <h2>서울 중랑구 면목로 454</h2>
+							   <h2></h2>
 							</div>
 						</div>
 
