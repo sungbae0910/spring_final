@@ -17,10 +17,10 @@ public class MusicDao {
 	
 	
 	//TOP 10
-	public List<MusicVo> select(){
+	public List<MusicVo> top10(){
 		List<MusicVo> list = null;
 		try {
-			list = sqlSession.selectList("");
+			list = sqlSession.selectList("music.home");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

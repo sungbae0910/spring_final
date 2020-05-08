@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../lib/css/sb_main.css">
 <script src="../lib/js/jquery-3.4.1.js"></script>
 <script src="../lib/js/jquery-ui.js"></script>
+
 </head>
 <body>
  <%
@@ -26,8 +27,8 @@
  
   <nav class="col-sm-3 sidenav">
   
-  	<img src="../lib/images/logo.png" id="logo" onclick="location.href='sb_main.jsp?p=./sb_home.jsp'"> <!-- 로고 -->
-  	
+  	<img src="../lib/images/logo.png" id="logo" onclick="mu.home()"> <!-- 로고 -->
+  	<!-- location.href='sb_main.jsp?p=./sb_home.jsp' -->
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
 	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a></li>
@@ -195,7 +196,7 @@
 			
 		</div>
  </nav>
- 
+<script src="../lib/js/sb_music.js"></script>
 <script src="../lib/js/sb_main.js"></script>
 <script src="../lib/js/bootstrap.min.js"></script>
 </body>

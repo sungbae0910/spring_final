@@ -122,16 +122,16 @@
 				다운
 			</div>
 		</div>
-		<c:forEach var="v" begin="1" end="10">
+		<c:forEach var="v" items="${top10 }">
 			<div id="top10_select">
 				<div class="col-sm-2">
 					<span>${v}</span> 
 				</div>
 				<div class="col-sm-3">
-					<span>곡 이름${v }</span>
+					<span>곡 이름${v.music_name }</span>
 				</div>
 				<div class="col-sm-3">
-					<span>앨범이름${v }</span>
+					<span>가수${v.artist_name }</span>
 				</div>
 				<div class="col-sm-2">
 					<span>듣기</span>

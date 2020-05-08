@@ -5,9 +5,11 @@
 	
 <mapper namespace="music">
 
-	<select id="top10" parameterType="Integer" resultType="mybatis.MusicVo">
-		
-		select * from sb_top 
+	<select id="home" parameterType="Integer" resultType="mybatis.MusicVo">
+		select * from sb_music 
+		where MUSIC_SERIAL IN (
+			select MUSIC_SERIAL from SB_TOP where TOP_SERIAL BETWEEN 1 and 2 
+		)
 	</select>
 
 
