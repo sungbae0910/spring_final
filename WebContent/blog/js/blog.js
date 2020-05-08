@@ -12,4 +12,17 @@ blog.myblog_func = function(){
 		$("body").css("overflow", "");
 		$("#c_dimmedSidebar").css("position", "");
 	});
+	
+	$("#c_brd_like").click(function(){ //공감버튼
+		if ($(this).hasClass("glyphicon-heart-empty")){
+			$(this).removeClass("glyphicon-heart-empty");
+			$(this).addClass("glyphicon-heart");
+			$(this).text("1");
+		} else {
+			$(this).removeClass("glyphicon-heart");
+			$(this).addClass("glyphicon-heart-empty");
+			$(this).text("공감");
+		}
+		
+	});
 }

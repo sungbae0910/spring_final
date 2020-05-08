@@ -96,32 +96,34 @@
 		<div class="container">
 	    	<div class="row">
 	        	<div class="col-sm-12">
-	        		<a href="">
-	        			<span class="c_listBrdImg">
-	        				<img src="../blog_image/boy.jpg" class="img-rounded" alt="">
-	        			</span>
-	        			<div class="c_listCont">
-	        				<div class="c_listData">
-	        					<span class="c_listCate">카테고리</span>
-	        					<br><br>
-	        					<span>게시된 시간</span><br>
-	        					<span>공감 <span class="badge">5</span></span><br>
-	        				</div>
-	        				<div class="c_listSubject">블로그 글 제목!</div>
-	        				<div class="c_listInnerCont">
-	        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용
-	        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용
-								블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용	        				
-	        				</div>
-	        			</div>
-	        			<div class="c_listInfo">
-	        				<span class="c_listUserImg">
-	        					<img src="../blog_image/cat.jpg" class="img-circle" alt="">
-	        				</span>
-	        				<span>개인블로그 title</span>
-	        				<span class="c_listMid">by 유저 아이디</span>
-	        			</div>
-	        		</a>
+	        		<div class="c_blogList">
+		        		<a href="">
+		        			<span class="c_listBrdImg">
+		        				<img src="../blog_image/boy.jpg" class="img-rounded" alt="">
+		        			</span>
+		        			<div class="c_listCont">
+		        				<div class="c_listData">
+		        					<span class="c_listCate">카테고리</span>
+		        					<br><br>
+		        					<span>게시된 시간</span><br>
+		        					<span>공감 <span class="badge">5</span></span><br>
+		        				</div>
+		        				<div class="c_listSubject">블로그 글 제목!</div>
+		        				<div class="c_listInnerCont">
+		        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용
+		        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용
+									블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용	        				
+		        				</div>
+		        			</div>
+		        			<div class="c_listInfo">
+		        				<span class="c_listUserImg">
+		        					<img src="../blog_image/cat.jpg" class="img-circle" alt="">
+		        				</span>
+		        				<span>개인블로그 title</span>
+		        				<span class="c_listMid">by 유저 아이디</span>
+		        			</div>
+		        		</a>
+	        		</div>
 	        	</div>
 	        	<hr/>
     		</div>
