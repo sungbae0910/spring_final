@@ -6,6 +6,10 @@
 	margin-right: 5px;
 }
 
+svg.bi.bi-arrow-return-right{
+	float: left;
+}
+
 .flu{
 	width: 100%;
 	height:40px;

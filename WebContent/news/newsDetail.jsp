@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- css -->
 <link href="../css/bootstrap.css" rel="stylesheet">
@@ -20,10 +20,10 @@
 			<div class="row justify-content-md-center">
 				<div class="col" id="hlog">
 					<div class="logo_s">
-						¿¹Á¦ÀÔ´Ï´ç
+						ì˜ˆì œìž…ë‹ˆë‹¹
 					</div>
 					<div id="miniUser">
-						<a href="#" class="miniUser_login">·Î±×ÀÎ</a>
+						<a href="#" class="miniUser_login">ë¡œê·¸ì¸</a>
 					</div>
 					<svg class="bi bi-envelope" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" d="M14 3H2a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM2 2a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
@@ -44,9 +44,9 @@
 		<div class="row">
 			<div class="col-sm">
 				<div class="head_s">
-					<a href="#"><h2 class="head_ch_s">´º½º</h2></a>
-					<a href="#"><h2>¿¬¿¹</h2></a>
-					<a href="#"><h2>½ºÆ÷Ã÷</h2></a>
+					<a href="#"><h2 class="head_ch_s">ë‰´ìŠ¤</h2></a>
+					<a href="#"><h2>ì—°ì˜ˆ</h2></a>
+					<a href="#"><h2>ìŠ¤í¬ì¸ </h2></a>
 				</div>
 				<form class="form-inline" id="nMainSearch_s">
 					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -66,22 +66,22 @@
 					<div class="collapse navbar-collapse" id="navbarNav">
 						<ul class="navbar-nav">
 							<li class="nav-item active">
-								<a class="nav-link" href="#" >È¨</a>
+								<a class="nav-link" href="#" >í™ˆ</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">»çÈ¸</a>
+								<a class="nav-link" href="#">ì‚¬íšŒ</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Á¤Ä¡</a>
+								<a class="nav-link" href="#">ì •ì¹˜</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">°æÁ¦</a>
+								<a class="nav-link" href="#">ê²½ì œ</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">±¹Á¦</a>
+								<a class="nav-link" href="#">êµ­ì œ</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">¹®È­</a>
+								<a class="nav-link" href="#">ë¬¸í™”</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#">IT</a>
@@ -101,13 +101,13 @@
 			<div class="col-sm">
 				<div id="cSub" class="hcg_media_pc_cSub">
 					<div class="head_view">
-						<div class="info_cp">¾Æ½Ã¾Æ°æÁ¦</div>
-						<h3 class="tit_view">¹Ú¼öÇö, ÀÓÁ¾¼® ºÒÃâ¸¶ 'µÞÀÌ¾ß±â' °ø°³...</h3>	
+						<div class="info_cp">ì•„ì‹œì•„ê²½ì œ</div>
+						<h3 class="tit_view">ë°•ìˆ˜í˜„, ìž„ì¢…ì„ ë¶ˆì¶œë§ˆ 'ë’·ì´ì•¼ê¸°' ê³µê°œ...</h3>	
 						<span class="info_view">
-							<span class="txt_info">°­³ªÈÉ</span>
-							<span class="txt_info">ÀÔ·Â 2020.05.05. 12:33</span>
+							<span class="txt_info">ê°•ë‚˜í›”</span>
+							<span class="txt_info">ìž…ë ¥ 2020.05.05. 12:33</span>
 							<button id="alexCounter" class="emph_g2 link_cmt">
-								´ñ±Û<span class="alex-count-area">5</span>°³						
+								ëŒ“ê¸€<span class="alex-count-area">5</span>ê°œ						
 							</button>
 						</span>				
 					</div>
@@ -128,17 +128,17 @@
 						<figcaption class="figure-caption">A caption for the above image.</figcaption>
 					</figure>
 					<p>
-						(¼­¿ï=¿¬ÇÕ´º½º) °­¾Ö¶õ ±âÀÚ = Á¤ºÎ´Â °¨¿°º´ À§±â°æº¸ ´Ü°è¸¦ ÇöÀçÀÇ '½É°¢'¿¡¼­ '°æ°è'·Î ³·Ãß´õ¶óµµ ¸¶½ºÅ© 5ºÎÁ¦ µî ½ÅÁ¾ 
-						ÄÚ·Î³ª¹ÙÀÌ·¯½º °¨¿°Áõ(ÄÚ·Î³ª19) °ü·Ã °³º° Á¤Ã¥¿¡´Â Å« º¯È­°¡ ¾øÀ» °ÍÀÌ¶ó°í ¹àÇû´Ù.
-												(¼­¿ï=¿¬ÇÕ´º½º) °­¾Ö¶õ ±âÀÚ = Á¤ºÎ´Â °¨¿°º´ À§±â°æº¸ ´Ü°è¸¦ ÇöÀçÀÇ '½É°¢'¿¡¼­ '°æ°è'·Î ³·Ãß´õ¶óµµ ¸¶½ºÅ© 5ºÎÁ¦ µî ½ÅÁ¾ 
-						ÄÚ·Î³ª¹ÙÀÌ·¯½º °¨¿°Áõ(ÄÚ·Î³ª19) °ü·Ã °³º° Á¤Ã¥¿¡´Â Å« º¯È­°¡ ¾øÀ» °ÍÀÌ¶ó°í ¹àÇû´Ù.
-												(¼­¿ï=¿¬ÇÕ´º½º) °­¾Ö¶õ ±âÀÚ = Á¤ºÎ´Â °¨¿°º´ À§±â°æº¸ ´Ü°è¸¦ ÇöÀçÀÇ '½É°¢'¿¡¼­ '°æ°è'·Î ³·Ãß´õ¶óµµ ¸¶½ºÅ© 5ºÎÁ¦ µî ½ÅÁ¾ 
-						ÄÚ·Î³ª¹ÙÀÌ·¯½º °¨¿°Áõ(ÄÚ·Î³ª19) °ü·Ã °³º° Á¤Ã¥¿¡´Â Å« º¯È­°¡ ¾øÀ» °ÍÀÌ¶ó°í ¹àÇû´Ù.
-												(¼­¿ï=¿¬ÇÕ´º½º) °­¾Ö¶õ ±âÀÚ = Á¤ºÎ´Â °¨¿°º´ À§±â°æº¸ ´Ü°è¸¦ ÇöÀçÀÇ '½É°¢'¿¡¼­ '°æ°è'·Î ³·Ãß´õ¶óµµ ¸¶½ºÅ© 5ºÎÁ¦ µî ½ÅÁ¾ 
-						ÄÚ·Î³ª¹ÙÀÌ·¯½º °¨¿°Áõ(ÄÚ·Î³ª19) °ü·Ã °³º° Á¤Ã¥¿¡´Â Å« º¯È­°¡ ¾øÀ» °ÍÀÌ¶ó°í ¹àÇû´Ù.
-												(¼­¿ï=¿¬ÇÕ´º½º) °­¾Ö¶õ ±âÀÚ = Á¤ºÎ´Â °¨¿°º´ À§±â°æº¸ ´Ü°è¸¦ ÇöÀçÀÇ '½É°¢'¿¡¼­ '°æ°è'·Î ³·Ãß´õ¶óµµ ¸¶½ºÅ© 5ºÎÁ¦ µî ½ÅÁ¾ 
-						ÄÚ·Î³ª¹ÙÀÌ·¯½º °¨¿°Áõ(ÄÚ·Î³ª19) °ü·Ã °³º° Á¤Ã¥¿¡´Â Å« º¯È­°¡ ¾øÀ» °ÍÀÌ¶ó°í ¹àÇû´Ù.
-												(¼­¿ï=¿¬ÇÕ´º½º) °­¾Ö¶õ ±âÀÚ = Á¤ºÎ´Â °¨¿°º´ À§±â°æº¸ ´Ü°è¸¦ ÇöÀçÀÇ '½É°¢'¿¡¼­ '°æ°è'·Î ³·Ãß´õ¶óµµ ¸¶½ºÅ© 5ºÎÁ¦ µî ½ÅÁ¾ 
+						(ì„œìš¸=ì—°í•©ë‰´ìŠ¤) ê°•ì• ëž€ ê¸°ìž = ì •ë¶€ëŠ” ê°ì—¼ë³‘ ìœ„ê¸°ê²½ë³´ ë‹¨ê³„ë¥¼ í˜„ìž¬ì˜ 'ì‹¬ê°'ì—ì„œ 'ê²½ê³„'ë¡œ ë‚®ì¶”ë”ë¼ë„ ë§ˆìŠ¤í¬ 5ë¶€ì œ ë“± ì‹ ì¢… 
+						ì½”ë¡œë‚˜ë°”ì´ëŸ¬ìŠ¤ ê°ì—¼ì¦(ì½”ë¡œë‚˜19) ê´€ë ¨ ê°œë³„ ì •ì±…ì—ëŠ” í° ë³€í™”ê°€ ì—†ì„ ê²ƒì´ë¼ê³  ë°í˜”ë‹¤.
+												(ì„œìš¸=ì—°í•©ë‰´ìŠ¤) ê°•ì• ëž€ ê¸°ìž = ì •ë¶€ëŠ” ê°ì—¼ë³‘ ìœ„ê¸°ê²½ë³´ ë‹¨ê³„ë¥¼ í˜„ìž¬ì˜ 'ì‹¬ê°'ì—ì„œ 'ê²½ê³„'ë¡œ ë‚®ì¶”ë”ë¼ë„ ë§ˆìŠ¤í¬ 5ë¶€ì œ ë“± ì‹ ì¢… 
+						ì½”ë¡œë‚˜ë°”ì´ëŸ¬ìŠ¤ ê°ì—¼ì¦(ì½”ë¡œë‚˜19) ê´€ë ¨ ê°œë³„ ì •ì±…ì—ëŠ” í° ë³€í™”ê°€ ì—†ì„ ê²ƒì´ë¼ê³  ë°í˜”ë‹¤.
+												(ì„œìš¸=ì—°í•©ë‰´ìŠ¤) ê°•ì• ëž€ ê¸°ìž = ì •ë¶€ëŠ” ê°ì—¼ë³‘ ìœ„ê¸°ê²½ë³´ ë‹¨ê³„ë¥¼ í˜„ìž¬ì˜ 'ì‹¬ê°'ì—ì„œ 'ê²½ê³„'ë¡œ ë‚®ì¶”ë”ë¼ë„ ë§ˆìŠ¤í¬ 5ë¶€ì œ ë“± ì‹ ì¢… 
+						ì½”ë¡œë‚˜ë°”ì´ëŸ¬ìŠ¤ ê°ì—¼ì¦(ì½”ë¡œë‚˜19) ê´€ë ¨ ê°œë³„ ì •ì±…ì—ëŠ” í° ë³€í™”ê°€ ì—†ì„ ê²ƒì´ë¼ê³  ë°í˜”ë‹¤.
+												(ì„œìš¸=ì—°í•©ë‰´ìŠ¤) ê°•ì• ëž€ ê¸°ìž = ì •ë¶€ëŠ” ê°ì—¼ë³‘ ìœ„ê¸°ê²½ë³´ ë‹¨ê³„ë¥¼ í˜„ìž¬ì˜ 'ì‹¬ê°'ì—ì„œ 'ê²½ê³„'ë¡œ ë‚®ì¶”ë”ë¼ë„ ë§ˆìŠ¤í¬ 5ë¶€ì œ ë“± ì‹ ì¢… 
+						ì½”ë¡œë‚˜ë°”ì´ëŸ¬ìŠ¤ ê°ì—¼ì¦(ì½”ë¡œë‚˜19) ê´€ë ¨ ê°œë³„ ì •ì±…ì—ëŠ” í° ë³€í™”ê°€ ì—†ì„ ê²ƒì´ë¼ê³  ë°í˜”ë‹¤.
+												(ì„œìš¸=ì—°í•©ë‰´ìŠ¤) ê°•ì• ëž€ ê¸°ìž = ì •ë¶€ëŠ” ê°ì—¼ë³‘ ìœ„ê¸°ê²½ë³´ ë‹¨ê³„ë¥¼ í˜„ìž¬ì˜ 'ì‹¬ê°'ì—ì„œ 'ê²½ê³„'ë¡œ ë‚®ì¶”ë”ë¼ë„ ë§ˆìŠ¤í¬ 5ë¶€ì œ ë“± ì‹ ì¢… 
+						ì½”ë¡œë‚˜ë°”ì´ëŸ¬ìŠ¤ ê°ì—¼ì¦(ì½”ë¡œë‚˜19) ê´€ë ¨ ê°œë³„ ì •ì±…ì—ëŠ” í° ë³€í™”ê°€ ì—†ì„ ê²ƒì´ë¼ê³  ë°í˜”ë‹¤.
+												(ì„œìš¸=ì—°í•©ë‰´ìŠ¤) ê°•ì• ëž€ ê¸°ìž = ì •ë¶€ëŠ” ê°ì—¼ë³‘ ìœ„ê¸°ê²½ë³´ ë‹¨ê³„ë¥¼ í˜„ìž¬ì˜ 'ì‹¬ê°'ì—ì„œ 'ê²½ê³„'ë¡œ ë‚®ì¶”ë”ë¼ë„ ë§ˆìŠ¤í¬ 5ë¶€ì œ ë“± ì‹ ì¢… 
 					</p>	
 				</div>
 			</div>
@@ -146,10 +146,10 @@
 				<div class="hc_news_pc_mAside_popular_news">
 					<div class="aside_g aside_popular">
 						<div class="top_new_s">
-							<h3 class="txt_newsview">¸¹ÀÌ º» ´º½º</h3>
-							<a href="#" class="link_tab link_tab2">´º½º</a>
-							<a href="#" class="link_tab link_tab3">¿¬¾Ö</a>
-							<a href="#" class="link_tab link_tab4">½ºÆ÷Ã÷</a>
+							<h3 class="txt_newsview">ë§Žì´ ë³¸ ë‰´ìŠ¤</h3>
+							<a href="#" class="link_tab link_tab2">ë‰´ìŠ¤</a>
+							<a href="#" class="link_tab link_tab3">ì—°ì• </a>
+							<a href="#" class="link_tab link_tab4">ìŠ¤í¬ì¸ </a>
 						</div>
 						<p/>
 						<ul class="tab_aside tab_media">
@@ -160,7 +160,7 @@
 											<li>
 												<em class="num_newsview num${ii.index}">1</em>
 												<strong class="tit_g">
-													<a href="#" class="link_txt @${ii.index}">¾ÆÂ¼±¸ÀúÂ¼¤Ì±¸±¸±¸±¹asdasdasasdasdads</a>
+													<a href="#" class="link_txt @${ii.index}">ì•„ì©Œêµ¬ì €ì©Œã…œêµ¬êµ¬êµ¬êµ­asdasdasasdasdads</a>
 												</strong>
 											</li>
 										</c:forEach>																				
@@ -187,24 +187,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8">
-				<div class="count_comment_s">´ñ±Û 48°³</div>
+				<div class="count_comment_s">ëŒ“ê¸€ 48ê°œ</div>
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="´ñ±ÛÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<input type="text" class="form-control" placeholder="ëŒ“ê¸€ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”" aria-label="Recipient's username" aria-describedby="button-addon2">
 					<div class="input-group-append">
-					 	<button class="btn btn-outline-secondary" type="button" id="button-addon2">ÀÔ·Â</button>
+					 	<button class="btn btn-outline-secondary" type="button" id="button-addon2">ìž…ë ¥</button>
 					</div>
 				</div>
 				<div class="cmt_box">
 					<ul class="list_category">
-						<li>ÃßÃµ¼ø</li>
-						<li>µî·Ï¼ø</li>
+						<li>ì¶”ì²œìˆœ</li>
+						<li>ë“±ë¡ìˆœ</li>
 					</ul>
 				</div>
 				<c:forEach begin="1" end="5" var="i" varStatus="ii">
 				<hr/>
 				<div class="com_to_s">
 					<div class="com_body_s">
-						<span class="txt_id">°­³ªÈÉ</span>
+						<span class="txt_id">ê°•ë‚˜í›”</span>
 						<span class="txt_date">2020.05.05. 12:33</span>
 						<p class="com_cont_s">asdasdas</p> 
 					</div>
@@ -212,18 +212,18 @@
 						<span class="box_inner">
 							<button class="reply_count${ii.index}" onclick='hide_com(${ii.index})'>
 								<span>
-									<span>´ä±Û</span>
+									<span>ë‹µê¸€</span>
 									<span class="num_txt">3</span>
 								</span>
 							</button>
 						</span>
 						<span class="comment_recomm">
 							<button class="btn_g btn_recomm"  style="border: none;">
-								<span class="img_cmt ico_recomm bounce">Âù¼º</span>
+								<span class="img_cmt ico_recomm bounce">ì°¬ì„±</span>
 								<span class="num_txt">200</span>
 							</button>
 							<button class="btn_g btn_oppose"  style="border: none;">
-								<span class="img_cmt ico_oppose bounce">ºñÃßÃµ</span>
+								<span class="img_cmt ico_oppose bounce">ë¹„ì¶”ì²œ</span>
 								<span class="num_txt">5</span>
 							</button>
 						</span>
@@ -232,15 +232,15 @@
 				<br/>
 				<div class="hide_comment${ii.index} hide_come">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="´ñ±ÛÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input type="text" class="form-control" placeholder="ëŒ“ê¸€ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<div class="input-group-append">
-						 	<button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: white;">ÀÔ·Â</button>
+						 	<button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: white;">ìž…ë ¥</button>
 						</div>
 					</div>
 					<div class="cmt_box2">
 						<ul class="list_category">
-							<li>ÃßÃµ¼ø</li>
-							<li>µî·Ï¼ø</li>
+							<li>ì¶”ì²œìˆœ</li>
+							<li>ë“±ë¡ìˆœ</li>
 						</ul>
 					</div>				
 					<div class="com_body_s">
@@ -248,7 +248,7 @@
 							<path fill-rule="evenodd" d="M10.146 5.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 9l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
 							<path fill-rule="evenodd" d="M3 2.5a.5.5 0 00-.5.5v4A2.5 2.5 0 005 9.5h8.5a.5.5 0 000-1H5A1.5 1.5 0 013.5 7V3a.5.5 0 00-.5-.5z" clip-rule="evenodd"/>
 						</svg>
-						<span class="txt_id">°­³ªÈÉ</span>
+						<span class="txt_id">ê°•ë‚˜í›”</span>
 						<span class="txt_date">2020.05.05. 12:33</span>
 						<p class="com_cont_s">asdasdas</p>
 						<hr/> 
