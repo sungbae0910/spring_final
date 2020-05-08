@@ -24,6 +24,11 @@
 <link rel="stylesheet" href="./css/nice-select.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/newsTemp.css">
+
+<!-- js -->
+<script src="./js/jquery-3.4.1.js"></script>
+<script src="./js/news.js"></script>
+
 </head>
 
 <body>
@@ -120,6 +125,9 @@
     </header>
 
     <main>
+    <form id="tes_s" class="tes_s" method="post">
+    
+    </form>
     <!-- Trending Area Start -->
     <div class="trending-area fix">
         <div class="container">
@@ -132,7 +140,7 @@
                                 <img src="./img/trending/trending_top.jpg" alt="">
                                 <div class="trend-top-cap">
                                     <span>머니투데이</span>
-                                    <h2><a href="details.html">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해"</a></h2>
+                                    <h2><a href="#">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해"</a></h2>
                                 </div>
                             </div>
                         </div>
@@ -724,6 +732,8 @@
 <!-- Jquery Plugins, main Jquery -->	
       <script src="./js/plugins.js"></script>
       <script src="./js/main.js"></script>
-        
+<script>
+	news()
+</script>        
 </body>
 </html>

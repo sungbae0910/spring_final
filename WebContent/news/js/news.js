@@ -5,6 +5,14 @@
 
 let news = function(){
 	
+	$('.btn_test_s').click(function(){
+		$('#test_s').attr('action', '../news/test.news').submit();
+	})
+	
+	$('.trend-top-cap a').click(function(){
+		alert('asdad');
+		$('#tes_s').attr('action', '../newsDetailT.news').submit();
+	})
 }
 
 let hide_come = function(replyCount){

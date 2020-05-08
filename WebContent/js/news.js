@@ -11,6 +11,11 @@ let news = function(){
 		$('li').removeClass('active');
 		$(this).parent('li').addClass('active');
 	})
+	
+	$('.trend-top-cap h2').click(function(){
+		alert('asdad');
+		$('#tes_s').attr('action', 'newsDetail.news').submit();
+	})
 }
 
 /* 답글 열고 닫기 */

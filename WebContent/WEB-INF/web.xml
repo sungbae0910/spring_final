@@ -5,9 +5,14 @@
     <servlet-class>
 			org.springframework.web.servlet.DispatcherServlet
 	</servlet-class>
+	<init-param>
+		<param-name>newsConfig</param-name>
+		<param-value>/WEB-INF/news_mvc-servlet.xml</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>news_mvc</servlet-name>
-    <url-pattern>*.new</url-pattern>
+    <url-pattern>*.news</url-pattern>
   </servlet-mapping>
 </web-app>
