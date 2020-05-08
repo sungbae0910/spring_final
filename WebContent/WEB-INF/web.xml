@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+	<!-- music -->
+	<servlet>
+		<servlet-name>music_mvc</servlet-name>
+		<servelt-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servelt-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>music_mvc</servlet-name>
+		<url-pattern>*.mu</url-pattern>
+	</servlet-mapping>
+	
+
+
+
+</web-app>

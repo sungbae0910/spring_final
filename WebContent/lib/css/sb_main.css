@@ -27,16 +27,31 @@ body{
 
 #nav{
  	background-color: rgba(255,051,051,0.8);
- 
+ 	max-height: 100%;
+ 	overflow-y:auto;
 }
 
+#nav::-webkit-scrollbar{
+	width:15px;
+}
+
+#nav::-webkit-scrollbar-thumb{
+	
+	background-color: black;
+}
+#nav::-webkit-scrollbar-track{
+	background-color: #61210B;
+}
 #logo{
 	width: 165px;
 	
 }
 
 #top10{
-	color:#479556;
+	border-radius: 15px;
+	background-color: rgba(0,0,0,0.7);
+	color:white;
+	text-shadow: 0 0 2px black;
 }
 #top10_list{
 	color:#EF4D59;
@@ -54,6 +69,32 @@ body{
 
 #news p{
 	font-size:20px;
+}
+
+#cap{
+	text-shadow: 0 0 2px red;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+#music_tb th{
+	color : #f47e7e;
+}
+
+#music_tb span{
+	color: white;
+    font-weight: bold;
+    font-size: 16px;
+	text-shadow: 0 0 2px #F7819F;
+}
+
+#music_tb span:hover{
+	cursor: pointer;
+}
+
+#tb_delete:hover{
+	color: black;
 }
 
 #news span{
@@ -74,13 +115,20 @@ body{
 }
 
 #album{
+	position:relative;
+	top:8px;
 	width:200px;
 	height: auto;
 }
 
 #sideA{
+	font-size: 20px;
 	color: white;
     text-shadow: 0 0 2px yellow;
+}
+
+#sideA:hover{
+	color:black;
 }
 
 .sidenav{
@@ -93,7 +141,8 @@ body{
 }
 
 .page{
-	background-image: url('../images/bg.png');
+	background-image: url('../images/bg.gif');
+	background-position-y:0px;
 	width: 90%;
 	height: auto;
 	background-attachment:fixed;
@@ -101,13 +150,24 @@ body{
 	background-repeat:no-repeat;
 	background-size: cover;
  	margin-left:280px;
- 	padding-bottom: 112px;
+ 	padding-bottom: 128px;
+}
+
+#show_list{
+	border-radius: 60px 60px 0 0 ;
+	background-color: rgba(000,102,051,0.8);
 }
 
 #prevBtn{
 	background-color: transparent;
 	border: 0;
 	outline: 0;
+}
+#nav-select{
+	color:#58FA58;
+	text-shadow: 0px 0px 2px #40FF00;
+	
+	font-size: 20px;
 }
 
 #play-button{
@@ -126,7 +186,30 @@ body{
   width:5%;
 }
 
+#speaker{
+	 border: none; 
+	 background: none;
+}
+#sound{
+	position: relative;
+    top: -11px;
+    left: 6px;
+}
 
+#m_list{
+	position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+#player-top{
+	position: absolute;
+    bottom: 460px;
+    border-radius: 10px;
+    right: 248px;
+    width: 433px;
+    height: 330px;
+}
 
 input[type=range] {
     -webkit-appearance: none;

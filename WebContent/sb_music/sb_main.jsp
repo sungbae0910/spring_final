@@ -6,50 +6,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../lib/css/jquery-ui.css">
 <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
 <link rel="stylesheet" href="../lib/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="../lib/css/sb_main.css">
 <script src="../lib/js/jquery-3.4.1.js"></script>
+<script src="../lib/js/jquery-ui.js"></script>
 </head>
 <body>
- <!-- <img src="../lib/images/music.png" height="100px" width="300px"> -->
+ <%
+ 	String p = "./sb_home.jsp";
+ 	if(request.getParameter("p") != null){
+ 		p = request.getParameter("p");
+ 	}
+ %>
+ 
  
  <div class="container-fluid">
  
   <nav class="col-sm-3 sidenav">
   
-  	<img src="../lib/images/logo.png" id="logo"> <!-- 로고 -->
+  	<img src="../lib/images/logo.png" id="logo" onclick="location.href='sb_main.jsp?p=./sb_home.jsp'"> <!-- 로고 -->
   	
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
-	    <li><a href="#" id="sideA">닉네임</a></li>
-	    <li><a href="#" id="sideA">TOP 100</a></li>
-	    <li><a href="#" id="sideA">최신 앨범</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_top.jsp" id="sideA">TOP 100</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_new.jsp" id="sideA">최신 앨범</a></li>
     </ul>
     	<hr style="background-color: #969B97;">
     	
     <img src="../lib/images/service.png">
    	<ul class="nav nav-pills nav-stacked">
-   		<li><a href="#" id="sideA">서비스 소개</a></li>
-	    <li><a href="#" id="sideA">멤버쉽 가입</a></li>
+   		<li><a href="sb_main.jsp?p=./sb_service.jsp" id="sideA">서비스 소개</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
 	    
     </ul>	
     
   </nav>
   	  
-  	  
-  
-  
   
 	  <div class="col-sm-9 page">
 	  
-	  		<jsp:include page="./sb_home.jsp"/>
+	  		<jsp:include page="<%=p %>"/>
 	  	
 	  	<br><br><br><br><br>
-	  	
-	  	
-	  	
-	  	
 	  	
 	  	<footer>
 			<div class="container-fluid">
@@ -90,17 +91,8 @@
 
 		</footer>
 	  </div>
-  
-  
-  
-  
-  
  </div>
- 
- 
 <!-- footer -->
-
-
 
 	<!-- 뮤직 실행바 -->
  <nav class="navbar nav-default navbar-fixed-bottom" role="navigation" id="nav">
@@ -136,12 +128,72 @@
 				    
 	       
 				  
-				  <div class="col-sm-2">
-				   <button onclick="changeVolume(-0.2)">볼륨-</button>
-				   <button onclick="changeVolume(+0.2)">볼륨+</button>
+				  <div class="col-sm-1">
+			   		 <br>
+			  		 <div class="input-group">
+			  		 	 <span class="input-group-addon" id="speaker">
+			  		 		 <img id="sound" src="../lib/images/vol1.png" width="18px">
+			  		 	 </span>
+				  		 <input type="range" id='volume-bar' min="0" max='100'  value="100" oninput="showVolume(this.value)">
+					   	 <span><font size=2 id="now-vol" style="color: white; text-shadow: 0 0 1px black">100</font></span>
+				   	 </div>
+				   	
 				  </div>
 				  
+				  <div class="col-sm-1">
+				  	<img src="../lib/images/list.png" id="m_list" width="90px" onclick="nav_list()">
+				  </div>
+				  
+		<br><br><br><br><br><br>
+			<!-- 숨겨진 목록 -->
+		<div class="container-fluid">
+			<div class="col-sm-6">
+				<div align="center" id="playerImg">
+					<img src="../lib/images/player.png" width="500px;" >
+					<img src="../lib/album/meteor.jpg" id="player-top">
+				</div>
+			</div>
 		
+			<div id="show_list" class="col-sm-6">
+				<div align="center" id="nav_scroll">
+					<table id = "music_tb">
+						<caption id="cap">플레이 리스트</caption>
+						<colgroup>
+							<col width="10%">
+							<col width="20%">
+							<col width="60%">
+							<col width="10%">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">NO</th>
+							<th scope="col">앨범</th>
+							<th scope="col">음악 정보</th>
+							<th scope="col">음악 삭제</th>
+						</tr>
+						</thead>
+						<c:forEach var="v" begin="1" end="20">
+								<tr>
+									<td>
+										<span>${v }</span>
+									</td>
+									<td>
+										<img src="../lib/album/방탄-on.PNG" width="55px">
+									</td>
+									<td>
+										<span>곡 이름 ${v }</span>
+										<br>
+										<span>가수명 ${v } ♬플레이타임</span></td>
+									<td>
+										<span id="tb_delete">X</span>
+									</td>
+								</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+			
+		</div>
  </nav>
  
 <script src="../lib/js/sb_main.js"></script>
