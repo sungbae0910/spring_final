@@ -13,11 +13,11 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-		<noscript>
+		<script>
 			<link rel="stylesheet" href="./css/skel.css" />
 			<link rel="stylesheet" href="./css/style.css" />
 			<link rel="stylesheet" href="./css/w_wpy.css" />
-		</noscript>
+		</script>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class="left-sidebar">
@@ -54,12 +54,6 @@
 		<!-- Main -->
 			<div id="main" class="wrapper style1">
 				<div class="container">
-					<div class="row">
-					
-						<!-- Sidebar -->
-				
-						</div>
-						
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
 							<section>
@@ -72,16 +66,42 @@
 									<br/>
 									차별화된 마케팅으로 누구나 쉽게 대박집 사장님이 되실 수 있습니다!
 									</p>
-					    <ul class='ultag'>
+						</div>
+						
+						<h3 class='w_h3'>
+						성공 창업을 위한 꼬치예전 솔루션
+						</h3>
+						
+					    <ul>
 					      <li>
-					      <img src="./images/sub3_1_3_1.png" alt width="100">
+					      <img src="./images/w_imag1.png" alt width="100">
 					      <p class="w_t1">01</p>
+					      <p class="w_t2">간편 운영 관리</p>
+					      <p class="w_t3">매장의 지속적인 운영을 위해 관리자를 통해 직접 점주분들을 서포트합니다.</p>
+					      </li>
+					      
+					      <li>
+					      <img src="./images/w_imag2.png" alt width="100">
+					      <p class="w_t1">02</p>
 					      <p class="w_t2">간편조리</p>
 					      <p class="w_t3">본사에서 완벽하게 가공, 포장된 완제품을 공급하여 누구나 쉽게 조리 하실수 있습니다.</p>
 					      </li>
+					      
+					      <li>
+					      <img src="./images/w_imag3.png" alt width="100">
+					      <p class="w_t1">03</p>
+					      <p class="w_t2">높은 수익률</p>
+					      <p class="w_t3">테이블 8개에서 일 매출 150만원 이상 달성 가능합니다.</p>
+					      </li>
+					      
+					      <li>
+					      <img src="./images/w_imag4.png" alt width="100">
+					      <p class="w_t1">04</p>
+					      <p class="w_t2">폭넓은 고객층</p>
+					      <p class="w_t3">남녀노소 누구나 좋아하고 맛있는 전과 메뉴가 있습니다.</p>
+					      </li>
 					    
 					    </ul>
-						</div>
 					
 					
 					
@@ -95,58 +115,22 @@
 					<!-- Lists -->
 						<div class="row">
 							<div class="8u">
-								<section>
-									<header class="major">
-										<h2>Donec dictum metus</h2>
-										<span class="byline">Quisque semper augue mattis wisi maecenas ligula</span>
-									</header>
-									<div class="row">
-										<section class="6u">
-											<ul class="default">
-												<li><a href="#">Pellentesque elit non gravida blandit.</a></li>
-												<li><a href="#">Lorem ipsum dolor consectetuer elit.</a></li>
-												<li><a href="#">Phasellus nibh pellentesque congue.</a></li>
-												<li><a href="#">Cras vitae metus aliquam  pharetra.</a></li>
-											</ul>
-										</section>
-										<section class="6u">
-											<ul class="default">
-												<li><a href="#">Pellentesque elit non gravida blandit.</a></li>
-												<li><a href="#">Lorem ipsum dolor consectetuer elit.</a></li>
-												<li><a href="#">Phasellus nibh pellentesque congue.</a></li>
-												<li><a href="#">Cras vitae metus aliquam  pharetra.</a></li>
-											</ul>
-										</section>
-									</div>
-								</section>
+								
 							</div>
 							<div class="4u">
-								<section>
-									<header class="major">
-										<h2>Donec dictum metus</h2>
-										<span class="byline">Mattis wisi maecenas ligula</span>
-									</header>
-									<ul class="contact">
-										<li>
-											<span class="address">Address</span>
-											<span>1234 Somewhere Road #4285 <br />Nashville, TN 00000</span>
-										</li>
-										<li>
-											<span class="mail">Mail</span>
-											<span><a href="#">someone@untitled.tld</a></span>
-										</li>
-										<li>
-											<span class="phone">Phone</span>
-											<span>(000) 000-0000</span>
-										</li>
-									</ul>	
-								</section>
+								
 							</div>
 						</div>
 
 					<!-- Copyright -->
 						<div class="copyright">
-							
+							  <span>주식회사 :꼬치예전</span>
+						      <span>대표자 :원필연 </span>
+						      <span>전화번호 :010-9413-5834</span>
+						      <br/>		 
+						      <span>이메일 :wkymonk@gmail.com</span>
+						      <span>사업자 등록번호 :217-18-15486</span>
+						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>	
 						</div>
 
 				</div>

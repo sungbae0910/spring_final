@@ -37,9 +37,6 @@
 		font-style: italic;
 	}
 
-	p, ul, ol, dl, table, blockquote {
-		margin: 0 0 2em 0;
-	}
 
 	h1, h2, h3, h4, h5, h6 {
 		color: inherit;
@@ -626,6 +623,78 @@
 		#main .sidebar > :first-child {
 			margin-bottom: 3em;
 		}
+ 
+ 		#main ul{
+ 		font-family: "Noto Sans KR", sans-serif;
+    	font-size: 0;
+ 		}
+ 
+	    #main  ul  li {
+	    position: relative;
+	    width: 260px;
+	    height: 260px;
+	    background: #e6dcd1;
+	    box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    padding: 60px 15px 0;
+	    word-break: keep-all;
+	    letter-spacing: -1.2px;
+	    font-size: 16px;
+	    display: inline-block;
+	    margin: 0 20px 0 0;
+	    vertical-align: top;
+		}
+		
+		#main ul li:nth-child(2n) {
+   		 background: #f5dfc6;
+		}
+		
+		
+		#main ul li img {
+	    position: absolute;
+	    top: -60px;
+	    left: 50%;
+	    transform: translateX(-50%);
+		}
+		
+		#main ul li .w_t1 {
+	    font-size: 38px;
+    	font-weight: 700;
+    	margin: 0 0 7px;
+		}
+		
+		#main ul li .w_t2 {
+	    font-size: 30px;
+		font-weight: 300;
+		margin: 0 0 18px;
+		}
+		
+		#main ul li .w_t3{
+	    font-size: 16px;
+    	font-weight: 300;
+    	line-height: 24px;
+		}
+		
+		
+		#main .w_h3{
+		position:relative;
+		left:500px;
+		font-size: 24px;
+   	 	font-weight: 700;
+    	margin: 0 0 100px;
+		}
+		
+		#main .w_h3:after{
+		width: 30px;
+	    height: 2px;
+	    background: #282828;
+	    content: '';
+	    display: block;
+	    margin: 20px;
+	    position:relative;
+		left:146px;
+		}
+
 
 /* Footer */
 
