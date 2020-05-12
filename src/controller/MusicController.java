@@ -26,17 +26,39 @@ public class MusicController {
 	@RequestMapping(value="/sb_home.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView top10(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("mc1");
+		
 		List<MusicVo> list = dao.top10();
-		for(MusicVo asd : list) {
-			System.out.println(asd.getAlbum_serial());
-			System.out.println("ss");
-		}
 		
 		mv.addObject("top10", list);
 		mv.setViewName("sb_home");
-		System.out.println("mc2");
 		return mv;
 	}
+	
+	@RequestMapping(value="/sb_movie.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView movie(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String serial = (req.getParameter("m_serial"));
+		int s = Integer.parseInt(serial);
+		MusicVo vo = dao.movie(s);
+		
+		mv.addObject("movie", vo);
+		mv.setViewName("sb_movie");
+		return mv;
+	}
+	
+	@RequestMapping(value="/sb_play.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView play(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String serial = (req.getParameter("m_serial"));
+		int s = Integer.parseInt(serial);
+		MusicVo vo = dao.play(s);
+		System.out.println(vo.getMusic_serial());
+		System.out.println(vo.getAlbum_photo());
+		mv.addObject("play",vo);
+		mv.setViewName("sb_main");
+		return mv;
+	}
+	
+	
 	
 }

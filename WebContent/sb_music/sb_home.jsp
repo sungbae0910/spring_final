@@ -110,35 +110,58 @@
 				순위
 			</div>
 			<div class="col-sm-3">
-				곡정보
+				곡명
 			</div>
 			<div class="col-sm-3">
-				앨범정보
+				가수
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-1">
 				듣기
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-1">
+				뮤비
+			</div>
+			<div class="col-sm-1">
+				담기
+			</div>
+			<div class="col-sm-1">
 				다운
 			</div>
 		</div>
-		<c:forEach var="v" items="${top10 }">
+		
+		<form action="frm_top" id="frm_top" method="post">
+				<input type="hidden" name="m_serial" id="m_serial">
+				<input type="hidden" name="m_music" id="m_music">
+				<input type="hidden" name="m_artist" id="m_artist">
+				<input type="hidden" name="m_photo" id="m_photo">
+		</form>
+		
+		<c:forEach var="v" items="${top10 }" varStatus="s">
 			<div id="top10_select">
 				<div class="col-sm-2">
-					<span>${v}</span> 
+					<span id="ten1">${s.count}</span> 
 				</div>
 				<div class="col-sm-3">
-					<span>곡 이름${v.music_name }</span>
+					<span id="ten2" class="tops">${v.music_name }</span>
 				</div>
 				<div class="col-sm-3">
-					<span>가수${v.artist_name }</span>
+					<span id="ten3" class="tops">${v.artist_name }</span>
 				</div>
-				<div class="col-sm-2">
-					<span>듣기</span>
+				<div class="col-sm-1">
+					<span id="ten4" class="tops" onclick="play('${v.music_serial}')">듣기</span>
 				</div>
-				<div class="col-sm-2">
-					<span>다운</span>
+				<input type="hidden">
+				<div class="col-sm-1">
+					<span id="ten5" class="tops" onclick="mu.movie('${v.music_serial}')">뮤비</span>
 				</div>
+				<div class="col-sm-1">
+					<span id="ten6" class="tops">담기</span>
+				</div>
+				<div class="col-sm-1">
+					<span id="ten7" class="tops">다운</span>
+				</div>
+				
+				
 				<hr>
 			</div>
 			

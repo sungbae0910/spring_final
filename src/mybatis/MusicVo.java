@@ -9,8 +9,22 @@ public class MusicVo {
 	String genre;
 	String enter;
 	String company;
+	String music_video;
 	
+	String album_photo;
 	
+	public String getAlbum_photo() {
+		return album_photo;
+	}
+	public void setAlbum_photo(String album_photo) {
+		this.album_photo = album_photo;
+	}
+	public String getMusic_video() {
+		return music_video;
+	}
+	public void setMusic_video(String music_video) {
+		this.music_video = music_video;
+	}
 	public int getMusic_serial() {
 		return music_serial;
 	}

@@ -48,9 +48,9 @@
   	  
   
 	  <div class="col-sm-9 page">
-	  
+	  	<div id="changePage">
 	  		<jsp:include page="<%=p %>"/>
-	  	
+	  	</div>
 	  	<br><br><br><br><br>
 	  	
 	  	<footer>
@@ -97,7 +97,9 @@
 
 	<!-- 뮤직 실행바 -->
  <nav class="navbar nav-default navbar-fixed-bottom" role="navigation" id="nav">
- 		
+ 			
+ 			
+ 			
  			<div class="wrapper">
  			<div class="audio-player__container">
 				        <div class="audio-player__container__progress">
@@ -107,27 +109,27 @@
 				   
 				   
 		   </div>
-			
-			<!-- 앨범 -->
- 			<div class="col-sm-2">
-				 <img src="../lib/album/meteor.jpg" id="album">
-			</div>
-			
-			<!-- 이름 / 플레이 버튼 -->
-				  <div class="col-sm-8">
-				  	 <div align="center">
-				       <br>	
-				       <span style="color: white;">노래이름-가수</span>
-				       <br>
-				        <div class="audio-player__container__actions">
-				         <button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>
-				          <button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>
-				          <button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>
-				        </div>
-				     </div>
-			      </div>
+			<div id="music_play">
+				<!-- 앨범 -->
+	 			<div class="col-sm-2">
+	 				 <img src="../lib/images/cd.png" id="albumD" >
+				</div>
+				
+				<!-- 이름 / 플레이 버튼 -->
+					  <div class="col-sm-8">
+					  	 <div align="center">
+					       <br>	
+					       		<span style="color: white;" id="playBarD">노래를 선택해주세요</span>
+					       <br>
+					        <div class="audio-player__container__actions">
+					         <button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>
+					          <button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>
+					          <button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>
+					        </div>
+					     </div>
+				      </div>
 				    
-	       
+	       </div>
 				  
 				  <div class="col-sm-1">
 			   		 <br>

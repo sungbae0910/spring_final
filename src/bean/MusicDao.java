@@ -29,4 +29,30 @@ public class MusicDao {
 		}
 		
 	}
+	
+	public MusicVo movie(int serial) {
+		MusicVo vo = null;
+		try {
+			vo = sqlSession.selectOne("music.movie", serial);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+			return vo;
+		}
+	}
+	
+	public MusicVo play(int serial) {
+		MusicVo vo = null;
+		try {
+			vo = sqlSession.selectOne("music.play", serial);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return vo;
+		}
+	}
+	
 }

@@ -25,7 +25,56 @@ function changeVolume(v){
 	}
 }
 */
-var audio = new Audio("../lib/music/003 방탄소년단 - ON.mp3");   
+var audio = new Audio("../lib/music/001 태연 (TAEYEON) - Happy.MP3");   
+
+
+$('#playBar').hide();
+$('#album').hide();
+
+play = function(serial){
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	
+	$.ajax({
+		type: "POST",
+		url: "../sb_play.mu",
+		data: param,	
+		dataType : 'json',
+		success : function(data){
+
+			alert("됨");
+			
+			
+			
+			$.each(data, function(index, data){
+				alert("dd");
+				var txt = '<div class="col-sm-2"><img src="../lib/album/'
+					+ data.m_photo + '.PNG" id="album"></div>'
+					+ '<div class="col-sm-8"><div align="center"><br>'	
+					+ '<span style="color: white;" id="playBar">'+ data.m_music +'</span> <br>'
+					+ '<div class="audio-player__container__actions">'
+					+ '<button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>'
+					+ '<button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>'
+					+ '<button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>'
+					+ '</div>'
+					+ '</div>'
+				    + '</div>';
+				
+				audio = new Audio("../lib/music/" + item.m_photo +".MP3");
+				alert(item.m_music);
+				alert(item.m_photo);
+				$('#music_play').html(txt);
+			})
+			
+			
+		},
+		error : function(error){
+			console.log(error.status);
+		}
+	})
+	
+	
+}
 
 window.onload = function(){
 	var playBtn = document.getElementById("play-button");
@@ -34,6 +83,8 @@ window.onload = function(){
 	  
 	  var playing = false;
 	  var duration = 0;
+	  
+	  
 	  
 	  progressBar.onchange=(e)=>{    
 	    audio.currentTime = +progressBar.value;
@@ -134,6 +185,9 @@ $(document).ready(function() {
     	//alert("slid");
 	});
 });
+
+
+
 
 
 

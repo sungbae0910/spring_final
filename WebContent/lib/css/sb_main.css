@@ -29,6 +29,7 @@ body{
  	background-color: rgba(255,051,051,0.8);
  	max-height: 100%;
  	overflow-y:auto;
+ 	overflow-x:hidden;
 }
 
 #nav::-webkit-scrollbar{
@@ -64,8 +65,50 @@ body{
 }
 
 #top10_select:hover{
-	cursor: pointer;
+	/* cursor: pointer; */
 }
+
+#movie_top{
+	font-size:25px;
+	color:white;	
+}
+
+#movie_title{
+	color:white;
+}
+
+#ten1{
+	text-shadow: 0 0 2px #F60A0E;
+}
+.tops:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#ten2{
+	text-shadow: 0 0 2px #F45C0C;
+}
+
+#ten3{
+	text-shadow: 0 0 2px #F0E304;
+}
+
+#ten4{
+	text-shadow: 0 0 2px #1C792A;
+}
+
+#ten5{
+	text-shadow: 0 0 2px #0112F8;
+}
+
+#ten6{
+	text-shadow: 0 0 2px #071687;
+}
+
+#ten7{
+	text-shadow: 0 0 2px #834DF1;
+}
+
 
 #news p{
 	font-size:20px;
@@ -113,11 +156,17 @@ body{
 	color: white;
 	text-shadow: 0 0 2px black;
 }
+#albumD{
+	position:relative;
+	top:8px;
+	width:120px;
+	height: auto;
+}
 
 #album{
 	position:relative;
 	top:8px;
-	width:200px;
+	width:120px;
 	height: auto;
 }
 

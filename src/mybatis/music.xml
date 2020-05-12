@@ -5,12 +5,23 @@
 	
 <mapper namespace="music">
 
-	<select id="home" parameterType="Integer" resultType="mybatis.MusicVo">
+	<select id="home" resultType="mybatis.MusicVo">
 		select * from sb_music 
 		where MUSIC_SERIAL IN (
-			select MUSIC_SERIAL from SB_TOP where TOP_SERIAL BETWEEN 1 and 2 
+			select MUSIC_SERIAL from SB_TOP where TOP_SERIAL BETWEEN 1 and 10
 		)
 	</select>
+	
+	<select id="movie" parameterType="Integer" resultType="mybatis.MusicVo">
+		select * from sb_music 
+		where music_serial = ${_parameter}
+	</select>
 
-
+	<select id="play" parameterType="Integer" resultType="mybatis.MusicVo">
+		select A.*, B.album_photo 
+		from sb_music A
+		join sb_album B
+		on a.album_serial = b.album_serial 
+		where MUSIC_SERIAL = ${_parameter}
+	</select>
 </mapper>
