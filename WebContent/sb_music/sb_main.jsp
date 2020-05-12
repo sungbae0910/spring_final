@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
 <link rel="stylesheet" href="../lib/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="../lib/css/sb_main.css">
-<script src="../sb_lib/js/jquery-3.4.1.js"></script>
-<script src="../sb_lib/js/jquery-ui.js"></script>
+<script src="../sb_music/sb_lib/js/jquery-3.4.1.js"></script>
+<script src="../sb_music/sb_lib/js/jquery-ui.js"></script>
 
 </head>
 <body>
@@ -27,7 +27,7 @@
  
   <nav class="col-sm-3 sidenav">
   
-  	<img src="../sb_lib/images/logo.png" id="logo" onclick="mu.home()"> <!-- 로고 -->
+  	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="mu.home()"> <!-- 로고 -->
   	<!-- location.href='sb_main.jsp?p=./sb_home.jsp' -->
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
@@ -37,7 +37,7 @@
     </ul>
     	<hr style="background-color: #969B97;">
     	
-    <img src="../sb_lib/images/service.png">
+    <img src="../sb_music/sb_lib/images/service.png">
    	<ul class="nav nav-pills nav-stacked">
    		<li><a href="sb_main.jsp?p=./sb_service.jsp" id="sideA">서비스 소개</a></li>
 	    <li><a href="sb_main.jsp?p=./sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
@@ -95,8 +95,8 @@
  </div>
 
 <jsp:include page="./sb_nav.jsp"/>
-<script src="../sb_lib/js/sb_music.js"></script>
-<script src="../sb_lib/js/sb_main.js"></script>
-<script src="../sb_lib/js/bootstrap.min.js"></script>
+<script src="../sb_music/sb_lib/js/sb_music.js"></script>
+<script src="../sb_music/sb_lib/js/sb_main.js"></script>
+<script src="../sb_music/sb_lib/js/bootstrap.min.js"></script>
 </body>
 </html>

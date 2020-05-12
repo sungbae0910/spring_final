@@ -45,28 +45,30 @@ play = function(serial){
 
 			alert("됨");
 			
+			
+			
 			$('music_play').empty();
 			
-			$.each(data, function(index, data){
-				alert("dd");
-				var txt = '';
-					txt += '<div class="col-sm-2"><img src="../lib/album/'
-					txt += data.m_photo + '.PNG" id="album"></div>'
-					txt += '<div class="col-sm-8"><div align="center"><br>'	
-					txt += '<span style="color: white;" id="playBar">'+ data.m_music +'</span> <br>'
-					txt += '<div class="audio-player__container__actions">'
-					txt += '<button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>'
-					txt += '<button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>'
-					txt += '<button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>'
-					txt += '</div>'
-					txt += '</div>'
-					txt += '</div>';
-				
-				audio = new Audio("../lib/music/" + item.m_photo +".MP3");
-				alert(item.m_music);
-				alert(item.m_photo);
-				$('#music_play').append(txt);
-			})
+		
+			alert("dd");
+			var txt = '';
+				txt += '<div class="col-sm-2"><img src="../lib/album/'
+				txt += data.m_photo + '.PNG" id="album"></div>'
+				txt += '<div class="col-sm-8"><div align="center"><br>'	
+				txt += '<span style="color: white;" id="playBar">'+ data.m_music +'</span> <br>'
+				txt += '<div class="audio-player__container__actions">'
+				txt += '<button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>'
+				txt += '<button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>'
+				txt += '<button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>'
+				txt += '</div>'
+				txt += '</div>'
+				txt += '</div>';
+			
+			audio = new Audio("../lib/music/" + item.m_photo +".MP3");
+			alert(item.m_music);
+			alert(item.m_photo);
+			$('#music_play').append(txt);
+			
 			
 			
 		},
