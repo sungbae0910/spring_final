@@ -12,7 +12,7 @@
  		">
 	<context:annotation-config/>
 	<!-- bean -->
-	
+	<bean id="newsDao" class="newsController.NewsDao"/>
 	
 	<!-- controller -->
 	<bean id="news_controller" class="newsController.NewsController"/>
