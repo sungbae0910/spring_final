@@ -52,9 +52,7 @@ public class MusicController {
 		String serial = (req.getParameter("m_serial"));
 		int s = Integer.parseInt(serial);
 		MusicVo vo = dao.play(s);
-		System.out.println(vo.getMusic_serial());
-		System.out.println(vo.getAlbum_photo());
-		mv.addObject("play",vo);
+		mv.addObject("play", vo);
 		mv.setViewName("sb_nav");
 		return mv;
 	}

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
 <link rel="stylesheet" href="./lib/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="./lib/css/main_page.css">
-<script src="./lib/js/jquery-3.4.1.js"></script>
+<script src="./sb_lib/js/jquery-3.4.1.js"></script>
 </head>
 <body>
 	
@@ -18,7 +18,7 @@
 		
 		<!-- 로고, 검색창 -->
 		<div align="center" id='header_top'>
-			<img id="logo" src="./lib/images/logo.png">
+			<img id="logo" src="./main_lib/images/logo.png">
 		
 			<span>
 				<input type="text" id='searchBar'/>
@@ -52,7 +52,7 @@
 		
 		<!-- 메인 -->
 		<div class="container">
-			<img src="./lib/images/ex.png" style="width:1000px; height: 500px;">
+			<img src="./main_lib/images/ex.png" style="width:1000px; height: 500px;">
 		</div>
 	</div>
 

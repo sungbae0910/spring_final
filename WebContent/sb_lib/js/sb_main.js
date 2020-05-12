@@ -39,6 +39,8 @@ play = function(serial){
 		type: "POST",
 		url: "../sb_play.mu",
 		data: param,	
+		dataType: "json",
+		contentType: "application/json;charset=UTF-8",
 		success : function(data){
 
 			alert("됨");
