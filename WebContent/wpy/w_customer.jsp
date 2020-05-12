@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="./w_css/style.css" />
 </head>
 <body class="no-sidebar1">
-
-	<!-- Header -->
+<!-- Header -->
 			<div id="header">
 				<div class="container">
 						
@@ -51,7 +50,7 @@
 			<div id="content" class="8u skel-cell-important">
 				<div class="w_wrap">
 				  <div class="w_t_tab">
-				   <a href="w_customer.jsp" class="on">고객문의</a>	
+				   <a href="w_customer.jsp" >고객문의</a>	
 				  </div>
 				</div>
 				<h4 class="w_tab_sub">공지사항</h4>

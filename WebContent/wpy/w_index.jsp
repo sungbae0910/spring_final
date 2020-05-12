@@ -33,7 +33,7 @@
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_right-sidebar.html">고객문의</a></li>
+								<li><a href="w_customersupport.jsp">고객문의</a></li>
 								<li><a href="w_no-sidebar.html">매장안내</a></li>
 							</ul>
 						</nav>
