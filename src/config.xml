@@ -21,9 +21,8 @@
 	
 	<mappers>
 		<mapper resource="mybatis/news.xml"/>
-		<!--  <mapper resource="mybatis/member.xml"/> -->
+		<mapper resource="mybatis/music.xml"/>
 	</mappers>
 	
 
 </configuration>
-

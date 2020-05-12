@@ -12,18 +12,19 @@ public class Factory {
 	static {
 		try {
 			Reader r = Resources.getResourceAsReader("config.xml");
+			System.out.println("factory good.....");
 			factory = new SqlSessionFactoryBuilder().build(r);
-			System.out.println("factory");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
+	public static SqlSessionFactory getFactory() {
+		return factory;
+	}
+	
 	
 	public static void main(String[] args) {
 		Factory.getFactory();
-	}
-	
-	public static SqlSessionFactory getFactory() {
-		return factory;
 	}
 }
