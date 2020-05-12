@@ -8,16 +8,13 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="./css/skel.css" />
-			<link rel="stylesheet" href="./css/style.css" />
-			<link rel="stylesheet" href="./css/w_wpy.css" />
-		</noscript>
+<script src="js/jquery.min.js"></script>
+		<script src="./w_js/jquery.dropotron.min.js"></script>
+		<script src="./w_js/skel.min.js"></script>
+		<script src="./w_js/skel-layers.min.js"></script>
+		<script src="./w_js/init.js"></script>
+<link rel="stylesheet" href="./w_css/skel.css" />
+<link rel="stylesheet" href="./w_css/style.css" />
 	</head>
 	<body class="no-sidebar1">
 
@@ -26,7 +23,7 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./images/w_mainimage.png">
+						<img src="./w_images/w_mainimage.png">
 					
 					<!-- Nav -->
 						<nav id="nav">
@@ -77,10 +74,10 @@
 				        		<div id="w_tab1" class="tab_content" style="display: block;">
 					        		<ul>
 						        	 <li>
-						        	 	<img src="./images/w_modeumjeon.jpg" alt width="340" class="w_menu_image">
+						        	 	<img src="./w_images/w_modeumjeon.jpg" alt width="340" class="w_menu_image">
 						        		 <h3 class="w_h1">
 						        	      모듬전
-						        	 	 <img src="./images/w_best.jpg" alt="인기" width="32" class="w_best">
+						        	 	 <img src="./w_images/w_best.jpg" alt="인기" width="32" class="w_best">
 						        	 	 </h3>						        	 
 						        	 	 <p>
 						        	 	  <span>15000원(중)</span>
