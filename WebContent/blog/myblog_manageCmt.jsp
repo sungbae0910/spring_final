@@ -38,7 +38,7 @@
 						<div class="c_brdTitle">
 							<span role="presentation" class="glyphicon glyphicon-file"></span> 댓글 단 게시물 제목1
 						</div>
-						<div>
+						<div class="c_Mcmt_btnGroup">
 							<button type="button" class="btn btn-default" id="c_btnBrdWrite">수정</button>
 							<button type="button" class="btn btn-default" id="c_btnBrdWrite">삭제</button>
 						</div>
@@ -50,7 +50,7 @@
 						<div class="c_brdTitle">
 							<span role="presentation" class="glyphicon glyphicon-file"></span> 댓글 단 게시물 제목2
 						</div>
-						<div>
+						<div class="c_Mcmt_btnGroup">
 							<button type="button" class="btn btn-default" id="c_btnBrdWrite">수정</button>
 							<button type="button" class="btn btn-default" id="c_btnBrdWrite">삭제</button>
 						</div>
