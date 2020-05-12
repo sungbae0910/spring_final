@@ -8,16 +8,13 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<script>
-			<link rel="stylesheet" href="./css/skel.css" />
-			<link rel="stylesheet" href="./css/style.css" />
-			<link rel="stylesheet" href="./css/w_wpy.css" />
-		</script>
+<script src="js/jquery.min.js"></script>
+		<script src="./w_js/jquery.dropotron.min.js"></script>
+		<script src="./w_js/skel.min.js"></script>
+		<script src="./w_js/skel-layers.min.js"></script>
+		<script src="./w_js/init.js"></script>
+<link rel="stylesheet" href="./w_css/skel.css" />
+<link rel="stylesheet" href="./w_css/style.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class="left-sidebar">
@@ -27,7 +24,7 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./images/w_mainimage.png">
+						<img src="./w_images/w_mainimage.png">
 					
 					<!-- Nav -->
 						<nav id="nav">
@@ -65,7 +62,7 @@
 									</p>
 									
 								    <div class="bradnimage">
-								      <img src="./images/w_brandimage.png">
+								      <img src="./w_images/w_brandimage.png">
 								    </div>
 						</div>
 						
@@ -75,28 +72,28 @@
 						
 					    <ul>
 					      <li>
-					      <img src="./images/w_imag1.png" alt width="100">
+					      <img src="./w_images/w_imag1.png" alt width="100">
 					      <p class="w_t1">01</p>
 					      <p class="w_t2">간편 운영 관리</p>
 					      <p class="w_t3">매장의 지속적인 운영을 위해 관리자를 통해 직접 점주분들을 서포트합니다.</p>
 					      </li>
 					      
 					      <li>
-					      <img src="./images/w_imag2.png" alt width="100">
+					      <img src="./w_images/w_imag2.png" alt width="100">
 					      <p class="w_t1">02</p>
 					      <p class="w_t2">간편조리</p>
 					      <p class="w_t3">본사에서 완벽하게 가공, 포장된 완제품을 공급하여 누구나 쉽게 조리 하실수 있습니다.</p>
 					      </li>
 					      
 					      <li>
-					      <img src="./images/w_imag3.png" alt width="100">
+					      <img src="./w_images/w_imag3.png" alt width="100">
 					      <p class="w_t1">03</p>
 					      <p class="w_t2">높은 수익률</p>
 					      <p class="w_t3">테이블 8개에서 일 매출 150만원 이상 달성 가능합니다.</p>
 					      </li>
 					      
 					      <li>
-					      <img src="./images/w_imag4.png" alt width="100">
+					      <img src="./w_images/w_imag4.png" alt width="100">
 					      <p class="w_t1">04</p>
 					      <p class="w_t2">폭넓은 고객층</p>
 					      <p class="w_t3">남녀노소 누구나 좋아하고 맛있는 전과 메뉴가 있습니다.</p>

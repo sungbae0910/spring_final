@@ -6,14 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-<noscript>
-<link rel="stylesheet" href="./css/skel.css" />
-<link rel="stylesheet" href="./css/style.css" />
-</noscript>
+		<script src="./w_js/jquery.dropotron.min.js"></script>
+		<script src="./w_js/skel.min.js"></script>
+		<script src="./w_js/skel-layers.min.js"></script>
+		<script src="./w_js/init.js"></script>
+<link rel="stylesheet" href="./w_css/skel.css" />
+<link rel="stylesheet" href="./w_css/style.css" />
 
 </head>
 <body class="homepage">
@@ -23,16 +21,16 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./images/w_mainimage.png">
+						<img src="./w_images/w_mainimage.png">
 					
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
 								<li><a href="w_index.jsp">Home</a></li>
 								<li>
-									<a href="">브랜드 소개</a>
+									<a href="w_menu.jsp">브랜드 소개</a>
 									<ul>
-										<li><a href="w_main.jsp">전 메뉴</a></li>						
+										<li><a href="w_menu.jsp">전 메뉴</a></li>						
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
@@ -65,15 +63,15 @@
 					</header>
 					<div class="row no-collapse-1">
 						<section class="4u">
-							<a href="#" class="image feature"><img src="images/w_cook1.jpg" alt=""></a>
+							<a href="#" class="image feature"><img src="./w_images/w_cook1.jpg" alt=""></a>
 							<p></p>
 						</section>
 						<section class="4u">
-							<a href="#" class="image feature"><img src="images/w_cook2.jpg" alt=""></a>
+							<a href="#" class="image feature"><img src="./w_images/w_cook2.jpg" alt=""></a>
 							<p></p>
 						</section>
 						<section class="4u">
-							<a href="#" class="image feature"><img src="images/w_cook3.jpg" alt=""></a>
+							<a href="#" class="image feature"><img src="./w_images/w_cook3.jpg" alt=""></a>
 							<p></p>
 						</section>
 	
