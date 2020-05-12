@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Left Sidebar - Horizons by TEMPLATED</title>
+		<title>No Sidebar - Horizons by TEMPLATED</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -13,14 +13,13 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-		<script>
+		<noscript>
 			<link rel="stylesheet" href="./css/skel.css" />
 			<link rel="stylesheet" href="./css/style.css" />
 			<link rel="stylesheet" href="./css/w_wpy.css" />
-		</script>
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		</noscript>
 	</head>
-	<body class="left-sidebar">
+	<body class="no-sidebar1">
 
 		<!-- Header -->
 			<div id="header">
@@ -50,62 +49,49 @@
 			</div>
 
 		<!-- Main -->
-			<div id="main" class="wrapper style1">
+			<div id="w_main" class="w_wrapper w_style1">
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
-									<h2>창업문의</h2>
-									
-									<p>
-									본사의 체계화된 시스템과 매뉴얼화된 조리레시피로 균일화된 맛과
-									<br/>
-									국내 최고 식자재 유통사와의 협력으로 완벽한 물류 공급, 지속적인 가맹점 관리와 소통,
-									<br/>
-									차별화된 마케팅으로 누구나 쉽게 대박집 사장님이 되실 수 있습니다!
-									</p>
-									
-								    <div class="bradnimage">
-								      <img src="./images/w_brandimage.png">
-								    </div>
+				               <h5 class="w_menu_info">
+				                 <span class="w_deco">
+				                 	메뉴 소개
+				                 </span>
+				               </h5>
+				          <ul class="w_tabs">
+				             <li class="w_active"  rel="tab1">
+				              	전	
+				             </li>
+				             <li  rel="tab2">
+				              	전골
+				             </li>
+				             <li  rel="tab3">
+				              	냉채
+				             </li>
+				             <li  rel="tab4">
+				              	사이드
+				             </li>    
+				          </ul>
+				          
+				        	<div class="w_tab_container">
+				        		<div id="w_tab1" class="tab_content" style="display: block;">
+					        		<ul>
+						        	 <li>
+						        	 	<img src="./images/w_modeumjeon.jpg" alt width="340" class="w_menu_image">
+						        		 <h3 class="w_h1">
+						        	      모듬전
+						        	 	 <img src="./images/w_best.jpg" alt="인기" width="32" class="w_best">
+						        	 	 </h3>						        	 
+						        	 	 <p>
+						        	 	  <span>15000원(중)</span>
+						        	 	  <i>/</i>
+						        	 	  <span>20000원(대)</span>
+						        	 	 </p>
+						           	 </li>
+					        		</ul>
+				        		</div>		  
+				        	</div>
 						</div>
-						
-						<h3 class='w_h3'>
-						성공 창업을 위한 꼬치예전 솔루션
-						</h3>
-						
-					    <ul>
-					      <li>
-					      <img src="./images/w_imag1.png" alt width="100">
-					      <p class="w_t1">01</p>
-					      <p class="w_t2">간편 운영 관리</p>
-					      <p class="w_t3">매장의 지속적인 운영을 위해 관리자를 통해 직접 점주분들을 서포트합니다.</p>
-					      </li>
-					      
-					      <li>
-					      <img src="./images/w_imag2.png" alt width="100">
-					      <p class="w_t1">02</p>
-					      <p class="w_t2">간편조리</p>
-					      <p class="w_t3">본사에서 완벽하게 가공, 포장된 완제품을 공급하여 누구나 쉽게 조리 하실수 있습니다.</p>
-					      </li>
-					      
-					      <li>
-					      <img src="./images/w_imag3.png" alt width="100">
-					      <p class="w_t1">03</p>
-					      <p class="w_t2">높은 수익률</p>
-					      <p class="w_t3">테이블 8개에서 일 매출 150만원 이상 달성 가능합니다.</p>
-					      </li>
-					      
-					      <li>
-					      <img src="./images/w_imag4.png" alt width="100">
-					      <p class="w_t1">04</p>
-					      <p class="w_t2">폭넓은 고객층</p>
-					      <p class="w_t3">남녀노소 누구나 좋아하고 맛있는 전과 메뉴가 있습니다.</p>
-					      </li>
-					    
-					    </ul>
-					
-					
-					
 					</div>
 				</div>
 
