@@ -55,7 +55,7 @@ public class MusicController {
 		System.out.println(vo.getMusic_serial());
 		System.out.println(vo.getAlbum_photo());
 		mv.addObject("play",vo);
-		mv.setViewName("sb_main");
+		mv.setViewName("sb_nav");
 		return mv;
 	}
 	
