@@ -222,7 +222,6 @@ hr {margin-top: 0;}
 }
 @media (max-width: 1035px) {
 	#myblog_Mbrd .col-xs-12 {margin-left: 20px;}
-	#myblog_Mbrd #c_MbrdSearch #c_brdFindStr {width: 70%;}
 }
 @media (max-width: 991px) {
 	#myblog_Mbrd .col-xs-12 {margin-left: 0;}
@@ -245,6 +244,24 @@ hr {margin-top: 0;}
 #myblog_Mcmt #c_McmtList .c_McmtItem .c_cmtMid {color: #FF5544; margin-right: 10px;}
 #myblog_Mcmt #c_McmtList .c_McmtItem .c_cmtDate, .c_McmtItem .c_brdTitle{color: #959595; margin-right: 10px;}
 #myblog_Mcmt #c_McmtList .c_McmtItem .c_cmtContent {font-weight: bold;}
+#myblog_Mcmt #c_McmtList .c_McmtItem .c_Mcmt_btnGroup {float: right; position: relative; top: -49px;}
+
+@media (max-width: 1559px) {
+	#myblog_Mcmt #c_McmtSearch #c_cmtFindStr {width: 70%;}
+}
+@media (max-width: 1500px) {
+	#myblog_Mcmt .col-xs-12 {margin-left: 20px;}
+}
+@media (max-width: 1023px) {
+	#myblog_Mcmt #c_McmtSearch #c_cmtFindStr {width: 65%;}
+}
+@media (max-width: 991px) {
+	#myblog_Mcmt #c_McmtSearch #c_cmtFindStr {width: 55%;}
+}
+@media (max-width: 849px) {
+	#myblog_Mbrd #c_MbrdList .c_MbrdItem br {display: block;}
+	#myblog_Mbrd #c_MbrdSearch #c_brdFindStr {width: 48%;}
+}
 
 /* blog_footer */
 #c_blog_footer {text-align: center; border-top: 1px solid #E0E5EE; padding: 35px 0;}
