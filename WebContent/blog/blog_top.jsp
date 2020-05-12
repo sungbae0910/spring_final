@@ -9,7 +9,7 @@
 		<li><a href="#"><span class="glyphicon glyphicon-user"></span> 로그인 하기</a></li>
       	<li class="dropdown">
       		<span class="dropdown-toggle" data-toggle="dropdown">
-      			<img src="../blog_image/cat.jpg" class="img-circle" alt="">
+      			<img src="./blog_image/cat.jpg" class="img-circle" alt="">
       		</span>
 	        <ul class="dropdown-menu">
 	          <li><a href="#" id="c_menuUserNname">사용자 닉네임</a></li>

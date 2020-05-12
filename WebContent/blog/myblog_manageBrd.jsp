@@ -36,7 +36,7 @@
 				<div id="c_MbrdList">
 					<div class="c_MbrdItem">
 						<div class="c_brdHeaderImg">
-							<img src="../blog_image/night.jpg" class="img-rounded">
+							<img src="./blog_image/night.jpg" class="img-rounded">
 						</div>
 						<div class="c_Btitle">나는 게시물 제목</div>
 						<span class="c_Bcategory">카테고리 1</span>
@@ -47,7 +47,7 @@
 					</div>
 					<div class="c_mbrdItem">
 						<div class="c_brdHeaderImg">
-							<img src="../blog_image/life.jpg" class="img-rounded">
+							<img src="./blog_image/life.jpg" class="img-rounded">
 						</div>
 						<div class="c_Btitle">나는 게시물 제목2</div>
 						<span class="c_Bcategory">카테고리 1</span>
