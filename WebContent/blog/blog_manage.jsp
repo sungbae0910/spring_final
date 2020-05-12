@@ -41,7 +41,7 @@
 			        			</div>
 			        			<div id="c_Msubmenu_deco" class="c_Msubmenu_group">
 			        				<div class="c_Msubmenu">
-				        				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 꾸미기
+				        				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 꾸미기
 				        			</div>
 				        			<span class="c_Msubmenu_item">스킨 변경</span>
 			        			</div>
@@ -92,7 +92,7 @@
 									</div>
 									<div class="btn-group" role="group">
 									    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-										    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 꾸미기
+										    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 꾸미기
 										    <span class="caret"></span>
 									    </button>
 									    <ul class="dropdown-menu" role="menu">
@@ -107,7 +107,9 @@
 		        	   <!-- 관리 컨텐츠 -->
 			        	<div id="c_manage_content">
 			        		<%-- <%@include file="./myblog_manageSet.jsp"%> --%>
-			        		<%@include file="./myblog_manageBrd.jsp" %>
+			        		<%-- <%@include file="./myblog_manageBrd.jsp"%> --%>
+			        		<%-- <%@include file="./myblog_manageCategory.jsp"%> --%>
+			        		<%@include file="./myblog_manageCmt.jsp"%>
 				        </div>
 			        </div>
 	    		</div>
