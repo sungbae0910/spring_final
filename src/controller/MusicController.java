@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import bean.MusicDao;
@@ -52,9 +53,7 @@ public class MusicController {
 		String serial = (req.getParameter("m_serial"));
 		int s = Integer.parseInt(serial);
 		MusicVo vo = dao.play(s);
-		System.out.println(vo.getMusic_serial());
-		System.out.println(vo.getAlbum_photo());
-		mv.addObject("play",vo);
+		mv.addObject("play", vo);
 		mv.setViewName("sb_nav");
 		return mv;
 	}

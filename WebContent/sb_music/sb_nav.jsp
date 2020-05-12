@@ -28,7 +28,7 @@
 			<div id="music_play">
 				<!-- 앨범 -->
 	 			<div class="col-sm-2">
-	 				 <img src="../lib/images/cd.png" id="albumD" >
+	 				 <img src="../sb_music/sb_lib/images/cd.png" id="albumD" >
 				</div>
 				
 				<!-- 이름 / 플레이 버튼 -->
@@ -38,9 +38,9 @@
 					       		<span style="color: white;" id="playBarD">노래를 선택해주세요</span>
 					       <br>
 					        <div class="audio-player__container__actions">
-					         <button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>
-					          <button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>
-					          <button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>
+					         <button id="prevBtn"><img src="../sb_music/sb_lib/images/prevBtn.png" width="50px;"></button>
+					          <button id="play-button"><img src="../sb_music/sb_lib/images/playBtn.png" width="50px;"></button>
+					          <button id="nextBtn"><img src="../sb_music/sb_lib/images/nextBtn.png" width="50px;"></button>
 					        </div>
 					     </div>
 				      </div>
@@ -51,7 +51,7 @@
 			   		 <br>
 			  		 <div class="input-group">
 			  		 	 <span class="input-group-addon" id="speaker">
-			  		 		 <img id="sound" src="../lib/images/vol1.png" width="18px">
+			  		 		 <img id="sound" src="../sb_music/sb_lib/images/vol1.png" width="18px">
 			  		 	 </span>
 				  		 <input type="range" id='volume-bar' min="0" max='100'  value="100" oninput="showVolume(this.value)">
 					   	 <span><font size=2 id="now-vol" style="color: white; text-shadow: 0 0 1px black">100</font></span>
@@ -60,7 +60,7 @@
 				  </div>
 				  
 				  <div class="col-sm-1">
-				  	<img src="../lib/images/list.png" id="m_list" width="90px" onclick="nav_list()">
+				  	<img src="../sb_music/sb_lib/images/list.png" id="m_list" width="90px" onclick="nav_list()">
 				  </div>
 				  
 		<br><br><br><br><br><br>
@@ -68,8 +68,8 @@
 		<div class="container-fluid">
 			<div class="col-sm-6">
 				<div align="center" id="playerImg">
-					<img src="../lib/images/player.png" width="500px;" >
-					<img src="../lib/album/meteor.jpg" id="player-top">
+					<img src="../sb_music/sb_lib/images/player.png" width="500px;" >
+					<img src="../sb_music/sb_lib/album/meteor.jpg" id="player-top">
 				</div>
 			</div>
 		
@@ -97,7 +97,7 @@
 										<span>${v }</span>
 									</td>
 									<td>
-										<img src="../lib/album/방탄-on.PNG" width="55px">
+										<img src="../sb_music/sb_lib/album/방탄-on.PNG" width="55px">
 									</td>
 									<td>
 										<span>곡 이름 ${v }</span>
