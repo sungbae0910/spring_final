@@ -26,8 +26,8 @@
 	<div class="container-fluid">
 	    <div class="row">
 	        <div class="col-xs-12">
-	        	<img id="c_myBlog_headerImg" src="../blog_image/night.jpg">
-	        	<img id="c_sidebar_open" src="../blog_image/menu2.png">
+	        	<img id="c_myBlog_headerImg" src="./blog_image/night.jpg">
+	        	<img id="c_sidebar_open" src="./blog_image/menu2.png">
 	        	<div id="c_myblogTitle">지현이의 블로그</div>
 	        	<div id="c_brdItem">
 		        	<div id="c_brd_Subject">글 제목!</div>
@@ -65,7 +65,7 @@
 		        	<span id="c_cmt_title">댓글 10</span>
 		        	<hr/>
 			        <div class="c_cmt">
-		        		<img src="../blog_image/cat.jpg" class="img-circle" alt="">
+		        		<img src="./blog_image/cat.jpg" class="img-circle" alt="">
 		        		<div class="dropdown" id="c_cmt_manage">
 	      					<span class="dropdown-toggle" data-toggle="dropdown">
 	  							<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
@@ -82,7 +82,7 @@
 		        		<div class='c_btnRepl'>답글</div>
 		        	</div>
 		        	<div class="c_repl">
-		        		<img src="../blog_image/landscape.jpg" class="img-circle" alt="">
+		        		<img src="./blog_image/landscape.jpg" class="img-circle" alt="">
 		        		<div class="dropdown" id="c_cmt_manage">
 	      					<span class="dropdown-toggle" data-toggle="dropdown">
 	  							<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>

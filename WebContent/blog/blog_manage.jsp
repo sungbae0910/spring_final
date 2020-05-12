@@ -10,7 +10,7 @@
 			        <div class="col-sm-3 col-md-2">
 			        	<div id="c_manage_sub">
 			        		<div id="c_subProfile">
-			        			<img src="../blog_image/boy.jpg" onclick=""/>
+			        			<img src="./blog_image/boy.jpg" onclick=""/>
 			        			<div>
 				        			<span id="c_subBtitle">블로그 이름</span><br/>
 				        			<span id="c_subMid">gus927@naver.com</span>
@@ -56,7 +56,7 @@
 									<div class="btn-group" role="group">
 									    <button type="button" class="btn btn-default img">
 									    	<span id="c_myblogSet_s">
-										        <img  src="../blog_image/boy.jpg"> 블로그 설정							     
+										        <img  src="./blog_image/boy.jpg"> 블로그 설정							     
 									    	</span>
 									    </button>
 									</div>

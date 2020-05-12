@@ -27,8 +27,8 @@
 	<div class="container-fluid">
 	    <div class="row">
 	        <div class="col-xs-12">
-	        	<img id="c_myBlog_headerImg" src="../blog_image/boy.jpg">
-	        	<img id="c_sidebar_open" src="../blog_image/menu2.png">
+	        	<img id="c_myBlog_headerImg" src="./blog_image/boy.jpg">
+	        	<img id="c_sidebar_open" src="./blog_image/menu2.png">
 	        	<div id="c_myblogTitle">지현이의 블로그</div>
 	        </div>
 	    </div>
@@ -41,7 +41,7 @@
 	        	<span id="c_myBlog_allBrd">전체 글 <span class="badge">10</span></span>
 	        	<div id="c_myBlog_list">
 	        		<div class="c_myBlog_brd_item">
-	        			<img src="../blog_image/jeju.jpg" class="img-rounded" alt="">
+	        			<img src="./blog_image/jeju.jpg" class="img-rounded" alt="">
 	        			<div class="c_brd_Subject">글 제목!</div>
 	        			<div class="c_brd_Cont">
 	        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용
@@ -53,7 +53,7 @@
 	        		</div>
 	        		
 	        		<div class="c_myBlog_brd_item">
-	        			<img src="../blog_image/landscape.jpg" class="img-rounded" alt="">
+	        			<img src="./blog_image/landscape.jpg" class="img-rounded" alt="">
 	        			<div class="c_brd_Subject">언제 끝날까 퍼블리싱은~~~~~~~</div>
 	        			<div class="c_brd_Cont">
 	        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용
@@ -65,7 +65,7 @@
 	        		</div>
 	        		
 	        		<div class="c_myBlog_brd_item">
-	        			<img src="../blog_image/night.jpg" class="img-rounded" alt="">
+	        			<img src="./blog_image/night.jpg" class="img-rounded" alt="">
 	        			<div class="c_brd_Subject">나는 나는 나는 제목!</div>
 	        			<div class="c_brd_Cont">
 	        					블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용블로그 글 내용

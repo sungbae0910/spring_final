@@ -8,15 +8,15 @@
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				  <div class="carousel-inner">
 				    <div class="item active">
-				      <img src="../blog_image/blog_mainHeader.PNG">
+				      <img src="./blog_image/blog_mainHeader.PNG">
 				    </div>
 				
 				    <div class="item">
-				      <img src="../blog_image/life.jpg">
+				      <img src="./blog_image/life.jpg">
 				    </div>
 				
 				    <div class="item">
-				      <img src="../blog_image/night.jpg">
+				      <img src="./blog_image/night.jpg">
 				    </div>
 				  </div>
 				  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -46,7 +46,7 @@
 		    	<div class="col-sm-4">
 		 			<div class="thumbnail" id="c_content1">
 		     			<a href="">
-		     			   <img src="../blog_image/food.jpg" alt="">
+		     			   <img src="./blog_image/food.jpg" alt="">
 								<div class="caption" id="c_con1">
 		          					<div class="c_bestSubject">너무너무너무너무너무너무너무너무 맛있는 제주도 페페로니 피자!</div>
 		          					<p/>
@@ -61,7 +61,7 @@
 		    	<div class="col-sm-4">
 		    		 <div class="thumbnail" id="c_content2">
 		     			<a href="">
-		     			   <img src="../blog_image/life.jpg" alt="">
+		     			   <img src="./blog_image/life.jpg" alt="">
 								<div class="caption">
 		          					<div class="c_bestSubject">너무너무너무너무너무너무너무너무 맛있는 제주도 페페로니 피자!</div>
 		        					<p/>
@@ -76,7 +76,7 @@
 		    	<div class="col-sm-4">
 		    		 <div class="thumbnail" id="c_content3">
 		     			<a href="">
-		     			   <img src="../blog_image/night.jpg" alt="">
+		     			   <img src="./blog_image/night.jpg" alt="">
 								<div class="caption">
 		          					<div class="c_bestSubject">너무너무너무너무너무너무너무너무 맛있는 제주도 페페로니 피자!</div>
 		        					<p/>
@@ -99,7 +99,7 @@
 	        		<div class="c_blogList">
 		        		<a href="">
 		        			<span class="c_listBrdImg">
-		        				<img src="../blog_image/boy.jpg" class="img-rounded" alt="">
+		        				<img src="./blog_image/boy.jpg" class="img-rounded" alt="">
 		        			</span>
 		        			<div class="c_listCont">
 		        				<div class="c_listData">
@@ -117,7 +117,7 @@
 		        			</div>
 		        			<div class="c_listInfo">
 		        				<span class="c_listUserImg">
-		        					<img src="../blog_image/cat.jpg" class="img-circle" alt="">
+		        					<img src="./blog_image/cat.jpg" class="img-circle" alt="">
 		        				</span>
 		        				<span>개인블로그 title</span>
 		        				<span class="c_listMid">by 유저 아이디</span>
