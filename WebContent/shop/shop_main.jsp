@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-=======
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
->>>>>>> master
 <div id="shop_main">
 	<div class="container-fluid">
 	    <div class="row">
@@ -17,7 +13,7 @@
 							</div>
 						    <div id="item_thumbnail">
 							    <div class="thumbnail" id="first_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 1</h3>
 							        <p>아이템 정보</p>
@@ -25,7 +21,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="second_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 1</h3>
 							        <p>아이템 정보</p>
@@ -33,7 +29,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="third_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 1</h3>
 							        <p>아이템 정보</p>
@@ -41,7 +37,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="fourth_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 1</h3>
 							        <p>아이템 정보</p>
@@ -49,7 +45,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="fifth_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 1</h3>
 							        <p>아이템 정보</p>
@@ -70,7 +66,7 @@
 							</div>
 							<div id="item_thumbnail">
 							    <div class="thumbnail" id="first_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 2</h3>
 							        <p>아이템 정보</p>
@@ -78,7 +74,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="second_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 2</h3>
 							        <p>아이템 정보</p>
@@ -86,7 +82,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="third_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 2</h3>
 							        <p>아이템 정보</p>
@@ -94,7 +90,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="fourth_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 2</h3>
 							        <p>아이템 정보</p>
@@ -102,7 +98,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="fifth_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 2</h3>
 							        <p>아이템 정보</p>
@@ -123,7 +119,7 @@
 						  </div>
 						  <div id="item_thumbnail">
 							    <div class="thumbnail" id="first_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 3</h3>
 							        <p>아이템 정보</p>
@@ -131,7 +127,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="second_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 3</h3>
 							        <p>아이템 정보</p>
@@ -139,7 +135,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="third_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 3</h3>
 							        <p>아이템 정보</p>
@@ -147,7 +143,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="fourth_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 3</h3>
 							        <p>아이템 정보</p>
@@ -155,7 +151,7 @@
 							      </div>
 							    </div>
 							    <div class="thumbnail" id="fifth_item">
-							      <img src="../image/1.jpg" alt="...">
+							      <img src="./image/1.jpg" alt="...">
 							      <div class="caption" id="item_information">
 							        <h3>아이템 3</h3>
 							        <p>아이템 정보</p>
