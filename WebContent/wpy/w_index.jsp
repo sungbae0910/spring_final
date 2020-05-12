@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/jquery.min.js"></script>
+<script src="./w_js/jquery.min.js"></script>
 		<script src="./w_js/jquery.dropotron.min.js"></script>
 		<script src="./w_js/skel.min.js"></script>
 		<script src="./w_js/skel-layers.min.js"></script>
@@ -22,7 +22,6 @@
 						
 					<!-- Logo -->
 						<img src="./w_images/w_mainimage.png">
-					
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
