@@ -25,7 +25,7 @@ function changeVolume(v){
 	}
 }
 */
-var audio = new Audio("../lib/music/001 태연 (TAEYEON) - Happy.MP3");   
+var audio = new Audio("../sb_music/sb_lib/music/001 태연 (TAEYEON) - Happy.MP3");   
 
 
 $('#playBar').hide();
@@ -38,36 +38,32 @@ play = function(serial){
 	$.ajax({
 		type: "POST",
 		url: "../sb_play.mu",
-		data: param,	
-		dataType: "json",
-		contentType: "application/json;charset=UTF-8",
+		data: param,
 		success : function(data){
-
 			alert("됨");
-			
-			
 			
 			$('music_play').empty();
 			
 		
-			alert("dd");
+			alert(data);
+			alert(data.m_music);
+			alert(data.m_photo);
 			var txt = '';
-				txt += '<div class="col-sm-2"><img src="../lib/album/'
+				txt += '<div class="col-sm-2"><img src="../sb_music/sb_lib/album/'
 				txt += data.m_photo + '.PNG" id="album"></div>'
 				txt += '<div class="col-sm-8"><div align="center"><br>'	
 				txt += '<span style="color: white;" id="playBar">'+ data.m_music +'</span> <br>'
 				txt += '<div class="audio-player__container__actions">'
-				txt += '<button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>'
-				txt += '<button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>'
-				txt += '<button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>'
+				txt += '<button id="prevBtn"><img src="../sb_music/sb_lib/images/prevBtn.png" width="50px;"></button>'
+				txt += '<button id="play-button"><img src="../sb_music/sb_lib/images/playBtn.png" width="50px;"></button>'
+				txt += '<button id="nextBtn"><img src="../sb_music/sb_lib/images/nextBtn.png" width="50px;"></button>'
 				txt += '</div>'
 				txt += '</div>'
 				txt += '</div>';
 			
-			audio = new Audio("../lib/music/" + item.m_photo +".MP3");
-			alert(item.m_music);
-			alert(item.m_photo);
-			$('#music_play').append(txt);
+			audio = new Audio("../sb_music/sb_lib/music/" + data.m_photo +".MP3");
+		
+			$('#music_play').html(txt);
 			
 			
 			

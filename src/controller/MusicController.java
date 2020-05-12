@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,11 +23,11 @@ public class MusicController {
 		this.dao = dao;
 	}
 	
-	String url = "./sb_music/";
-	
 	@RequestMapping(value="/sb_home.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView top10(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("home");
 		
 		List<MusicVo> list = dao.top10();
 		

@@ -16,7 +16,7 @@
 			<form>
 				<div class="input-group">
 					<input type="text" id="search" class="form-control" placeholder="곡 검색">
-					<span class="input-group-addon"><img src="../lib/images/wm.png" id="search-left"></span>
+					<span class="input-group-addon"><img src="../sb_music/sb_lib/images/wm.png" id="search-left"></span>
 				</div>
 			</form>
 		</header>

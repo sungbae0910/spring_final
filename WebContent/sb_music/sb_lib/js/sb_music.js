@@ -10,7 +10,7 @@ mu.func = function(){
 
 
 mu.home = function(){
-	$('#changePage').load('../sb_home.mu');
+	$('#changePage').load('sb_home.mu');
 }
 
 
