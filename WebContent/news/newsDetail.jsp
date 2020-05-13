@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- css -->
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/news.css">
+<link href="./css/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/css/news.css">
 <!-- js -->
-<script src="../js/jquery-3.4.1.js"></script>
-<script src="../js/news.js"></script>
+<script src="./js/js/jquery-3.4.1.js"></script>
+<script src="./js/js/news.js"></script>
 </head>
 <body>
 <div id="news_s">

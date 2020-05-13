@@ -12,7 +12,7 @@
  		">
 	<context:annotation-config/>
 	<!-- bean -->
-	<bean id="newsDao" class="newsController.NewsDao"/>
+	<!-- <bean id="newsDao" class="newsController.NewsDao"/> -->
 	
 	<!-- controller -->
 	<bean id="news_controller" class="newsController.NewsController"/>
@@ -23,7 +23,6 @@
 	
 	<!-- view resolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="./news/" />
 		<property name="suffix" value=".jsp"/>
 	</bean>
 </beans>

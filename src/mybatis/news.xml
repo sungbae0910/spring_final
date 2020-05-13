@@ -5,12 +5,41 @@
 	
 <mapper namespace="news">
 	<!-- select -->
+	<select id="main_t_news_i" resultMap="mm_news">
+		select * from (select * from news_info order by nserial asc) where rownum &lt;= 9
+	</select>
+	<select id="main_t_news_p" resultType="newsController.NewsPhotoVo">
+		select * from (select * from news_photo order by nserial asc) where rowid in (select max(rowid) from news_photo group by nserial) and rownum &lt;= 9	
+	</select>
+	
+	
 	
 	<!-- insert -->
-	<insert id='news_insert' parameterType="newController.NewsVo">
-		insert into news_info values(seq_news_serial.nextvla, #{nTitle}, #{nContent}, #{nCompany}, sysdate, #{nRepoter}, #{nCategory}, 0, 0)
+	<insert id='news_insert' parameterType="newsController.NewsVo">
+		insert into news_info values(seq_news_serial.nextval, #{nTitle}, #{nContent}, #{nCompany:VARCHAR}, sysdate, #{nRepoter}, #{nCategory}, 0, 0)
+	</insert>
+	
+	<insert id='news_photo_insert' parameterType="newsController.NewsPhotoVo">
+		insert into news_photo values(seq_nphoto_serial.nextval, seq_news_serial.currval, #{pName}, #{pContent})
 	</insert>
 
-
+	<!-- resultMap -->
+	<resultMap id="mm_news" type="newsController.NewsVo">
+		<result column="nSerial" property="nSerial"/>
+		<result column="nContent" property="nContent" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result column="nTitle" property="nTitle"/>
+		<result column="nCompany" property="nCompany"/>
+		<result column="nDate" property="nDate"/>
+		<result column="nRepoter" property="nRepoter"/>
+		<result column="nCategory" property="nCategory"/>
+		<result column="nLike" property="nLike"/>
+		<result column="nHit" property="nHit"/>
+		<collection property="photos" ofType="newsController.NewsPhotoVo">
+			<result column="pSerial" property="pSerial"/>
+			<result column="nSerial" property="nSerial"/>
+			<result column="pName" property="pName"/>
+			<result column="pContent" property="pContent"/>
+		</collection>
+	</resultMap>
 
 </mapper>	
