@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,8 @@
 </head>
 
 <body>
-
+<form id="news_s" method="post">
+</form>
     <header>
         <!-- Header Start -->
        <div class="header-area">
@@ -81,7 +83,7 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="newsMainT.jsp">홈</a></li>
+                                            <li><a href="#" onclick="go_home()">홈</a></li>
                                             <li><a href="categori.html">사회</a></li>
                                             <li><a href="about.html">정치</a></li>
                                             <li><a href="latest_news.html">경제</a></li>
@@ -135,101 +137,55 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <!-- Trending Top -->
-                        <div class="trending-top mb-30">
-                            <div class="trend-top-img">
-                                <img src="./img/trending/trending_top.jpg" alt="">
-                                <div class="trend-top-cap">
-                                    <span>머니투데이</span>
-                                    <h2><a href="#">트럼프 "美 코로나 사망자 10만명 될 것..중국 은폐 끔찍해"</a></h2>
-                                </div>
-                            </div>
-                        </div>
+                        <c:forEach begin="0" end="0" var="i" items="${list}">
+	                        <div class="trending-top mb-30">
+	                            <div class="trend-top-img">
+									<c:forEach begin="0" end="0" var="pho" items="${photo}">	                            
+	                                	<img src="./img/newsImages/${pho.pName}" alt="">
+	                                </c:forEach>
+	                                <div class="trend-top-cap">
+	                                    <span>${i.nCompany}</span>
+	                                    <h2><a href="#">${i.nTitle}</a></h2>
+	                                </div>
+	                            </div>
+	                        </div>
+                        </c:forEach>
                         <!-- Trending Bottom -->
                         <div class="trending-bottom">
                             <div class="row">
-                                <div class="col-lg-4">
-                                <div class="single-bottom mb-35">
-                                    <div class="trend-bottom-img mb-30">
-                                        <img src="./img/trending/trending_bottom1.jpg" alt="">
-                                    </div>
-                                    <div class="trend-bottom-cap">
-                                        <span class="color1">Lifestyple</span>
-                                        <h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img src="./img/trending/trending_bottom2.jpg" alt="">
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color2">Sports</span>
-                                            <h4><h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img src="./img/trending/trending_bottom3.jpg" alt="">
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color3">Travels</span>
-                                            <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
+                            	<c:forEach begin="1" end="3" var="i" items="${list}" varStatus="ii">
+	                                <div class="col-lg-4">
+		                                <div class="single-bottom mb-35">
+		                                    <div class="trend-bottom-img mb-30">
+		                                    	<c:forEach begin="${ii.index}" end="${ii.index}" var="pho" items="${photo}">
+		                                        	<img src="./img/newsImages/${pho.pName}" alt="" style="height:120px;">
+		                                        </c:forEach>
+		                                    </div>
+		                                    <div class="trend-bottom-cap">
+		                                        <span class="color1">${i.nCompany}</span>
+		                                        <h4><a href="#">${i.nTitle}</a></h4>
+		                                    </div>
+		                                </div>
+	                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
                     <!-- Riht content -->
                     <div class="col-lg-4">
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="./img/trending/right1.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color1">Concert</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="./img/trending/right2.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color3">sea beach</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="./img/trending/right3.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color2">Bike Show</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div> 
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="./img/trending/right4.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color4">See beach</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="./img/trending/right5.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color1">Skeping</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
+                    	<c:forEach begin="4" end="8" var="i" items="${list}" varStatus="ii">
+	                        <div class="trand-right-single d-flex">
+	                            <div class="trand-right-img">
+	                            	<c:forEach begin="${ii.index}" end="${ii.index}" var="pho" items="${photo}">
+	                                	<img src="./img/newsImages/${pho.pName}" alt="">	
+	                                </c:forEach>
+	                            </div>
+	                            <div class="trand-right-cap">
+	                                <span class="color1">${i.nCompany}</span>
+	                                <h4><a href="details.html">${i.nTitle}</a></h4>
+	                            </div>
+	                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -244,7 +200,7 @@
                 <div class="row d-flex justify-content-between">
                     <div class="col-lg-3 col-md-3">
                         <div class="section-tittle mb-30">
-                            <h3>새 뉴스</h3>
+                            <h3>카테고리별 <br/>주요뉴스</h3>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -733,6 +689,11 @@
       <script src="./js/plugins.js"></script>
       <script src="./js/main.js"></script>
 <script>
+	$(document).ready(function(){
+		$('.header-info-left').click(function(){
+			$('#news_s').attr('action', 'newsMain.news').submit();
+		})
+	})
 	news()
 </script>        
 </body>

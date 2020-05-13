@@ -13,6 +13,7 @@ let news = function(){
 		alert('asdad');
 		$('#tes_s').attr('action', '../newsDetailT.news').submit();
 	})
+	
 }
 
 let hide_come = function(replyCount){
@@ -25,4 +26,8 @@ let hide_come = function(replyCount){
 	}
 		
 	
+}
+
+let go_home = function(){
+	$('#news_s').attr('action', 'newsMain.news').submit();
 }

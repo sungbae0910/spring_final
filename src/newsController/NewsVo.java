@@ -1,6 +1,7 @@
 package newsController;
 
 import java.util.Date;
+import java.util.List;
 
 public class NewsVo {
 
@@ -13,9 +14,11 @@ public class NewsVo {
 	String nCategory;
 	int nLike;
 	int nHit;
+	List<NewsPhotoVo> photos;
 	
 	public NewsVo() {}
 
+	
 	public int getnSerial() {
 		return nSerial;
 	}
@@ -86,6 +89,14 @@ public class NewsVo {
 
 	public void setnHit(int nHit) {
 		this.nHit = nHit;
+	}
+
+	public List<NewsPhotoVo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<NewsPhotoVo> photos) {
+		this.photos = photos;
 	}
 	
 	

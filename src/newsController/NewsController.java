@@ -1,5 +1,7 @@
 package newsController;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -7,14 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import newsCommand.NewsService;
+
 @Controller
 public class NewsController {
 	
-	String url = "./news/";
 	public NewsController(){
 	}
 	
-	@RequestMapping(value="newsDetailT.news", method= {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/newsDetailT.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView view(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("ㅇ해?????");
@@ -24,12 +27,21 @@ public class NewsController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/test.news", method= {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/news/newsMain.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView test(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		List<NewsVo> list = null;
+		List<NewsPhotoVo> list2 = null;
+		NewsService ns = new NewsService();
 		System.out.println("뭐가 문제죠");
 		
-		mv.setViewName("newsDetailT");
+		list = ns.selectI();
+		list2 = ns.selectP();
+		
+		mv.addObject("list", list);
+		mv.addObject("photo", list2);
+		
+		mv.setViewName("newsMainT");
 		
 		return mv;
 	}
