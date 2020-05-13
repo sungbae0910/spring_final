@@ -23,7 +23,7 @@ public class MusicController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping(value="/sb_home.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/sb_music/sb_home.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView top10(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
@@ -31,12 +31,16 @@ public class MusicController {
 		
 		List<MusicVo> list = dao.top10();
 		
+		for(MusicVo vo : list) {
+			System.out.println(vo.getArtist_name());
+		}
+		
 		mv.addObject("top10", list);
 		mv.setViewName("sb_home");
 		return mv;
 	}
 	
-	@RequestMapping(value="/sb_movie.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/sb_music/sb_movie.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView movie(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String serial = (req.getParameter("m_serial"));
@@ -48,7 +52,7 @@ public class MusicController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/sb_play.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/sb_music/sb_play.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView play(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String serial = (req.getParameter("m_serial"));

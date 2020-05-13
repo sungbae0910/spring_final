@@ -16,17 +16,16 @@
       
       <context:annotation-config/>
       
-      <!-- bean -->
+      
       <bean id="muDao" class="bean.MusicDao"/>
       
-      <!-- controller -->
+     
       <bean id="mu_controller" class="controller.MusicController">
       	<constructor-arg ref="muDao"/>
       </bean>
       
-      <!-- view resolver -->
+      
       <bean class='org.springframework.web.servlet.view.InternalResourceViewResolver'>
-      	<property name="prefix" value="./sb_music/"/>
       	<property name="suffix" value=".jsp"/>
       </bean>
       

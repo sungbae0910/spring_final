@@ -17,7 +17,7 @@ mu.home = function(){
 mu.movie = function(serial){
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
-	$('.page').load('../sb_movie.mu', param, function(data){
+	$('.page').load('sb_movie.mu', param, function(data){
 		console.log('굳');
 	} );
 }

@@ -16,6 +16,11 @@
   		<servlet-class>
   			org.springframework.web.servlet.DispatcherServlet
   		</servlet-class>
+  		<init-param>
+  			<param-name>musicConfig</param-name>
+  			<param-value>/WEB-INF/music_mvc-servlet.xml</param-value>
+  		</init-param>
+  		<load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
   		<servlet-name>music_mvc</servlet-name>

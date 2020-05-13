@@ -5,7 +5,7 @@
 	
 <mapper namespace="music">
 
-	<select id="home" resultType="">
+	<select id="home" resultType="mybatis.MusicVo">
 		select * from sb_music 
 		where MUSIC_SERIAL IN (
 			select MUSIC_SERIAL from SB_TOP where TOP_SERIAL BETWEEN 1 and 10
