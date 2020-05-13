@@ -15,7 +15,7 @@
 		<header>
 			<form>
 				<div class="input-group">
-					<input type="text" id="search" class="form-control" placeholder="곡 검색">
+					<input type="text" id="search" class="form-control" placeholder="곡 검색" autocomplete="off">
 					<span class="input-group-addon"><img src="../sb_music/sb_lib/images/wm.png" id="search-left"></span>
 				</div>
 			</form>
@@ -142,7 +142,7 @@
 					<span id="ten1">${s.count}</span> 
 				</div>
 				<div class="col-sm-3">
-					<span id="ten2" class="tops">${v.music_name }</span>
+					<span id="ten2" class="tops" onclick="info('${v.music_serial}')">${v.music_name }</span>
 				</div>
 				<div class="col-sm-3">
 					<span id="ten3" class="tops">${v.artist_name }</span>
@@ -152,7 +152,7 @@
 				</div>
 				<input type="hidden">
 				<div class="col-sm-1">
-					<span id="ten5" class="tops" onclick="mu.movie('${v.music_serial}')">뮤비</span>
+					<span id="ten5" class="tops" onclick="movie('${v.music_serial}')">뮤비</span>
 				</div>
 				<div class="col-sm-1">
 					<span id="ten6" class="tops">담기</span>

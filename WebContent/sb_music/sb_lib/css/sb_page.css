@@ -1,0 +1,37 @@
+@charset "UTF-8";
+#top_h{
+	margin-bottom: 20px;	
+	
+}
+
+#top_head{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+#playAll{
+    
+    background-color: #FF1150;
+    color: white;
+    border: none;
+    border-radius: 22px;
+    padding: 13px;
+	
+}
+
+#top100{
+	background-color:white;
+	
+	color: black;
+}
+
+#top100_list{
+	margin-bottom: 30px;
+}
+
+
+
+#info_id{
+	color: white;
+}
+

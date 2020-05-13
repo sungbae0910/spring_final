@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body id="navBody">
 
 <!-- footer -->
 
 	<!-- 뮤직 실행바 -->
  <nav class="navbar nav-default navbar-fixed-bottom" role="navigation" id="nav">
  			
+ 			<input type="hidden" id="audioH" value="${play.album_photo }">
  			
  			
  			<div class="wrapper">
@@ -29,6 +30,7 @@
 				<!-- 앨범 -->
 	 			<div class="col-sm-2">
 	 				 <img src="../sb_music/sb_lib/images/cd.png" id="albumD" >
+	 				 <img src="../sb_music/sb_lib/album/${play.album_photo}.PNG" id="album" >
 				</div>
 				
 				<!-- 이름 / 플레이 버튼 -->
@@ -36,11 +38,14 @@
 					  	 <div align="center">
 					       <br>	
 					       		<span style="color: white;" id="playBarD">노래를 선택해주세요</span>
+					       		<span style="color: white;" id="playBar">${play.music_name} - ${play.artist_name }</span>
+					       <br>
+					       		<span style="color: white;" id="timer"></span>
 					       <br>
 					        <div class="audio-player__container__actions">
-					         <button id="prevBtn"><img src="../sb_music/sb_lib/images/prevBtn.png" width="50px;"></button>
-					          <button id="play-button"><img src="../sb_music/sb_lib/images/playBtn.png" width="50px;"></button>
-					          <button id="nextBtn"><img src="../sb_music/sb_lib/images/nextBtn.png" width="50px;"></button>
+					         <button id="prevBtn"><img src="../sb_music/sb_lib/images/prev.png" width="50px;"></button>
+					          <button id="play-button" onclick="player()"><img src="../sb_music/sb_lib/images/play.png" id="btn_play" width="50px;"></button>
+					          <button id="nextBtn"><img src="../sb_music/sb_lib/images/next.png" width="50px;"></button>
 					        </div>
 					     </div>
 				      </div>
@@ -69,7 +74,7 @@
 			<div class="col-sm-6">
 				<div align="center" id="playerImg">
 					<img src="../sb_music/sb_lib/images/player.png" width="500px;" >
-					<img src="../sb_music/sb_lib/album/meteor.jpg" id="player-top">
+					<img src="../sb_music/sb_lib/album/${play.album_photo}.PNG" id="player-top">
 				</div>
 			</div>
 		

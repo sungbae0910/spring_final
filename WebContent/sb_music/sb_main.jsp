@@ -16,7 +16,7 @@
 </head>
 <body>
  <%
- 	String p = "./sb_home.jsp";
+ 	String p = "sb_home.mu";
  	if(request.getParameter("p") != null){
  		p = request.getParameter("p");
  	}
@@ -27,12 +27,17 @@
  
   <nav class="col-sm-3 sidenav">
   
-  	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="mu.home()"> <!-- 로고 -->
+  	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="home()"> <!-- 로고 -->
   	<!-- location.href='sb_main.jsp?p=./sb_home.jsp' -->
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
-	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a></li>
-	    <li><a href="sb_main.jsp?p=./sb_top.jsp" id="sideA">TOP 100</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a>
+	    	<ul>
+	    		<li>마이페이지</li>
+	    		<li>로그아웃</li>
+	    	</ul>
+	    </li>
+	    <li><a href="sb_main.jsp?p=sb_top.mu" id="sideA">TOP 100</a></li>
 	    <li><a href="sb_main.jsp?p=./sb_new.jsp" id="sideA">최신 앨범</a></li>
     </ul>
     	<hr style="background-color: #969B97;">
@@ -59,7 +64,7 @@
 					<div class="col-sm-8">
 						Logo WaterMelon Music Platform
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-2" onclick="nice()">
 						이용약관
 					</div>
 					<div class="col-sm-2">

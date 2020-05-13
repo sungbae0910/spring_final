@@ -34,51 +34,38 @@ $('#album').hide();
 play = function(serial){
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
-	alert(param);
-	$.ajax({
-		type: "POST",
-		url: "sb_play.mu",
-		data: param,
-		dataType: 'json',
-		success : function(param){
-			alert("됨");
-			
-			$('music_play').empty();
-			
+	$.post('sb_play.mu', param, function(data){
 		
-			console.log(param);
-			alert(param.m_music);
-			alert(param.m_photo);
-			var txt = '';
-				txt += '<div class="col-sm-2"><img src="../sb_music/sb_lib/album/'
-				txt += data.m_photo + '.PNG" id="album"></div>'
-				txt += '<div class="col-sm-8"><div align="center"><br>'	
-				txt += '<span style="color: white;" id="playBar">'+ data.m_music +'</span> <br>'
-				txt += '<div class="audio-player__container__actions">'
-				txt += '<button id="prevBtn"><img src="../sb_music/sb_lib/images/prevBtn.png" width="50px;"></button>'
-				txt += '<button id="play-button"><img src="../sb_music/sb_lib/images/playBtn.png" width="50px;"></button>'
-				txt += '<button id="nextBtn"><img src="../sb_music/sb_lib/images/nextBtn.png" width="50px;"></button>'
-				txt += '</div>'
-				txt += '</div>'
-				txt += '</div>';
-			
-			audio = new Audio("../sb_music/sb_lib/music/" + data.m_photo +".MP3");
 		
-			$('#music_play').html(txt);
-			
-			
-			
-		},
-		error : function(error){
-			console.log(error.status);
-		}
-	})
-	
-	
+		$('#navBody').empty();
+		$('#navBody').append(data);
+		
+		$('#playBar').show();
+		$('#album').show();
+		
+		$('#playBarD').hide();
+		$('#albumD').hide();
+		
+		$("#show_list").hide();
+		$("#playerImg").hide();
+		
+
+		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		
+		
+	});
 }
 
-window.onload = function(){
-	var playBtn = document.getElementById("play-button");
+function nice(){
+	alert(audio.src);
+}
+
+
+
+function player(){
+	  audio.pause(); // 시작할때 다른 음악 끄기
+	  var playBtn = document.getElementById("play-button");
 	  var progressBar = document.getElementById("progress-bar");
 	  
 	  
@@ -92,6 +79,7 @@ window.onload = function(){
 	  };
 	  audio.addEventListener("timeupdate",(e)=>{    
 	        progressBar.value = audio.currentTime;
+	        
 	  });
 	  audio.addEventListener("ended",(e)=>{
 	    progressBar.value = 0;
@@ -100,11 +88,12 @@ window.onload = function(){
 	  });
 	  
 	  audio.addEventListener("play",(e)=>{    
-	    playBtn.innerText="Stop"; 
+		$('#btn_play').attr("src","../sb_music/sb_lib/images/pause.png");
 	    playing=true;
 	  });
 	  audio.addEventListener("pause",(e)=>{    
-	    playBtn.innerText="Play"; 
+		$('#btn_play').attr("src","../sb_music/sb_lib/images/play.png");
+	   
 	    playing=false;
 	  });
 	  audio.addEventListener("canplay",()=>{
@@ -112,6 +101,15 @@ window.onload = function(){
 	    progressBar.min =0;
 	    progressBar.max= duration;    
 	  });
+	  
+	  
+	 /* $('#play-button').click(function(){
+		if(playing){
+			  audio.play();
+		}
+		
+		  
+	  })*/
 	  
 	  
 	  playBtn.onclick=()=>{
@@ -134,9 +132,9 @@ function showVolume(vol){
 	var now = audio.volume = vol/100;
 	
 	if(now > 0){
-		$("#sound").attr("src","../lib/images/vol1.png");
+		$("#sound").attr("src","../sb_music/sb_lib/images/vol1.png");
 	}else{
-		$("#sound").attr("src","../lib/images/vol2.png");
+		$("#sound").attr("src","../sb_music/sb_lib/images/vol2.png");
 	}
 }
 

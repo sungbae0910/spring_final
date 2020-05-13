@@ -12,12 +12,30 @@
 		)
 	</select>
 	
-	<select id="movie" parameterType="Integer" resultMap="MusicVo">
+	<select id="top100" resultType="mybatis.MusicVo">
+		select A.*, B.album_photo 
+		from sb_music A
+		join sb_album B
+		on a.album_serial = b.album_serial
+		where MUSIC_SERIAL IN (
+			select MUSIC_SERIAL from SB_TOP where TOP_SERIAL BETWEEN 1 and 100
+		)
+	</select>
+	
+	<select id="info" parameterType="Integer" resultType="mybatis.MusicVo">
+		select A.*, B.album_photo 
+		from sb_music A
+		join sb_album B
+		on a.album_serial = b.album_serial
+		where music_serial = ${_parameter}
+	</select>
+	
+	<select id="movie" parameterType="Integer"  resultType="mybatis.MusicVo">
 		select * from sb_music 
 		where music_serial = ${_parameter}
 	</select>
 
-	<select id="play" parameterType="Integer" resultMap="MusicVo">
+	<select id="play" parameterType="Integer"  resultType="mybatis.MusicVo">
 		select A.*, B.album_photo 
 		from sb_music A
 		join sb_album B
@@ -25,7 +43,7 @@
 		where MUSIC_SERIAL = ${_parameter}
 	</select>
 	
-	<resultMap type="mybatis.MusicVo" id="MusicVo">
+	<!-- <resultMap type="mybatis.MusicVo" id="MusicVo">
 		<result property="music_serial" column="music_serial"/>
 		<result property="music_name" column="music_name"/>
 		<result property="lylics" column="lylics"/>
@@ -34,6 +52,6 @@
 		<result property="enter" column="enter"/>
 		<result property="company" column="company"/>
 		<result property="music_photo" column="music_photo"/>
-	</resultMap>
+	</resultMap> -->
 	
 </mapper>

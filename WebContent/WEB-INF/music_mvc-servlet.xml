@@ -15,8 +15,8 @@
       ">
       
       <context:annotation-config/>
-      
-      
+   
+	 
       <bean id="muDao" class="bean.MusicDao"/>
       
      
@@ -30,3 +30,4 @@
       </bean>
       
 </beans>
+

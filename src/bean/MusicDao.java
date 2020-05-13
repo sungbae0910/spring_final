@@ -26,8 +26,33 @@ public class MusicDao {
 		} finally {
 			return list;
 		}
+	}
+	
+	public List<MusicVo> top100(){
+		List<MusicVo> list= null;
+		try {
+			list = sqlSession.selectList("music.top100");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
 		
 	}
+	
+	public MusicVo info(int serial) {
+		MusicVo vo = null;
+		
+		try {
+			vo = sqlSession.selectOne("music.info",serial);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return vo;
+		}
+	}
+	
 	
 	public MusicVo movie(int serial) {
 		MusicVo vo = null;	
