@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>꼬치예전</title>
 <script src="./w_js/jquery.min.js"></script>
 		<script src="./w_js/jquery.dropotron.min.js"></script>
 		<script src="./w_js/skel.min.js"></script>
@@ -12,8 +12,20 @@
 		<script src="./w_js/init.js"></script>
 <link rel="stylesheet" href="./w_css/skel.css" />
 <link rel="stylesheet" href="./w_css/style.css" />
-
 </head>
+
+<%
+String inc = "./wpy/w_customer.jsp";
+if(request.getParameter("inc")!=null && request.getParameter("inc")!="" ){
+	inc = request.getParameter("inc");
+}
+
+String inc2 = "./wpy/w_index.jsp";
+if(request.getParameter("inc2")!=null && request.getParameter("inc2") != ""  ){
+	inc2 = request.getParameter("inc2");
+}
+%>
+
 <body class="homepage">
 
 		<!-- Header -->
@@ -21,7 +33,7 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./w_images/w_mainimage.png">
+						<img src="./w_images/w_mainimage1.png">
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>

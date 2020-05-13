@@ -13,8 +13,10 @@
 <script src="./w_js/skel.min.js"></script>
 <script src="./w_js/skel-layers.min.js"></script>
 <script src="./w_js/init.js"></script>
+<script src="./w_js/bootstrap.js"></script>
 <link rel="stylesheet" href="./w_css/skel.css" />
 <link rel="stylesheet" href="./w_css/style.css" />
+<link rel="stylesheet" href="./w_css/bootstrap.css"/>
 </head>
 <body class="no-sidebar1">
 <!-- Header -->
@@ -50,10 +52,68 @@
 			<div id="content" class="8u skel-cell-important">
 				<div class="w_wrap">
 				  <div class="w_t_tab">
-				   <a href="w_customer.jsp" >고객문의</a>	
+				   <a href="w_customersupport.jsp?inc=./wpy/w_customersupport.jsp&inc2=./wpy/w_index.jsp" class="on">전 소식</a>
 				  </div>
 				</div>
-				<h4 class="w_tab_sub">공지사항</h4>
+				  <h4 class="w_tab_sub">전 소식</h4>
+		        <div id="w_list" style="width: 100%">
+		          <div class="w_fx">
+		          </div>
+		          
+		          	<div class="container" style="position: relative; left: 180px;">
+                     <table class="table table-hover">
+                       <thead>
+                       <tr>
+                           <th>번호</th>
+                           <th>제목</th>
+                           <th>작성자</th>
+                           <th>날짜</th>
+                           <th>조회수</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr>
+                       	   <td>1</td>
+                       	   <td>새로운 메뉴 냉채!</td>
+                       	   <td>꼬치예전</td>
+                       	   <td>2020.05.13</td>
+                       	   <td>2</td>
+                       </tr>
+                       
+                       <tr>
+                       	   <td>1</td>
+                       	   <td>새로운 메뉴 냉채!</td>
+                       	   <td>꼬치예전</td>
+                       	   <td>2020.05.13</td>
+                       	   <td>2</td>
+                       </tr>
+                       
+                       <tr>
+                       	   <td>1</td>
+                       	   <td>새로운 메뉴 냉채!</td>
+                       	   <td>꼬치예전</td>
+                       	   <td>2020.05.13</td>
+                       	   <td>2</td>
+                       </tr>
+                       
+                       
+                       </tbody>    
+                     </table>
+                     <hr/>
+                     
+                     <a class="btn btn-default">글쓰기</a>
+                     
+                     <div class="text-center" style="position: relative; left: 322px;">
+                        <ul class="pagination">
+                           <li><a href="#">1</a></li>
+                           <li><a href="#">2</a></li>
+                           <li><a href="#">3</a></li>
+                           <li><a href="#">4</a></li>
+                           <li><a href="#">5</a></li>
+                        </ul>
+                     </div>
+                    </div> 		          
+		        </div>
 			</div>
 		</div>
 	</div>

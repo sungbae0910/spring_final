@@ -716,8 +716,8 @@
 	    content: '';
 	    display: block;
 	    margin: 20px;
-	    position:relative;
-		left:146px;
+		position:relative;
+		left:141px;
 		}
 
 		#w_main .w_menu_info{
@@ -860,7 +860,15 @@
 	    font-weight: 700;
 	    text-align: center;
 	    padding: 50px 0 40px;
+	    position: relative;
+    	left: 169px;
 	    }
+	    
+	    .w_fx{
+	    margin-bottom: 5px;
+	    }
+	    
+	    
 	    
 /* Footer */
 

@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Left Sidebar - Horizons by TEMPLATED</title>
+		<title>창업문의</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -37,7 +37,7 @@
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_right-sidebar.html">고객문의</a></li>
+								<li><a href="w_customersupport.jsp">고객문의</a></li>
 								<li><a href="w_no-sidebar.html">매장안내</a></li>
 							</ul>
 						</nav>
@@ -51,9 +51,9 @@
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
-									<h2>창업문의</h2>
+									<h2 style="position: relative;left: 537px;">창업문의</h2>
 									
-									<p>
+									<p style="position: relative;left: 284px;">
 									본사의 체계화된 시스템과 매뉴얼화된 조리레시피로 균일화된 맛과
 									<br/>
 									국내 최고 식자재 유통사와의 협력으로 완벽한 물류 공급, 지속적인 가맹점 관리와 소통,
@@ -66,7 +66,7 @@
 								    </div>
 						</div>
 						
-						<h3 class='w_h3'>
+						<h3 class='w_h3' style="position: relative; left: 402px;">
 						성공 창업을 위한 꼬치예전 솔루션
 						</h3>
 						
