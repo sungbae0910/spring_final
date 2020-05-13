@@ -27,13 +27,7 @@ public class MusicController {
 	public ModelAndView top10(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("home");
-		
 		List<MusicVo> list = dao.top10();
-		
-		for(MusicVo vo : list) {
-			System.out.println(vo.getArtist_name());
-		}
 		
 		mv.addObject("top10", list);
 		mv.setViewName("sb_home");
@@ -58,6 +52,9 @@ public class MusicController {
 		String serial = (req.getParameter("m_serial"));
 		int s = Integer.parseInt(serial);
 		MusicVo vo = dao.play(s);
+		
+		
+		
 		mv.addObject("play", vo);
 		mv.setViewName("sb_nav");
 		return mv;

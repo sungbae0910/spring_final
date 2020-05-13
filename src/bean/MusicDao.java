@@ -18,11 +18,9 @@ public class MusicDao {
 	
 	//TOP 10
 	public List<MusicVo> top10(){
-		System.out.println("dao.top10");
 		List<MusicVo> list = null;
 		try {
 			list = sqlSession.selectList("music.home");
-			System.out.println("music.home");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -32,7 +30,7 @@ public class MusicDao {
 	}
 	
 	public MusicVo movie(int serial) {
-		MusicVo vo = null;
+		MusicVo vo = null;	
 		try {
 			vo = sqlSession.selectOne("music.movie", serial);
 			

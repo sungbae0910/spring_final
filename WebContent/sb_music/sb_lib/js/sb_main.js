@@ -34,20 +34,21 @@ $('#album').hide();
 play = function(serial){
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
-	
+	alert(param);
 	$.ajax({
 		type: "POST",
-		url: "../sb_play.mu",
+		url: "sb_play.mu",
 		data: param,
-		success : function(data){
+		dataType: 'json',
+		success : function(param){
 			alert("됨");
 			
 			$('music_play').empty();
 			
 		
-			alert(data);
-			alert(data.m_music);
-			alert(data.m_photo);
+			console.log(param);
+			alert(param.m_music);
+			alert(param.m_photo);
 			var txt = '';
 				txt += '<div class="col-sm-2"><img src="../sb_music/sb_lib/album/'
 				txt += data.m_photo + '.PNG" id="album"></div>'
