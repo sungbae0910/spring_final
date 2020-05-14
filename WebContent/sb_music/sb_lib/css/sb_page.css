@@ -29,9 +29,35 @@
 	margin-bottom: 30px;
 }
 
-
-
-#info_id{
-	color: white;
+#info_body{
+	padding:100px;
+	background-color: rgba(0,0,0,0.9);
+	border-radius: 20px;
 }
+
+#info_name{
+	color:white;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#info_artist{
+	color:white;
+	font-size: 15px;
+}
+#info_etc{
+	color:white;
+	text-shadow: 0 0 3px #5AF51D; 
+}
+#info_etc2{
+	color:white;
+	text-shadow: 0 0 3px #E53D3D;
+}
+
+#lylics{
+	color:white;
+	text-shadow: 0 0 3px #B373C8;
+}
+
+
 

@@ -37,7 +37,7 @@
 	    		<li>로그아웃</li>
 	    	</ul>
 	    </li>
-	    <li><a href="sb_main.jsp?p=sb_top.mu" id="sideA">TOP 100</a></li>
+	    <li><a href="#" id="sideA" onclick="topP()">TOP 100</a></li>
 	    <li><a href="sb_main.jsp?p=./sb_new.jsp" id="sideA">최신 앨범</a></li>
     </ul>
     	<hr style="background-color: #969B97;">

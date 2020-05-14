@@ -62,6 +62,10 @@
 				</div>
 			</div>
 			
+			<div class="col-sm-12">
+				<img src="./main_lib/images/shit.png" style="width: 1125px; height: 200px;">
+			</div>
+			
 		</div>
 	</div>
 

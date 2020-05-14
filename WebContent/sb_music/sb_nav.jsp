@@ -74,7 +74,7 @@
 			<div class="col-sm-6">
 				<div align="center" id="playerImg">
 					<img src="../sb_music/sb_lib/images/player.png" width="500px;" >
-					<img src="../sb_music/sb_lib/album/${play.album_photo}.PNG" id="player-top">
+					<img src="../sb_music/sb_lib/album/${play.album_photo}.PNG" id="player-top" onerror="this.src='../sb_music/sb_lib/images/cd.png'">
 				</div>
 			</div>
 		

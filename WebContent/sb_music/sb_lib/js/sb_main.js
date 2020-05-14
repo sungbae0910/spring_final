@@ -57,6 +57,10 @@ play = function(serial){
 	});
 }
 
+var topP = function(){
+	$('#changePage').load('sb_top.mu');
+}
+
 function nice(){
 	alert(audio.src);
 }
@@ -89,7 +93,7 @@ function player(){
 	  
 	  audio.addEventListener("play",(e)=>{    
 		$('#btn_play').attr("src","../sb_music/sb_lib/images/pause.png");
-	    playing=true;
+		playing=true;
 	  });
 	  audio.addEventListener("pause",(e)=>{    
 		$('#btn_play').attr("src","../sb_music/sb_lib/images/play.png");
