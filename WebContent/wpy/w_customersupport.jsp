@@ -39,7 +39,7 @@
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
 								<li><a href="w_customersupport.jsp">고객문의</a></li>
-								<li><a href="w_no-sidebar.html">매장안내</a></li>
+								<li><a href="w_mymap.jsp">매장안내</a></li>
 							</ul>
 						</nav>
 
@@ -57,9 +57,6 @@
 				  </div>
 				</div>
 				  <h4 class="w_tab_sub">전 소식</h4>
-		        <div id="w_list" style="width: 100%">
-		          <div class="w_fx">
-		          </div>
 		          
 		          	<div class="container" style="position: relative; left: 180px;">
                      <table class="table table-hover">

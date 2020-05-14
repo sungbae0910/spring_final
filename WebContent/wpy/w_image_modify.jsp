@@ -14,18 +14,6 @@
 <link rel="stylesheet" href="./w_css/style.css" />
 </head>
 
-<%
-String inc = "./wpy/w_customer.jsp";
-if(request.getParameter("inc")!=null && request.getParameter("inc")!="" ){
-	inc = request.getParameter("inc");
-}
-
-String inc2 = "./wpy/w_index.jsp";
-if(request.getParameter("inc2")!=null && request.getParameter("inc2") != ""  ){
-	inc2 = request.getParameter("inc2");
-}
-%>
-
 <body class="homepage">
 
 		<!-- Header -->
@@ -50,47 +38,19 @@ if(request.getParameter("inc2")!=null && request.getParameter("inc2") != ""  ){
 							</ul>
 						</nav>
 
-
-					<!-- Banner -->
-						<div id="banner">
-							<div class="container">
-								<section>
-									<header class="major">
-										<h2>맛도 양도 많은 전을 먹으러 오세요!</h2>
-										<span class="byline"></span>
-									</header>
-								</section>			
-							</div>
-						</div>
-
-				</div>
-			</div>
-
-		<!-- Featured -->
-			<div class="wrapper style2">
-				<section class="container">
-					<header class="major">
-						<h2>여러가지의 메뉴들이 있습니다</h2>
-					</header>
-					<div class="row no-collapse-1">
-						<section class="4u">
-							<a href="#" class="image feature"><img src="./w_images/w_cook1.jpg" alt=""></a>
-							<p></p>
-						</section>
-						<section class="4u">
-							<a href="#" class="image feature"><img src="./w_images/w_cook2.jpg" alt=""></a>
-							<p></p>
-						</section>
-						<section class="4u">
-							<a href="#" class="image feature"><img src="./w_images/w_cook3.jpg" alt=""></a>
-							<p></p>
-						</section>
 	
-					</div>
-				</section>
-			</div>
-
 		<!-- Main -->
+			<div id="main" class="wrapper style1">
+				<div class="container">
+						<!-- Content -->
+						<div id="content" class="8u skel-cell-important">
+									
+						</div>
+						
+						
+					</div>
+				</div>
+
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container">

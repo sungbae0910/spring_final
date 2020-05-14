@@ -864,10 +864,76 @@
     	left: 169px;
 	    }
 	    
+	    #main_w #w_title{
+	    font-size: 20px;
+	    font-weight: 700;
+	    }
+	    
+	    
 	    .w_fx{
 	    margin-bottom: 5px;
 	    }
 	    
+	    #main_w .w_imp2{
+	    float: left;
+	    }
+	    
+	    .w_view_sjw{
+	    font-size: 30px;
+	    font-weight: 700;
+	    margin: 0 0 20px;
+	    }
+	    
+	    .w_info{
+	    overflow: hidden;
+    	margin: 0 0 50px;
+	    }
+	    
+	    .w_info .w_imp1{
+	    width: 400px;
+	    float: left;
+	    margin: 0 40px 0 0;
+	    display: none;
+	    }
+	    
+	    #w_v_image{
+	    margin: 0 0 10px;
+	    width: 100%;
+	    overflow: hidden;
+	    zoom: 1;
+	    }
+	    
+	    #main_w .w_imp2 table{
+	    font-size: 14px;
+	    color: #282828;
+	    line-height: 24px;
+	    }
+	    
+	    #main_w .w_imp2 table th{
+	    text-align: left;
+	    vertical-align: middle;
+	    padding: 0 20px 0 0;
+	    min-width: 100px;
+	    position: relative;
+    	top: -14px;
+	    }
+	    
+	    .w_imp_info .w_imp_2 table td{
+	    vertical-align: middle;
+    	padding: 15px 0;	
+	    } 
+	    
+	    .w_v_info{
+	   	 margin: 0 0 20px;
+   		 border-bottom: 2px solid #282828;
+   		 font-size: 11px;
+	    }
+	    
+	    .w_view_wpy{
+	    font-size: 30px;
+ 	    font-weight: 700;
+  		margin: 0 0 20px;
+	    }
 	    
 	    
 /* Footer */
