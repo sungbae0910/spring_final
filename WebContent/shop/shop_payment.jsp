@@ -27,16 +27,16 @@
 				    			<div class="col-xs-12">
 					    			<div class="row" id="item">
 					    				<div class="col-xs-3">
-					    					<img src="../image/1.jpg" alt="..." class="img-circle item_photo">
+					    					<img src="./image/1.jpg" alt="..." class="img-circle item_photo">
 					    				</div>	
 					    				<div class="item_information">
-					    					<div class="col-xs-3">
+					    					<div class="col-xs-3 item_name_frm">
 								    			<span id="item_name">가나다</span>
 								    		</div>
-								    		<div class="col-xs-3">
+								    		<div class="col-xs-3 item_price_frm">
 								    				<span id="item_price">10000원</span>
 								    		</div>
-								    		<div class="col-xs-3">
+								    		<div class="col-xs-3 item_num_frm">
 								    				<span id="item_num">10</span>
 								    		</div>
 					    				</div>
@@ -48,7 +48,7 @@
 			    	<div class="col-xs-10 col-xs-offset-1 shop_payment_tot">
 						<div class="col-xs-8 shop_payment_information">
 							<div class="row">
-							    <div class="col-xs-4 col-xs-offset-4">
+							    <div class="col-xs-4 col-xs-offset-4 order_information_frm">
 							    	<span id="order_information">주문 정보</span>
 							    </div>
 							    <div class="col-xs-12">
@@ -93,7 +93,7 @@
 						</div>
 						<div class="col-xs-4 shop_payment_mathod">
 							<div class="row">
-							    <div class="col-xs-6 col-xs-offset-3">
+							    <div class="col-xs-6 col-xs-offset-3 mathod_frm">
 							    	<span id="mathod">결제 수단</span>
 							    </div>
 							    <div class="col-xs-12">
@@ -108,7 +108,7 @@
 							    		</div>
 							    	</div>
 							    	<div class="row">
-							    		<div class="col-xs-8 method_transfer_frm">
+							    		<div class="col-xs-8 mathod_transfer_frm">
 							    			<span id="transfer">계좌이체</span>
 							    		</div>
 							    		<div class="col-xs-3">

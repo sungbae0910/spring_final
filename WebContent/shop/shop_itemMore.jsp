@@ -12,7 +12,7 @@
 						  	</div>
 						  	<div class="col-sm-7 col-md-3 item">
 						    <div class="thumbnail">
-						      <img src="../image/1.jpg" alt="...">
+						      <img src="./image/1.jpg" alt="...">
 						      <div class="caption">
 						        <h3>아이템1</h3>
 						        <p>아이템 정보</p>
@@ -22,7 +22,7 @@
 						  </div>
 						  <div class="col-sm-7 col-md-3 item">
 						    <div class="thumbnail">
-						      <img src="../image/1.jpg" alt="...">
+						      <img src="./image/1.jpg" alt="...">
 						      <div class="caption">
 						        <h3>아이템2</h3>
 						        <p>아이템 정보</p>
@@ -32,7 +32,7 @@
 						  </div>
 						  <div class="col-sm-7 col-md-3 item">
 						    <div class="thumbnail">
-						      <img src="../image/1.jpg" alt="...">
+						      <img src="./image/1.jpg" alt="...">
 						      <div class="caption">
 						        <h3>아이템3</h3>
 						        <p>아이템 정보</p>
@@ -42,7 +42,7 @@
 						  </div>
 						  <div class="col-sm-7 col-md-3 item">
 						    <div class="thumbnail">
-						      <img src="../image/1.jpg" alt="...">
+						      <img src="./image/1.jpg" alt="...">
 						      <div class="caption">
 						        <h3>아이템4</h3>
 						        <p>아이템 정보</p>

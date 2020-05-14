@@ -27,7 +27,7 @@
 						    	<div class="col-xs-12">
 					    			<div class="row" id="item">
 					    				<div class="col-xs-2">
-						    				<img src="../image/1.jpg" alt="..." class="img-circle item_photo">
+						    				<img src="./image/1.jpg" alt="..." class="img-circle item_photo">
 						    			</div>
 						    			<div class="item_information">
 						   					<div class="col-xs-4">
