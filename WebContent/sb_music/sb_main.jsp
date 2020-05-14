@@ -31,6 +31,7 @@
   	<!-- location.href='sb_main.jsp?p=./sb_home.jsp' -->
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
+   		<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
 	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a>
 	    	<ul>
 	    		<li>마이페이지</li>

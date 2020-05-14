@@ -25,7 +25,7 @@ function changeVolume(v){
 	}
 }
 */
-var audio = new Audio("../sb_music/sb_lib/music/001 태연 (TAEYEON) - Happy.MP3");   
+var audio = new Audio();   
 
 
 $('#playBar').hide();

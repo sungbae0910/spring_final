@@ -29,13 +29,13 @@
 		<div class="container" id="header_bot">
 			<div class="row">
 				<div class="col-sm-2">
-					<p>뉴스</p>
+					<a href="./news/newsMainT.jsp" style="color:black;">뉴스</a>
 				</div>
 				<div class="col-sm-2">
-					<p>블로그</p>
+					<a href="./blog/blog_Index.jsp" style="color:black;">블로그</a>
 				</div>
 				<div class="col-sm-2">
-					<p>쇼핑</p>
+					<a href="./shop/shop_index.jsp" style="color:black;">쇼핑</a>
 				</div>
 				<div class="col-sm-2">
 					<p>sns</p>

@@ -9,12 +9,13 @@
 <body>
 
 <div id="movie">
-	<p id="movie_top">영상 정보</p>
-
-	<iframe width="1161" height="653" src="${movie.music_video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<div class="container" id="movieDiv">
+		<img src="../sb_music/sb_lib/images/video.png" >
 	
-	<p id="movie_title">[MV] ${movie.music_name }</p>
-
+		<iframe width="1161" height="653" src="${movie.music_video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		
+		<p id="movie_title">[MV] ${movie.music_name }</p>
+	</div>
 </div>
 
 

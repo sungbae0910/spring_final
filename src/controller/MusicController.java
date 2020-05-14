@@ -59,6 +59,12 @@ public class MusicController {
 		int s = Integer.parseInt(serial);
 		MusicVo vo = dao.info(s);
 		
+		String lylics = vo.getLylics();
+		String temp = lylics.replaceAll("\r\n", "<br>");
+		
+		vo.setLylics(temp);
+		
+		
 		mv.addObject("info", vo);
 		mv.setViewName("sb_info");
 		
