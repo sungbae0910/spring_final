@@ -27,10 +27,13 @@ public class NewsController {
 		return mv;
 	}
 	
+	// 뉴스 최상단 조회
 	@RequestMapping(value="/news/newsMain.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView test(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		// 메인상단 뉴스
 		List<NewsVo> list = null;
+		//카테고리 
 		List<NewsPhotoVo> list2 = null;
 		NewsService ns = new NewsService();
 		System.out.println("뭐가 문제죠");
@@ -41,20 +44,41 @@ public class NewsController {
 		mv.addObject("list", list);
 		mv.addObject("photo", list2);
 		
-		mv.setViewName("newsMainT");
+		mv.setViewName("newsTrending");
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="/crawling.news", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView crawling(HttpServletRequest req) {
+	// 뉴스 카테고리 랜덤 조회
+	@RequestMapping(value="/news/cateAll.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView cateAll(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		List<NewsVo> vo = null;
+		NewsService ns = new NewsService();
+		System.out.println("aasdasd");
+		vo = ns.selectCateAi();
 		
+		mv.addObject("vo", vo);
 		
-		
+		mv.setViewName("whatsNews");
 		
 		return mv;
 	}
 	
+	@RequestMapping(value="/news/cateDe.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView cateDe(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		List<NewsVo> vo = null;
+		NewsService ns = new NewsService();
+		String cateName = req.getParameter("cate_name");
+		System.out.println("카테고리 상세");
+		
+		vo = ns.selectCateDe(cateName);
+		
+		mv.addObject("vo2", vo);
+		mv.setViewName("whatsNews");
+		
+		return mv;
+	}
 	
 }

@@ -15,6 +15,7 @@ public class NewsDao {
 		sqlSession = Factory.getFactory().openSession();
 	}
 	
+	//크롤링 정보 insert
 	public String insert(NewsVo vo, List<NewsPhotoVo> phoVo) {
 		String msg = "";	
 		System.out.println(vo.getnCompany());
@@ -49,6 +50,7 @@ public class NewsDao {
 		}
 	}
 	
+	//뉴스 최상단 글 조회
 	public List<NewsVo> selectI() {
 		List<NewsVo> vo = new ArrayList<NewsVo>();
 		try {
@@ -58,7 +60,7 @@ public class NewsDao {
 		}
 		return vo;
 	}
-	
+	//뉴스 최상단 사진 조회	
 	public List<NewsPhotoVo> selectP(){
 		List<NewsPhotoVo> photo = new ArrayList<NewsPhotoVo>();
 		try {
@@ -67,6 +69,31 @@ public class NewsDao {
 			e.printStackTrace();
 		}
 		return photo;
+	}
+	
+	//뉴스 카테고리 랜덤 조회
+	public List<NewsVo> selectCateA(){
+		List<NewsVo> vo = new ArrayList<NewsVo>();
+		try {
+			vo = sqlSession.selectList("news.main_cate_All");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	// 뉴스 카테고리 상세 조회
+	public List<NewsVo> selectCateDe(String cateName){
+		List<NewsVo> vo = new ArrayList<NewsVo>();
+		try {
+			vo = sqlSession.selectList("news.main_cate_de", cateName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
 	}
 
 }

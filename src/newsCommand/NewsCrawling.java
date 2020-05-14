@@ -37,7 +37,7 @@ public class NewsCrawling {
 	public void insert() throws IOException{
 		String con = "";
 		String msg = "";
-		String url = "https://news.v.daum.net/v/20200513133902847";
+		String url = "https://news.v.daum.net/v/20200514164006554";
 		String company = "";
 		Document doc = null; 
 		Elements element; // 크롤링한 정보를 담기 위한 객체
@@ -61,12 +61,11 @@ public class NewsCrawling {
 		element = elements.select("span.txt_info");
 		vo.setnRepoter(element.get(0).text());
 		
-		element = elements.select("a");
+		element = elements.select("img");
 		for(Element ele : element) {
 			company = ele.getElementsByAttribute("alt").attr("alt");
+			vo.setnCompany(company);
 		}
-		vo.setnCompany("as");
-		
 		
 		// 카테고리
 		elements = doc.select("div#kakaoContent");
@@ -83,8 +82,8 @@ public class NewsCrawling {
 		vo.setnContent(con);
 		
 		
-		/*Element imgEle = doc.select("p.link_figure").get(cnt);
-		element = imgEle.select("img");*/
+		Element imgEle = doc.select("p.link_figure").get(cnt);
+		element = imgEle.select("img");
 		
 		elements = doc.select("p.link_figure");
 		element = elements.select("img");

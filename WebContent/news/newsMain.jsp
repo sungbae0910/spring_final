@@ -8,10 +8,10 @@
 <!-- css -->
 <!-- <link href="../css/all.min.css" rel="stylesheet">
 <link href="../css/bootstrap.min.css" rel="stylesheet">-->
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/news.css">
+<link rel="stylesheet" href="./css/bootstrap.css">
+<link rel="stylesheet" href="./css/css/news.css">
 <!-- js -->
-<script src="../js/jquery-3.4.1.js"></script>
+<script src="./js/jquery-3.4.1.js"></script>
 </head>
 <body>
 <div id="news_s">
@@ -482,7 +482,7 @@
 <!-- news_s -->
 </div>
 
-<script src="../js/bootstrap.bundle.js"></script>
+<script src="./js/bootstrap.bundle.js"></script>
 <!-- <script src="../js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>

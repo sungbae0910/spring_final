@@ -12,6 +12,13 @@
 		select * from (select * from news_photo order by nserial asc) where rowid in (select max(rowid) from news_photo group by nserial) and rownum &lt;= 9	
 	</select>
 	
+	<select id="main_cate_All" resultMap="mm_news">
+		select * from (select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by dbms_random.value) where rownum &lt;=4) a join news_info b on a.nserial = b.nserial
+	</select>
+	
+	<select id="main_cate_de" parameterType="String" resultMap="mm_news">
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.ncategory='${value}' and rownum &lt;= 4
+	</select>
 	
 	
 	<!-- insert -->
