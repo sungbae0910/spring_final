@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="blog">
+	<select id="lifeTag" resultType="blogController.BlogVo">
+		select brdNo from blog_tag where tContent like '%일상%' or tContent like '%데일리%'
+	</select>
+	<select id="travelTag" resultType="blogController.BlogVo">
+		select brdNo from blog_tag where tContent like '%여행%' or tContent like '%여행에미치다%'
+	</select>
+	<select id="itTag" resultType="blogController.BlogVo">
+		select brdNo from blog_tag where tContent like '%IT%' or tContent like '%it%' or tContent like '%자바%' or 
+		tContent like '%스프링%' or tContent like '%css%' or tContent like '%ajax%'
+	</select>
+</mapper> -->

@@ -3,7 +3,8 @@
 <div id="c_brdWrite">
 	<div class="container">
 	    <div class="row">
-	        <div class="col-md-12">
+	  		<div class="col-xs-1 col-md-2"></div>
+	        <div class="col-xs-10 col-md-8">
 	        	<select id="c_brdCategory" name="c_brdCategory">
 	        		<option value="none">카테고리 없음</option>
 	        		<option value="1">카테고리1</option>
@@ -25,6 +26,7 @@
 	        	<textarea id="c_summernote"></textarea>
 	        	<button type="button" id="c_btnBrdInsert">글 등록</button>
 	        </div>
+	        <div class="col-xs-1 col-md-2"></div>
 	    </div>
 	</div>
 </div>
