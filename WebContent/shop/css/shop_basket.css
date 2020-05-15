@@ -81,14 +81,14 @@
 	display: grid;
 	margin-top: 0.5%;
 }
-#shop_basket .shop_basket_payment .payment{
+#shop_basket .shop_basket_payment .basket_payment{
 	position: relative;
 	border-style: none;
 	text-decoration: underline;
 	text-decoration-color: darkgray;
 	font-size: 180%;
 }
-#shop_basket .shop_basket_payment .cancel{
+#shop_basket .shop_basket_payment .basket_cancel{
 	position: relative;
 	top: -20%;
 	border-style: none;
@@ -142,10 +142,10 @@
     #shop_basket .shop_totPrice #priceNum{
         font-size: 140%;
     }
-    #shop_basket .shop_basket_payment .payment{
+    #shop_basket .shop_basket_payment .basket_payment{
     	font-size: 140%;
  }
-	#shop_basket .shop_basket_payment .cancel{
+	#shop_basket .shop_basket_payment .basket_cancel{
 		font-size: 140%;
 	}
 }
@@ -220,10 +220,10 @@
      #shop_basket .shop_basket_payment{
         left: -3%;
     }
-    #shop_basket .shop_basket_payment .payment{
+    #shop_basket .shop_basket_payment .basket_payment{
         font-size: 120%;
     }
-    #shop_basket .shop_basket_payment .cancel{
+    #shop_basket .shop_basket_payment .basket_cancel{
         font-size: 120%;
     }
 }
@@ -239,12 +239,12 @@
 	background-color: white;
 	color: red;
 }
-#shop_basket .shop_basket_payment .payment:hover, #shop_basket .shop_basket_payment .payment:focus, #shop_basket .shop_basket_payment .payment:visited, #shop_basket .shop_basket_payment .payment:active{
+#shop_basket .shop_basket_payment .basket_payment:hover, #shop_basket .shop_basket_payment .basket_payment:focus, #shop_basket .shop_basket_payment .basket_payment:visited, #shop_basket .shop_basket_payment .basket_payment:active{
 	background-color: white;
 	border-style: none;
 	text-decoration-color: red;
 }
-#shop_basket .shop_basket_payment .cancel:hover, #shop_basket .shop_basket_payment .cancel:focus, #shop_basket .shop_basket_payment .cancel:visited, #shop_basket .shop_basket_payment .cancel:active {
+#shop_basket .shop_basket_payment .basket_cancel:hover, #shop_basket .shop_basket_payment .basket_cancel:focus, #shop_basket .shop_basket_payment .basket_cancel:visited, #shop_basket .shop_basket_payment .basket_cancel:active {
 	background-color: white;
 	border-style: none;
 	text-decoration-color: red;
