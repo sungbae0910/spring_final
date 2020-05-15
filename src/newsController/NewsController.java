@@ -29,11 +29,11 @@ public class NewsController {
 	
 	// 뉴스 최상단 조회
 	@RequestMapping(value="/news/newsMain.news", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView test(HttpServletRequest req) {
+	public ModelAndView topNews(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		// 메인상단 뉴스
 		List<NewsVo> list = null;
-		//카테고리 
+		// 메인상단 사진 
 		List<NewsPhotoVo> list2 = null;
 		NewsService ns = new NewsService();
 		System.out.println("뭐가 문제죠");
@@ -65,6 +65,7 @@ public class NewsController {
 		return mv;
 	}
 	
+	// 뉴스 카테고리별 조회
 	@RequestMapping(value="/news/cateDe.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView cateDe(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -81,4 +82,35 @@ public class NewsController {
 		return mv;
 	}
 	
+	// 많이 본 뉴스 조회
+	@RequestMapping(value="/news/weekly.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView weekly() {
+		ModelAndView mv = new ModelAndView();
+		List<NewsVo> vo = null;
+		NewsService ns = new NewsService();
+		
+		vo = ns.weekly();
+		
+		mv.addObject("vo3", vo);
+		mv.setViewName("weeklyNews");
+		
+		return mv;
+	}
+	
+	// 뉴스 상세보기
+	@RequestMapping(value="/news/newsDetail.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView newsDetail(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		NewsVo vo = null;
+		NewsService ns = new NewsService();
+		String nSerial = req.getParameter("nSerial"); 
+		System.out.println("상세보기");
+		
+		vo = ns.newsDetail(nSerial);
+		
+		mv.addObject("vo", vo);
+		mv.setViewName("newsDetailT");
+		
+		return mv;
+	}
 }

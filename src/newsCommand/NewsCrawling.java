@@ -37,7 +37,7 @@ public class NewsCrawling {
 	public void insert() throws IOException{
 		String con = "";
 		String msg = "";
-		String url = "https://news.v.daum.net/v/20200514164006554";
+		String url = "https://news.v.daum.net/v/20200515140003942";
 		String company = "";
 		Document doc = null; 
 		Elements element; // 크롤링한 정보를 담기 위한 객체
@@ -77,9 +77,10 @@ public class NewsCrawling {
 		elements = doc.select("div.news_view");
 		element = elements.select("div#harmonyContainer p");
 		for(Element e : element) {
-			con += e.text()+"\r";
+			con += e.text()+"<br/>";
 		}
 		vo.setnContent(con);
+		System.out.println(vo.getnContent());
 		
 		
 		Element imgEle = doc.select("p.link_figure").get(cnt);

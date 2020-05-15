@@ -1,5 +1,6 @@
 package newsCommand;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class NewsService {
 		return list;
 	}
 	
-	// 뉴스 카테고리 상세 조회
+	// 뉴스 카테고리별 조회
 	public List<NewsVo> selectCateDe(String cateName){
 		NewsDao dao = new NewsDao();
 		List<NewsVo> list = null;
@@ -51,6 +52,24 @@ public class NewsService {
 		list = dao.selectCateDe(cateName);
 		
 		return list;
+	}
+	
+	public List<NewsVo> weekly(){
+		NewsDao dao = new NewsDao();
+		List<NewsVo> vo = null;
+		
+		vo = dao.weekly();
+		
+		return vo;
+	}
+	
+	public NewsVo newsDetail(String nSerial){
+		NewsVo vo = null;
+		NewsDao dao = new NewsDao();
+		
+		vo = dao.newsDetail(nSerial);
+		
+		return vo;
 	}
 	
 	

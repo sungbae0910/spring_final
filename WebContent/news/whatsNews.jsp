@@ -6,8 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="./js/jquery-3.4.1.js"></script>
+<script src="./js/news.js"></script>
 </head>
 <body>
+    <form id="tes_s" class="tes_s" method="post">
+    	<input type="hidden" name="cate_name" class='cate_name' /> 
+    	<input type="hidden" name="nSerial" class="nSerial" />
    <!-- Whats New Start -->
     <section class="whats-news-area pt-50 pb-20">
         <div class="container">
@@ -45,6 +50,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo}" varStatus="ii">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -54,7 +60,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">${i.nCategory}</span>
-	                                                    <h4><a href="#">${i.nTitle}</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h4>
 	                                                </div>
 	                                            </div>
                                         	</div>
@@ -66,7 +72,8 @@
                             <div class="tab-pane fade nh2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
-                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}">
+                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -76,7 +83,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">${i.nCategory}</span>
-	                                                    <h4><a href="#">${i.nTitle}</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -88,7 +95,8 @@
                             <div class="tab-pane fade nh3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
-                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}">
+                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -98,7 +106,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -110,7 +118,8 @@
                             <div class="tab-pane fade nh4" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
-                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}">
+                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -120,7 +129,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -132,7 +141,8 @@
                             <div class="tab-pane fade nh5" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-Sports">
                                 <div class="whats-news-caption">
                                     <div class="row">
-                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}">
+                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -142,7 +152,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -154,7 +164,8 @@
                             <div class="tab-pane fade nh6" id="nav-techno" role="tabpanel" aria-labelledby="nav-technology">
                                 <div class="whats-news-caption">
                                     <div class="row">
-                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}">
+                                    	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -164,7 +175,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -187,5 +198,6 @@
         </div>
     </section>
     <!-- Whats New End -->
+    </form>
 </body>
 </html>

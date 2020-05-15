@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,11 +144,12 @@
 			<div class="col-sm">
 				<div id="cSub" class="hcg_media_pc_cSub">
 					<div class="head_view">
-						<div class="info_cp">아시아경제</div>
-						<h3 class="tit_view">박수현, 임종석 불출마 '뒷이야기' 공개...</h3>	
+						<div class="info_cp">${vo.nCompany}</div>
+						<h3 class="tit_view">${vo.nTitle }</h3>	
 						<span class="info_view">
-							<span class="txt_info">강나훔</span>
-							<span class="txt_info">입력 2020.05.05. 12:33</span>
+							<span class="txt_info">${vo.nRepoter}</span>
+							<fmt:formatDate value="${vo.nDate}" pattern="yyyy-MM-dd" var="fmtDate"/>
+							<span class="txt_info">${fmtDate}</span>
 							<button id="alexCounter" class="emph_g2 link_cmt">
 								댓글<span class="alex-count-area">5</span>개						
 							</button>
@@ -168,86 +170,12 @@
 					<!-- Trending Tittle -->
 					<div class="about-right mb-90">
 						<figure class="figure">
-							<img src="./img/landscape.jpg"
+							<img src="./img/newsImages/${vo.photos[0].pName}"
 								class="figure-img img-fluid rounded" alt="...">
-							<figcaption class="figure-caption">A caption for the
-								above image.</figcaption>
+							<figcaption class="figure-caption">${vo.photos[0].pContent }</figcaption>
 						</figure>
-						<div class="section-tittle mb-30 pt-30">
-							<h3>Here come the moms in space</h3>
-						</div>
 						<div class="about-prea">
-							<p class="about-pera1 mb-25">Moms are like…buttons? Moms are
-								like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-							<p class="about-pera1 mb-25">Moms are like…buttons? Moms are
-								like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-							<p class="about-pera1 mb-25">My hero when I was a kid was my
-								mom. Same for everyone I knew. Moms are untouchable. They’re
-								elegant, smart, beautiful, kind…everything we want to be. At 29
-								years old, my favorite compliment is being told that I look like
-								my mom. Seeing myself in her image, like this daughter up top,
-								makes me so proud of how far I’ve come, and so thankful for
-								where I come from. the refractor telescope uses a convex lens to
-								focus the light on the eyepiece. The reflector telescope has a
-								concave lens which means it bends in. It uses mirrors to focus
-								the image that you eventually see. Collimation is a term for how
-								well tuned the telescope is to give you a good clear image of
-								what you are looking at. You want your telescope to have good
-								collimation so you are not getting a false image of the
-								celestial body. Aperture is a fancy word for how big the lens of
-								your telescope is. But it’s an important word because the
-								aperture of the lens is the key to how powerful your telescope
-								is. Magnification has nothing to do with it, its all in the
-								aperture. Focuser is the housing that keeps the eyepiece of the
-								telescope, or what you will look through, in place. The focuser
-								has to be stable and in good repair for you to have an image you
-								can rely on. Mount and Wedge. Both of these terms refer to the
-								tripod your telescope sits on. The mount is the actual tripod
-								and the wedge is the device that lets you attach the telescope
-								to the mount. Moms are like…buttons? Moms are like glue. Moms
-								are like pizza crusts. Moms are the ones who make sure things
-								happen—from birth to school lunch.</p>
-						</div>
-						<div class="section-tittle">
-							<h3>Unordered list style?</h3>
-						</div>
-						<div class="about-prea">
-							<p class="about-pera1 mb-25">The refractor telescope uses a
-								convex lens to focus the light on the eyepiece. The reflector
-								telescope has a concave lens which means it bends in. It uses
-								mirrors to focus the image that you eventually see.</p>
-							<p class="about-pera1 mb-25">Collimation is a term for how
-								well tuned the telescope is to give you a good clear image of
-								what you are looking at. You want your telescope to have good
-								collimation so you are not getting a false image of the
-								celestial body.</p>
-							<p class="about-pera1 mb-25">My hero when I was a kid was my
-								mom. Same for everyone I knew. Moms are untouchable. They’re
-								elegant, smart, beautiful, kind…everything we want to be. At 29
-								years old, my favorite compliment is being told that I look like
-								my mom. Seeing myself in her image, like this daughter up top,
-								makes me so proud of how far I’ve come, and so thankful for
-								where I come from. the refractor telescope uses a convex lens to
-								focus the light on the eyepiece. The reflector telescope has a
-								concave lens which means it bends in. It uses mirrors to focus
-								the image that you eventually see. Collimation is a term fo Moms
-								are like…buttons? Moms are like glue. Moms are like pizza
-								crusts. Moms are the ones who make sure things happen—from birth
-								to school lunch.</p>
-							<p class="about-pera1 mb-25">Mount and Wedge. Both of these
-								terms refer to the tripod your telescope sits on. The mount is
-								the actual tripod and the wedge is the device that lets you
-								attach the telescope to the mount. Moms are like…buttons? Moms
-								are like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-							<p class="about-pera1 mb-25">Mount and Wedge. Both of these
-								terms refer to the tripod your telescope sits on. The mount is
-								the actual tripod and the wedge is the device that lets you
-								attach the telescope to the mount. Moms are like…buttons? Moms
-								are like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
+							<p class="about-pera1 mb-25">${vo.nContent }</p>
 						</div>
 					</div>
 					<!-- From -->

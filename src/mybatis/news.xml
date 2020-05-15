@@ -9,7 +9,7 @@
 		select * from (select * from news_info order by nserial asc) where rownum &lt;= 9
 	</select>
 	<select id="main_t_news_p" resultType="newsController.NewsPhotoVo">
-		select * from (select * from news_photo order by nserial asc) where rowid in (select max(rowid) from news_photo group by nserial) and rownum &lt;= 9	
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial asc  ) where rownum &lt;= 9	
 	</select>
 	
 	<select id="main_cate_All" resultMap="mm_news">
@@ -20,10 +20,24 @@
 		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.ncategory='${value}' and rownum &lt;= 4
 	</select>
 	
+	<select id="main_hit_desc" resultMap="mm_news">
+	select * from 
+		(select * from 
+			(select * from news_photo where rowid in 
+			 	(select max(rowid) 
+			 	 from news_photo group by nserial)
+			 )a join news_info b on a.nserial = b.nserial order by nhit desc
+		 ) where rownum &lt;=4
+	</select>
+	
+	<select id="detailView" parameterType="String" resultMap="mm_news">
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.nSerial='${value}'
+	</select>
+	
 	
 	<!-- insert -->
 	<insert id='news_insert' parameterType="newsController.NewsVo">
-		insert into news_info values(seq_news_serial.nextval, #{nTitle}, #{nContent}, #{nCompany:VARCHAR}, sysdate, #{nRepoter}, #{nCategory}, 0, 0)
+		insert into news_info values(seq_news_serial.nextval, #{nTitle}, #{nContent:VARCHAR}, #{nCompany}, sysdate, #{nRepoter}, #{nCategory}, 0, 0)
 	</insert>
 	
 	<insert id='news_photo_insert' parameterType="newsController.NewsPhotoVo">

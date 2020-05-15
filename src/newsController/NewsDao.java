@@ -95,5 +95,27 @@ public class NewsDao {
 		
 		return vo;
 	}
+	
+	public List<NewsVo> weekly(){
+		List<NewsVo> vo = new ArrayList<NewsVo>();
+		try {
+			vo = sqlSession.selectList("news.main_hit_desc");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
+	public NewsVo newsDetail(String nSerial){
+		NewsVo vo = new NewsVo();
+		
+		try {
+			vo = sqlSession.selectOne("news.detailView", nSerial);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
 
 }

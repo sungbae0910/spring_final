@@ -15,7 +15,8 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <!-- Trending Top -->
-                        <c:forEach begin="0" end="0" var="i" items="${list}">
+                        <c:forEach begin="0" end="0" var="i" items="${list}" varStatus="ii">
+                        <input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
 	                        <div class="trending-top mb-30">
 	                            <div class="trend-top-img">
 									<c:forEach begin="0" end="0" var="pho" items="${photo}">	                            
@@ -23,7 +24,7 @@
 	                                </c:forEach>
 	                                <div class="trend-top-cap">
 	                                    <span>${i.nCompany}</span>
-	                                    <h2><a href="#">${i.nTitle}</a></h2>
+	                                    <h2><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h2>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -32,6 +33,7 @@
                         <div class="trending-bottom">
                             <div class="row">
                             	<c:forEach begin="1" end="3" var="i" items="${list}" varStatus="ii">
+                            	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"> 
 	                                <div class="col-lg-4">
 		                                <div class="single-bottom mb-35">
 		                                    <div class="trend-bottom-img mb-30">
@@ -41,7 +43,7 @@
 		                                    </div>
 		                                    <div class="trend-bottom-cap">
 		                                        <span class="color1">${i.nCompany}</span>
-		                                        <h4><a href="#">${i.nTitle}</a></h4>
+		                                        <h4><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h4>
 		                                    </div>
 		                                </div>
 	                                </div>
@@ -52,6 +54,7 @@
                     <!-- Riht content -->
                     <div class="col-lg-4">
                     	<c:forEach begin="4" end="8" var="i" items="${list}" varStatus="ii">
+                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"> 
 	                        <div class="trand-right-single d-flex">
 	                            <div class="trand-right-img">
 	                            	<c:forEach begin="${ii.index}" end="${ii.index}" var="pho" items="${photo}">
@@ -60,7 +63,7 @@
 	                            </div>
 	                            <div class="trand-right-cap">
 	                                <span class="color1">${i.nCompany}</span>
-	                                <h4><a href="details.html">${i.nTitle}</a></h4>
+	                                <h4><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h4>
 	                            </div>
 	                        </div>
                         </c:forEach>

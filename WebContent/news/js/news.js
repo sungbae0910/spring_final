@@ -57,11 +57,12 @@ let hide_come = function(replyCount){
 let go_all = function(){
 	go_home();
 	cate_all();
+	weekly();
 }
 
 let go_home = function(){
 	/*$('#news_s').attr('action', 'newsMain.news').submit();*/
-	let param = $('#tes_s').serialize();
+	let param = $('#tess_s').serialize();
 	$.post("newsMain.news", param, function(data, status){
 		$('#top_news_s').html(data);
 	})
@@ -84,6 +85,24 @@ let cate_detail = function(detail, n){
 		cate_ui(n);
 	});
 }
+
+let news_detail = function(serial){
+	let nSerial = $('.serial'+serial).val();
+	$('.nSerial').val(nSerial);
+	$('#tes_s').attr('action', 'newsDetail.news').submit();
+}
+
+let weekly = function(){
+	let param = $('#tess_s').serialize();
+	$.post("weekly.news", param, function(data, status){
+		$('#weekly_s').html(data);
+		$('#slick-slide-control00').trigger("click");
+	})
+}
+
+/*let weekly = function(){
+	$('#tes_s').attr('action', 'weekly.news').submit();
+}*/
 
 let cate_ui = function(n){
 	if(n=='n2'){

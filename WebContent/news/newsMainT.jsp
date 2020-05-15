@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
                                 </div>
                                 <div class="header-info-right">
                                     <ul class="header-social">    
-                                        <li><a href="#" class="ins_s" onclick="cate_all()"><img src="./img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
+                                        <li><a href="#" class="ins_s" onclick="weekly()"><img src="./img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
                                         <li><a href="#"><img src="./img/icon/blog_s.png" style="width:25px; height:25px;"></a></li>
                                     </ul>
                                 </div>	                                
@@ -127,88 +128,28 @@
     </header>
 
     <main>
+    <form id="tess_s" method="post">
     
-    <form id="tes_s" class="tes_s" method="post">
-    	<input type="hidden" name="cate_name" class='cate_name' /> 
     </form>
+
+    <!-- top 뉴스 시작 -->
 	<div id="top_news_s">
 	
 	</div>
+	<!-- top 뉴스 끝 -->
+	
+	<!-- 카테고리별 뉴스 시작 -->
 	<div id="category_s">
 		
 	</div>
-    <!--   Weekly2-News start -->
-    <div class="weekly2-news-area  weekly2-pading gray-bg">
-        <div class="container">
-            <div class="weekly2-wrapper">
-                <!-- section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle mb-30">
-                            <h3>많이 본 뉴스</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="weekly2-news-active dot-style d-flex dot-style">
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="./img/news/weekly2News1.jpg" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Corporate</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div> 
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="./img/news/weekly2News2.jpg" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Event night</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div> 
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="./img/news/weekly2News3.jpg" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Corporate</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div>
-                             <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="./img/news/weekly2News4.jpg" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Event time</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div> 
-                             <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="./img/news/weekly2News4.jpg" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Corporate</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>           
-    <!-- End Weekly-News -->
+	<!-- 카테고리별 뉴스 끝 -->
+	
+	<!-- 많이 본 뉴스 시작 -->
+	<div id="weekly_s">
+	
+	</div>
+	<!-- 많이 본 뉴스 끝 -->
+
     </main>
     
    <footer>
@@ -241,7 +182,6 @@
    </footer>
    
 <!-- JS here -->
-
 <!-- All JS Custom Plugins Link Here here -->
       <script src="./js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
@@ -281,6 +221,7 @@
       <script src="./js/plugins.js"></script>
       <script src="./js/main.js"></script>
 <script>
+	go_all();
 	news()
 </script>        
 </body>
