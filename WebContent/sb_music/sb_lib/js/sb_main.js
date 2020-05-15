@@ -61,9 +61,16 @@ var topP = function(){
 	$('#changePage').load('sb_top.mu');
 }
 
-function nice(){
+
+
+
+
+function nice(){ // 나중에 지우자궁
 	alert(audio.src);
 }
+
+
+
 
 
 
@@ -177,7 +184,7 @@ $(document).ready(function() {
 		}
 	})
 	
-
+	
 	
 	
 	$('#myCarousel').carousel({

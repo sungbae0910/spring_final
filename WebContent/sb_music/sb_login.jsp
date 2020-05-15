@@ -43,12 +43,10 @@
 				<button type="button" id="BtnRegister">회원가입</button>
 				<br><br>
 				<div id="findId">
-					<span>아이디 찾기</span>/<span>비밀번호 찾기</span>
+					<span id="">아이디 찾기</span>/<span id="">비밀번호 찾기</span>
 				</div>
 			</form>
 		</div>
-	
-	
 	</div>
 
 	

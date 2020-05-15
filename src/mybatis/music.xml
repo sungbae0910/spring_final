@@ -43,15 +43,23 @@
 		where MUSIC_SERIAL = ${_parameter}
 	</select>
 	
-	<!-- <resultMap type="mybatis.MusicVo" id="MusicVo">
-		<result property="music_serial" column="music_serial"/>
-		<result property="music_name" column="music_name"/>
-		<result property="lylics" column="lylics"/>
-		<result property="album_serial" column="album_serial"/>
-		<result property="genre" column="genre"/>
-		<result property="enter" column="enter"/>
-		<result property="company" column="company"/>
-		<result property="music_photo" column="music_photo"/>
-	</resultMap> -->
+	<select id="playList" parameterType="String" resultType="mybatis.MusicListVo">
+		select * from sb_playlist where mId = ${_parameter}
+		
+	</select>
 	
+	
+	<select id="mL_music" parameterType="hashmap" resultType="hashmap">
+	
+		select * 
+		from sb_music 
+		where music_serial in 
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+			{_item[index]}
+		</foreach>
+		
+		
+	</select>
+	
+
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import bean.MusicDao;
+import mybatis.MusicListVo;
 import mybatis.MusicVo;
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
@@ -104,6 +105,31 @@ public class MusicController {
 		return mv;
 	}
 	
-	
-	
+	@RequestMapping(value="/sb_music/sb_playList.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody ModelAndView playList(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String mId = req.getParameter("mId");
+		
+		MusicListVo vo = dao.playList(mId);
+
+		String ml = vo.getMusic_list();
+		
+		String[] num = ml.split(",");
+		int[] nums = null;
+		
+		for(int i=0; i<num.length; i++) {
+			nums[i] = Integer.parseInt(num[i]);
+		}
+		
+		
+		
+		List<MusicVo> list = dao.pL_music(nums);
+		
+		
+		mv.addObject("playList", list);
+		mv.setViewName("sb_main");
+		
+		return mv;
+	}
 }

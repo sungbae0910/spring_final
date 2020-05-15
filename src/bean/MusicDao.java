@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.Factory;
+import mybatis.MusicListVo;
 import mybatis.MusicVo;
 
 public class MusicDao {
@@ -77,6 +78,33 @@ public class MusicDao {
 		} finally {
 			return vo;
 		}
+	}
+	
+	public MusicListVo playList(String mId){
+		MusicListVo list = null;
+		
+		try {
+			list = sqlSession.selectOne("music.playList", mId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public List<MusicVo> pL_music(int[] num) {
+		List<MusicVo> vo = null;
+		
+		try {
+			vo = sqlSession.selectOne("music.pL_music", num);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return vo;			
+		}
+		
 	}
 	
 }

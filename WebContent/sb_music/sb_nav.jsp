@@ -105,7 +105,7 @@
 										<img src="../sb_music/sb_lib/album/방탄-on.PNG" width="55px">
 									</td>
 									<td>
-										<span>곡 이름 ${v }</span>
+										<span>곡 이름 ${ }</span>
 										<br>
 										<span>가수명 ${v } ♬플레이타임</span></td>
 									<td>
