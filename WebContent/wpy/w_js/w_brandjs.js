@@ -7,7 +7,7 @@ let w_btnFunc = function(){
 	$('#btnFind').click(function() {
 		frm_brd.enctype='';
 		let param = $('#frm_food').serialize();
-		$.post("select.brd", param, function(data, state) {
+		$.post("w_menu.", param, function(data, state) {
 			$('#main').html(data)
 		})
 	});
