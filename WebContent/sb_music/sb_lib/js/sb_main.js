@@ -74,6 +74,7 @@ function nice(){ // 나중에 지우자궁
 
 
 
+
 function player(){
 	  audio.pause(); // 시작할때 다른 음악 끄기
 	  var playBtn = document.getElementById("play-button");
@@ -154,6 +155,8 @@ function showVolume(vol){
 var nav_flag = 0;
 $("#show_list").hide();
 $("#playerImg").hide();
+
+
 function nav_list(){
 	if(nav_flag == 0){
 		$("#show_list").hide(1000);
@@ -164,9 +167,63 @@ function nav_list(){
 		$("#playerImg").show(1000);
 		nav_flag = 0;
 	}
-	
+	playList();
 }
 
+
+
+
+function playList(){
+	let param = $('#frm_top').serialize();
+
+	$.ajax({
+		url : 'sb_playList.mu',
+		data : param,
+		type: 'POST',
+		dataType: "json",
+		success : function(data){
+			
+			var tbody = $('#pl_tbody');
+			
+			
+			$('#pl_tbody').empty();
+			
+			
+			$.each( data,function(index , val){
+				
+				
+				var v = $('#as').val(); 
+				
+				if(v.length > 0){
+					$('#as').val( $('#as').val() + ',' + val.music_serial);					
+				}else{
+					$('#as').val(val.music_serial);
+				}
+				
+				console.log(v);
+				
+				tbody.append(
+						"<tr>" +
+						"<td> <span>" + index + "</span> </td>" +
+						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px'>" +
+						"</td>" +
+						"<td> <span>" + val.music_name + "</span>" +
+						"<br>" +
+						"<span>" + val.artist_name + "</span> </td>" +
+						"<td> <span id='tb_delete'>X</span>" +
+						"</td>" +
+						"</tr>"
+				)
+			})
+		},
+		error : function(request, status, error){
+			alert(request.status + "\n에러메시지:" + error);
+		}
+		
+	})
+	
+	
+}
 
 
 

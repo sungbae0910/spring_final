@@ -97,7 +97,7 @@ public class MusicDao {
 		List<MusicVo> vo = null;
 		
 		try {
-			vo = sqlSession.selectOne("music.pL_music", num);
+			vo = sqlSession.selectList("music.mL_music", num);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

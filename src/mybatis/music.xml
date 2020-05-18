@@ -44,18 +44,20 @@
 	</select>
 	
 	<select id="playList" parameterType="String" resultType="mybatis.MusicListVo">
-		select * from sb_playlist where mId = ${_parameter}
+		select * from sb_playlist where mId = '${_parameter}'
 		
 	</select>
 	
 	
-	<select id="mL_music" parameterType="hashmap" resultType="hashmap">
+	<select id="mL_music" parameterType="java.util.ArrayList" resultType="mybatis.MusicVo">
 	
-		select * 
-		from sb_music 
+		select A.*, B.album_photo 
+		from sb_music A
+		join sb_album B
+		on a.album_serial = b.album_serial
 		where music_serial in 
 		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
-			{_item[index]}
+			#{item}
 		</foreach>
 		
 		

@@ -129,13 +129,7 @@
 			</div>
 		</div>
 		
-		<form action="frm_top" id="frm_top" method="post">
-				<input type="hidden" name="m_serial" id="m_serial">
-				<input type="hidden" name="m_music" id="m_music">
-				<input type="hidden" name="m_artist" id="m_artist">
-				<input type="hidden" name="m_photo" id="m_photo">
-				<input type="hidden" name="mId" id="mId" value="id">
-		</form>
+		
 		
 		<c:forEach var="v" items="${top10 }" varStatus="s">
 			<div id="top10_select">

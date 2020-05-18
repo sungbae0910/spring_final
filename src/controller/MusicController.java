@@ -1,24 +1,22 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import bean.MusicDao;
 import mybatis.MusicListVo;
 import mybatis.MusicVo;
-import net.sf.json.JSON;
-import net.sf.json.JSONArray;
 
 @Controller
 public class MusicController {
@@ -106,30 +104,43 @@ public class MusicController {
 	}
 	
 	@RequestMapping(value="/sb_music/sb_playList.mu", method= {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ModelAndView playList(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public String playList(HttpServletRequest req) {
+		
+		System.out.println("¿È");
+		
+		Gson gson = new GsonBuilder().create();
+		
 		
 		String mId = req.getParameter("mId");
+		System.out.println(mId);
 		
 		MusicListVo vo = dao.playList(mId);
-
+		System.out.println(vo.getMusic_list());
+		
+		
 		String ml = vo.getMusic_list();
+		System.out.println("ml: " + ml);
 		
 		String[] num = ml.split(",");
-		int[] nums = null;
+		
+		
+		int[] nums = new int[num.length];
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i]);
+			nums[i] = Integer.parseInt(num[i].trim());
 		}
 		
-		
+	
 		
 		List<MusicVo> list = dao.pL_music(nums);
 		
+		String list2 =  gson.toJson(list);
 		
-		mv.addObject("playList", list);
-		mv.setViewName("sb_main");
 		
-		return mv;
+		System.out.println(list2);
+		
+		return list2;
+		
 	}
 }

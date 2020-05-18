@@ -96,23 +96,24 @@
 							<th scope="col">음악 삭제</th>
 						</tr>
 						</thead>
-						<c:forEach var="v" begin="1" end="20">
-								<tr>
+						<tbody id="pl_tbody">
+							<%-- 	<tr id="pl_each">
 									<td>
-										<span>${v }</span>
+										<span>${s.count }</span>
 									</td>
 									<td>
 										<img src="../sb_music/sb_lib/album/방탄-on.PNG" width="55px">
 									</td>
 									<td>
-										<span>곡 이름 ${ }</span>
+										<span>${v.music_name }</span>
 										<br>
-										<span>가수명 ${v } ♬플레이타임</span></td>
+										<span>${v.artist_name } ♬플레이타임</span>
+									</td>
 									<td>
 										<span id="tb_delete">X</span>
 									</td>
-								</tr>
-						</c:forEach>
+								</tr> --%>
+						</tbody>
 					</table>
 				</div>
 			</div>
