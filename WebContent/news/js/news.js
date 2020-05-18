@@ -14,32 +14,6 @@ let news = function(){
 		$('#tes_s').attr('action', '../newsDetailT.news').submit();
 	})
 	
-/*	//카테고리(사회)
-	$('#nav-profile-tab').click(function(){
-		$('.cate_name').val('사회');
-		let ee = $('.cate_name').val();
-		alert('asd');
-	})
-	
-	//카테고리(경제)
-	$('#nav-contact-tab').click(function(){
-		alert('asd');
-	})	
-	
-	//카테고리(스포츠)
-	$('#nav-last-tab').click(function(){
-		alert('asd');
-	})	
-	
-	//카테고리(IT)
-	$('#nav-Sports').click(function(){
-		alert('asd');
-	})	
-	
-	//카테고리(문화)
-	$('#nav-technology').click(function(){
-		alert('asd');
-	})	*/
 }
 
 let hide_come = function(replyCount){
@@ -92,11 +66,26 @@ let news_detail = function(serial){
 	$('#tes_s').attr('action', 'newsDetail.news').submit();
 }
 
+let news_detail_side = function(category){
+	$('.nCategory').val(category);
+	
+	let param = $('#tes_s').serialize();
+	$.post("newsDetailSide.news", param, function(data, status){
+		$('#detail_side_s').html(data);
+	})
+}
+
 let weekly = function(){
 	let param = $('#tess_s').serialize();
 	$.post("weekly.news", param, function(data, status){
 		$('#weekly_s').html(data);
 		$('#slick-slide-control00').trigger("click");
+	})
+}
+
+let news_comment = function(){
+	let param = $('#tes_s').serialize();
+	$.post("comment.news", param, function(data, status){
 	})
 }
 

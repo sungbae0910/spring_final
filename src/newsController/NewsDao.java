@@ -117,5 +117,60 @@ public class NewsDao {
 		
 		return vo;
 	}
+	
+	public List<NewsVo> newsDetailSide(String nCategory) {
+		List<NewsVo> list = new ArrayList<NewsVo>();
+		
+		try {
+			list = sqlSession.selectList("detail_side", nCategory);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<CommentVo> commentView(String nSerial){
+		List<CommentVo> comment = new ArrayList<CommentVo>();
+		
+		try {
+			comment = sqlSession.selectList("news.comment_List", nSerial);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return comment;
+	}
+	
+	public void commentInsert(CommentVo vo ) {
+		
+		try {
+			int cnt = sqlSession.insert("news.comment_insert", vo);
+			
+			if(cnt<1) {
+				throw new Exception("댓글입력중 오류 발생");
+			}
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public List<String> commentCnt(String nSerial) {
+		List<String> rvList = null;
+		try {
+			List<CommentVo> comment = sqlSession.selectList("news.comment_List", nSerial);
+			
+			for(CommentVo vo: comment) {
+				int cSerial = vo.getcSerial();
+				rvList = sqlSession.selectList("news.comment_rv", cSerial);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return rvList;
+	}
 
 }

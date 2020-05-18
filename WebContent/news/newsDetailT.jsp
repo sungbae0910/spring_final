@@ -33,7 +33,10 @@
 <script src="./js/news.js"></script>
 </head>
 <body>
-
+<form id="tes_s" method="post">
+	<input type="hidden" name="nCategory" class="nCategory"/>
+	<input type="hidden" name="nSerial" class="nSerial" value="${vo.nSerial }"/>
+	<input type="hidden" name="mName" value="${sessionScope.mName}"/>
 	<!-- Preloader Start -->
 	<div id="preloader-active">
 		<div
@@ -115,17 +118,6 @@
 									</nav>
 								</div>
 							</div>
-							<div class="col-xl-2 col-lg-2 col-md-4">
-								<div class="header-right-btn f-right d-none d-lg-block">
-									<i class="fas fa-search special-tag"></i>
-									<div class="search-box">
-										<form action="#">
-											<input type="text" placeholder="Search">
-
-										</form>
-									</div>
-								</div>
-							</div>
 							<!-- Mobile Menu -->
 							<div class="col-12">
 								<div class="mobile_menu d-block d-md-none"></div>
@@ -184,12 +176,10 @@
 						<h5>댓글 48개</h5>
 					</div>
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="댓글을 입력해주세요"
-							aria-label="Recipient's username"
-							aria-describedby="button-addon2">
+						<input type="text" name="content" class="form-control cContent" placeholder="댓글을 입력해주세요"/>
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" type="button"
-								id="button-addon2">입력</button>
+								id="button-addon2" onclick="news_comment()">입력</button>
 						</div>
 					</div>
 					<div class="cmt_box">
@@ -198,7 +188,9 @@
 							<li>등록순</li>
 						</ul>
 					</div>
-					<c:forEach begin="1" end="5" var="i" varStatus="ii">
+					<div id="commnet_s">
+					<c:forEach var="i" items="${comment}" varStatus="ii">
+					<fmt:formatDate value="${i.cDate}" var="fmtDate" pattern="yyyy-MM-dd"/>
 						<div class="comments-area">
 							<div class="comment-list">
 								<div class="single-comment justify-content-between d-flex">
@@ -207,21 +199,38 @@
 											<div class="d-flex justify-content-between">
 												<div class="d-flex align-items-center">
 													<h5>
-														<a href="#">이성배</a>
+														<a href="#">${i.mName}</a>
 													</h5>
-													<p class="date">2020-05-07 01:46</p>
+													<p class="date">${fmtDate}</p>
 												</div>
 											</div>
-											<p class="comment">디자인</p>
+											<p class="comment">${i.cContent}</p>
 											<div class="d-flex justify-content-between">
-												<div class="reply-btn reply_count${ii.index}"
-													onclick='hide_come(${ii.index})'>답글 3</div>
+												<c:forEach items="${cnt}" var="cn">
+													<div class="reply-btn reply_count${ii.index}" onclick='hide_come(${ii.index})'>
+														<c:choose>
+															<c:when test="${cn<=0}">
+																답글 0
+															</c:when>
+															<c:otherwise>
+																답글 ${cn}
+															</c:otherwise>
+														</c:choose>
+													</div>
+												</c:forEach>
 											</div>
 										</div>
 									</div>
 									<div class="test_s">
+										<div class="dropdown img_cmt2">
+											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<img src="./img/icon/vertical-dots.png" > 
+											</a>
+											<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
+												<a class="dropdown-item" href="#">삭제</a>
+											</div>
+										</div>									
 										<div>
-											<br />
 											<br />
 											<br />
 										</div>
@@ -232,14 +241,14 @@
 													<span class="img_cmt ico_recomm bounce"><img
 														src="./img/news/unlike.png"
 														style="width: 18px; height: 18px;"></span> <span
-														class="num_txt">200</span>
+														class="num_txt">${i.cLike}</span>
 												</button>
 												<button class="btn_g btn_oppose"
 													style="border: none; cursor: pointer;">
 													<span class="img_cmt ico_oppose bounce"><img
 														src="./img/news/like.png"
 														style="width: 18px; height: 18px;"></span> <span
-														class="num_txt">5</span>
+														class="num_txt">${i.cDiLike}</span>
 												</button>
 											</span>
 										</div>
@@ -282,60 +291,51 @@
 												<p class="comment">디자인</p>
 											</div>
 										</div>
-									</div>
-									<hr class="hr_s" />
-									<div class="single-comment justify-content-between d-flex">
-										<div class="user justify-content-between d-flex">
-											<div class="desc">
-												<div class="d-flex justify-content-between">
-													<svg class="bi bi-arrow-return-right" width="1em"
-														height="1em" viewBox="0 0 16 16" fill="currentColor"
-														xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd"
-															d="M10.146 5.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 9l-2.647-2.646a.5.5 0 010-.708z"
-															clip-rule="evenodd" />
-												<path fill-rule="evenodd"
-															d="M3 2.5a.5.5 0 00-.5.5v4A2.5 2.5 0 005 9.5h8.5a.5.5 0 000-1H5A1.5 1.5 0 013.5 7V3a.5.5 0 00-.5-.5z"
-															clip-rule="evenodd" />
-											</svg>
-													<div class="d-flex align-items-center">
-														<h5>
-															<a href="#">이성배</a>
-														</h5>
-														<p class="date">2020-05-07 01:46</p>
-													</div>
-												</div>
-												<p class="comment">디자인</p>
+										<!-- 삭제버튼 -->
+										<div class="dropdown img_cmt2">
+											<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<img src="./img/icon/vertical-dots.png" > 
+											</a>
+											<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
+												<a class="dropdown-item" href="#">삭제</a>
 											</div>
 										</div>
+										<!-- 삭제버튼  끝-->
 									</div>
+									<hr class="hr_s" />
 								</div>
 							</div>
 							<!-- 대댓글 끝-->
 						</div>
 					</c:forEach>
+					</div>
 				</div>
 				<div class="col-lg-4">
 					<!-- New Poster -->
-					<aside class="single_sidebar_widget post_category_widget d-none d-lg-block">
-						<div class="top_view_s">
-							<h3 class="widget_title">많이 본 뉴스</h3>
-							<div class="view_sub_s">
-								<span>뉴스</span>
-								<span>연예</span>
-								<span>스포츠</span>
+					<!-- Detial Side 영역 -->
+					<div id="detail_side_s">
+						<aside class="single_sidebar_widget post_category_widget d-none d-lg-block">
+							<div class="top_view_s">
+								<h3 class="widget_title">많이 본 뉴스</h3>
+								<div class="view_sub_s">
+									<span onclick="news_detail_side('경제')">경제</span>
+									<span onclick="news_detail_side('정치')">정치</span>
+									<span onclick="news_detail_side('IT')">IT</span>
+								</div>
 							</div>
-						</div>
-						<div class="">
-							<ol class="ordered-list">
-								<li><span>Fta Keys</span></li>
-								<li><span>For Women Only Your Computer Usage</span></li>
-								<li><span>Facts Why Inkjet Printing Is Very Appealing</span></li>
-								<li><span>Dealing With Technical Support 10 Useful Tips</span></li>
-								<li><span>Make Myspace Your Best Designed Space</span></li>
-							</ol>
-						</div>
-					</aside>					
+							<div class="">
+								<ol class="ordered-list">
+									<c:forEach var="i" items="${list}" varStatus="ii">
+										<li onclick="news_detail('${ii.index}')">
+											<span>${i.nTitle}</span>
+											<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"/>
+										</li>
+									</c:forEach>
+								</ol>
+							</div>
+						</aside>						
+					</div>
+					<!-- Detail Side 영역 -->					
 					<div class="news-poster d-none d-lg-block">
 						<img src="./img/news/news_card.jpg" alt="">
 					</div>
@@ -402,7 +402,7 @@
 		</div>
 		<!-- Footer End-->
 	</footer>
-
+</form>
 	<!-- JS here -->
 
 	<!-- All JS Custom Plugins Link Here here -->

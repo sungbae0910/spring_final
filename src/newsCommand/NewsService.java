@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
+import newsController.CommentVo;
 import newsController.NewsDao;
 import newsController.NewsPhotoVo;
 import newsController.NewsVo;
@@ -71,6 +72,41 @@ public class NewsService {
 		
 		return vo;
 	}
+	
+	public List<NewsVo> newsDetailSide(String nCategory) {
+		List<NewsVo> list = null;
+		NewsDao dao = new NewsDao();
+		
+		list = dao.newsDetailSide(nCategory);
+		
+		return list;
+	}
+
+	/* 댓글 대댓글 부분 */
+	public List<CommentVo> commentView(String nSerial){
+		List<CommentVo> comment = null;
+		NewsDao dao = new NewsDao();
+		
+		comment = dao.commentView(nSerial);
+		
+		return comment;
+	}
+		
+	public void commentInsert(CommentVo vo) {
+		NewsDao dao = new NewsDao();
+		
+		dao.commentInsert(vo);
+	}
+	
+	public List<String> commentCnt(String nSerial) {
+		List<String> cnt = new ArrayList<String>();
+		NewsDao dao = new NewsDao();
+		
+		cnt = dao.commentCnt(nSerial);
+		
+		return cnt;
+	}
+	
 	
 	
 }

@@ -27,11 +27,29 @@
 			 	(select max(rowid) 
 			 	 from news_photo group by nserial)
 			 )a join news_info b on a.nserial = b.nserial order by nhit desc
-		 ) where rownum &lt;=4
+		 ) where rownum &lt;=5
+	</select>
+	
+	<select id="detail_side" parameterType="String" resultType="newsController.NewsVo">
+		select * from 
+			(select * from 
+				(select * from news_photo where rowid in 
+				 	(select max(rowid) 
+				 	 from news_photo group by nserial)
+				 )a join news_info b on a.nserial = b.nserial where ncategory='${value}' order by nhit desc
+			 ) where rownum &lt;=5
 	</select>
 	
 	<select id="detailView" parameterType="String" resultMap="mm_news">
 		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.nSerial='${value}'
+	</select>
+	
+	<select id="comment_List" parameterType="String" resultType="newsController.CommentVo">
+		select * from news_comment where nSerial=${value} order by cGroup desc, cStep asc
+	</select>
+	
+	<select id="comment_rv" parameterType="int" resultType="String">
+		select count(*) cnt from news_comment where cSerial=#{value} and cIndent=1
 	</select>
 	
 	
@@ -42,6 +60,10 @@
 	
 	<insert id='news_photo_insert' parameterType="newsController.NewsPhotoVo">
 		insert into news_photo values(seq_nphoto_serial.nextval, seq_news_serial.currval, #{pName}, #{pContent})
+	</insert>
+	
+	<insert id="comment_insert" parameterType="newsController.CommentVo">
+		insert into news_comment values(seq_comment_serial.nextval, #{nSerial}, #{mName}, sysdate, #{cContent}, (select nvl(max(cGroup)+1, 1)from news_comment), 0,0,0,0)
 	</insert>
 
 	<!-- resultMap -->
