@@ -24,7 +24,7 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./w_images/w_mainimage.png">
+						<img src="./w_images/w_mainimage1.png">
 					
 					<!-- Nav -->
 						<nav id="nav">
@@ -33,7 +33,7 @@
 								<li>
 									<a href="">브랜드 소개</a>
 									<ul>
-										<li><a href="w_main.jsp">전 메뉴</a></li>						
+										<li><a href="w_menu.jsp">전 메뉴</a></li>						
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>

@@ -2,12 +2,16 @@
  * 
  */
 
-let btnFunc_w = function(){
-	if($('#w_btnStory') != null) {
-		$('#w_btnStory').click(function(){
-		
-		});
-	}
+let w_btnFunc = function(){
+	
+	$('#btnFind').click(function() {
+		frm_brd.enctype='';
+		let param = $('#frm_food').serialize();
+		$.post("select.brd", param, function(data, state) {
+			$('#main').html(data)
+		})
+	});
+	
 	
 	
 }
