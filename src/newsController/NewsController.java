@@ -107,20 +107,25 @@ public class NewsController {
 		ModelAndView mv = new ModelAndView();
 		NewsVo vo = null;
 		List<NewsVo> list = null;
+		//댓글
 		List<CommentVo> comment = null;
-		List<String> cnt = null;
+		//대댓글
+		List<CommentVo> reComment = null;
+		List<CommentVo> cnt = null;
 		NewsService ns = new NewsService();
 		String nSerial = req.getParameter("nSerial"); 
 		System.out.println("상세보기");
 		
 		vo = ns.newsDetail(nSerial);
 		list = ns.newsDetailSide("경제");
-		comment = ns.commentView(nSerial);
 		cnt = ns.commentCnt(nSerial);
+		comment = ns.commentView(nSerial);
+		reComment = ns.reComment(nSerial);
 		
 		mv.addObject("list", list);
 		mv.addObject("vo", vo);
 		mv.addObject("comment", comment);
+		mv.addObject("reComment", reComment);
 		mv.addObject("cnt", cnt);
 		
 		mv.setViewName("newsDetailT");
@@ -146,24 +151,69 @@ public class NewsController {
 		return mv;
 	}
 	
+	
+	// 댓글 입력
 	@RequestMapping(value="/news/comment.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView comment(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		CommentVo vo = new CommentVo();
+		List<CommentVo> comment = null;
+		List<CommentVo> reComment = null;
+		List<CommentVo> cnt = null;
 		NewsService ns = new NewsService();
 		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
+		String nSerial2 = req.getParameter("nSerial");
 		String mName = req.getParameter("mName");
 		String cContent = req.getParameter("content");
-		
-		System.out.println(nSerial);
-		System.out.println(mName);
-		System.out.println(cContent);
 		
 		vo.setnSerial(nSerial);
 		vo.setmName(mName);
 		vo.setcContent(cContent);
 		
 		ns.commentInsert(vo);
+		
+		cnt = ns.commentCnt(nSerial2);
+		comment = ns.commentView(nSerial2);
+		reComment = ns.reComment(nSerial2);
+		
+		
+		mv.addObject("comment", comment);
+		mv.addObject("reComment", reComment);
+		mv.addObject("cnt", cnt);
+		
+		mv.setViewName("newsComment");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/news/commentDelete.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView commentDelete(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		List<CommentVo> comment = null;
+		List<CommentVo> reComment = null;
+		List<CommentVo> cnt = null;
+		NewsService ns = new NewsService();
+		
+		String nSerial = req.getParameter("nSerial");
+		String cIndent = req.getParameter("cIndent");
+		String cSerial = req.getParameter("cSerial");
+		String cGroup = req.getParameter("cGroup");
+		
+		if(cIndent.equals("0")) {
+			ns.commentDelete(cGroup);
+		}else {
+			ns.commentDeletes(cSerial);
+		}
+		
+		cnt = ns.commentCnt(nSerial);
+		comment = ns.commentView(nSerial);
+		reComment = ns.reComment(nSerial);
+		
+		mv.addObject("comment", comment);
+		mv.addObject("reComment", reComment);
+		mv.addObject("cnt", cnt);
+		
+		mv.setViewName("newsComment");
 		
 		return mv;
 	}

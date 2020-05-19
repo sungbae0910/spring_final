@@ -83,6 +83,7 @@ public class NewsService {
 	}
 
 	/* 댓글 대댓글 부분 */
+	// 댓글
 	public List<CommentVo> commentView(String nSerial){
 		List<CommentVo> comment = null;
 		NewsDao dao = new NewsDao();
@@ -91,6 +92,16 @@ public class NewsService {
 		
 		return comment;
 	}
+	
+	//대댓글
+	public List<CommentVo> reComment(String nSerial){
+		List<CommentVo> reComment = null;
+		NewsDao dao = new NewsDao();
+		
+		reComment = dao.reComment(nSerial);
+		
+		return reComment;
+	}
 		
 	public void commentInsert(CommentVo vo) {
 		NewsDao dao = new NewsDao();
@@ -98,13 +109,25 @@ public class NewsService {
 		dao.commentInsert(vo);
 	}
 	
-	public List<String> commentCnt(String nSerial) {
-		List<String> cnt = new ArrayList<String>();
+	public List<CommentVo> commentCnt(String nSerial) {
+		List<CommentVo> cnt = new ArrayList<CommentVo>();
 		NewsDao dao = new NewsDao();
 		
 		cnt = dao.commentCnt(nSerial);
 		
 		return cnt;
+	}
+	
+	public void commentDeletes(String cSerial) {
+		NewsDao dao = new NewsDao();
+				
+		dao.commentDeletes(cSerial);		
+	}
+	
+	public void commentDelete(String cGroup) {
+		NewsDao dao = new NewsDao();
+		
+		dao.commentDelete(cGroup);
 	}
 	
 	

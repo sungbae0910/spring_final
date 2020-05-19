@@ -48,8 +48,16 @@
 		select * from news_comment where nSerial=${value} order by cGroup desc, cStep asc
 	</select>
 	
-	<select id="comment_rv" parameterType="int" resultType="String">
-		select count(*) cnt from news_comment where cSerial=#{value} and cIndent=1
+	<select id="re_comment_list" parameterType="String" resultType="newsController.CommentVo">
+		select * from news_comment where nSerial=${value} and cIndent=1 order by cGroup desc, cStep asc
+	</select>
+	
+	<select id="re_comment_li" parameterType="String" resultType="newsController.CommentVo">
+		select * from news_comment where nSerial=#{value} and cIndent=1 and ROWID in(select max(rowid) from news_comment group by cGroup) order by cGroup desc, cStep asc
+	</select>
+	
+	<select id="comment_rv" parameterType="newsController.CommentVo" resultType="newsController.CommentVo">
+		select count(*) cnt from news_comment where nSerial=#{nSerial} and cGroup=#{cGroup} and cIndent=1
 	</select>
 	
 	
@@ -65,6 +73,21 @@
 	<insert id="comment_insert" parameterType="newsController.CommentVo">
 		insert into news_comment values(seq_comment_serial.nextval, #{nSerial}, #{mName}, sysdate, #{cContent}, (select nvl(max(cGroup)+1, 1)from news_comment), 0,0,0,0)
 	</insert>
+
+	<!-- delete -->
+	
+	<delete id="comment_delete_s" parameterType="String">
+		delete from news_comment where cSerial=#{value}
+	</delete>
+	
+	<delete id="comment_delete" parameterType="String">
+		delete from news_comment where cGroup=#{value}
+	</delete>
+	
+<!-- 	<delete id="comment_delete" parameterType="String">
+		delete from news_comment where 
+	</delete> -->
+
 
 	<!-- resultMap -->
 	<resultMap id="mm_news" type="newsController.NewsVo">

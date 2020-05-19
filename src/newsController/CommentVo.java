@@ -1,6 +1,7 @@
 package newsController;
 
 import java.util.Date;
+import java.util.List;
 
 public class CommentVo {
 	int cSerial;
@@ -13,6 +14,7 @@ public class CommentVo {
 	int cIndent;
 	int cLike;
 	int cDiLike;
+	int cnt;
 	
 	public CommentVo() {}
 
@@ -95,6 +97,15 @@ public class CommentVo {
 	public void setcDiLike(int cDiLike) {
 		this.cDiLike = cDiLike;
 	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
 	
 	
 	

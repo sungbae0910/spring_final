@@ -2,7 +2,6 @@
  * http://usejsdoc.org/
  */
 
-
 let news = function(){
 	
 	$('.btn_test_s').click(function(){
@@ -62,7 +61,9 @@ let cate_detail = function(detail, n){
 
 let news_detail = function(serial){
 	let nSerial = $('.serial'+serial).val();
-	$('.nSerial').val(nSerial);
+	if(nSerial!=""){
+		$('.nSerial').val(nSerial);
+	}
 	$('#tes_s').attr('action', 'newsDetail.news').submit();
 }
 
@@ -86,9 +87,38 @@ let weekly = function(){
 let news_comment = function(){
 	let param = $('#tes_s').serialize();
 	$.post("comment.news", param, function(data, status){
+		$('#news_comment_s').html(data);
 	})
 }
 
+let news_re_comment = function(){
+	
+}
+
+let news_comment_delete = function(cSerial, cGroup){
+	let asd = $('.serial'+cSerial).val();
+	let asd2 = $('.indent'+cSerial).val();
+	$('.cSerial').val(asd);
+	$('.cIndent').val(asd2);
+	$('.cGroup').val(cGroup);
+	
+/*	let param = $('#tes_s').serialize();
+	$.post("commentDelete.news", param, function(data, status){
+		$('#news_comment_s').html(data);
+	})*/
+}
+
+let news_comment_deletes = function(cSerial){
+	let asb = $('.sserial'+cSerial).val();
+	let asb2 = $('.iindent'+cSerial).val();
+	$('.cSerial').val(asb);
+	$('.cIndent').val(asb2);
+	
+	let param = $('#tes_s').serialize();
+	$.post("commentDelete.news", param, function(data, status){
+		$('#news_comment_s').html(data);
+	})
+}
 /*let weekly = function(){
 	$('#tes_s').attr('action', 'weekly.news').submit();
 }*/

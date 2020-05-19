@@ -129,6 +129,8 @@ public class NewsDao {
 		return list;
 	}
 	
+	
+	//댓글
 	public List<CommentVo> commentView(String nSerial){
 		List<CommentVo> comment = new ArrayList<CommentVo>();
 		
@@ -142,6 +144,18 @@ public class NewsDao {
 		return comment;
 	}
 	
+	//대댓글
+	public List<CommentVo> reComment(String nSerial){
+		List<CommentVo> reComment = new ArrayList<CommentVo>();
+		
+		try {
+			reComment = sqlSession.selectList("news.re_comment_list", nSerial);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reComment;
+	}
+	 
 	public void commentInsert(CommentVo vo ) {
 		
 		try {
@@ -157,20 +171,54 @@ public class NewsDao {
 		}
 	}
 	
-	public List<String> commentCnt(String nSerial) {
-		List<String> rvList = null;
+	public List<CommentVo> commentCnt(String nSerial) {
+		List<CommentVo> comment = new ArrayList<CommentVo>();
+		List<CommentVo> cnt =  new ArrayList<CommentVo>();
 		try {
-			List<CommentVo> comment = sqlSession.selectList("news.comment_List", nSerial);
+			comment = sqlSession.selectList("news.re_comment_li", nSerial);
 			
-			for(CommentVo vo: comment) {
-				int cSerial = vo.getcSerial();
-				rvList = sqlSession.selectList("news.comment_rv", cSerial);
+			for(CommentVo vo : comment) {
+				cnt = sqlSession.selectList("news.comment_rv", vo);
+			}
+			
+			for(CommentVo te : cnt) {
+				System.out.println("qqqqqqqqqq");
+				System.out.println(te.getCnt());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return rvList;
+		return cnt;
+	}
+	
+	public void commentDeletes(String cSerial) {
+		try {
+			int cnt = sqlSession.delete("news.comment_delete_s", cSerial);
+			
+			if(cnt<1) {
+				throw new Exception("대댓글 삭제중 오류 발생");
+			}
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+	}
+	
+	public void commentDelete(String cGroup) {
+		try {
+			int cnt = sqlSession.delete("news.comment_delete", cGroup);
+			
+			if(cnt<1) {
+				throw new Exception("댓글 삭제 중 오류 발생");
+			}
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
 	}
 
 }
