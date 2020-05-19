@@ -4,19 +4,19 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>No Sidebar - Horizons by TEMPLATED</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<script src="js/jquery.min.js"></script>
-		<script src="./w_js/jquery.dropotron.min.js"></script>
-		<script src="./w_js/skel.min.js"></script>
-		<script src="./w_js/skel-layers.min.js"></script>
-		<script src="./w_js/init.js"></script>
-<link rel="stylesheet" href="./w_css/skel.css" />
-<link rel="stylesheet" href="./w_css/style.css" />
+<head>
+<title>No Sidebar - Horizons by TEMPLATED</title>
+<meta http-equiv="content-type" content="text/html"; charset="utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.dropotron.min.js"></script>
+<script src="./js/skel.min.js"></script>
+<script src="./js/skel-layers.min.js"></script>
+<script src="./js/init.js"></script>
+<link rel="stylesheet" href="./css/skel.css" />
+<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body class="no-sidebar1">
 
@@ -25,7 +25,7 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./w_images/w_mainimage.png">
+						<img src="./w_images/w_mainimage1.png">
 					
 					<!-- Nav -->
 						<nav id="nav">
@@ -34,12 +34,12 @@
 								<li>
 									<a href="">브랜드 소개</a>
 									<ul>
-										<li><a href="w_main.jsp">전 메뉴</a></li>						
+										<li><a href="w_menu.jsp">전 메뉴</a></li>						
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_right-sidebar.html">고객문의</a></li>
-								<li><a href="w_no-sidebar.html">매장안내</a></li>
+								<li><a href="w_customersupport.jsp">고객문의</a></li>
+								<li><a href="w_mymap.jsp">매장안내</a></li>
 							</ul>
 						</nav>
 
@@ -58,37 +58,22 @@
 				                 </span>
 				               </h5>
 				          <ul class="w_tabs">
-				             <li class="w_active"  rel="tab1">
+				             <li class="w_active"  rel="tab1" onclick="food.foodj('전')" >
 				              	전	
 				             </li>
-				             <li  rel="tab2">
+				             <li  rel="tab2" onclick="food.foodj('전골')">
 				              	전골
 				             </li>
-				             <li  rel="tab3">
+				             <li  rel="tab3" onclick="food.foodj('냉채')">
 				              	냉채
 				             </li>
-				             <li  rel="tab4">
+				             <li  rel="tab4" onclick="food.foodj()">
 				              	사이드
 				             </li>    
 				          </ul>
 				          
 				        	<div class="w_tab_container">
-				        		<div id="w_tab1" class="tab_content" style="display: block;">
-					        		<ul>
-						        	 <li>
-						        	 	<img src="./w_images/w_modeumjeon.jpg" alt width="340" class="w_menu_image">
-						        		 <h3 class="w_h1">
-						        	      모듬전
-						        	 	 <img src="./w_images/w_best.jpg" alt="인기" width="32" class="w_best">
-						        	 	 </h3>						        	 
-						        	 	 <p>
-						        	 	  <span>15000원(중)</span>
-						        	 	  <i>/</i>
-						        	 	  <span>20000원(대)</span>
-						        	 	 </p>
-						           	 </li>
-					        		</ul>
-				        		</div>		  
+				        	  
 				        	</div>
 				        	
 						</div>
@@ -122,6 +107,5 @@
 
 				</div>
 			</div>
-
 	</body>
 </html>
