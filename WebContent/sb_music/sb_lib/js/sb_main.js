@@ -31,7 +31,7 @@ var audio = new Audio();
 $('#playBar').hide();
 $('#album').hide();
 
-play = function(serial){
+play = function(serial){ // 듣기 눌렀을 때
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
 	$.post('sb_play.mu', param, function(data){
@@ -52,9 +52,18 @@ play = function(serial){
 
 		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
 		
-		
+		player();
+		$('#play-button').click();
 		
 	});
+}
+
+kimchi = function(serial){ // 담기 눌렀을 때
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	
+	$.post('sb_kimchi.mu', param);
+	
 }
 
 var topP = function(){
@@ -192,16 +201,6 @@ function playList(){
 			$.each( data,function(index , val){
 				
 				
-				var v = $('#as').val(); 
-				
-				if(v.length > 0){
-					$('#as').val( $('#as').val() + ',' + val.music_serial);					
-				}else{
-					$('#as').val(val.music_serial);
-				}
-				
-				console.log(v);
-				
 				tbody.append(
 						"<tr>" +
 						"<td> <span>" + index + "</span> </td>" +
@@ -210,7 +209,7 @@ function playList(){
 						"<td> <span>" + val.music_name + "</span>" +
 						"<br>" +
 						"<span>" + val.artist_name + "</span> </td>" +
-						"<td> <span id='tb_delete'>X</span>" +
+						"<td> <span id='tb_delete' onclick='delList(" + val.music_serial + ")'>X</span>" +
 						"</td>" +
 						"</tr>"
 				)
@@ -221,9 +220,55 @@ function playList(){
 		}
 		
 	})
-	
-	
 }
+
+
+function delList(serial){
+	console.log(serial);
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	
+	alert(frm_top.m_serial.value);
+	$.ajax({
+		url : 'sb_delList.mu',
+		data: param,
+		type: 'POST',
+		dataType: "json",
+		success : function(data){
+			
+			var tbody = $('#pl_tbody');
+			
+			
+			$('#pl_tbody').empty();
+			
+			
+			$.each( data,function(index , val){
+				
+				tbody.append(
+						"<tr>" +
+						"<td> <span>" + index + "</span> </td>" +
+						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px'>" +
+						"</td>" +
+						"<td> <span>" + val.music_name + "</span>" +
+						"<br>" +
+						"<span>" + val.artist_name + "</span> </td>" +
+						"<td> <span id='tb_delete' onclick='delList(" + val.music_serial + ")'>X</span>" +
+						"</td>" +
+						"</tr>"
+				)
+			})
+			
+		},
+		
+		error: function(request, status, error){
+			alert(request.status + "\n에러메시지:" + error);
+		}
+		
+		
+	})
+}
+
+
 
 
 

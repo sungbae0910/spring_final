@@ -59,9 +59,21 @@
 		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
 			#{item}
 		</foreach>
-		
-		
 	</select>
+	
+	
+	
+	<update id="addList" parameterType="mybatis.MusicListVo">
+		update sb_playlist set music_list = #{music_serial} ||
+		(select music_list from sb_playlist where mid=#{mId})
+		where mid=#{mId}
+	</update>
+	
+	<update id="delList" parameterType="mybatis.MusicListVo">
+		update sb_playlist 
+		set music_list = replace( (select music_list from SB_PLAYLIST where mid=#{mId}),'${music_serial},','' )
+		where mId =#{mId}
+	</update>
 	
 
 </mapper>

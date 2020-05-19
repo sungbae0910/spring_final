@@ -6,11 +6,20 @@ public class MusicListVo {
 	
 	int pl_serial;
 	
+	String music_serial;
 	String mId;
 	String music_list;
 	
 	String[] list_num;
 	
+	
+	
+	public String getMusic_serial() {
+		return music_serial;
+	}
+	public void setMusic_serial(String music_serial) {
+		this.music_serial = music_serial;
+	}
 	public String[] getList_num() {
 		return list_num;
 	}

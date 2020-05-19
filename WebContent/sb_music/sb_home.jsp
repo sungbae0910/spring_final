@@ -150,7 +150,7 @@
 					<span id="ten5" class="tops" onclick="movie('${v.music_serial}')">뮤비</span>
 				</div>
 				<div class="col-sm-1">
-					<span id="ten6" class="tops">담기</span>
+					<span id="ten6" class="tops" onclick="kimchi('${v.music_serial}')">담기</span>
 				</div>
 				<div class="col-sm-1">
 					<span id="ten7" class="tops">다운</span>

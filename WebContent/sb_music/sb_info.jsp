@@ -25,8 +25,7 @@
 			<br>
 			<div id="info_etc" class="col-sm-4">기획사  </div><div class="col-sm-8" id="info_etc2">${info.enter }</div>
 			<br><br><br><br>
-			<button id="playAll">▶   듣기</button>
-			<button></button>
+			<button id="playAll" onclick="">▶   듣기</button>
 		</div>
 		<div class="col-sm-9" id="info_id">
 			

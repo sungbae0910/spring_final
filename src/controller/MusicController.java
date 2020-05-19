@@ -87,60 +87,138 @@ public class MusicController {
 	public @ResponseBody ModelAndView play(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String serial = (req.getParameter("m_serial"));
+		String mId = req.getParameter("mId");
+		
 		int s = Integer.parseInt(serial);
-		MusicVo vo = dao.play(s);
+		 
+		MusicVo vo = dao.play(s); // nav바에 음악정보 가져와서 실행
+		
+		
+		//플레이 리스트 가져와서 추가
+		MusicListVo mlv = dao.playList(mId);
+		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
+		System.out.println("mId:"+mId);
+		System.out.println("ms:"+mlv.getMusic_serial());
+		mlv.setmId(mId);
+		dao.addList(mlv);
+		
+		
+		
+		
 		
 		mv.addObject("play", vo);
-		
 		List<MusicVo> list = dao.top10();
-		
 		mv.addObject("top10", list);
-		
 		mv.setViewName("sb_main");
-		
-		
 		top10(req);
 		return mv;
 	}
+	
 	
 	@RequestMapping(value="/sb_music/sb_playList.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String playList(HttpServletRequest req) {
 		
-		System.out.println("옴");
-		
 		Gson gson = new GsonBuilder().create();
 		
 		
-		String mId = req.getParameter("mId");
-		System.out.println(mId);
+		String mId = req.getParameter("mId"); // mId 가져와서
+
 		
-		MusicListVo vo = dao.playList(mId);
-		System.out.println(vo.getMusic_list());
+		MusicListVo vo = dao.playList(mId); // 플레이리스트 가져오고
+
+		
+		String ml = vo.getMusic_list(); // 리스트 넣어준담에
+
+		System.out.println("ml = " + ml);
+		String[] num = ml.split(","); // (,) 컴마 죽여서
 		
 		
-		String ml = vo.getMusic_list();
-		System.out.println("ml: " + ml);
-		
-		String[] num = ml.split(",");
-		
-		
-		int[] nums = new int[num.length];
+		int[] nums = new int[num.length]; // 배열에 넣어준뒤
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim());
+			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
 		}
 		
 	
 		
-		List<MusicVo> list = dao.pL_music(nums);
+		List<MusicVo> list = dao.pL_music(nums); // 각 음악 리스트를 가져오기
 		
 		String list2 =  gson.toJson(list);
 		
 		
 		System.out.println(list2);
 		
-		return list2;
+		return list2;	
+	}
+	
+	@RequestMapping(value="/sb_music/sb_kimchi.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public String kimchi(HttpServletRequest req) {
+		String str = null;
+		
+		
+		String mId = req.getParameter("mId");
+		String ms = req.getParameter("m_serial");
+		
+		MusicListVo vo = dao.playList(mId);
+		vo.setMusic_serial(ms);
+		System.out.println(vo.getMusic_serial());
+		System.out.println(vo.getmId());
+		
+		dao.addList(vo);
+		
+		str = "플레이 리스트에 담겼습니다.";
+		
+		return str;
 		
 	}
+	
+	@RequestMapping(value="/sb_music/sb_delList.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String delList(HttpServletRequest req) {
+		
+	Gson gson = new GsonBuilder().create();
+		
+
+		String mId = req.getParameter("mId"); // mId 가져와서
+		String ms = req.getParameter("m_serial"); // 음악 시리얼도 가져와서
+		System.out.println("mid="+mId);
+		
+		MusicListVo vo = dao.playList(mId); // 플레이리스트 가져오고
+		vo.setmId(mId); // mid 넣어주고
+		vo.setMusic_serial(ms); // music_serial 넣어주고
+		
+		System.out.println("mId =" + vo.getmId()+" / ms = " + vo.getMusic_serial());
+		
+		
+		dao.delList(vo); // 플레이리스트 x눌러서 삭제
+		
+		MusicListVo vo2 = dao.playList(mId);
+		
+		String ml = vo2.getMusic_list(); // 리스트 넣어준담에
+		System.out.println("ml: " + ml);
+		
+		String[] num = ml.split(","); // (,) 컴마 죽여서
+		
+		
+		int[] nums = new int[num.length]; // 배열에 넣어준뒤
+		
+		for(int i=0; i<num.length; i++) {
+			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
+		}
+		
+	
+		
+		List<MusicVo> list = dao.pL_music(nums); // 각 음악 리스트를 가져오기
+		
+		String list2 =  gson.toJson(list);
+		
+		
+		System.out.println(list2);
+		
+		return list2;	
+	}
+	
+	
+ 
 }
