@@ -37,7 +37,7 @@
         <span class="login__text">
           계정이 없으신가요? <br />
         </span>
-        <a class="login__blue-link" href="/auth/join">가입하기</a>
+        <a class="login__blue-link" href="../auth/join.jsp">가입하기</a>
       </div>
       <div class="login__t-box">
         <span class="login__text">

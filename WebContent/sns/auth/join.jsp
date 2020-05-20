@@ -32,7 +32,7 @@
         <span class="login__text">
           계정이 있으신가요? <br />
         </span>
-        <a class="login__blue-link" href="../auth/login">로그인</a>
+        <a class="login__blue-link" href="../auth/login.jsp">로그인</a>
       </div>
       <div class="login__t-box">
         <span class="login__text">
