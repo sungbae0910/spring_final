@@ -252,7 +252,9 @@ public class MusicController {
 		return str;
 	}
 	
+	
 	@RequestMapping(value="/sb_music/sb_ChDrag.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
 	public String ChDrag(HttpServletRequest req) {
 		String str = null;
 		
@@ -266,8 +268,6 @@ public class MusicController {
 		System.out.println(music_list);
 		
 		dao.ChDrag(mlv);
-		
-		
 		
 		return str;
 	}

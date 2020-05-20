@@ -233,7 +233,7 @@ function playList(){
 			
 			$.each( data,function(index , val){
 				tbody.append(
-						"<tr id='changing" + index + "'>" +
+						"<tr id='changing' onmouseup='ChDrag()'>" +
 						"<td> <span>" + index + "</span> </td>" +
 						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
 						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
@@ -288,7 +288,7 @@ function delList(serial){
 			$.each( data,function(index , val){
 				
 				tbody.append(
-						"<tr id='changing" + index + "'>" +
+						"<tr id='changing' onmouseup='ChDrag()'>" +
 						"<td> <span>" + index + "</span> </td>" +
 						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
 						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
@@ -308,6 +308,7 @@ function delList(serial){
 			
 			$('#listV').val(str);
 			
+			console.log(tbody.html);
 			console.log($('#listV').val());
 		},
 		
@@ -322,7 +323,7 @@ function delList(serial){
 
 
 function ChDrag(){
-	
+	console.log("chdrag");
 	let param = $('#frm_top').serialize();
 	str = '';
 	
@@ -331,8 +332,6 @@ function ChDrag(){
 		console.log("변경 된거같지?")
 		
 	});
-	
-	
 	
 }
 

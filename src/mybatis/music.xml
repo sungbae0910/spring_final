@@ -84,7 +84,7 @@
 		where mId =#{mId}
 	</update>
 	
-	<update id="change" parameterType = "maybatis.MusicListVo">
+	<update id="change" parameterType = "mybatis.MusicListVo">
 		update sb_playlist
 		set music_list = #{music_list}
 		where mId = #{mId}

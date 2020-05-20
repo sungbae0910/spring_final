@@ -108,7 +108,7 @@
 							<th scope="col">음악 삭제</th>
 						</tr>
 						</thead>
-						<tbody id="pl_tbody" ondragend="ChDrag()">
+						<tbody id="pl_tbody">
 							<!-- 테이블 값 출력 -->
 						</tbody>
 					</table>
