@@ -35,6 +35,7 @@
 
 <body>
 <form id="news_s" method="post">
+	<input type="hidden" value="${sessionScope.mName}" name="mName"/>
 </form>
     <header>
         <!-- Header Start -->

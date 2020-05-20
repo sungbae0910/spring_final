@@ -40,6 +40,7 @@
 	<input type="hidden" name="cSerial" class="cSerial"/>
 	<input type="hidden" name="indent" class="cIndent"/>
 	<input type="hidden" name="cGroup" class="cGroup"/>
+	<input type="hidden" name="reContent" class="reContent"/>
 	<!-- Preloader Start -->
 	<div id="preloader-active">
 		<div
@@ -109,7 +110,7 @@
 											<li><a href="latest_news.html">경제</a></li>
 											<li><a href="contact.html">국제</a></li>
 											<li><a href="contact.html">문화</a></li>
-											<li><a href="contact.html">IT</a></li>
+											<li><a href="#" onclick="like_func_s(0)">IT</a></li>
 											<li><a href="#">Pages</a>
 												<ul class="submenu">
 													<li><a href="elements.html">Element</a></li>
@@ -175,7 +176,6 @@
 					</div>
 					<!-- From -->
 					<!-- 댓글 입력창 -->
-					<div id="news_comment_s">
 						<div class="count_comment_s">
 							<h5>댓글 48개</h5>
 						</div>
@@ -192,6 +192,7 @@
 								<li>등록순</li>
 							</ul>
 						</div>
+					<div id="news_comment_s">
 						<div id="commnet_s">
 							<div class="comments-area">
 							<c:forEach var="i" items="${comment}" varStatus="ii">
@@ -202,6 +203,7 @@
 								<c:if test="${indent eq 0}">
 								<input type="hidden" value="${i.cSerial}" class="serial${ii.index}">
 								<input type="hidden" value="${i.cIndent}" class="indent${ii.index}">
+								<input type="hidden" value="${i.cGroup}" class="cg${ii.index}"/>
 								<div class="comment-list">
 									<div class="single-comment justify-content-between d-flex">
 										<div class="user justify-content-between d-flex">
@@ -216,11 +218,9 @@
 												</div>
 												<p class="comment">${i.cContent}</p>
 												<div class="d-flex justify-content-between">
-													<c:forEach items="${cnt}" var="cn">
 														<div class="reply-btn reply_count${ii.index}" onclick='hide_come(${ii.index})'>
-																	답글 ${cn.cnt}
+																	답글
 														</div>
-													</c:forEach>
 												</div>
 											</div>
 										</div>
@@ -239,20 +239,33 @@
 											</div>
 											<div>
 												<span class="comment_recomm" style="float: right;">
-													<button class="btn_g btn_recomm"
-														style="border: none; cursor: pointer;">
-														<span class="img_cmt ico_recomm bounce"><img
-															src="./img/news/unlike.png"
-															style="width: 18px; height: 18px;"></span> <span
-															class="num_txt">${i.cLike}</span>
-													</button>
-													<button class="btn_g btn_oppose"
-														style="border: none; cursor: pointer;">
-														<span class="img_cmt ico_oppose bounce"><img
-															src="./img/news/like.png"
-															style="width: 18px; height: 18px;"></span> <span
-															class="num_txt">${i.cDiLike}</span>
-													</button>
+													<c:choose>
+														<c:when test="${not empty sessionScope.mName}">
+															<button type="button" class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
+																<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span>
+																<span class="num_txt">
+																	${i.cLike}
+																</span>
+															</button>
+														</c:when>
+														<c:otherwise>
+															<button type="button" class="btn_g btn_recomm" onclick="login_s()" style="border: none; cursor: pointer;">
+																<span class="img_cmt ico_recomm bounce"><img src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cLike}</span>
+															</button>
+														</c:otherwise>
+													</c:choose>
+													<c:choose>
+														<c:when test="${not empty sessionScope.mName}">
+															<button type="button" class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
+																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="./img/news/like.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cDiLike}</span>
+															</button>
+														</c:when>
+														<c:otherwise>
+															<button type="button" class="btn_g btn_oppose" onclick="login_s()" style="border: none; cursor: pointer;">
+																<span class="img_cmt ico_oppose bounce"><img src="./img/news/like.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cDiLike}</span>
+															</button>
+														</c:otherwise>
+													</c:choose>
 												</span>
 											</div>
 										</div>
@@ -263,12 +276,9 @@
 								<div class="hide_comment${index} hide_come">
 									<div class="comment-list2">
 										<div class="input-group mb-3" style="padding-top: 5px;">
-											<input type="text" class="form-control"
-												placeholder="댓글을 입력해주세요" aria-label="Recipient's username"
-												aria-describedby="button-addon2">
+											<input type="text" id="cC_s2" class="form-control reC${ii.index}" placeholder="댓글을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
 											<div class="input-group-append">
-												<button class="btn btn-outline-secondary" type="button"
-													id="button-addon2">입력</button>
+												<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="news_re_comment(${ii.index})">입력</button>
 											</div>
 										</div>
 										<c:forEach items="${reComment}" var="re" varStatus="ri">
@@ -281,15 +291,9 @@
 											<div class="user justify-content-between d-flex">
 												<div class="desc">
 													<div class="d-flex justify-content-between">
-														<svg class="bi bi-arrow-return-right" width="1em"
-															height="1em" viewBox="0 0 16 16" fill="currentColor"
-															xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd"
-																d="M10.146 5.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 9l-2.647-2.646a.5.5 0 010-.708z"
-																clip-rule="evenodd" />
-													<path fill-rule="evenodd"
-																d="M3 2.5a.5.5 0 00-.5.5v4A2.5 2.5 0 005 9.5h8.5a.5.5 0 000-1H5A1.5 1.5 0 013.5 7V3a.5.5 0 00-.5-.5z"
-																clip-rule="evenodd" />
+														<svg class="bi bi-arrow-return-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" d="M10.146 5.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 9l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd" />
+													<path fill-rule="evenodd" d="M3 2.5a.5.5 0 00-.5.5v4A2.5 2.5 0 005 9.5h8.5a.5.5 0 000-1H5A1.5 1.5 0 013.5 7V3a.5.5 0 00-.5-.5z"clip-rule="evenodd" />
 												</svg>
 														<div class="d-flex align-items-center">
 															<h5>

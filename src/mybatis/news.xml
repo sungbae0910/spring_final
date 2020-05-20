@@ -60,6 +60,14 @@
 		select count(*) cnt from news_comment where nSerial=#{nSerial} and cGroup=#{cGroup} and cIndent=1
 	</select>
 	
+	<select id="like_check" parameterType="newsController.LikeVo" resultType="int">
+		select count(likeNo) cnt from news_like where mName=#{mName} and cSerial=#{cSerial}
+	</select>
+	
+	<select id="like_cnt" parameterType="newsController.LikeVo" resultType="int">
+		select cLike from news_comment where cSerial=#{cSerial}
+	</select>
+	
 	
 	<!-- insert -->
 	<insert id='news_insert' parameterType="newsController.NewsVo">
@@ -73,6 +81,14 @@
 	<insert id="comment_insert" parameterType="newsController.CommentVo">
 		insert into news_comment values(seq_comment_serial.nextval, #{nSerial}, #{mName}, sysdate, #{cContent}, (select nvl(max(cGroup)+1, 1)from news_comment), 0,0,0,0)
 	</insert>
+	
+	<insert id="comment_re_insert" parameterType="newsController.CommentVo">
+		insert into news_comment values(seq_comment_serial.nextval, #{nSerial}, #{mName}, sysdate, #{cContent}, #{cGroup}, 1, 1, 0, 0)
+	</insert>
+	
+	<insert id="like_in" parameterType="newsController.LikeVo">
+		insert into news_like values(seq_like_serial.nextval, #{mName}, #{nSerial}, #{cSerial}, 1, 0)
+	</insert>
 
 	<!-- delete -->
 	
@@ -84,11 +100,24 @@
 		delete from news_comment where cGroup=#{value}
 	</delete>
 	
+	<delete id="like_delete" parameterType="newsController.LikeVo">
+		delete * from news_like where mName=#{mName} and cSerial=#{cSerial}
+	</delete>
+	
 <!-- 	<delete id="comment_delete" parameterType="String">
 		delete from news_comment where 
 	</delete> -->
 
 
+	<!-- update -->
+	<update id="like_in_update" parameterType="newsController.LikeVo">
+		update news_like set cLike=cLike+1 where cSerial=#{cSerial} and mName=#{mName}
+	</update>
+	
+	<update id="like_out_update" parameterType="newsController.LikeVo">
+		update news_like set cLike=cLike-1 where cSerial=#{cSerial} and mName=#{mName}
+	</update>
+	
 	<!-- resultMap -->
 	<resultMap id="mm_news" type="newsController.NewsVo">
 		<result column="nSerial" property="nSerial"/>

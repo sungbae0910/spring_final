@@ -171,7 +171,22 @@ public class NewsDao {
 		}
 	}
 	
-	public List<CommentVo> commentCnt(String nSerial) {
+	public void reCommentInsert(CommentVo vo) {
+		try {
+			int cnt = sqlSession.insert("news.comment_re_insert", vo);
+			
+			if(cnt<1) {
+				throw new Exception("대댓글 입력중 오류 발생");
+			}
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+	}
+	
+/*	public List<CommentVo> commentCnt(String nSerial) {
 		List<CommentVo> comment = new ArrayList<CommentVo>();
 		List<CommentVo> cnt =  new ArrayList<CommentVo>();
 		try {
@@ -181,15 +196,11 @@ public class NewsDao {
 				cnt = sqlSession.selectList("news.comment_rv", vo);
 			}
 			
-			for(CommentVo te : cnt) {
-				System.out.println("qqqqqqqqqq");
-				System.out.println(te.getCnt());
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return cnt;
-	}
+	}*/
 	
 	public void commentDeletes(String cSerial) {
 		try {
@@ -220,5 +231,74 @@ public class NewsDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public int likeCheck(LikeVo vo) {
+		int check = 0;
+			
+		try {
+			check = sqlSession.selectOne("news.like_check", vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+	
+	public String likeIn(LikeVo vo) {
+		String likeCnt = "";
+		int ck = 0;
+		try {
+			ck = sqlSession.insert("news.like_in", vo);
+			
+			if(ck<1) {
+				throw new Exception("좋아요 하는 중 오류 발생");
+			}
+			
+			ck = sqlSession.update("news.like_in_update", vo);
+			
+			if(ck<1) {
+				throw new Exception("좋아요 하는 중 오류 발생");
+			}
+			
+			likeCnt = sqlSession.selectOne("news.like_cnt", vo);
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+		return likeCnt;
+	}
+	
+	public String likeOut(LikeVo vo) {
+		String likeCnt = "";
+		int ck = 0;
+		try {
+			
+			ck = sqlSession.delete("news.like_delete", vo);
+			
+			if(ck<1) {
+				throw new Exception("좋아요 취소 중 오류 발생");
+			}
+			
+			ck = sqlSession.update("news.like_out_update", vo);
+			
+			if(ck<1) {
+				throw new Exception("좋아요 취소 업데이트중 오류 발생");
+			}
+			
+			likeCnt = sqlSession.selectOne("news.like_cnt", vo);
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+		
+		return likeCnt;
+		
+	}
+	
+	
 
 }

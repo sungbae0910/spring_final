@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 import newsController.CommentVo;
+import newsController.LikeVo;
 import newsController.NewsDao;
 import newsController.NewsPhotoVo;
 import newsController.NewsVo;
@@ -109,14 +110,20 @@ public class NewsService {
 		dao.commentInsert(vo);
 	}
 	
-	public List<CommentVo> commentCnt(String nSerial) {
+	public void reCommentInsert(CommentVo vo) {
+		NewsDao dao = new NewsDao();
+		
+		dao.reCommentInsert(vo);
+	}
+	
+/*	public List<CommentVo> commentCnt(String nSerial) {
 		List<CommentVo> cnt = new ArrayList<CommentVo>();
 		NewsDao dao = new NewsDao();
 		
 		cnt = dao.commentCnt(nSerial);
 		
 		return cnt;
-	}
+	}*/
 	
 	public void commentDeletes(String cSerial) {
 		NewsDao dao = new NewsDao();
@@ -130,6 +137,31 @@ public class NewsService {
 		dao.commentDelete(cGroup);
 	}
 	
+	public int likeCheck(LikeVo vo) {
+		int check = 0;
+		NewsDao dao = new NewsDao();
+		
+		check = dao.likeCheck(vo);
+		
+		return check;
+	}
 	
+	public String likeIn(LikeVo vo) {
+		String likeCnt = "";
+		NewsDao dao = new NewsDao();
+		
+		likeCnt = dao.likeIn(vo);
+		
+		return likeCnt;
+	}
+	
+	public String likeOut(LikeVo vo) {
+		String likeCnt = "";
+		NewsDao dao = new NewsDao();
+		
+		likeCnt = dao.likeOut(vo);
+		
+		return likeCnt;
+	}
 	
 }

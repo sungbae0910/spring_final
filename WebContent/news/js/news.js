@@ -4,6 +4,8 @@
 
 let news = function(){
 	
+	
+	
 	$('.btn_test_s').click(function(){
 		$('#test_s').attr('action', '../news/test.news').submit();
 	})
@@ -88,11 +90,22 @@ let news_comment = function(){
 	let param = $('#tes_s').serialize();
 	$.post("comment.news", param, function(data, status){
 		$('#news_comment_s').html(data);
+		$('#cC_s').val('');
 	})
 }
 
-let news_re_comment = function(){
+let news_re_comment = function(serial){
+	let cg = $('.cg'+serial).val();
+	let reCon = $('.reC'+serial).val();
+	$('.cGroup').val(cg);
+	$('.reContent').val(reCon);
 	
+	let param = $('#tes_s').serialize();
+	$.post("reComment.news", param, function(data, status){
+		$('#news_comment_s').html(data);
+		$('#cC_s2').val('');
+		$('.reply_count'+serial).trigger("click");
+	})
 }
 
 let news_comment_delete = function(cSerial, cGroup){
@@ -102,10 +115,10 @@ let news_comment_delete = function(cSerial, cGroup){
 	$('.cIndent').val(asd2);
 	$('.cGroup').val(cGroup);
 	
-/*	let param = $('#tes_s').serialize();
+	let param = $('#tes_s').serialize();
 	$.post("commentDelete.news", param, function(data, status){
 		$('#news_comment_s').html(data);
-	})*/
+	})
 }
 
 let news_comment_deletes = function(cSerial){
@@ -122,6 +135,33 @@ let news_comment_deletes = function(cSerial){
 /*let weekly = function(){
 	$('#tes_s').attr('action', 'weekly.news').submit();
 }*/
+
+let login_s = function(){
+	alert("로그인 먼저해주세요!!");
+}
+
+let diLike_func_s = function(serial){
+	$('.oppose'+serial).attr('src', './img/news/unlikeA.png');
+}
+
+let like_func_s = function(serial){
+	let param = $('#tes_s').serialize();
+	$.ajax({
+		url : "likeA.news",
+		type : "POST",
+		cache : false,
+		dataType : "json",
+		data : param,
+		success : function(data){
+			var like_img = '';
+			
+			$('.recomm'+serial).attr('src', './img/news/likeA.png');
+		},
+		error : function(request, status, error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
+		}
+	});
+}
 
 let cate_ui = function(n){
 	if(n=='n2'){
