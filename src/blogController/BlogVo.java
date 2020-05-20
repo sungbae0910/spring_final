@@ -1,5 +1,8 @@
 package blogController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BlogVo {
 	int bNo; //블로그 번호
 	String mId; //회원 아이디
@@ -9,6 +12,8 @@ public class BlogVo {
 	String oriMphoto; //회원 프로필 원본사진
 	String hPhoto; //블로그 헤더사진
 	String oriHphoto; //블로그 헤더 원본사진
+	String cName; //카테고리 이름
+	int cnt; //카테고리에 해당하는 게시물 갯수
 	
 	public BlogVo() {}
 	
@@ -28,4 +33,9 @@ public class BlogVo {
 	public void sethPhoto(String hPhoto) {this.hPhoto = hPhoto;}
 	public String getOriHphoto() {return oriHphoto;}
 	public void setOriHphoto(String oriHphoto) {this.oriHphoto = oriHphoto;}
+	public String getcName() {return cName;}
+	public void setcName(String cName) {this.cName = cName;}
+	public int getCnt() {return cnt;}
+	public void setCnt(int cnt) {this.cnt = cnt;}
+	
 }

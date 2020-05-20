@@ -5,7 +5,6 @@
 		<div class="navbar-header">
     		<div id="c_logo" class="navbar-brand" onclick="blog.Main()"><img src="">LOGO</div>
   		</div>
-    <form id="c_blog_frm" name="c_blog_frm" method="post">
    		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> 로그인 하기</a></li>
 	      		<li class="dropdown">
@@ -25,7 +24,6 @@
 			        </ul>
 	      		</li>
   			</ul>
-		</form>
 	</div>
 </nav>
 <script>blog.myblog_func();</script>

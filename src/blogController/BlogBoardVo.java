@@ -1,5 +1,8 @@
 package blogController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BlogBoardVo {
 	int brdNo; //게시물 번호
 	int bNo; //블로그 번호
@@ -12,6 +15,7 @@ public class BlogBoardVo {
 	String brdDate; //게시물 작성일자
 	int hit; //게시물 조회 수
 	int brdLike; //게시물 공감 수
+	List<BlogVo> blogInfo = new ArrayList<BlogVo>(); //블로그 이름, 유저사진
 	
 	public BlogBoardVo() {}
 
@@ -37,4 +41,6 @@ public class BlogBoardVo {
 	public void setHit(int hit) {this.hit = hit;}
 	public int getBrdLike() {return brdLike;}
 	public void setBrdLike(int brdLike) {this.brdLike = brdLike;}
+	public List<BlogVo> getBlogInfo() {return blogInfo;}
+	public void setBlogInfo(List<BlogVo> blogInfo) {this.blogInfo = blogInfo;}
 }

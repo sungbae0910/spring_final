@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- <!DOCTYPE mapper
+<!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
 <mapper namespace="blog">
-	<select id="lifeTag" resultType="blogController.BlogVo">
-		select brdNo from blog_tag where tContent like '%일상%' or tContent like '%데일리%'
+	<resultMap id="bgBrd" type="blogController.BlogBoardVo">
+		<result column="brdNo" property="brdNo"/>
+		<result column="mId" property="mId"/>
+		<result column="brdHeader" property="brdHeader"/>
+		<result column="subject" property="subject"/>
+		<result column="content" property="content"/>
+		<result column="brdDate" property="brdDate"/>
+		<result column="hit" property="hit"/>
+		<result column="brdLike" property="brdLike"/>
+		<collection property="blogInfo" resultMap="bgInfo"/>
+	</resultMap>
+	<resultMap id="bgInfo" type="blogController.BlogVo">
+		<result column="bNo" property="bNo"/>
+		<result column="bTitle" property="bTitle"/>
+		<result column="mPhoto" property="mPhoto"/>
+	</resultMap>
+	
+	<select id="tag" parameterType="java.util.ArrayList" resultType="blogController.BlogBoardVo">
+		select brdNo from blog_tag where<foreach collection="array" item="item" index="index" separator="or">tContent like '%${item}%'</foreach>
 	</select>
-	<select id="travelTag" resultType="blogController.BlogVo">
-		select brdNo from blog_tag where tContent like '%여행%' or tContent like '%여행에미치다%'
+	<select id="mainBestBrd" parameterType="java.util.List" resultMap="bgBrd">
+			select Blog.* from (
+				select Brd.brdNo, Brd.mId, Brd.brdHeader, Brd.oriBrdHeader, Brd.subject, B.bNo, B.bTitle, B.mPhoto
+				from blog_board Brd join blog_info B
+				on Brd.bNo=B.bNo 
+				where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach>order by Brd.brdLike desc
+			) Blog where rownum &lt;=3
 	</select>
-	<select id="itTag" resultType="blogController.BlogVo">
-		select brdNo from blog_tag where tContent like '%IT%' or tContent like '%it%' or tContent like '%자바%' or 
-		tContent like '%스프링%' or tContent like '%css%' or tContent like '%ajax%'
+	<select id="mainBrd" parameterType="java.util.List" resultMap="bgBrd">
+			select Brd.brdNo, Brd.mId, Brd.brdHeader, Brd.oriBrdHeader, Brd.subject, Brd.content, Brd.brdDate, Brd.hit, Brd.brdLike, B.bNo, B.bTitle, B.mPhoto
+			from blog_board Brd join blog_info B
+			on Brd.bNo=B.bNo 
+			where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach>
 	</select>
-</mapper> -->
+	<select id="category" parameterType="String" resultType="blogController.BlogVo">
+		select cName, blogBrdCnt(cName) cnt from blog_category where bNo=${bNo} order by cIndex asc
+	</select>
+	<select id="brdView" parameterType="Integer" resultMap="bgBrd">
+			select Brd.brdNo, Brd.mId, Brd.brdHeader, Brd.oriBrdHeader, Brd.subject, Brd.content, to_char(Brd.brdDate, 'rrrr.mm.dd hh24:mi') brdDate, Brd.brdLike, B.bTitle
+			from blog_board Brd join blog_info B
+			on Brd.bNo=B.bNo 
+			where Brd.brdNo=${brdNo}
+	</select>
+	<!-- <insert id="Like_insert" parameterType="hashMap">
+		insert into blog_brdLike(likeNo, brdNo, mId) values(seq_blog_likeNo.nextval, ${brdNo}, #{likeMid})
+	</insert>
+	<update id="brdLike_update" parameterType="hashMap">
+		update blog_board set brdLike=${brdLike} where brdNo=${brdNo}
+	</update> -->
+</mapper>

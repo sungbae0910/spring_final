@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,21 +12,28 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BlogController {
-	BlogDao dao;
+	BlogDao blogDao;
 	
-	public BlogController(BlogDao dao) {
-		this.dao = dao;
+	@Autowired
+	public BlogController(BlogDao blogDao) {
+		this.blogDao = blogDao;
 	}
 	
 	@RequestMapping(value = "/blogMain.bg", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView blogMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		String kind = req.getParameter("kind");
-		/*List<BlogBoardVo> boardList = dao.select(kind);*/
+		String[] tag = req.getParameterValues("tag");
+
+		if (tag == null) {
+			tag = new String[]{"일상", "데일리"};
+		} 
 		
-		/*BlogVo blogVo = new BlogVo();*/
+		List<BlogBoardVo> bestBrdList = blogDao.bestBrdSelect(tag);
+		List<BlogBoardVo> brdList =  blogDao.brdListSelect(tag);
 		
-		mv.setViewName("blog_main");
+		mv.addObject("bestBrdList", bestBrdList);
+		mv.addObject("brdList", brdList);
+		mv.setViewName("blog_content");
 		return mv;
 	}
 	
@@ -35,14 +43,24 @@ public class BlogController {
 		String cName = req.getParameter("cName");
 		
 		mv.addObject("cName", cName);
-		mv.setViewName("myblog_main");
 		return mv;
 	}
 	
 	@RequestMapping(value = "/blogBrd.bg", method = {RequestMethod.POST})
-	public ModelAndView blogBrdView() {
+	public ModelAndView blogBrdView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println("도착");
+		int brdLike = -1;
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
+		/*if (req.getParameter("c_mId") != null) { //공감버튼 눌렀을 때
+			brdLike = Integer.parseInt(req.getParameter("c_brdLike"));
+		}*/
+		List<BlogVo> category = blogDao.category(bNo);
+		/*BlogBoardVo brdVo = blogDao.brdView(brdLike, brdNo, mId);*/
+		BlogBoardVo brdVo = blogDao.brdView(brdNo);
+		mv.addObject("category", category);
+		mv.addObject("brdVo", brdVo);
 		mv.setViewName("myblog_brd");
 		return mv;
 	}
