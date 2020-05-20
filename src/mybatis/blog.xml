@@ -38,7 +38,7 @@
 			on Brd.bNo=B.bNo 
 			where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach>
 	</select>
-	<select id="category" parameterType="String" resultType="blogController.BlogVo">
+	<select id="category" parameterType="Integer" resultType="blogController.BlogVo">
 		select cName, blogBrdCnt(cName) cnt from blog_category where bNo=${bNo} order by cIndex asc
 	</select>
 	<select id="brdView" parameterType="Integer" resultMap="bgBrd">

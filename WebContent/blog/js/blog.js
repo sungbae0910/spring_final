@@ -47,6 +47,8 @@ blog.myblog = function() { //내 블로그
 blog.brdView = function(bNo, brdNo) { //게시글 페이지
 	$("#c_bNo").val(bNo);
 	$("#c_brdNo").val(brdNo);
+	alert(bNo);
+	
 	/*let param = $("#c_blog_frm").serialize();*/
 	$("#c_blog_frm").attr("action", "?inc=../blogBrd.bg").submit();
 	/*$.post("../blogBrd.bg", {"bNo" : bNo, "brdNo" : brdNo}, function(data, state) { 

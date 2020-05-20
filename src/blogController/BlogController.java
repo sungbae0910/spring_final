@@ -30,7 +30,9 @@ public class BlogController {
 		
 		List<BlogBoardVo> bestBrdList = blogDao.bestBrdSelect(tag);
 		List<BlogBoardVo> brdList =  blogDao.brdListSelect(tag);
-		
+		for(BlogBoardVo vo : bestBrdList) {
+			System.out.println(vo.getbNo());
+		}
 		mv.addObject("bestBrdList", bestBrdList);
 		mv.addObject("brdList", brdList);
 		mv.setViewName("blog_content");
@@ -53,10 +55,12 @@ public class BlogController {
 		int brdLike = -1;
 		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
 		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
+		System.out.println(bNo);
 		/*if (req.getParameter("c_mId") != null) { //공감버튼 눌렀을 때
 			brdLike = Integer.parseInt(req.getParameter("c_brdLike"));
 		}*/
 		List<BlogVo> category = blogDao.category(bNo);
+		
 		/*BlogBoardVo brdVo = blogDao.brdView(brdLike, brdNo, mId);*/
 		BlogBoardVo brdVo = blogDao.brdView(brdNo);
 		mv.addObject("category", category);
