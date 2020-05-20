@@ -62,27 +62,67 @@ kimchi = function(serial){ // 담기 눌렀을 때
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
 	
-	$.post('sb_kimchi.mu', param);
+	$.post('sb_kimchi.mu', param, function(data){
+		console.log(data);
+		alert(data);
+	});
 	
+	$('#alert').show();
 }
 
 var topP = function(){
 	$('#changePage').load('sb_top.mu');
 }
 
-
-
-
-
 function nice(){ // 나중에 지우자궁
 	alert(audio.src);
 }
 
+function audioBtn(num){ // 전노래 다음노래 버튼
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	
+	if(num == 1){
+		$.ajax({
+			url : 'sb_prevMusic.mu',
+			data : param,
+			type: 'POST',
+			dataType: "json",
+			success : function(data){
+				
+				
+				
+				
+			}
+		});		
+		
+	}else if(num == 2){
+		$.ajax({
+			url : 'sb_nextMusic.mu',
+			data : param,
+			type: 'POST',
+			dataType: "json",
+			success : function(data){
+				
+				
+				
+				
+				
+			}
+		});		
+		
+		
+		
+	}
+}
 
+function getTime(t){
+	var m=~~(t/60), s=~~(t % 60);
+	return (m<10?"0"+m:m)+':'+(s<10?"0"+s:s);
+	
+}
 
-
-
-
+var time = $('#start-time');
 
 function player(){
 	  audio.pause(); // 시작할때 다른 음악 끄기
@@ -93,18 +133,19 @@ function player(){
 	  var playing = false;
 	  var duration = 0;
 	  
-	  
-	  
 	  progressBar.onchange=(e)=>{    
 	    audio.currentTime = +progressBar.value;
 	  };
 	  audio.addEventListener("timeupdate",(e)=>{    
 	        progressBar.value = audio.currentTime;
 	        
+	        time.text(getTime(audio.currentTime));
+	        
 	  });
 	  audio.addEventListener("ended",(e)=>{
 	    progressBar.value = 0;
-	    playBtn.innerText="Play"; 
+	    
+		$('#btn_play').attr("src","../sb_music/sb_lib/images/play.png");
 	    playing=false;
 	  });
 	  
@@ -122,15 +163,6 @@ function player(){
 	    progressBar.min =0;
 	    progressBar.max= duration;    
 	  });
-	  
-	  
-	 /* $('#play-button').click(function(){
-		if(playing){
-			  audio.play();
-		}
-		
-		  
-	  })*/
 	  
 	  
 	  playBtn.onclick=()=>{
@@ -180,31 +212,31 @@ function nav_list(){
 }
 
 
-
+var cnt = 0;
+var str;
 
 function playList(){
 	let param = $('#frm_top').serialize();
-
+	str = '';
 	$.ajax({
 		url : 'sb_playList.mu',
 		data : param,
 		type: 'POST',
 		dataType: "json",
 		success : function(data){
-			
 			var tbody = $('#pl_tbody');
-			
+			cnt = 0;
+			$('#list_val').empty();
 			
 			$('#pl_tbody').empty();
 			
 			
 			$.each( data,function(index , val){
-				
-				
 				tbody.append(
-						"<tr>" +
+						"<tr id='changing" + index + "'>" +
 						"<td> <span>" + index + "</span> </td>" +
-						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px'>" +
+						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
+						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
 						"</td>" +
 						"<td> <span>" + val.music_name + "</span>" +
 						"<br>" +
@@ -212,8 +244,19 @@ function playList(){
 						"<td> <span id='tb_delete' onclick='delList(" + val.music_serial + ")'>X</span>" +
 						"</td>" +
 						"</tr>"
+						
 				)
+				
+				str += val.music_serial + ',';
+				cnt++;
+				
 			})
+			
+			$('#listV').val(str);
+			
+			console.log($('#listV').val());
+			
+			
 		},
 		error : function(request, status, error){
 			alert(request.status + "\n에러메시지:" + error);
@@ -224,20 +267,20 @@ function playList(){
 
 
 function delList(serial){
-	console.log(serial);
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
+	str = '';
 	
-	alert(frm_top.m_serial.value);
 	$.ajax({
 		url : 'sb_delList.mu',
 		data: param,
 		type: 'POST',
 		dataType: "json",
 		success : function(data){
-			
+			cnt = 0;
 			var tbody = $('#pl_tbody');
-			
+			cnt = 0;
+			$('#list_val').empty();
 			
 			$('#pl_tbody').empty();
 			
@@ -245,9 +288,10 @@ function delList(serial){
 			$.each( data,function(index , val){
 				
 				tbody.append(
-						"<tr>" +
+						"<tr id='changing" + index + "'>" +
 						"<td> <span>" + index + "</span> </td>" +
-						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px'>" +
+						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
+						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
 						"</td>" +
 						"<td> <span>" + val.music_name + "</span>" +
 						"<br>" +
@@ -255,9 +299,16 @@ function delList(serial){
 						"<td> <span id='tb_delete' onclick='delList(" + val.music_serial + ")'>X</span>" +
 						"</td>" +
 						"</tr>"
+						
 				)
+				
+				str += val.music_serial + ',';
+				cnt++;
 			})
 			
+			$('#listV').val(str);
+			
+			console.log($('#listV').val());
 		},
 		
 		error: function(request, status, error){
@@ -268,6 +319,22 @@ function delList(serial){
 	})
 }
 
+
+
+function ChDrag(){
+	
+	let param = $('#frm_top').serialize();
+	str = '';
+	
+	$.post('sb_ChDrag.mu', param, function(data){
+		
+		console.log("변경 된거같지?")
+		
+	});
+	
+	
+	
+}
 
 
 
@@ -286,7 +353,7 @@ $(document).ready(function() {
 		}
 	})
 	
-	
+	$('#list_val').hide();
 	
 	
 	$('#myCarousel').carousel({

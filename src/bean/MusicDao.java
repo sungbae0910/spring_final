@@ -94,11 +94,24 @@ public class MusicDao {
 		return list;
 	}
 	
-	public List<MusicVo> pL_music(int[] num) { //받아온 플레이리스트 각 정보 테이블에 넣는거
+	public List<MusicVo> mL_music(int[] num) { //받아온 플레이리스트 각 정보 테이블에 넣는거
 		List<MusicVo> vo = null;
 		
 		try {
 			vo = sqlSession.selectList("music.mL_music", num);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return vo;			
+		}
+	}
+	
+	public MusicVo pL_music(int num) { //받아온 플레이리스트 각 정보 테이블에 넣는거
+		MusicVo vo = null;
+		
+		try {
+			vo = sqlSession.selectOne("music.pL_music", num);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,6 +145,18 @@ public class MusicDao {
 		}
 	}
 	
+	public void ChDrag(MusicListVo vo) {
+		
+		try {
+			sqlSession.update("music.change", vo);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+		
+		
+	}
 
 	
 }

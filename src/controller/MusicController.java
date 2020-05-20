@@ -1,7 +1,9 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -130,24 +132,30 @@ public class MusicController {
 		
 		String ml = vo.getMusic_list(); // 리스트 넣어준담에
 
-		System.out.println("ml = " + ml);
+		
 		String[] num = ml.split(","); // (,) 컴마 죽여서
 		
 		
 		int[] nums = new int[num.length]; // 배열에 넣어준뒤
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
+			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽여서 숫자 배열에 담고
 		}
 		
-	
+		/*List<MusicVo> list = dao.pL_music(nums); // 각 음악 리스트를 가져오기*/		
 		
-		List<MusicVo> list = dao.pL_music(nums); // 각 음악 리스트를 가져오기
+		List<MusicVo> list = new ArrayList<MusicVo>();
+		for(int i = 0; i < nums.length; i++) {
+			int a = nums[i];
+			MusicVo mv = dao.pL_music(a);
+			list.add(mv);
+		}
 		
 		String list2 =  gson.toJson(list);
-		
+
 		
 		System.out.println(list2);
+
 		
 		return list2;	
 	}
@@ -161,7 +169,7 @@ public class MusicController {
 		String ms = req.getParameter("m_serial");
 		
 		MusicListVo vo = dao.playList(mId);
-		vo.setMusic_serial(ms);
+		vo.setMusic_serial(ms+",");
 		System.out.println(vo.getMusic_serial());
 		System.out.println(vo.getmId());
 		
@@ -207,9 +215,14 @@ public class MusicController {
 			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
 		}
 		
-	
+		List<MusicVo> list = new ArrayList<MusicVo>();
+		for(int i = 0; i < nums.length; i++) {
+			int a = nums[i];
+			MusicVo mv = dao.pL_music(a);
+			list.add(mv);
+		}
 		
-		List<MusicVo> list = dao.pL_music(nums); // 각 음악 리스트를 가져오기
+		
 		
 		String list2 =  gson.toJson(list);
 		
@@ -217,6 +230,46 @@ public class MusicController {
 		System.out.println(list2);
 		
 		return list2;	
+	}
+	@RequestMapping(value="/sb_music/sb_prevMusic.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String prevMusic(HttpServletRequest req) {
+		String str = null;
+		
+		
+		
+		
+		return str;
+	}
+	
+	@RequestMapping(value="/sb_music/sb_nextMusic.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String nextMusic(HttpServletRequest req) {
+		String str = null;
+		
+		
+		
+		return str;
+	}
+	
+	@RequestMapping(value="/sb_music/sb_ChDrag.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public String ChDrag(HttpServletRequest req) {
+		String str = null;
+		
+		String music_list = req.getParameter("listV");
+		String mId = req.getParameter("mId");
+		
+		MusicListVo mlv = new MusicListVo();
+		mlv.setmId(mId);
+		mlv.setMusic_list(music_list);
+		
+		System.out.println(music_list);
+		
+		dao.ChDrag(mlv);
+		
+		
+		
+		return str;
 	}
 	
 	

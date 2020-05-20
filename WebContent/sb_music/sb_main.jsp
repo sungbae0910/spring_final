@@ -59,6 +59,7 @@
 				<input type="hidden" name="m_photo" id="m_photo">
 				<input type="hidden" name="mId" id="mId" value="id">
 				<input type="hidden" name="as" id="as" value="">
+				<input type="hidden" name="listV" id="listV">
 		</form>
   
 	  <div class="col-sm-9 page">
@@ -107,6 +108,8 @@
 		</footer>
 	  </div>
  </div>
+ 
+
 
 <jsp:include page="./sb_nav.jsp"/>
 <script src="../sb_music/sb_lib/js/sb_music.js"></script>

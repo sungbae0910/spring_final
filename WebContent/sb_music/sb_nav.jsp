@@ -11,6 +11,11 @@
 
 <!-- footer -->
 
+ <div class="alert" id="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+ 	 곡이 플레이 리스트에 담겼습니다.
+ </div>
+
 	<!-- 뮤직 실행바 -->
  <nav class="navbar nav-default navbar-fixed-bottom" role="navigation" id="nav">
  			
@@ -18,14 +23,21 @@
  			
  			
  			<div class="wrapper">
- 			<div class="audio-player__container">
+	 			<div class="audio-player__container">
 				        <div class="audio-player__container__progress">
 				          <input id="progress-bar" type="range" value="0" step="0.00011" class="slider">
 				       </div>
-			</div>
+				</div>
 				   
 				   
 		   </div>
+		   <div class='col-sm-12'>
+		   		<div align="center" >
+		   			<span id="start-time">00:00</span>		   			
+		   		</div>
+
+		   </div>
+		   
 			<div id="music_play">
 				<!-- 앨범 -->
 	 			<div class="col-sm-2">
@@ -43,9 +55,9 @@
 					       		<span style="color: white;" id="timer"></span>
 					       <br>
 					        <div class="audio-player__container__actions">
-					         <button id="prevBtn"><img src="../sb_music/sb_lib/images/prev.png" width="50px;"></button>
+					         <button id="prevBtn" onclick="audioBtn(1)"><img src="../sb_music/sb_lib/images/prev.png" width="50px;"></button>
 					          <button id="play-button" onclick="player()"><img src="../sb_music/sb_lib/images/play.png" id="btn_play" width="50px;"></button>
-					          <button id="nextBtn"><img src="../sb_music/sb_lib/images/next.png" width="50px;"></button>
+					          <button id="nextBtn" onclick="audioBtn(2)"><img src="../sb_music/sb_lib/images/next.png" width="50px;"></button>
 					        </div>
 					     </div>
 				      </div>
@@ -96,23 +108,8 @@
 							<th scope="col">음악 삭제</th>
 						</tr>
 						</thead>
-						<tbody id="pl_tbody">
-							<%-- 	<tr id="pl_each">
-									<td>
-										<span>${s.count }</span>
-									</td>
-									<td>
-										<img src="../sb_music/sb_lib/album/방탄-on.PNG" width="55px">
-									</td>
-									<td>
-										<span>${v.music_name }</span>
-										<br>
-										<span>${v.artist_name } ♬플레이타임</span>
-									</td>
-									<td>
-										<span id="tb_delete">X</span>
-									</td>
-								</tr> --%>
+						<tbody id="pl_tbody" ondragend="ChDrag()">
+							<!-- 테이블 값 출력 -->
 						</tbody>
 					</table>
 				</div>
