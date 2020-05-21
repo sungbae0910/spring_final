@@ -411,7 +411,7 @@
 		padding: 0.80em 2em;
 		text-align: center;
 		text-decoration: none;
-		font-size: 1.4em;
+		font-size: 1em;
 		font-weight: 600;
 		min-width: 10em;
 	}
@@ -744,6 +744,8 @@
 	    width: 100%;
 	    font-size: 0;
 	    margin: 0 0 45px;
+	    position: relative;
+    	left: 192px;
 		}
 		
 		#w_main ul.w_tabs li.w_active {
@@ -752,7 +754,7 @@
 	    color: #fff;
 		}
 		
-		#w_main ul.w_tabs li.w_active:before {
+		/* #w_main ul.w_tabs li.w_active:before {
 	    content: '';
 	    position: absolute;
 	    width: 9px;
@@ -762,7 +764,7 @@
 	    transform: translateX(-50%);
 	    transform: rotate(45deg);
 	    background: #282828;
-	    }
+	    } */
 		
 		#w_main ul.w_tabs li {
 		display: inline-block;
@@ -935,6 +937,10 @@
   		margin: 0 0 20px;
 	    }
 	    
+	    .w_buttonmenu{
+	    margin: 10px;
+	    font-size: 1em;
+	    }
 	    
 /* Footer */
 

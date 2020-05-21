@@ -12,9 +12,9 @@
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 <script src="./js/jquery.min.js"></script>
 <script src="./js/jquery.dropotron.min.js"></script>
-<script src="./js/skel.min.js"></script>
-<script src="./js/skel-layers.min.js"></script>
-<script src="./js/init.js"></script>
+<script src="./js/w_brand.js"></script>
+
+<link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
 	</head>
@@ -52,22 +52,23 @@
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
+						 <input type="button" id="w_btninsert" class='w_buttonmenu' value="신메뉴 입력">
 				               <h5 class="w_menu_info">
 				                 <span class="w_deco">
 				                 	메뉴 소개
 				                 </span>
 				               </h5>
 				          <ul class="w_tabs">
-				             <li class="w_active"  rel="tab1" onclick="food.foodj('전')" >
+				             <li class="w_active"  rel="tab1" onclick="fd.foodj('전')" >
 				              	전	
 				             </li>
-				             <li  rel="tab2" onclick="food.foodj('전골')">
+				             <li  rel="tab2" onclick="fd.foodj('전골')">
 				              	전골
 				             </li>
-				             <li  rel="tab3" onclick="food.foodj('냉채')">
+				             <li  rel="tab3" onclick="fd.foodj('냉채')">
 				              	냉채
 				             </li>
-				             <li  rel="tab4" onclick="food.foodj()">
+				             <li  rel="tab4" onclick="fd.foodj('사이드')">
 				              	사이드
 				             </li>    
 				          </ul>
@@ -104,7 +105,6 @@
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>	
 						</div>
-
 				</div>
 			</div>
 	</body>

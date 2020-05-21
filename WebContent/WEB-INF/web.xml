@@ -13,14 +13,11 @@
     <servlet>
     <servlet-name>food_mvc</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	    <init-param>
-	      <param-name>food_mvc</param-name>
-	      <param-value>/WEB-INF/spring/food_mvc-servlet.xml</param-value>
-	    </init-param>
+	   
     </servlet>
   <servlet-mapping>
     <servlet-name>food_mvc</servlet-name>
-    <url-pattern>*.food</url-pattern>
+    <url-pattern>*.fd</url-pattern>
   </servlet-mapping>  
   
 </web-app>

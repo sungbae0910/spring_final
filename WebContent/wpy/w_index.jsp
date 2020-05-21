@@ -7,24 +7,12 @@
 <title>꼬치예전</title>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/jquery.dropotron.min.js"></script>
-<script src="./js/skel.min.js"></script>
-<script src="./js/skel-layers.min.js"></script>
-<script src="./js/init.js"></script>
+
+<link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
 </head>
 
-<%
-String inc = "./wpy/w_customer.jsp";
-if(request.getParameter("inc")!=null && request.getParameter("inc")!="" ){
-	inc = request.getParameter("inc");
-}
-
-String inc2 = "./wpy/w_index.jsp";
-if(request.getParameter("inc2")!=null && request.getParameter("inc2") != ""  ){
-	inc2 = request.getParameter("inc2");
-}
-%>
 
 <body class="homepage">
 
@@ -115,6 +103,5 @@ if(request.getParameter("inc2")!=null && request.getParameter("inc2") != ""  ){
 
 				</div>
 			</div>
-
 	</body>
 </html>

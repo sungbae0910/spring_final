@@ -20,8 +20,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="mybatis/news.xml"/>
-		<mapper resource="mybatis/music.xml"/>
+		<mapper resource="w_foodcontroller/w_food.xml"/>
 	</mappers>
 	
 

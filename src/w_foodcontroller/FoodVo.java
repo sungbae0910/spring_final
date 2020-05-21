@@ -1,12 +1,14 @@
-package w_foodController;
+package w_foodcontroller;
 
-public class foodVo {
+public class FoodVo {
 	int foodCode;
 	String foodName;
 	int foodPrice;
+	String foodtype;
 	String foodOriFile;
 	String foodSysFile;
-
+    
+	
 	public int getFoodCode() {
 		return foodCode;
 	}
@@ -47,4 +49,6 @@ public class foodVo {
 		this.foodSysFile = foodSysFile;
 	}
 
+	
+	
 }
