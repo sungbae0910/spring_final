@@ -7,6 +7,7 @@
 <title>꼬치예전</title>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/jquery.dropotron.min.js"></script>
+<script src="./js/w_brand.js"></script>
 
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="./css/skel.css" />
@@ -20,6 +21,12 @@
 			<div id="header">
 				<div class="container">
 						
+					<!-- 로그인 버튼 -->	
+						<input type="button" id="w_btnLogin" value="로그인">
+						<input type="button" id="w_btnLogout" value="로그아웃">
+						
+						<!-- <a id="w_btnLogin" href="w_login.jsp">로그인</a>
+						<a id="w_btnLogout" href="w_index.jsp">로그아웃</a> -->
 					<!-- Logo -->
 						<img src="./w_images/w_mainimage1.png">
 					<!-- Nav -->
@@ -100,8 +107,8 @@
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
 						</div>
-
 				</div>
 			</div>
+<script>fd.func()</script>
 	</body>
 </html>

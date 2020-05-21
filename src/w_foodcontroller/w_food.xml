@@ -17,5 +17,10 @@
 
  </select>
  
+ <!-- 로그인 셀렉트 -->
+ <select id='w_LoginCheck' resultType="String">
+   select mid , pwd from membership where mid=#{mid} and pwd = #{pwd}
+ </select>
+ 
  
 </mapper>

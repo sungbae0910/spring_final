@@ -23,11 +23,11 @@ public class FoodController {
   }
   
   
-  
+    
   @RequestMapping(value = "/w_select.fd", method= {RequestMethod.GET,RequestMethod.POST})
   public ModelAndView select(HttpServletRequest req) {
 	 ModelAndView mv = new ModelAndView();
-	 System.out.println("컨트롤러");
+	 
 	 
 	 String type = req.getParameter("type");
 	 

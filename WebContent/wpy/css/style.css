@@ -127,7 +127,7 @@
 		outline: 0;
 		padding: 0.75em;
 		text-decoration: none;
-		width: 100%;
+		width: 54%;
 	}
 
 		input[type="text"]:focus,
@@ -390,7 +390,6 @@
 
 	input[type="submit"],
 	input[type="reset"],
-	input[type="button"],
 	.button {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -436,7 +435,40 @@
 		.button.small {
 			font-size: 0.8em;
 		}
-
+        
+        #frm_food .longinbutton{
+        -moz-appearance: none;
+	    -webkit-appearance: none;
+	    -o-appearance: none;
+	    -ms-appearance: none;
+	    appearance: none;
+	    -moz-transition: background-color 0.2s ease-in-out;
+	    -webkit-transition: background-color 0.2s ease-in-out;
+	    -o-transition: background-color 0.2s ease-in-out;
+	    -ms-transition: background-color 0.2s ease-in-out;
+	    transition: background-color 0.2s ease-in-out;
+	    background: #3ac984;
+	    border-radius: 40px;
+	    border: 0;
+	    color: white;
+	    cursor: pointer;
+	    display: inline-block;
+	    padding: 0.80em 2em;
+	    text-align: center;
+	    text-decoration: none;
+	    font-size: 1em;
+	    font-weight: 600;
+	    min-width: 10em;
+	    margin: 10px;
+	    }
+	    
+	    #frm_food{
+	    position: relative;
+	    left: 230px;
+	    
+	    }
+	     
+	      
 /* Wrapper */
 
 	.wrapper.style1 {
@@ -546,7 +578,47 @@
 			#nav > ul > li > ul {
 				display: none;
 			}
-
+            
+            #w_btnLogin{
+            transition: background-color 0.2s ease-in-out;
+		    background: #64adca;
+		    border-radius: 13px;
+		    border: 0;
+		    color: white;
+		    cursor: pointer;
+		    display: inline-block;
+		    padding: 0.5em 1em;
+		    text-align: center;
+		    text-decoration: none;
+		    font-size: 15px;
+		    font-weight: 600;
+		    min-width: 10em;
+		    position: relative;
+		    right: 393px;
+		    bottom: 251px;
+            
+            }
+            
+            #w_btnLogout{
+            transition: background-color 0.2s ease-in-out;
+		    background: #64adca;
+		    border-radius: 13px;
+		    border: 0;
+		    color: white;
+		    cursor: pointer;
+		    display: inline-block;
+		    padding: 0.5em 1em;
+		    text-align: center;
+		    text-decoration: none;
+		    font-size: 15px;
+		    font-weight: 600;
+		    min-width: 10em;
+		    position: relative;
+		    right: 390px;
+		    bottom: 251px;
+            
+            }
+            
 /* Dropotron */
 
 	.dropotron {
@@ -938,9 +1010,32 @@
 	    }
 	    
 	    .w_buttonmenu{
+	    -moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out;
+		-o-transition: background-color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out;
+		background: #3ac984;
+		border-radius: 40px;
+		border: 0;
+		color: white;
+		cursor: pointer;
+		display: inline-block;
+		padding: 0.80em 2em;
+		text-align: center;
+		text-decoration: none;
+		font-size: 1em;
+		font-weight: 600;
+		min-width: 10em;
 	    margin: 10px;
 	    font-size: 1em;
 	    }
+	    
 	    
 /* Footer */
 

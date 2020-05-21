@@ -10,4 +10,11 @@ fd.foodj = function(type) {
 	 $('.w_tab_container').html(data)
  })
 	
+ 
+}
+
+fd.func = function(){
+	$('#w_btnLogin').click(function(){
+		location.href="w_login.fd";
+	})
 }
