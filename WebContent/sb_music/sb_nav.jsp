@@ -55,9 +55,9 @@
 					       		<span style="color: white;" id="timer"></span>
 					       <br>
 					        <div class="audio-player__container__actions">
-					         <button id="prevBtn" onclick="audioBtn(1)"><img src="../sb_music/sb_lib/images/prev.png" width="50px;"></button>
+					         <button id="prevBtn" onclick="audioBtn(1, ${play.music_serial})"><img src="../sb_music/sb_lib/images/prev.png" width="50px;"></button>
 					          <button id="play-button" onclick="player()"><img src="../sb_music/sb_lib/images/play.png" id="btn_play" width="50px;"></button>
-					          <button id="nextBtn" onclick="audioBtn(2)"><img src="../sb_music/sb_lib/images/next.png" width="50px;"></button>
+					          <button id="nextBtn" onclick="audioBtn(2, ${play.music_serial})"><img src="../sb_music/sb_lib/images/next.png" width="50px;"></button>
 					        </div>
 					     </div>
 				      </div>
@@ -73,7 +73,11 @@
 				  		 <input type="range" id='volume-bar' min="0" max='100'  value="100" oninput="showVolume(this.value)">
 					   	 <span><font size=2 id="now-vol" style="color: white; text-shadow: 0 0 1px black">100</font></span>
 				   	 </div>
-				   	
+				   	 <br>
+				   	 <div align="center">
+					   	 <img src="../sb_music/sb_lib/images/re.png" id="re" width="40px" onclick="re(${play.music_serial})" style="opacity: 30%">
+					   	 <img src="../sb_music/sb_lib/images/one.png" id="one" width="40px" onclick="one(${play.music_serial})" style="opacity: 30%">
+				   	</div>
 				  </div>
 				  
 				  <div class="col-sm-1">
@@ -105,7 +109,7 @@
 							<th scope="col">NO</th>
 							<th scope="col">앨범</th>
 							<th scope="col">음악 정보</th>
-							<th scope="col">음악 삭제</th>
+							<th scope="col" id="removeAll" onclick="removeAll()">전체 삭제</th>
 						</tr>
 						</thead>
 						<tbody id="pl_tbody">

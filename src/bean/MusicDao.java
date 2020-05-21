@@ -156,5 +156,15 @@ public class MusicDao {
 		}
 	}
 
+	public void removeAll(String mId) {
+		
+		try {
+			sqlSession.update("music.removeAll", mId);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
 	
 }

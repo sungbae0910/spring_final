@@ -114,6 +114,35 @@ public class MusicController {
 		top10(req);
 		return mv;
 	}
+	@RequestMapping(value="/sb_music/sb_play2.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody ModelAndView play2(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String serial = (req.getParameter("m_serial"));
+		String mId = req.getParameter("mId");
+		
+		int s = Integer.parseInt(serial);
+		 
+		MusicVo vo = dao.play(s); // nav바에 음악정보 가져와서 실행
+		
+		
+		//플레이 리스트 가져와서 추가
+		MusicListVo mlv = dao.playList(mId);
+		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
+
+		mlv.setmId(mId);
+		
+		
+		
+		
+		
+		mv.addObject("play", vo);
+		List<MusicVo> list = dao.top10();
+		mv.addObject("top10", list);
+		mv.setViewName("sb_main");
+		top10(req);
+		return mv;
+	}
+	
 	
 	
 	@RequestMapping(value="/sb_music/sb_playList.mu", method= {RequestMethod.GET, RequestMethod.POST})
@@ -177,6 +206,21 @@ public class MusicController {
 		return str;
 		
 	}
+	@RequestMapping(value="/sb_music/sb_removeAll.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String removeAll(HttpServletRequest req) {
+		String str="전체 삭제";
+		String mId = req.getParameter("mId");
+		
+		dao.removeAll(mId);
+		
+		
+		
+		
+		
+		return str;
+	}
+	
 	
 	@RequestMapping(value="/sb_music/sb_delList.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
@@ -187,8 +231,7 @@ public class MusicController {
 
 		String mId = req.getParameter("mId"); // mId 가져와서
 		String ms = req.getParameter("m_serial"); // 음악 시리얼도 가져와서
-		System.out.println("mid="+mId);
-		
+
 		MusicListVo vo = dao.playList(mId); // 플레이리스트 가져오고
 		vo.setmId(mId); // mid 넣어주고
 		vo.setMusic_serial(ms); // music_serial 넣어주고
@@ -228,11 +271,31 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_prevMusic.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String prevMusic(HttpServletRequest req) {
-		String str = null;
-		String listV = req.getParameter("listV");
+		Gson gson = new GsonBuilder().create();
+		String serial = req.getParameter("m_serial");
 		String mId = req.getParameter("mId");
 		
+		MusicListVo mlv = dao.playList(mId);
+		String playlist = mlv.getMusic_list();
+		String s[] = playlist.split(",");
+		int n[] = new int[s.length];
+		for(int i=0; i<s.length; i++) {
+			n[i] = Integer.parseInt(s[i].trim());
+		}
 		
+		int serial2 = Integer.parseInt(serial);
+		int cnt = 0;
+		int result = 0;
+		for(int i=0; i<n.length; i++) {
+			if(serial2 == n[i]) {
+				cnt = i-1;
+				result = n[cnt];
+			}else {
+				result = serial2;
+			}
+		}
+		
+		String str = gson.toJson(result);
 		
 		return str;
 	}
@@ -240,11 +303,31 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_nextMusic.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String nextMusic(HttpServletRequest req) {
-		String str = null;
-		
-		String listV = req.getParameter("listV");
+		Gson gson = new GsonBuilder().create();
+		String serial = req.getParameter("m_serial");
 		String mId = req.getParameter("mId");
 		
+		MusicListVo mlv = dao.playList(mId);
+		String playlist = mlv.getMusic_list();
+		String s[] = playlist.split(",");
+		int n[] = new int[s.length];
+		for(int i=0; i<s.length; i++) {
+			n[i] = Integer.parseInt(s[i].trim());
+		}
+		
+		int serial2 = Integer.parseInt(serial);
+		int cnt = 0;
+		for(int i=0; i<n.length; i++) {
+			if(serial2 == n[i]) {
+				cnt = i+1;
+			}
+		}
+		
+		System.out.println(n[cnt]);
+		
+		int result = n[cnt];
+		
+		String str = gson.toJson(result);
 		
 		return str;
 	}
@@ -274,15 +357,11 @@ public class MusicController {
 		
 		bubbleSort(listnums, nums);
 		
-		for(int i : nums) {
-			System.out.println(i);
-		}
+		
 		String music_list = "";
 		for(int i : nums) {
 			music_list += Integer.toString(i) + ",";
 		}
-		
-		System.out.println(music_list);
 	
 		MusicListVo mlv = new MusicListVo();
 		mlv.setmId(mId);

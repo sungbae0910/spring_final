@@ -213,6 +213,14 @@ body{
 	background-color: rgba(000,102,051,0.8);
 }
 
+#removeAll{
+	color: #BE81F7;
+}
+#removeAll:hover{
+	cursor: pointer;
+	text-shadow: 0 0 3px black;
+}
+
 #prevBtn{
 	background-color: transparent;
 	border: 0;

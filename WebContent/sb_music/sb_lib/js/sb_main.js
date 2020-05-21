@@ -58,14 +58,38 @@ play = function(serial){ // 듣기 눌렀을 때
 	});
 }
 
+play2 = function(serial){
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	$.post('sb_play2.mu', param, function(data){
+		
+		
+		$('#navBody').empty();
+		$('#navBody').append(data);
+		
+		$('#playBar').show();
+		$('#album').show();
+		
+		$('#playBarD').hide();
+		$('#albumD').hide();
+		
+		$("#show_list").hide();
+		$("#playerImg").hide();
+		
+
+		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		player();
+		$('#play-button').click();
+		
+	});
+}
+
 kimchi = function(serial){ // 담기 눌렀을 때
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
 	
-	$.post('sb_kimchi.mu', param, function(data){
-		console.log(data);
-		alert(data);
-	});
+	$.post('sb_kimchi.mu', param);
 	
 	$('#alert').show();
 }
@@ -78,7 +102,7 @@ function nice(){ // 나중에 지우자궁
 	alert(audio.src);
 }
 
-function audioBtn(num){ // 전노래 다음노래 버튼
+function audioBtn(num, serial){ // 전노래 다음노래 버튼
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
 	
@@ -90,7 +114,7 @@ function audioBtn(num){ // 전노래 다음노래 버튼
 			dataType: "json",
 			success : function(data){
 				
-				
+				play2(data);
 				
 				
 			}
@@ -106,7 +130,7 @@ function audioBtn(num){ // 전노래 다음노래 버튼
 				
 				
 				
-				
+				play2(data);
 				
 			}
 		});		
@@ -114,6 +138,33 @@ function audioBtn(num){ // 전노래 다음노래 버튼
 		
 		
 	}
+}
+var reS = 0;
+var oneS = 0;
+function re(serial){
+	if(reS == 0){
+		$('#re').css('opacity','100%');
+		$('#one').css('opacity','30%');
+		oneS = 0;
+		reS = 1;
+	}else{
+		$('#re').css('opacity','30%');
+		reS = 0;
+	}
+	
+}
+
+function one(serial){
+	if(oneS == 0){
+		$('#one').css('opacity','100%');
+		$('#re').css('opacity','30%');
+		reS = 0;
+		oneS = 1;
+	}else{
+		$('#one').css('opacity','30%');
+		oneS = 0;
+	}
+	
 }
 
 function getTime(t){
@@ -147,6 +198,8 @@ function player(){
 	    
 		$('#btn_play').attr("src","../sb_music/sb_lib/images/play.png");
 	    playing=false;
+	    
+	    
 	  });
 	  
 	  audio.addEventListener("play",(e)=>{    
@@ -177,6 +230,12 @@ function player(){
 	
 }
 
+function removeAll(){
+	let param = $('#frm_top').serialize();
+	$.post('sb_removeAll.mu',param);
+	
+	playList();
+}
 
 function showVolume(vol){
 	var view = document.getElementById("now-vol");
@@ -236,7 +295,7 @@ function playList(){
 						"<tr id='changing" + index + "' onmouseup='ChDrag("+ index + ","+ val.music_serial  +")'>" +
 						"<td> <span>" + index + "</span> </td>" +
 						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
-						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
+						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play2("+ val.music_serial +")'> " + 
 						"</td>" +
 						"<td> <span>" + val.music_name + "</span>" +
 						"<br>" +
@@ -254,7 +313,7 @@ function playList(){
 			
 		},
 		error : function(request, status, error){
-			alert(request.status + "\n에러메시지:" + error);
+			/*alert(request.status + "\n에러메시지:" + error);*/
 		}
 		
 	})
@@ -286,7 +345,7 @@ function delList(serial){
 						"<tr id='changing" + index + "' onmouseup='ChDrag("+ index + ","+ val.music_serial  +")'>" +
 						"<td> <span>" + index + "</span> </td>" +
 						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
-						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
+						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play2("+ val.music_serial +")'> " + 
 						"</td>" +
 						"<td> <span>" + val.music_name + "</span>" +
 						"<br>" +
@@ -303,7 +362,7 @@ function delList(serial){
 		},
 		
 		error: function(request, status, error){
-			alert(request.status + "\n에러메시지:" + error);
+			/*alert(request.status + "\n에러메시지:" + error);*/
 		}
 		
 		
@@ -328,13 +387,7 @@ function ChDrag(index, music_serial){
 	let param = $('#frm_top').serialize();
 	str = '';
 	
-	$.post('sb_ChDrag.mu', param, function(data){
-		
-		
-		
-		
-		
-	});
+	$.post('sb_ChDrag.mu', param);
 }
 
 

@@ -89,6 +89,12 @@
 		set music_list = #{music_list}
 		where mId = #{mId}
 		
+	</update>
+	
+	<update id="removeAll" parameterType ="String">
+		update sb_playlist
+		set music_list = ''
+		where mId = #{mId}
 		
 	</update>
 
