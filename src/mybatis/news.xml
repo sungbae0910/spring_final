@@ -44,8 +44,25 @@
 		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.nSerial='${value}'
 	</select>
 	
-	<select id="comment_List" parameterType="String" resultType="newsController.CommentVo">
+<!-- 	<select id="comment_List" parameterType="String" resultType="newsController.CommentVo">
 		select * from news_comment where nSerial=${value} order by cGroup desc, cStep asc
+	</select> -->
+	
+	<select id="comment_list" parameterType="newsController.Page" resultType="newsController.CommentVo">
+		 select * from ( 
+					select rownum rn , A.* from (
+					select * from news_comment
+					where nSerial = #{nSerial} and cIndent=0
+					order by cGroup desc, cStep asc ) A
+					) where rn between #{startNo} and #{endNo}
+	</select>
+	
+	<select id="comment_cnt" parameterType="String" resultType="String">
+		select count(*) from news_comment where nSerial=#{value} and cIndent=0
+	</select>
+	
+	<select id="comment_cnt_s" parameterType="String" resultType="int">
+		select count(*) from news_comment where nSerial=#{value} and cIndent=0
 	</select>
 	
 	<select id="re_comment_list" parameterType="String" resultType="newsController.CommentVo">
@@ -61,11 +78,19 @@
 	</select>
 	
 	<select id="like_check" parameterType="newsController.LikeVo" resultType="int">
-		select count(likeNo) cnt from news_like where mName=#{mName} and cSerial=#{cSerial}
+		select count(likeNo) cnt from news_like where mName=#{mName} and cSerial=#{cSerial} and cLike=1
 	</select>
 	
-	<select id="like_cnt" parameterType="newsController.LikeVo" resultType="int">
+	<select id="un_like_check" parameterType="newsController.LikeVo" resultType="int">
+		select count(likeNo) cnt from news_like where mName=#{mName} and cSerial=#{cSerial} and cDiLike=1
+	</select>
+	
+	<select id="like_cnt" parameterType="newsController.LikeVo" resultType="String">
 		select cLike from news_comment where cSerial=#{cSerial}
+	</select>
+	
+	<select id="un_like_cnt" parameterType="newsController.LikeVo" resultType="String">
+		select cDiLike from news_comment where cSerial=#{cSerial}
 	</select>
 	
 	
@@ -89,6 +114,10 @@
 	<insert id="like_in" parameterType="newsController.LikeVo">
 		insert into news_like values(seq_like_serial.nextval, #{mName}, #{nSerial}, #{cSerial}, 1, 0)
 	</insert>
+	
+	<insert id="un_like_in" parameterType="newsController.LikeVo">
+		insert into news_like values(seq_like_serial.nextval, #{mName}, #{nSerial}, #{cSerial}, 0, 1)
+	</insert>
 
 	<!-- delete -->
 	
@@ -101,8 +130,10 @@
 	</delete>
 	
 	<delete id="like_delete" parameterType="newsController.LikeVo">
-		delete * from news_like where mName=#{mName} and cSerial=#{cSerial}
+		delete from news_like where mName=#{mName} and cSerial=#{cSerial}
 	</delete>
+	
+
 	
 <!-- 	<delete id="comment_delete" parameterType="String">
 		delete from news_comment where 
@@ -111,11 +142,19 @@
 
 	<!-- update -->
 	<update id="like_in_update" parameterType="newsController.LikeVo">
-		update news_like set cLike=cLike+1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cLike=cLike+1 where cSerial=#{cSerial} and mName=#{mName}
 	</update>
 	
 	<update id="like_out_update" parameterType="newsController.LikeVo">
-		update news_like set cLike=cLike-1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cLike=cLike-1 where cSerial=#{cSerial} and mName=#{mName}
+	</update>
+	
+	<update id="un_like_in_update" parameterType="newsController.LikeVo">
+		update news_comment set cDiLike=cDiLike+1 where cSerial=#{cSerial} and mName=#{mName}
+	</update>
+	
+	<update id="un_like_out_update" parameterType="newsController.LikeVo">
+		update news_comment set cDiLike=cDiLike-1 where cSerial=#{cSerial} and mName=#{mName}
 	</update>
 	
 	<!-- resultMap -->

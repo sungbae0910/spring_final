@@ -89,11 +89,24 @@ public class NewsDao {
 		List<NewsVo> vo = new ArrayList<NewsVo>();
 		try {
 			vo = sqlSession.selectList("news.main_cate_de", cateName);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return vo;
+	}
+	
+	//댓글 갯수
+	public String commentCnt(String nSerial) {
+		String cnt = "";
+		
+		try {
+			cnt = sqlSession.selectOne("news.comment_cnt", nSerial);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 	
 	public List<NewsVo> weekly(){
@@ -131,7 +144,7 @@ public class NewsDao {
 	
 	
 	//댓글
-	public List<CommentVo> commentView(String nSerial){
+/*	public List<CommentVo> commentView(String nSerial){
 		List<CommentVo> comment = new ArrayList<CommentVo>();
 		
 		try {
@@ -141,6 +154,20 @@ public class NewsDao {
 			e.printStackTrace();
 		}
 		
+		return comment;
+	}*/
+	
+	public List<CommentVo> commentView(Page p){
+		List<CommentVo> comment = new ArrayList<CommentVo>();
+		
+		try {
+			int totList = sqlSession.selectOne("news.comment_cnt_s", p.getnSerial());
+			p.setTotListSize(totList);
+			p.pageCompute();
+			comment = sqlSession.selectList("news.comment_list", p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return comment;
 	}
 	
@@ -232,11 +259,18 @@ public class NewsDao {
 		}
 	}
 	
+	// 좋아요 확인
 	public int likeCheck(LikeVo vo) {
 		int check = 0;
 			
 		try {
-			check = sqlSession.selectOne("news.like_check", vo);
+			check = sqlSession.selectOne("news.un_like_check", vo);
+			if(check == 0) {
+				check = sqlSession.selectOne("news.like_check", vo);
+			}else {
+				check = 100;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -244,6 +278,7 @@ public class NewsDao {
 		return check;
 	}
 	
+	// 좋아요 클릭
 	public String likeIn(LikeVo vo) {
 		String likeCnt = "";
 		int ck = 0;
@@ -270,6 +305,7 @@ public class NewsDao {
 		return likeCnt;
 	}
 	
+	//좋아요 취소
 	public String likeOut(LikeVo vo) {
 		String likeCnt = "";
 		int ck = 0;
@@ -294,11 +330,77 @@ public class NewsDao {
 			sqlSession.rollback();
 			e.printStackTrace();
 		}
-		
 		return likeCnt;
-		
 	}
 	
+	//싫어요 확인
+	public int unLikeCheck(LikeVo vo) {
+		int check = 0;
+		
+		try {
+			check = sqlSession.selectOne("news.like_check", vo);
+			if(check == 0) {
+				check = sqlSession.selectOne("news.un_like_check", vo);
+			}else {
+				check = 100;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
 	
+	// 싫어요 클릭
+	public String unLikeIn(LikeVo vo) {
+		String likeCnt = "";
+		int ck = 0;
+		try {
+			ck = sqlSession.insert("news.un_like_in", vo);
+			if(ck<1) {
+				throw new Exception("싫어요 클릭 중 오류발생");
+			}
+			
+			ck = sqlSession.update("news.un_like_in_update", vo);
+			if(ck<1) {
+				throw new Exception("싫어요 업데이트 중 오류발생");
+			}
+			
+			likeCnt = sqlSession.selectOne("news.un_like_cnt", vo);
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+		
+		return likeCnt;
+	}
+	
+	// 싫어요 취소
+	public String unLikeOut(LikeVo vo) {
+		String likeCnt = "";
+		int ck = 0;
+		try {
+			ck = sqlSession.delete("news.like_delete", vo);
+			if(ck<1) {
+				throw new Exception("좋아요 삭제 중 오류 발생");
+			}
+			
+			ck = sqlSession.update("news.un_like_out_update", vo);
+			if(ck<1) {
+				throw new Exception("취소 업데이트 중 오류 발생");
+			}
+			
+			likeCnt = sqlSession.selectOne("news.un_like_cnt", vo); 
+					
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+		
+		return likeCnt;
+	}
 
 }

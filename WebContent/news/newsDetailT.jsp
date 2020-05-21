@@ -41,6 +41,7 @@
 	<input type="hidden" name="indent" class="cIndent"/>
 	<input type="hidden" name="cGroup" class="cGroup"/>
 	<input type="hidden" name="reContent" class="reContent"/>
+	<input type="hidden" name="nowPage" value="${p.nowPage}" class="nowPage"/>
 	<!-- Preloader Start -->
 	<div id="preloader-active">
 		<div
@@ -146,8 +147,8 @@
 							<span class="txt_info">${vo.nRepoter}</span>
 							<fmt:formatDate value="${vo.nDate}" pattern="yyyy-MM-dd" var="fmtDate"/>
 							<span class="txt_info">${fmtDate}</span>
-							<button id="alexCounter" class="emph_g2 link_cmt">
-								댓글<span class="alex-count-area">5</span>개						
+							<button type="button" id="alexCounter" class="emph_g2 link_cmt">
+								댓글						
 							</button>
 						</span>				
 					</div>
@@ -176,8 +177,9 @@
 					</div>
 					<!-- From -->
 					<!-- 댓글 입력창 -->
+					<div id="news_comment_s">
 						<div class="count_comment_s">
-							<h5>댓글 48개</h5>
+							<h5>${cnt}개</h5>
 						</div>
 						<div class="input-group mb-3">
 							<input type="text" name="content" id="cC_s" class="form-control cContent" placeholder="댓글을 입력해주세요"/>
@@ -192,7 +194,6 @@
 								<li>등록순</li>
 							</ul>
 						</div>
-					<div id="news_comment_s">
 						<div id="commnet_s">
 							<div class="comments-area">
 							<c:forEach var="i" items="${comment}" varStatus="ii">
@@ -243,26 +244,35 @@
 														<c:when test="${not empty sessionScope.mName}">
 															<button type="button" class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
 																<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span>
-																<span class="num_txt">
+																<span class="num_txt num_txtr${ii.index}">
 																	${i.cLike}
 																</span>
 															</button>
 														</c:when>
 														<c:otherwise>
 															<button type="button" class="btn_g btn_recomm" onclick="login_s()" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_recomm bounce"><img src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cLike}</span>
+																<span class="img_cmt ico_recomm bounce"><img src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> 
+																<span class="num_txt">
+																	${i.cLike}
+																</span>
 															</button>
 														</c:otherwise>
 													</c:choose>
 													<c:choose>
 														<c:when test="${not empty sessionScope.mName}">
 															<button type="button" class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="./img/news/like.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cDiLike}</span>
+																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="./img/news/like.png" style="width: 18px; height: 18px;"></span> 
+																<span class="num_txt num_txto${ii.index}">
+																	${i.cDiLike}
+																</span>
 															</button>
 														</c:when>
 														<c:otherwise>
 															<button type="button" class="btn_g btn_oppose" onclick="login_s()" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_oppose bounce"><img src="./img/news/like.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cDiLike}</span>
+																<span class="img_cmt ico_oppose bounce"><img src="./img/news/like.png" style="width: 18px; height: 18px;"></span> 
+																<span class="num_txt">
+																	${i.cDiLike}
+																</span>
 															</button>
 														</c:otherwise>
 													</c:choose>
@@ -368,13 +378,17 @@
 					<div class="single-wrap d-flex justify-content-center">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination justify-content-start">
-								<li class="page-item"><a class="page-link" href="#"><img
-										src="./img/news/previous.png" alt=""></a></li>
-								<li class="page-item "><a class="page-link" href="#">01</a></li>
-								<li class="page-item active"><a class="page-link" href="#">02</a></li>
-								<li class="page-item"><a class="page-link" href="#">03</a></li>
-								<li class="page-item"><a class="page-link" href="#"><img
-										src="./img/news/next.png" alt=""></a></li>
+								<c:if test="${p.startPage>p.blockSize }">
+									<li class="page-item"><a class="page-link" href="#" onclick="comment_go(${p.startPage-1})"><img src="./img/news/previous.png" alt=""></a></li>
+								</c:if>
+								
+								<c:forEach var="i" begin="${p.startPage}" end="${p.endPage}" varStatus="ii">
+									<li class="page-item active pa${ii.index}"><a class="page-link" href="#" onclick="comment_go(${i},${ii.index})">${i}</a></li>
+								</c:forEach>
+								
+								<c:if test="${p.endPage<p.totPage}">
+									<li class="page-item"><a class="page-link" href="#" onclick="comment_go(${p.endPage+1})"><img src="./img/news/next.png" alt=""></a></li>
+								</c:if>
 							</ul>
 						</nav>
 					</div>

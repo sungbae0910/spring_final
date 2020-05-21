@@ -9,6 +9,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="count_comment_s">
+	<h5>${cnt}개</h5>
+</div>
+<div class="input-group mb-3">
+	<input type="text" name="content" id="cC_s" class="form-control cContent" placeholder="댓글을 입력해주세요"/>
+	<div class="input-group-append">
+		<button class="btn btn-outline-secondary" type="button"
+			id="button-addon2" onclick="news_comment()">입력</button>
+	</div>
+</div>
+<div class="cmt_box">
+	<ul class="list_category">
+		<li>추천순</li>
+		<li>등록순</li>
+	</ul>
+</div>
 <div id="commnet_s">
 	<div class="comments-area">
 	<c:forEach var="i" items="${comment}" varStatus="ii">
@@ -57,25 +73,37 @@
 						<span class="comment_recomm" style="float: right;">
 							<c:choose>
 								<c:when test="${not empty sessionScope.mName}">
-									<button class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
-										<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cLike}</span>
+									<button type="button" class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
+										<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span>
+										<span class="num_txt num_txtr${ii.index}">
+											${i.cLike}
+										</span>
 									</button>
 								</c:when>
 								<c:otherwise>
-									<button class="btn_g btn_recomm" onclick="login_s()" style="border: none; cursor: pointer;">
-										<span class="img_cmt ico_recomm bounce"><img src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cLike}</span>
+									<button type="button" class="btn_g btn_recomm" onclick="login_s()" style="border: none; cursor: pointer;">
+										<span class="img_cmt ico_recomm bounce"><img src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> 
+										<span class="num_txt">
+											${i.cLike}
+										</span>
 									</button>
 								</c:otherwise>
 							</c:choose>
 							<c:choose>
 								<c:when test="${not empty sessionScope.mName}">
-									<button class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
-										<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="./img/news/like.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cDiLike}</span>
+									<button type="button" class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
+										<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="./img/news/like.png" style="width: 18px; height: 18px;"></span> 
+										<span class="num_txt num_txto${ii.index}">
+											${i.cDiLike}
+										</span>
 									</button>
 								</c:when>
 								<c:otherwise>
-									<button class="btn_g btn_oppose" onclick="login_s()" style="border: none; cursor: pointer;">
-										<span class="img_cmt ico_oppose bounce"><img src="./img/news/like.png" style="width: 18px; height: 18px;"></span> <span class="num_txt">${i.cDiLike}</span>
+									<button type="button" class="btn_g btn_oppose" onclick="login_s()" style="border: none; cursor: pointer;">
+										<span class="img_cmt ico_oppose bounce"><img src="./img/news/like.png" style="width: 18px; height: 18px;"></span> 
+										<span class="num_txt">
+											${i.cDiLike}
+										</span>
 									</button>
 								</c:otherwise>
 							</c:choose>

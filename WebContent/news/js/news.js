@@ -4,7 +4,11 @@
 
 let news = function(){
 	
-	
+	$('#alexCounter').click(function(){
+		var offset = $('#news_comment_s').offset();
+		
+		$('html').animate({scrollTop : offset.top}, 400);
+	})
 	
 	$('.btn_test_s').click(function(){
 		$('#test_s').attr('action', '../news/test.news').submit();
@@ -13,6 +17,22 @@ let news = function(){
 	$('.trend-top-cap a').click(function(){
 		alert('asdad');
 		$('#tes_s').attr('action', '../newsDetailT.news').submit();
+	})
+	
+	$('.pagination li').click(function(){
+		$('li').removeClass('active');
+		$(this).addClass('active');
+	})
+	
+}
+
+let comment_go = function(nowPage, index){
+	$('.nowPage').val(nowPage);
+	let asd = $('.nowPage').val();
+	let param = $('#tes_s').serialize();
+	
+	$.post("commentPage.news", param, function(data, status){
+		$('#news_comment_s').html(data);
 	})
 	
 }
@@ -141,21 +161,58 @@ let login_s = function(){
 }
 
 let diLike_func_s = function(serial){
-	$('.oppose'+serial).attr('src', './img/news/unlikeA.png');
-}
-
-let like_func_s = function(serial){
+	let cSerial = $('.serial'+serial).val();
+	$('.cSerial').val(cSerial);
 	let param = $('#tes_s').serialize();
 	$.ajax({
-		url : "likeA.news",
+		url : "unLikeA.news",
 		type : "POST",
 		cache : false,
 		dataType : "json",
 		data : param,
 		success : function(data){
+			
+			if(data.unlike_check==0){
+				$('.num_txto'+serial).html(data.unLikeA);
+				$('.oppose'+serial).attr('src', './img/news/unlikeA.png');
+			}else if(data.unlike_check==1){
+				$('.num_txto'+serial).html(data.unLikeA);
+				$('.oppose'+serial).attr('src', './img/news/like.png');
+			}else{
+				alert(data.unLikeA);
+			}
+		},
+		error : function(request, status, error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
+		}
+	});
+}
+
+let like_func_s = function(serial){
+	let cSerial = $('.serial'+serial).val();
+	$('.cSerial').val(cSerial);
+	let param = $('#tes_s').serialize();
+	
+	$.ajax({
+		url : "likeA.news",
+		type : "POST",
+		cache : false,
+		dataType: "json",
+		data : param,
+		success : function(data){
 			var like_img = '';
 			
-			$('.recomm'+serial).attr('src', './img/news/likeA.png');
+			if(data.like_check == 0){
+				like_img = './img/news/likeA.png';
+				$('.num_txtr'+serial).html(data.likeA);
+				$('.recomm'+serial).attr('src', like_img);
+			}else if(data.like_check == 1){
+				like_img = './img/news/unlike.png';
+				$('.num_txtr'+serial).html(data.likeA);
+				$('.recomm'+serial).attr('src', like_img);
+			}else{
+				alert(data.likeA);
+			}
 		},
 		error : function(request, status, error){
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)

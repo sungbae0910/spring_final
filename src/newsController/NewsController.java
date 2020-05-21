@@ -6,6 +6,7 @@ import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -110,7 +111,9 @@ public class NewsController {
 	@RequestMapping(value="/news/newsDetail.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView newsDetail(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		Page p = new Page();
 		NewsVo vo = null;
+		String cnt = "";
 		List<NewsVo> list = null;
 		//댓글
 		List<CommentVo> comment = null;
@@ -121,15 +124,27 @@ public class NewsController {
 		String mName = req.getParameter("mName");
 		System.out.println("상세보기");
 		
+		p.setnSerial(nSerial);
+		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
+			p.setNowPage(1);
+		}else {
+			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		}
+		
 		vo = ns.newsDetail(nSerial);
 		list = ns.newsDetailSide("경제");
-		comment = ns.commentView(nSerial);
+		/*comment = ns.commentView(nSerial);*/
+		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial);
+		cnt = ns.commentCnt(nSerial);
 		
+		
+		mv.addObject("p", p);
 		mv.addObject("list", list);
 		mv.addObject("vo", vo);
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
+		mv.addObject("cnt", cnt);
 		
 		mv.setViewName("newsDetailT");
 		
@@ -154,12 +169,13 @@ public class NewsController {
 		return mv;
 	}
 	
-	
-	// 댓글 입력
-	@RequestMapping(value="/news/comment.news", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView commentInsert(HttpServletRequest req) {
+	// 페이징
+	@RequestMapping(value="/news/commentPage.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView commentPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		CommentVo vo = new CommentVo();
+		Page p = new Page();
+		String cnt = "";
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
 		NewsService ns = new NewsService();
@@ -168,19 +184,66 @@ public class NewsController {
 		String mName = req.getParameter("mName");
 		String cContent = req.getParameter("content");
 		
+		p.setnSerial(nSerial2);
+		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
+			p.setNowPage(1);
+		}else {
+			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		}
+		
+		vo.setnSerial(nSerial);
+		vo.setmName(mName);
+		vo.setcContent(cContent);
+		
+		comment = ns.commentView(p);
+		reComment = ns.reComment(nSerial2);
+		cnt = ns.commentCnt(nSerial2);
+		
+		mv.addObject("p", p);
+		mv.addObject("comment", comment);
+		mv.addObject("reComment", reComment);
+		mv.addObject("cnt", cnt);		
+		mv.setViewName("newsComment");
+		
+		return mv;
+	}
+	
+	
+	// 댓글 입력
+	@RequestMapping(value="/news/comment.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView commentInsert(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		CommentVo vo = new CommentVo();
+		Page p = new Page();
+		String cnt = "";
+		List<CommentVo> comment = null;
+		List<CommentVo> reComment = null;
+		NewsService ns = new NewsService();
+		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
+		String nSerial2 = req.getParameter("nSerial");
+		String mName = req.getParameter("mName");
+		String cContent = req.getParameter("content");
+		
+		p.setnSerial(nSerial2);
+		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
+			p.setNowPage(1);
+		}else {
+			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		}
+		
 		vo.setnSerial(nSerial);
 		vo.setmName(mName);
 		vo.setcContent(cContent);
 		
 		ns.commentInsert(vo);
 		
-		comment = ns.commentView(nSerial2);
+		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial2);
-		
+		cnt = ns.commentCnt(nSerial2);
 		
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
-		
+		mv.addObject("cnt", cnt);		
 		mv.setViewName("newsComment");
 		
 		return mv;
@@ -209,7 +272,7 @@ public class NewsController {
 		
 		ns.reCommentInsert(vo);
 		
-		comment = ns.commentView(nSerial2);
+/*		comment = ns.commentView(nSerial2);*/
 		reComment = ns.reComment(nSerial2);
 		
 		mv.addObject("comment", comment);
@@ -223,6 +286,7 @@ public class NewsController {
 	@RequestMapping(value="/news/commentDelete.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView commentDelete(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		Page p = new Page();
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
 		NewsService ns = new NewsService();
@@ -231,6 +295,12 @@ public class NewsController {
 		String cIndent = req.getParameter("indent");
 		String cSerial = req.getParameter("cSerial");
 		String cGroup = req.getParameter("cGroup");
+		p.setnSerial(nSerial);
+		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
+			p.setNowPage(1);
+		}else {
+			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		}
 		
 		if(cIndent.equals("0")) {
 			ns.commentDelete(cGroup);
@@ -238,7 +308,7 @@ public class NewsController {
 			ns.commentDeletes(cSerial);
 		}
 		
-		comment = ns.commentView(nSerial);
+		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial);
 		
 		mv.addObject("comment", comment);
@@ -258,7 +328,7 @@ public class NewsController {
 		LikeVo like = new LikeVo();
 		String likeA = "";
 		int likeCheck = 0;
-		Gson gson = new GsonBuilder().create();
+		JSONObject obj = new JSONObject();
 		
 		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
 		int cSerial = Integer.parseInt(req.getParameter("cSerial"));
@@ -272,12 +342,49 @@ public class NewsController {
 		
 		if(likeCheck == 0) {
 			likeA = ns.likeIn(like);
-		}else {
+		}else if(likeCheck == 1){
 			likeA = ns.likeOut(like);
+		}else {
+			likeA = "싫어요를 취소해주세요!!";
 		}
 		
-		String likeA2 = gson.toJson(likeA);
+		obj.put("like_check", likeCheck);
+		obj.put("likeA", likeA);
 		
-		return likeA2;
+		return obj.toJSONString();
+	}
+	
+	//싫어요 확인 및 클릭,취소
+	@RequestMapping(value="/news/unLikeA.news", method= {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String unLikeA(HttpServletRequest req) {
+		NewsService ns = new NewsService();
+		LikeVo like = new LikeVo();
+		String unLikeA = "";
+		int likeCheck = 0;
+		JSONObject obj = new JSONObject();
+		
+		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
+		int cSerial = Integer.parseInt(req.getParameter("cSerial"));
+		String mName = req.getParameter("mName");
+		
+		like.setnSerial(nSerial);
+		like.setcSerial(cSerial);
+		like.setmName(mName);
+		
+		likeCheck = ns.unLikeCheck(like);
+		
+		if(likeCheck==0) {
+			unLikeA = ns.unLikeIn(like);
+		}else if(likeCheck==1){
+			unLikeA = ns.unLikeOut(like);
+		}else {
+			unLikeA = "좋아요를 취소해주세요!!";
+		}
+		
+		obj.put("unlike_check", likeCheck);
+		obj.put("unLikeA", unLikeA);
+		
+		return obj.toJSONString();
 	}
 }
