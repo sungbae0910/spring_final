@@ -2,11 +2,57 @@ package shopController;
 
 public class ShopItemVo {
 	String item_id;
-	String item_category;
+	int item_category;
 	String item_optioin;
 	String item_name;
 	String item_price;
 	String item_information;
+	String category_name;
+	String item_option;
+	int option_name;
+	String option_name_values;
+	String option_value;
+	
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
+
+	public String getItem_option() {
+		return item_option;
+	}
+
+	public void setItem_option(String item_option) {
+		this.item_option = item_option;
+	}
+
+	public int getOption_name() {
+		return option_name;
+	}
+
+	public void setOption_name(int option_name) {
+		this.option_name = option_name;
+	}
+
+	public String getOption_name_values() {
+		return option_name_values;
+	}
+
+	public void setOption_name_values(String option_name_values) {
+		this.option_name_values = option_name_values;
+	}
+
+	public String getOption_value() {
+		return option_value;
+	}
+
+	public void setOption_value(String option_value) {
+		this.option_value = option_value;
+	}
+
 	
 	public ShopItemVo() {}
 
@@ -18,11 +64,11 @@ public class ShopItemVo {
 		this.item_id = item_id;
 	}
 
-	public String getItem_category() {
+	public int getItem_category() {
 		return item_category;
 	}
 
-	public void setItem_category(String item_category) {
+	public void setItem_category(int item_category) {
 		this.item_category = item_category;
 	}
 

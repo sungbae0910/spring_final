@@ -37,14 +37,17 @@
 							  	</div><!-- /.col-lg-6 -->
 							  </div>
 							</div>
-						<div class="col-xs-4 item1">
+						<div class="col-xs-3 item1">
 						    <a href="#" id="item1_category" ><span>아이템 1</span></a>
 						</div>
-						<div class="col-xs-4 item2">
+						<div class="col-xs-3 item2">
 						    <a href="#" id="item2_category" ><span>아이템 2</span></a>
 						</div>
-						<div class="col-xs-4 item3">
+						<div class="col-xs-3 item3">
 							<a href="#" id="item3_category" ><span>아이템 3</span></a>
+						</div>
+						<div class="col-xs-3 item4">
+							<a href="#" id="item3_category" ><span>아이템 4</span></a>
 						</div>
 					</div><!-- /.row -->
 				</div>

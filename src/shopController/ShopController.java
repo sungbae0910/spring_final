@@ -1,5 +1,7 @@
 package shopController;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,15 @@ public class ShopController {
 	@RequestMapping(value="/main.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		ShopItemVo vo = new ShopItemVo();
 		
+		List<ShopItemVo> list = dao.itemSelect();
+		
+		
+		System.out.println(vo);
+		System.out.println(vo.category_name);
+		
+		mv.addObject("list", list);
 		mv.setViewName("shop_main");
 		return mv;
 	}
