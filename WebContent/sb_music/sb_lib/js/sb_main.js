@@ -233,7 +233,7 @@ function playList(){
 			
 			$.each( data,function(index , val){
 				tbody.append(
-						"<tr id='changing' onmouseup='ChDrag()'>" +
+						"<tr id='changing" + index + "' onmouseup='ChDrag("+ index + ","+ val.music_serial  +")'>" +
 						"<td> <span>" + index + "</span> </td>" +
 						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
 						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
@@ -246,15 +246,10 @@ function playList(){
 						"</tr>"
 						
 				)
-				
-				str += val.music_serial + ',';
 				cnt++;
 				
 			})
 			
-			$('#listV').val(str);
-			
-			console.log($('#listV').val());
 			
 			
 		},
@@ -279,7 +274,7 @@ function delList(serial){
 		success : function(data){
 			cnt = 0;
 			var tbody = $('#pl_tbody');
-			cnt = 0;
+
 			$('#list_val').empty();
 			
 			$('#pl_tbody').empty();
@@ -288,7 +283,7 @@ function delList(serial){
 			$.each( data,function(index , val){
 				
 				tbody.append(
-						"<tr id='changing' onmouseup='ChDrag()'>" +
+						"<tr id='changing" + index + "' onmouseup='ChDrag("+ index + ","+ val.music_serial  +")'>" +
 						"<td> <span>" + index + "</span> </td>" +
 						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
 						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play("+ val.music_serial +")'> " + 
@@ -301,15 +296,10 @@ function delList(serial){
 						"</tr>"
 						
 				)
-				
-				str += val.music_serial + ',';
+				$('#hiddenS').hide();
 				cnt++;
 			})
 			
-			$('#listV').val(str);
-			
-			console.log(tbody.html);
-			console.log($('#listV').val());
 		},
 		
 		error: function(request, status, error){
@@ -321,18 +311,30 @@ function delList(serial){
 }
 
 
+function ChDrag(index, music_serial){
+	var os;
+	var arr = new Array();
+	
+	
+	for(var i=0; i<cnt; i++){
+		os = $('#changing'+i).offset();
+		
+		
+		arr.push(os.top);
+	}
+	frm_top.listV.value = arr;
 
-function ChDrag(){
-	console.log("chdrag");
+	
 	let param = $('#frm_top').serialize();
 	str = '';
 	
 	$.post('sb_ChDrag.mu', param, function(data){
 		
-		console.log("변경 된거같지?")
+		
+		
+		
 		
 	});
-	
 }
 
 

@@ -99,8 +99,7 @@ public class MusicController {
 		//플레이 리스트 가져와서 추가
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
-		System.out.println("mId:"+mId);
-		System.out.println("ms:"+mlv.getMusic_serial());
+
 		mlv.setmId(mId);
 		dao.addList(mlv);
 		
@@ -141,8 +140,7 @@ public class MusicController {
 		for(int i=0; i<num.length; i++) {
 			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽여서 숫자 배열에 담고
 		}
-		
-		/*List<MusicVo> list = dao.pL_music(nums); // 각 음악 리스트를 가져오기*/		
+			
 		
 		List<MusicVo> list = new ArrayList<MusicVo>();
 		for(int i = 0; i < nums.length; i++) {
@@ -154,7 +152,7 @@ public class MusicController {
 		String list2 =  gson.toJson(list);
 
 		
-		System.out.println(list2);
+
 
 		
 		return list2;	
@@ -170,8 +168,7 @@ public class MusicController {
 		
 		MusicListVo vo = dao.playList(mId);
 		vo.setMusic_serial(ms+",");
-		System.out.println(vo.getMusic_serial());
-		System.out.println(vo.getmId());
+		
 		
 		dao.addList(vo);
 		
@@ -196,15 +193,13 @@ public class MusicController {
 		vo.setmId(mId); // mid 넣어주고
 		vo.setMusic_serial(ms); // music_serial 넣어주고
 		
-		System.out.println("mId =" + vo.getmId()+" / ms = " + vo.getMusic_serial());
-		
 		
 		dao.delList(vo); // 플레이리스트 x눌러서 삭제
 		
 		MusicListVo vo2 = dao.playList(mId);
 		
 		String ml = vo2.getMusic_list(); // 리스트 넣어준담에
-		System.out.println("ml: " + ml);
+		
 		
 		String[] num = ml.split(","); // (,) 컴마 죽여서
 		
@@ -227,7 +222,6 @@ public class MusicController {
 		String list2 =  gson.toJson(list);
 		
 		
-		System.out.println(list2);
 		
 		return list2;	
 	}
@@ -235,7 +229,8 @@ public class MusicController {
 	@ResponseBody
 	public String prevMusic(HttpServletRequest req) {
 		String str = null;
-		
+		String listV = req.getParameter("listV");
+		String mId = req.getParameter("mId");
 		
 		
 		
@@ -247,6 +242,8 @@ public class MusicController {
 	public String nextMusic(HttpServletRequest req) {
 		String str = null;
 		
+		String listV = req.getParameter("listV");
+		String mId = req.getParameter("mId");
 		
 		
 		return str;
@@ -258,20 +255,68 @@ public class MusicController {
 	public String ChDrag(HttpServletRequest req) {
 		String str = null;
 		
-		String music_list = req.getParameter("listV");
+		String listV= req.getParameter("listV");
 		String mId = req.getParameter("mId");
 		
+		MusicListVo vo = dao.playList(mId);
+		String ml = vo.getMusic_list(); // 리스트 넣어준담에
+		String[] num = ml.split(","); // (,) 컴마 죽여서
+		int[] nums = new int[num.length]; // 배열에 넣어준뒤
+		for(int i=0; i<num.length; i++) {
+			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
+		}
+		String[] listnum = listV.split(",");
+		double[] listnums = new double[listnum.length];
+		for(int i=0; i<listnum.length; i++) {
+			listnums[i] = Double.parseDouble(listnum[i].trim());
+		}
+		
+		
+		bubbleSort(listnums, nums);
+		
+		for(int i : nums) {
+			System.out.println(i);
+		}
+		String music_list = "";
+		for(int i : nums) {
+			music_list += Integer.toString(i) + ",";
+		}
+		
+		System.out.println(music_list);
+	
 		MusicListVo mlv = new MusicListVo();
 		mlv.setmId(mId);
 		mlv.setMusic_list(music_list);
 		
-		System.out.println(music_list);
 		
 		dao.ChDrag(mlv);
+		
+		
 		
 		return str;
 	}
 	
-	
+	public int[] bubbleSort(double[] arr, int[] arr2) {
+	    for(int i = 0; i < arr.length; i++) {
+	        for(int j = 0 ; j < arr.length - i - 1 ; j++) {
+	            if(arr[j] > arr[j+1]) {
+	                double temp = arr[j+1];
+	                arr[j+1] = arr[j];
+	                arr[j] = temp;
+	                
+	                int temp2 = arr2[j+1];
+	                arr2[j+1] = arr2[j];
+	                arr2[j] = temp2;
+	            }
+	        }
+	    }
+	    
+	    return arr2;
+	}
+
+
+
+
+
  
 }
