@@ -28,7 +28,8 @@
   <nav class="col-sm-3 sidenav">
   
   	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="home()"> <!-- 로고 -->
-  	<!-- location.href='sb_main.jsp?p=./sb_home.jsp' -->
+  	<img src="../sb_music/sb_lib/images/wtm.gif" width="70px">
+  	
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
    		<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
@@ -45,8 +46,8 @@
     	
     <img src="../sb_music/sb_lib/images/service.png">
    	<ul class="nav nav-pills nav-stacked">
-   		<li><a href="sb_main.jsp?p=./sb_service.jsp" id="sideA">서비스 소개</a></li>
-	    <li><a href="sb_main.jsp?p=./sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
+   		<li><a href="sb_service.jsp" id="sideA">서비스 소개</a></li>
+	    <li><a href="sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
 	    
     </ul>	
     
