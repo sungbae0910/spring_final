@@ -5,10 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import mybatis.Factory;
 
+
 public class FoodDao {
+	
   SqlSession sqlSession;
   
   public FoodDao() {
@@ -32,7 +35,7 @@ public class FoodDao {
   public FoodVo w_LoginCheck(FoodVo vo) {
 	  FoodVo w_result = null;
 	   
-	   w_food w_food = sqlSession.getMapper(w_food.class);
+	   w_foodService w_food = sqlSession.getMapper(w_foodService.class);
 	   
 	   try {
 			w_result = w_food.w_LoginCheck(vo);

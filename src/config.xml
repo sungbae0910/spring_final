@@ -18,7 +18,8 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
+	 
+	 
 	<mappers>
 		<mapper resource="mybatis/news.xml"/>
 		<mapper resource="mybatis/music.xml"/>

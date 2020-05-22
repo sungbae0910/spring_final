@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class w_MemberService {
-  
+    
+	@Autowired
 	FoodDao w_dao;
 	
 	public FoodVo w_LoginCheck (FoodVo vo) {
