@@ -4,7 +4,7 @@
 <form id="c_blog_frm" name="c_blog_frm" method="post">
 	<input type="hidden" id="c_bNo" name="c_bNo"/>
 	<input type="hidden" id="c_brdNo" name="c_brdNo"/>
-	<!-- <input type="hidden" name="c_mId"/> -->
+	<input type="hidden" id="c_mId" name="c_mId"/>
 </form>
 <!-- 주제별 베스트 글 -->
 <div id="c_mainBlog">
@@ -14,7 +14,7 @@
 		    	<c:forEach var="i" items="${bestBrdList}">
 			    	<div class="col-sm-4">
 			 			<div class="thumbnail">
-			   				<div onclick="blog.brdView(${i.bNo}, ${i.brdNo})">
+			   				<div onclick="blog.brdView('${i.mId}', ${i.brdNo})">
 			     			    <img src="./blog_image/${i.brdHeader}">
 								<div class="caption">
 		          					<div class="c_bestSubject">${i.subject}</div>
@@ -39,7 +39,7 @@
 	    	<div class="row">
 	    		<c:forEach var="i" items="${brdList}">
 		        	<div class="col-sm-12">
-		        		<div class="c_blogList" onclick="blog.brdView(${i.bNo}, ${i.brdNo})">
+		        		<div class="c_blogList" onclick="blog.brdView('${i.mId}', ${i.brdNo})">
 		        			<span class="c_listBrdImg">
 		        				<img src="./blog_image/${i.brdHeader}" class="img-rounded"/>
 		        			</span>

@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="c_dimmedSidebar"></div>
-<form id="c_brd_frm" name="c_brd_frm" method="post">
-	<input type="hidden" name="c_brdLike" id="c_brdLike" value="${brdVo.brdLike}"/>
+<form id="c_blog_frm" name="c_blog_frm" method="post">
 	<input type="hidden" name="c_brdNo" value="${brdVo.brdNo}"/>
-	<input type="hidden" name="c_mId" id="c_mId"/>
+	<input type="hidden" name="c_mId" id="c_mId" value="${myblogHeader.mId}"/>
+	<input type="hidden" name="c_cName" id="c_cName"/>
 </form>
 <aside id="c_sidebar">
 	<div id="c_innerSidebar">
@@ -13,10 +13,10 @@
   			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 		</button>
 		<button type="button"class="btn btn-default btn-lg home" onclick="blog.myblog()">
-	  		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${brdVo.blogInfo[0].bTitle}
+	  		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${myblogHeader.bTitle}
 		</button>
 		<div id="c_myblog_Cate">
-			<c:forEach var="c" items="${category}">
+			<c:forEach var="c" items="${myblogHeader.category}">
 				<div class="c_CateItem" onclick="blog.category('${c.cName}')">${c.cName} <span>(${c.cnt})</span></div>
 			</c:forEach>
 		</div>
@@ -33,7 +33,7 @@
 	        <div class="col-xs-12">
 	        	<img id="c_myBlog_headerImg" src="./blog_image/${brdVo.brdHeader}">
 	        	<img id="c_sidebar_open" src="./blog_image/menu2.png">
-	        	<div id="c_myblogTitle" onclick="blog.myblog()">${brdVo.blogInfo[0].bTitle}</div>
+	        	<div id="c_myblogTitle" onclick="blog.myblog()">${myblogHeader.bTitle}</div>
 	        	<div id="c_brdItem">
 		        	<div id="c_brd_Subject">${brdVo.subject}</div>
 		        	<div id="c_brd_Date">${brdVo.brdDate}</div>

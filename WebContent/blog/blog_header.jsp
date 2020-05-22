@@ -35,9 +35,9 @@
 	<div class="container">
 	    <div class="row">
 	        <div class="col-md-6" id="c_subject">
-	        	<span class="c_subject" onclick="blog.MainTag('life')"><span>라이프</span></span>
-	        	<span class="c_subject" onclick="blog.MainTag('travel')"><span>여행.맛집</span></span>
-	        	<span class="c_subject"onclick="blog.MainTag('it')"><span>IT</span></span>
+	        	<span class="c_subject" onclick="blog.mainTag('life')"><span>라이프</span></span>
+	        	<span class="c_subject" onclick="blog.mainTag('travel')"><span>여행.맛집</span></span>
+	        	<span class="c_subject"onclick="blog.mainTag('it')"><span>IT</span></span>
 	        </div>
 	    </div>
 	</div>
@@ -51,4 +51,4 @@ String inc2 = "../blogMain.bg";
 <div id="c_blogContent">
 	<%-- <jsp:include page="&inc2=<%=inc2 %>"/> --%>
 </div> 
-<script>blog.init();</script>
+<script>blog.mainContent();</script>

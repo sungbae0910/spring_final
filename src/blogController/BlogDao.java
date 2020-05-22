@@ -46,7 +46,7 @@ public class BlogDao {
 		return brdList;
 	}
 	
-	public List<BlogVo> category(int bNo) {
+	/*public List<BlogVo> category(int bNo) {
 		List<BlogVo> category = null;
 		try {
 			//해당 블로그 카테고리
@@ -55,6 +55,26 @@ public class BlogDao {
 			e.printStackTrace();
 		}
 		return category;
+	}*/
+	
+	public BlogVo myblogHeaderSelect(String mId) {
+		BlogVo myblogHeader = null;
+		try {
+			myblogHeader = sqlSession.selectOne("blog.myblogHeader", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return myblogHeader;
+	}
+	
+	public List<BlogBoardVo> myblogBrdSelect(String mId) {
+		List<BlogBoardVo> myblogBrdList = null;
+		try {
+			myblogBrdList = sqlSession.selectList("blog.myblogBrdSelect", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return myblogBrdList;
 	}
 	
 	public BlogBoardVo brdView(int brdNo) {

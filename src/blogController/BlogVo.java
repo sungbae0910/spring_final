@@ -12,9 +12,25 @@ public class BlogVo {
 	String oriMphoto; //회원 프로필 원본사진
 	String hPhoto; //블로그 헤더사진
 	String oriHphoto; //블로그 헤더 원본사진
-	String cName; //카테고리 이름
-	int cnt; //카테고리에 해당하는 게시물 갯수
-	
+	String cName;
+	int cnt;
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+	List<String> category = new ArrayList<String>(); //해당 블로그 카테고리 (카테고리 이름, 게시물 수)
 	public BlogVo() {}
 	
 	public int getbNo() {return bNo;}
@@ -33,9 +49,6 @@ public class BlogVo {
 	public void sethPhoto(String hPhoto) {this.hPhoto = hPhoto;}
 	public String getOriHphoto() {return oriHphoto;}
 	public void setOriHphoto(String oriHphoto) {this.oriHphoto = oriHphoto;}
-	public String getcName() {return cName;}
-	public void setcName(String cName) {this.cName = cName;}
-	public int getCnt() {return cnt;}
-	public void setCnt(int cnt) {this.cnt = cnt;}
-	
+	public List<String> getCategory() {return category;}
+	public void setCategory(List<String> category) {this.category = category;}
 }

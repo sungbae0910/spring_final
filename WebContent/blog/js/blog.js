@@ -1,6 +1,10 @@
 let blog = {}
 
-blog.init = function() { //블로그 메인
+blog.main = function() { //로고 클릭 시 블로그 메인
+	location.href = "blog_Index.jsp";
+}
+
+blog.mainContent = function() { //블로그 메인
 	$("#c_blogContent").load("../blogMain.bg");
 }
 
@@ -22,7 +26,7 @@ blog.init = function() { //블로그 메인
 	});
 }*/
 
-blog.MainTag = function(keyword) { //주제 누르면 뜨는 블로그 메인
+blog.mainTag = function(keyword) { //주제 누르면 뜨는 블로그 메인
 	jQuery.ajaxSettings.traditional = true; //배열 값을 넘기기 위해 세팅값 바꾸기
 	let tag = [];
 	if (keyword == "life") { //라이프
@@ -37,31 +41,33 @@ blog.MainTag = function(keyword) { //주제 누르면 뜨는 블로그 메인
 	});
 }
 
-blog.myblog = function() { //내 블로그	
-	let param = $("#c_blog_frm").serialize(); 
+blog.myblog = function() { //내 블로그
+	if($("#c_mId") == null) {
+		let mId = sessionStorage.getItem("LoginId");		
+		$("#c_mId").val(mId);
+	}
+	$("#c_blog_frm").attr("action", "?inc=../myblogMain.bg").submit();
+	/*let param = $("#c_blog_frm").serialize(); 
 	$.post("../myblogMain.bg", param, function(data, state) { 
 		$("#c_blogContent").html(data);
-	});
+	});*/
 }
-  
-blog.brdView = function(bNo, brdNo) { //게시글 페이지
-	$("#c_bNo").val(bNo);
+ 
+blog.brdView = function(mId, brdNo) { //게시글 페이지
+	$("#c_mId").val(mId);
 	$("#c_brdNo").val(brdNo);
-	alert(bNo);
+	$("#c_blog_frm").attr("action", "?inc=../blogBrd.bg").submit();
 	
 	/*let param = $("#c_blog_frm").serialize();*/
-	$("#c_blog_frm").attr("action", "?inc=../blogBrd.bg").submit();
 	/*$.post("../blogBrd.bg", {"bNo" : bNo, "brdNo" : brdNo}, function(data, state) { 
 		$("#c_blogContent").html(data);
 	});*/
 }
 
-blog.category = function(name) { //해당 카테고리 정보 페이지
-	let cName = name;
-	$.post("../myblogMain.bg", {"cName" : cName}, function(data, state) { 
-		$("#c_blogContent").html(data);
-	});
-}
+/*blog.category = function(name) { //해당 카테고리 정보 페이지
+	$("#c_cName").val(name);
+	$("#c_blog_frm").attr("action", "?inc=../myblogMain.bg").submit();
+}*/
 
 blog.brdInsert = function() { //글 쓰기
 	let param = $("#c_blog_frm").serialize(); 

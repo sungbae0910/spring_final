@@ -26,7 +26,7 @@ $.setJSON('../blogMain.bg', {"tag" : tag}, function() {
 		$("#c_blogContent").html(data);
 	}); */
 	/* blog.Main(); */
-	/* sessionStorage.setItem("LoginId", "id");
+	/* 
 	let tag = ["일상", "데일리"];
 	let form = $("#c_frmMain");
 	for (let i=0; i<tag.length; i++) {
@@ -50,6 +50,7 @@ let tag = ["일상", "데일리"]
 		el.value = tag[i];
 		document.form.appendChild(el);    
 	} */
+	sessionStorage.setItem("LoginId", "wlgus5120");
 </script>
 <%
 	String inc = "./blog_header.jsp";

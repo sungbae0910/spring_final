@@ -30,41 +30,55 @@ public class BlogController {
 		
 		List<BlogBoardVo> bestBrdList = blogDao.bestBrdSelect(tag);
 		List<BlogBoardVo> brdList =  blogDao.brdListSelect(tag);
-		for(BlogBoardVo vo : bestBrdList) {
-			System.out.println(vo.getbNo());
-		}
+		
 		mv.addObject("bestBrdList", bestBrdList);
 		mv.addObject("brdList", brdList);
 		mv.setViewName("blog_content");
 		return mv;
 	}
-	
+	/*@RequestMapping(value = "/myblogHeader.bg", method = {RequestMethod.POST})
+	public ModelAndView myblogHeader(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int bNo = 0;
+		System.out.println("1");
+		String cName = req.getParameter("c_cName");
+		String mId = req.getParameter("c_mId");
+		System.out.println(mId);
+		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
+		System.out.println("들어갔나");
+		mv.addObject("cName", cName);
+		mv.addObject("myblogInfo", myblogHeader);
+		mv.setViewName("myblog_header");
+		return mv;
+	}*/
 	@RequestMapping(value = "/myblogMain.bg", method = {RequestMethod.POST})
 	public ModelAndView myblogMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		String cName = req.getParameter("cName");
-		
-		mv.addObject("cName", cName);
+		/*String cName = req.getParameter("c_cName");*/
+		String mId = req.getParameter("c_mId");
+		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
+		System.out.println(myblogHeader.getCategory());
+		List<BlogBoardVo> myblogBrdList = blogDao.myblogBrdSelect(mId);
+		/*mv.addObject("cName", cName);*/
+		mv.addObject("myblogHeader", myblogHeader);
+		mv.addObject("myblogBrdList", myblogBrdList);
+		mv.setViewName("myblog_main");
 		return mv;
 	}
 	
 	@RequestMapping(value = "/blogBrd.bg", method = {RequestMethod.POST})
 	public ModelAndView blogBrdView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("도착");
 		int brdLike = -1;
+		String mId = req.getParameter("c_mId");
 		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
-		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
-		System.out.println(bNo);
 		/*if (req.getParameter("c_mId") != null) { //공감버튼 눌렀을 때
 			brdLike = Integer.parseInt(req.getParameter("c_brdLike"));
 		}*/
-		List<BlogVo> category = blogDao.category(bNo);
-		
-		/*BlogBoardVo brdVo = blogDao.brdView(brdLike, brdNo, mId);*/
+		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
 		BlogBoardVo brdVo = blogDao.brdView(brdNo);
-		mv.addObject("category", category);
 		mv.addObject("brdVo", brdVo);
+		mv.addObject("myblogHeader", myblogHeader);
 		mv.setViewName("myblog_brd");
 		return mv;
 	}
