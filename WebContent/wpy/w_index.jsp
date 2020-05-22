@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,11 @@
 <script src="./js/jquery.dropotron.min.js"></script>
 <script src="./js/w_brand.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="./css/skel.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
 <link rel="shortcut icon" href="#">
-<link rel="stylesheet" href="./css/skel.css" />
-<link rel="stylesheet" href="./css/style.css" />
 </head>
 
 

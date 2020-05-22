@@ -15,7 +15,7 @@
 <script src="./js/init.js"></script>
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
-<link rel="stylesheet" href="./w_css/bootstrap.css"/>
+<link rel="stylesheet" href="./css/bootstrap.css"/>
 </head>
 <body class="no-sidebar1">
 

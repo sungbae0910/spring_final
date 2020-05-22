@@ -14,9 +14,10 @@
 <script src="./js/jquery.dropotron.min.js"></script>
 <script src="./js/w_brand.js"></script>
 
-<link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
+
+<link rel="shortcut icon" href="#">
 	</head>
 	<body class="no-sidebar1">
 

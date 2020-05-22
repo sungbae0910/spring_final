@@ -13,8 +13,10 @@ fd.foodj = function(type) {
  
 }
 
+
 fd.func = function(){
 	$('#w_btnLogin').click(function(){
-		location.href="w_login.fd";
+		location.href="w_login.jsp";
 	})
 }
+

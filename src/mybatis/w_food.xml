@@ -14,11 +14,10 @@
   select f.foodcode , f.foodname, f.foodprice, fi.foodcode , fi.foodorifile, fi.foodsysfile
   from w_food f , w_food_image fi 
   where f.foodtype=#{type} and f.foodcode = fi.foodcode
-
  </select>
  
  <!-- 로그인 셀렉트 -->
- <select id='w_LoginCheck' resultType="String">
+ <select id='w_LoginCheck'  parameterType="FoodVo" resultType="w_foodcontroller.FoodVo">
    select mid , pwd from membership where mid=#{mid} and pwd = #{pwd}
  </select>
  

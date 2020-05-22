@@ -2,6 +2,8 @@ package w_foodcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.Factory;
@@ -26,5 +28,23 @@ public class FoodDao {
 		return list;  
 	  }
   }
+  
+  public FoodVo w_LoginCheck(FoodVo vo) {
+	  FoodVo w_result = null;
+	   
+	   w_food w_food = sqlSession.getMapper(w_food.class);
+	   
+	   try {
+			w_result = w_food.w_LoginCheck(vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+
+		return w_result;   
+  }
+  
+  
 	
 }

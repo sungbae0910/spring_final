@@ -19,7 +19,7 @@
 <bean id="FoodDao" class="w_foodcontroller.FoodDao"/>
 
 <!-- controller -->
-<bean id="Food_Controller" class="w_foodcontroller.FoodController">
+<bean id="food_controller" class="w_foodcontroller.FoodController">
     <constructor-arg ref="FoodDao"/>
 </bean>
 
