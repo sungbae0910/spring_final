@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../sb_music/sb_lib/css/sb_register.css">
 <script src="../sb_music/sb_lib/js/jquery-3.4.1.js"></script>
 <script src="../sb_music/sb_lib/js/jquery-ui.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
 	
@@ -25,7 +26,9 @@
 				<span>아이디</span><br> 
 				<input type="text" id="mId" name="mId"><div id="checkId" ></div><br>
 				<span>비밀번호</span> <br> 
-				<input type="text" id="pwd" name="pwd"><br>
+				<input type="password" id="pwd" name="pwd"><br>
+				<span>비밀번호 확인</span> <br> 
+				<input type="password" id="pwdCk" name="pwdCk"><div id="checkPass" ></div><br>
 				<span>성명</span> <br> 
 				<input type="text" id="mName" name="mName"><br>
 				<span>생년월일</span> <br> 
@@ -33,8 +36,9 @@
 				<span>전화번호</span> <br> 
 				<input type="tel" id="phone" name="phone"><br>
 				<span>이메일주소</span> <br> 
-				<input type="email" id="email" name="email"><br>
-				<span>집주소</span> <br> 	
+				<input type="email" id="email" name="email"><div id="checkEmail" ></div><br>
+				<span>집주소</span> <br> 
+				<input type="text" id="zipCode" name="zipCode" style="width:300px; margin-right: 25px;"><button type="button" id="addSearch" onclick="daumAdd();">주소찾기</button><br/><br/>
 				<input type="text" id="address" name="address"><br><br>
 				<span>성별</span><br>
 				<select id="gender" name="gender">
@@ -44,13 +48,14 @@
 				</select>
 				<br><br>
 				
-				<button id="sm" type="submit">회원가입</button>
+				<button id="sm" type="button">회원가입</button>
 			
 			</form>
 		</div>
 	</div>
 
 
-<script src="../sb_music/sb_lib/js/sb_register.js"></script>
+<script src="../news/js/register_s.js">
+</script>
 </body>
 </html>

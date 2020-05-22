@@ -1,51 +1,88 @@
 package bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
+import mybatis.Factory;
 import mybatis.MembershipVo;
 
 public class MembershipDao {
 
-	SqlSession sqlsession;
+	SqlSession sqlSession;
 	
+	public MembershipDao() {
+		sqlSession = Factory.getFactory().openSession();
+	}
 	
-	public String Regester(MembershipVo vo) {
+	public String register(MembershipVo vo) {
 		
-		String str = "ȸ������ �Ϸ�!";
+		String str = "회원가입 완료!!";
 			
 		try {
-			sqlsession.insert("membership.register",vo);
-			
-			sqlsession.commit();
+			int ck = sqlSession.insert("membership.register",vo);
+			if(ck<1) {
+				throw new Exception("회원가입중 오류 발생!!");
+			}
+			sqlSession.commit();
 		} catch (Exception e) {
-			sqlsession.rollback();
+			str = e.getMessage();
+			e.printStackTrace();
+			sqlSession.rollback();
 		} finally {
 			return str;
 		}
 		
 	}
 	
-	public String CK_id(String mId) {
+	public String ck_id(String mId) {
 		
 		String str = null;
-		
-		
 		try {
-			sqlsession.selectOne("membership.CH_id", mId);
-			
-			
+			System.out.println(mId);
+			str = sqlSession.selectOne("membership.ck_id", mId);
 		} catch (Exception e) {
-			
-			
 			e.printStackTrace();
 		} finally {
 			return str;
 		}
 		
-		
-		
 	}
 	
+	public int confirmId(String mId) {
+		int ck = 0;
+		
+		try {
+			ck = sqlSession.selectOne("membership.login_id_ck", mId);
+			
+			if(ck == 1) {
+				ck = 0;
+			}else {
+				ck = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ck;
+	}
 	
+	public int userCheck(String mId, String pwd) {
+		int ck = 0;
+		String pass = "";
+		try {
+			pass = sqlSession.selectOne("membership.login_pass_ck", mId);
+			if(pwd.equals(pass)) {
+				ck = 1;
+			}else {
+				ck = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ck;
+	}
 	
 }

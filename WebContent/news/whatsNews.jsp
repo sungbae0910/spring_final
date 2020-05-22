@@ -47,7 +47,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo}" varStatus="ii">
-                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial3${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -57,7 +57,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">${i.nCategory}</span>
-	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">${i.nTitle}</a></h4>
 	                                                </div>
 	                                            </div>
                                         	</div>
@@ -70,7 +70,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
-                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial3${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -80,7 +80,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">${i.nCategory}</span>
-	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">${i.nTitle}</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -93,7 +93,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
-                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial3${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -103,7 +103,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -116,7 +116,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
-                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial3${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -126,7 +126,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -139,7 +139,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
-                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial3${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -149,7 +149,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -162,7 +162,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                     	<c:forEach begin="0" end="3" var="i" items="${vo2}" varStatus="ii">
-                                    	<input type="hidden" value="${i.nSerial}" class="serial${ii.index}">
+                                    	<input type="hidden" value="${i.nSerial}" class="serial3${ii.index}">
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <div class="single-what-news mb-100">
 	                                                <div class="what-img">
@@ -172,7 +172,7 @@
 	                                                </div>
 	                                                <div class="what-cap">
 	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>

@@ -91,6 +91,22 @@ let news_detail = function(serial){
 	$('#tes_s').attr('action', 'newsDetail.news').submit();
 }
 
+let news_detail2 = function(serial){
+	let nSerial = $('.serial2'+serial).val();
+	if(nSerial!=""){
+		$('.nSerial').val(nSerial);
+	}
+	$('#tes_s').attr('action', 'newsDetail.news').submit();
+}
+
+let news_detail3 = function(serial){
+	let nSerial = $('.serial3'+serial).val();
+	if(nSerial!=""){
+		$('.nSerial').val(nSerial);
+	}
+	$('#tes_s').attr('action', 'newsDetail.news').submit();
+}
+
 let news_detail_side = function(category){
 	$('.nCategory').val(category);
 	
