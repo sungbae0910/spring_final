@@ -18,7 +18,7 @@
 		
 		<!-- 로고, 검색창 -->
 		<div align="center" id='header_top'>
-			<img id="logo" src="./main_lib/images/main_logo.png">
+			<img id="logo" src="./main_lib/images/root.png">
 		
 			<span>
 				<input type="text" id='searchBar'/>
@@ -28,23 +28,23 @@
 		<hr>
 		<div class="container" id="header_bot">
 			<div class="row">
-				<div class="col-sm-2">
+				<div class="col-sm-1">
 					<a href="./news/newsMainT.jsp" style="color:black;">뉴스</a>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-1">
 					<a href="./blog/blog_Index.jsp" style="color:black;">블로그</a>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-1">
 					<a href="./shop/shop_index.jsp" style="color:black;">쇼핑</a>
 				</div>
-				<div class="col-sm-2">
-					<p>sns</p>
+				<div class="col-sm-1">
+					<p>SNS</p>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-1">
 					<a href="./sb_music/sb_main.jsp" style="color:black;">음악</a>
 				</div>
-				<div class="col-sm-2">
-					<p>웹툰</p>
+				<div class="col-sm-1">
+					<p>더보기</p>
 				</div>
 			</div>
 		</div>
@@ -52,18 +52,18 @@
 		
 		<!-- 메인 -->
 		<div class="container">
-			<div class="col-sm-9" style="border:2px solid black;">
+			<div class="col-sm-8" style="border:2px solid black;">
 				조필연씨 배너
 			</div>
-			<div class="col-sm-3" style="background-color: #D8D8D8;">
+			<div class="col-sm-3" id="loginDiv">
 				<div align="center">
-					레반에 로그인하세요
-					<button>로그인</button>			
+					<span id="logintop">여태까지 아무도 뚫지못한 철통보안</span><br><br>
+					<button id="loginBtn">로그인</button>			
 				</div>
 			</div>
 			
 			<div class="col-sm-12">
-				<img src="./main_lib/images/shit.png" style="width: 1125px; height: 200px;">
+				
 			</div>
 			
 		</div>

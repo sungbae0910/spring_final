@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+@font-face{
+	font-family: 'nanum';
+	src: url('../main_lib/fonts/NanumBarunGothic.ttf') format('ttf');
+}
+
+body{
+	font-family: nanum;
+}
+
 img#logo{
 	width: 155px;
 	height: 50px;
@@ -27,6 +36,17 @@ a{
 	top: 20px;
 }
 
+#header_bot{
+	font-size: 17px;
+}
+
+#loginDiv{
+	background-color: #f7f9fa; 
+	border:1px solid #dae1e6;
+	padding: 16px 16px 12px 17px;
+	margin-left: 20px;
+}
+
 #hr{
 	background-color: black;
 	height: 1px;
@@ -35,3 +55,45 @@ a{
 	position: relative;
 	bottom: 20px;
 }
+#logintop{
+	    color: grey;
+    font-size: 13px;
+}
+
+
+#loginBtn{
+	background-color: #5882FA;
+	color:white;
+    width: 207px;
+    height: 43px;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
