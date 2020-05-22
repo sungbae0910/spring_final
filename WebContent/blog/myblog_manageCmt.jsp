@@ -39,8 +39,8 @@
 							<span role="presentation" class="glyphicon glyphicon-file"></span> 댓글 단 게시물 제목1
 						</div>
 						<div class="c_Mcmt_btnGroup">
-							<button type="button" class="btn btn-default" id="c_btnBrdWrite">수정</button>
-							<button type="button" class="btn btn-default" id="c_btnBrdWrite">삭제</button>
+							<button type="button" data-toggle="modal" data-target="#myModal">답글</button>
+							<button type="button" class="c_btnCmtDelete">삭제</button>
 						</div>
 					</div>
 					<div class="c_McmtItem">
@@ -51,8 +51,28 @@
 							<span role="presentation" class="glyphicon glyphicon-file"></span> 댓글 단 게시물 제목2
 						</div>
 						<div class="c_Mcmt_btnGroup">
-							<button type="button" class="btn btn-default" id="c_btnBrdWrite">수정</button>
-							<button type="button" class="btn btn-default" id="c_btnBrdWrite">삭제</button>
+							<button class="c_btnBrdWrite" data-toggle="modal" data-target="#myModal">답글</button>
+							<button type="button" class="c_btnCmtDelete">삭제</button>
+						</div>
+					</div>
+				</div>
+				<!-- 답변 모달 -->
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+					    <div class="modal-content">
+					    	<div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal">&times;</button>
+						        <h4 class="modal-title">답글 입력</h4>
+							</div>
+						    <div class="modal-body">
+						    	<img id="c_replUserImg" src="./blog_image/landscape.jpg" class="img-circle">
+						    	<span id="c_replMid">나야 아이디</span><br/>
+						    	<textarea id="c_replContent"></textarea>
+						    </div>
+						    <div class="modal-footer">
+						        <button type="button" id="c_btnReplInsert_Close" class="btn btn-default" data-dismiss="modal">취소</button>
+						        <button type="button" id="c_btnReplInsert_Con" class="btn btn-default">확인</button>
+					    	</div>
 						</div>
 					</div>
 				</div>
@@ -75,3 +95,4 @@
 		</div>
 	</div>
 </div>
+<script>manage.view();</script>

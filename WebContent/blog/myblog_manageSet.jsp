@@ -35,4 +35,4 @@
 		</div>
 	</div>
 </div>
-<script>blog.myblog_manage();</script>
+<script>manage.view();</script>
