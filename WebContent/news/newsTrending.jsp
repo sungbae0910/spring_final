@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+    <form id="tes_s" class="tes_s" method="post">
+    	<input type="hidden" name="cate_name" class='cate_name' /> 
+    	<input type="hidden" name="nSerial" class="nSerial" />
+	</form>
     <!-- Trending Area Start -->
     <div class="trending-area fix">
         <div class="container">

@@ -383,7 +383,7 @@
 								</c:if>
 								
 								<c:forEach var="i" begin="${p.startPage}" end="${p.endPage}" varStatus="ii">
-									<li class="page-item active pa${ii.index}"><a class="page-link" href="#" onclick="comment_go(${i},${ii.index})">${i}</a></li>
+									<li class="page-item ${(i==1)?'active':''}"><a class="page-link" href="#" onclick="comment_go(${i},${ii.index})">${i}</a></li>
 								</c:forEach>
 								
 								<c:if test="${p.endPage<p.totPage}">

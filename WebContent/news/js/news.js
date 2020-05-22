@@ -82,7 +82,9 @@ let cate_detail = function(detail, n){
 }
 
 let news_detail = function(serial){
+	alert(serial);
 	let nSerial = $('.serial'+serial).val();
+	alert(nSerial);
 	if(nSerial!=""){
 		$('.nSerial').val(nSerial);
 	}

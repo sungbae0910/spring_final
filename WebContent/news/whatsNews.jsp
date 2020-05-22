@@ -10,9 +10,6 @@
 <script src="./js/news.js"></script>
 </head>
 <body>
-    <form id="tes_s" class="tes_s" method="post">
-    	<input type="hidden" name="cate_name" class='cate_name' /> 
-    	<input type="hidden" name="nSerial" class="nSerial" />
    <!-- Whats New Start -->
     <section class="whats-news-area pt-50 pb-20">
         <div class="container">
@@ -198,6 +195,6 @@
         </div>
     </section>
     <!-- Whats New End -->
-    </form>
+
 </body>
 </html>
