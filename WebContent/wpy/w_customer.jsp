@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>고객문의</title>
+<title>No Sidebar - Horizons by TEMPLATED</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -13,13 +13,13 @@
 <script src="./js/skel.min.js"></script>
 <script src="./js/skel-layers.min.js"></script>
 <script src="./js/init.js"></script>
+<script src="./js/bootstrap.js"></script>
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
-<link rel="stylesheet" href="./w_css/bootstrap.css"/>
+<link rel="stylesheet" href="./css/bootstrap.css"/>
 </head>
 <body class="no-sidebar1">
-
-	<!-- Header -->
+<!-- Header -->
 			<div id="header">
 				<div class="container">
 						
@@ -33,12 +33,12 @@
 								<li>
 									<a href="">브랜드 소개</a>
 									<ul>
-										<li><a href="w_menu.jsp">전 메뉴</a></li>						
+										<li><a href="w_main.jsp">전 메뉴</a></li>						
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_customersupport.jsp">고객문의</a></li>
-								<li><a href="w_mymap.jsp">매장안내</a></li>
+								<li><a href="w_right-sidebar.html">고객문의</a></li>
+								<li><a href="w_no-sidebar.html">매장안내</a></li>
 							</ul>
 						</nav>
 
@@ -52,10 +52,13 @@
 			<div id="content" class="8u skel-cell-important">
 				<div class="w_wrap">
 				  <div class="w_t_tab">
-				   <a href="#"class="on">전 소식</a>
+				   <a href="w_customersupport.jsp?inc=./wpy/w_customersupport.jsp&inc2=./wpy/w_index.jsp" class="on">전 소식</a>
 				  </div>
 				</div>
 				  <h4 class="w_tab_sub">전 소식</h4>
+		        <div id="w_list" style="width: 100%">
+		          <div class="w_fx">
+		          </div>
 		          
 		          	<div class="container" style="position: relative; left: 180px;">
                      <table class="table table-hover">
@@ -116,7 +119,7 @@
 	</div>
 
 	<!-- Footer -->
-	<div id="footer" style="background-color: #222833;">
+	<div id="footer">
 		<div class="container">
 
 			<!-- Lists -->
@@ -127,12 +130,9 @@
 
 			<!-- Copyright -->
 			<div class="copyright">
-				<span>주식회사 :꼬치예전</span> <span>대표자 :원필연 </span> 
-				<span>전화번호:010-9413-5834</span> 
-				<br /> 
-				<span>이메일 :wkymonk@gmail.com</span> 
-				<span>사업자등록번호 :217-18-15486</span> 
-				<span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
+				<span>주식회사 :꼬치예전</span> <span>대표자 :원필연 </span> <span>전화번호
+					:010-9413-5834</span> <br /> <span>이메일 :wkymonk@gmail.com</span> <span>사업자
+					등록번호 :217-18-15486</span> <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
 			</div>
 
 		</div>

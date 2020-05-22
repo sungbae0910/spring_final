@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>No Sidebar - Horizons by TEMPLATED</title>
-<meta http-equiv="content-type" content="text/html"; charset="utf-8" />
+<title>창업문의</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<script src="./js/jquery.min.js"></script>
-<script src="./js/jquery.dropotron.min.js"></script>
-<script src="./js/w_brand.js"></script>
-
-<link rel="shortcut icon" href="#">
-<link rel="stylesheet" href="./css/skel.css" />
-<link rel="stylesheet" href="./css/style.css" />
+<script src="js/jquery.min.js"></script>
+<script src="./w_js/jquery.dropotron.min.js"></script>
+<script src="./w_js/skel.min.js"></script>
+<script src="./w_js/skel-layers.min.js"></script>
+<script src="./w_js/init.js"></script>
+<link rel="stylesheet" href="./w_css/skel.css" />
+<link rel="stylesheet" href="./w_css/style.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
-	<body class="no-sidebar1">
+	<body class="left-sidebar">
 
 		<!-- Header -->
 			<div id="header">
@@ -34,7 +33,7 @@
 								<li>
 									<a href="">브랜드 소개</a>
 									<ul>
-										<li><a href="w_menu.jsp">전 메뉴</a></li>						
+										<li><a href="w_main.jsp">전 메뉴</a></li>						
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
@@ -48,35 +47,23 @@
 			</div>
 
 		<!-- Main -->
-			<div id="w_main" class="w_wrapper w_style1">
+			<div id="main" class="wrapper style1">
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
-						 <input type="button" id="w_btninsert" class='w_buttonmenu' value="신메뉴 입력">
-				               <h5 class="w_menu_info">
-				                 <span class="w_deco">
-				                 	메뉴 소개
-				                 </span>
-				               </h5>
-				          <ul class="w_tabs">
-				             <li class="w_active"  rel="tab1" onclick="fd.foodj('전')" >
-				              	전	
-				             </li>
-				             <li  rel="tab2" onclick="fd.foodj('전골')">
-				              	전골
-				             </li>
-				             <li  rel="tab3" onclick="fd.foodj('냉채')">
-				              	냉채
-				             </li>
-				             <li  rel="tab4" onclick="fd.foodj('사이드')">
-				              	사이드
-				             </li>    
-				          </ul>
-				          
-				        	<div class="w_tab_container">
-				        	  
-				        	</div>
-				        	
+						<form name='frm_food' id='frm_food' method='post' enctype='multipart/form-data'>
+						    <label>가격</label>
+						    <input type="text" name="w_price"><br/>
+						    <label>음식이름</label>
+						    <input type="text" name="w_foodName"><br/>
+						    
+							<span class="w_photo"><img id="w_photo1" src="./w_images/w_modeumjeon.jpg" alt width="340"></span>	
+							<input type="file" id="w_btnPhoto" name="w_photo">
+							<div id="w_button">
+				             <input type="button" id="w_btnRegister" value="저장"/>
+				             <input type="button" id="w_btnfind" value="취소"/>
+				          </div>
+				         </form>
 						</div>
 					</div>
 				</div>
@@ -84,7 +71,7 @@
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container">
-
+                
 					<!-- Lists -->
 						<div class="row">
 							<div class="8u">
@@ -105,7 +92,9 @@
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>	
 						</div>
+
 				</div>
 			</div>
+<script>w_btnFunc()</script>
 	</body>
 </html>

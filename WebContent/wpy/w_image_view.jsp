@@ -5,15 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>꼬치예전</title>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/jquery.dropotron.min.js"></script>
-<script src="./js/w_brand.js"></script>
-
-<link rel="shortcut icon" href="#">
+<script src="./w_js/jquery.min.js"></script>
+		<script src="./js/jquery.dropotron.min.js"></script>
+		<script src="./js/skel.min.js"></script>
+		<script src="./js/skel-layers.min.js"></script>
+		<script src="./js/init.js"></script>
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
 </head>
-
 
 <body class="homepage">
 
@@ -21,12 +20,6 @@
 			<div id="header">
 				<div class="container">
 						
-					<!-- 로그인 버튼 -->	
-						<input type="button" id="w_btnLogin" value="로그인">
-						<input type="button" id="w_btnLogout" value="로그아웃">
-						
-						<!-- <a id="w_btnLogin" href="w_login.jsp">로그인</a>
-						<a id="w_btnLogout" href="w_index.jsp">로그아웃</a> -->
 					<!-- Logo -->
 						<img src="./w_images/w_mainimage1.png">
 					<!-- Nav -->
@@ -45,47 +38,19 @@
 							</ul>
 						</nav>
 
-
-					<!-- Banner -->
-						<div id="banner">
-							<div class="container">
-								<section>
-									<header class="major">
-										<h2>맛도 양도 많은 전을 먹으러 오세요!</h2>
-										<span class="byline"></span>
-									</header>
-								</section>			
-							</div>
-						</div>
-
-				</div>
-			</div>
-
-		<!-- Featured -->
-			<div class="wrapper style2">
-				<section class="container">
-					<header class="major">
-						<h2>여러가지의 메뉴들이 있습니다</h2>
-					</header>
-					<div class="row no-collapse-1">
-						<section class="4u">
-							<a href="#" class="image feature"><img src="./w_images/w_cook1.jpg" alt=""></a>
-							<p></p>
-						</section>
-						<section class="4u">
-							<a href="#" class="image feature"><img src="./w_images/w_cook2.jpg" alt=""></a>
-							<p></p>
-						</section>
-						<section class="4u">
-							<a href="#" class="image feature"><img src="./w_images/w_cook3.jpg" alt=""></a>
-							<p></p>
-						</section>
 	
-					</div>
-				</section>
-			</div>
-
 		<!-- Main -->
+			<div id="main" class="wrapper style1">
+				<div class="container">
+						<!-- Content -->
+						<div id="content" class="8u skel-cell-important">
+									
+						</div>
+						
+						
+					</div>
+				</div>
+
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container">
@@ -107,8 +72,9 @@
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
 						</div>
+
 				</div>
 			</div>
-<script>fd.func()</script>
+
 	</body>
 </html>

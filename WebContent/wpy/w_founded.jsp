@@ -3,18 +3,18 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Left Sidebar - Horizons by TEMPLATED</title>
+		<title>창업문의</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<script src="js/jquery.min.js"></script>
-		<script src="./w_js/jquery.dropotron.min.js"></script>
-		<script src="./w_js/skel.min.js"></script>
-		<script src="./w_js/skel-layers.min.js"></script>
-		<script src="./w_js/init.js"></script>
-<link rel="stylesheet" href="./w_css/skel.css" />
-<link rel="stylesheet" href="./w_css/style.css" />
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.dropotron.min.js"></script>
+<script src="./js/skel.min.js"></script>
+<script src="./js/skel-layers.min.js"></script>
+<script src="./js/init.js"></script>
+<link rel="stylesheet" href="./css/skel.css" />
+<link rel="stylesheet" href="./css/style.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class="left-sidebar">
@@ -24,7 +24,7 @@
 				<div class="container">
 						
 					<!-- Logo -->
-						<img src="./w_images/w_mainimage.png">
+						<img src="./w_images/w_mainimage1.png">
 					
 					<!-- Nav -->
 						<nav id="nav">
@@ -33,12 +33,12 @@
 								<li>
 									<a href="">브랜드 소개</a>
 									<ul>
-										<li><a href="w_main.jsp">전 메뉴</a></li>						
+										<li><a href="w_menu.jsp">전 메뉴</a></li>						
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_right-sidebar.html">고객문의</a></li>
-								<li><a href="w_no-sidebar.html">매장안내</a></li>
+								<li><a href="w_customersupport.jsp">고객문의</a></li>
+								<li><a href="w_mymap.jsp">매장안내</a></li>
 							</ul>
 						</nav>
 
@@ -51,9 +51,9 @@
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
-									<h2>창업문의</h2>
+									<h2 style="position: relative;left: 537px;">창업문의</h2>
 									
-									<p>
+									<p style="position: relative;left: 284px;">
 									본사의 체계화된 시스템과 매뉴얼화된 조리레시피로 균일화된 맛과
 									<br/>
 									국내 최고 식자재 유통사와의 협력으로 완벽한 물류 공급, 지속적인 가맹점 관리와 소통,
@@ -66,7 +66,7 @@
 								    </div>
 						</div>
 						
-						<h3 class='w_h3'>
+						<h3 class='w_h3' style="position: relative; left: 402px;">
 						성공 창업을 위한 꼬치예전 솔루션
 						</h3>
 						
