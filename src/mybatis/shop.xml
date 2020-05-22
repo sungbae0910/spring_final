@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop">
+	<select id="main_earring_select" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, P.item_main_photo
+		from shop_item I join shop_photo P
+		on I.item_id = P.item_id
+		where I.item_category = 0
+	</select>
+	<select id="main_necklace_select" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, C.category_name
+		from shop_item I join shop_category C
+		on I.item_category = C.item_category
+		where I.item_category = 1
+	</select>
+	<select id="main_ring_select" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, C.category_name
+		from shop_item I join shop_category C
+		on I.item_category = C.item_category
+		where I.item_category = 2
+	</select>
+	<select id="main_bracelet_select" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, C.category_name
+		from shop_item I join shop_category C
+		on I.item_category = C.item_category
+		where I.item_category = 3
+	</select>
+	<select id="item_mainPhoto_select" resultType="shopController.ShopPhotoVo">
+		select item_main_photo, item_id
+		from shop_item I join shop_photo P
+		on I.item_id = P.item_id
+		where I.item_category = 0
+	</select>
+</mapper>

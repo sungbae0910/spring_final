@@ -26,18 +26,23 @@
 }
 #shop_main .shop_main_item1{
 	border-top: 1px solid darkgray;
-	height: 365px;
+	height: auto;
 	margin-top: 1%;
 }
 #shop_main .shop_main_item2{
 	border-top: 1px solid darkgray;
-	height: 370px;
+	height: auto;
 	margin-top: 1%;
 }
 #shop_main .shop_main_item3{
 	border-top: 1px solid darkgray;
+	height: auto;
+	margin-top: 1%;
+}
+#shop_main .shop_main_item4{
+	border-top: 1px solid darkgray;
 	border-bottom: 1px solid darkgray;
-	height: 370px;
+	height: auto;
 	margin-top: 1%;
 }
 #shop_main .thumbnail{
