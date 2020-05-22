@@ -15,19 +15,18 @@
       ">
       
       <context:annotation-config/>
-   
-	 
-      <bean id="muDao" class="bean.MusicDao"/>
       
-     
-      <bean id="mu_controller" class="controller.MusicController">
-      	<constructor-arg ref="muDao"/>
+      
+      <bean id="msDao" class="bean.MembershipDao"/>
+      
+      <bean id="ms_controller" class="controller.MembershipController">
+      	
       </bean>
-      
       
       <bean class='org.springframework.web.servlet.view.InternalResourceViewResolver'>
       	<property name="suffix" value=".jsp"/>
-      </bean>
+      </bean>  
+    
+      
       
 </beans>
-

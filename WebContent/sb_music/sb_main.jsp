@@ -16,7 +16,7 @@
 </head>
 <body>
  <%
- 	String p = "./sb_home.jsp";
+ 	String p = "sb_home.mu";
  	if(request.getParameter("p") != null){
  		p = request.getParameter("p");
  	}
@@ -27,25 +27,41 @@
  
   <nav class="col-sm-3 sidenav">
   
-  	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="mu.home()"> <!-- 로고 -->
-  	<!-- location.href='sb_main.jsp?p=./sb_home.jsp' -->
+  	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="home()"> <!-- 로고 -->
+  	<img src="../sb_music/sb_lib/images/wtm.gif" width="70px">
+  	
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
-	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a></li>
-	    <li><a href="sb_main.jsp?p=./sb_top.jsp" id="sideA">TOP 100</a></li>
+   		<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a>
+	    	<ul>
+	    		<li>마이페이지</li>
+	    		<li>로그아웃</li>
+	    	</ul>
+	    </li>
+	    <li><a href="#" id="sideA" onclick="topP()">TOP 100</a></li>
 	    <li><a href="sb_main.jsp?p=./sb_new.jsp" id="sideA">최신 앨범</a></li>
     </ul>
     	<hr style="background-color: #969B97;">
     	
     <img src="../sb_music/sb_lib/images/service.png">
    	<ul class="nav nav-pills nav-stacked">
-   		<li><a href="sb_main.jsp?p=./sb_service.jsp" id="sideA">서비스 소개</a></li>
-	    <li><a href="sb_main.jsp?p=./sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
+   		<li><a href="sb_service.jsp" id="sideA">서비스 소개</a></li>
+	    <li><a href="sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
 	    
     </ul>	
     
   </nav>
-  	  
+  
+  	  <form action="frm_top" id="frm_top" method="post">
+				<input type="hidden" name="m_serial" id="m_serial">
+				<input type="hidden" name="m_music" id="m_music">
+				<input type="hidden" name="m_artist" id="m_artist">
+				<input type="hidden" name="m_photo" id="m_photo">
+				<input type="hidden" name="mId" id="mId" value="id">
+				<input type="hidden" name="as" id="as" value="">
+				<input type="hidden" name="listV" id="listV">
+		</form>
   
 	  <div class="col-sm-9 page">
 	  	<div id="changePage">
@@ -59,7 +75,7 @@
 					<div class="col-sm-8">
 						Logo WaterMelon Music Platform
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-2" onclick="nice()">
 						이용약관
 					</div>
 					<div class="col-sm-2">
@@ -93,6 +109,8 @@
 		</footer>
 	  </div>
  </div>
+ 
+
 
 <jsp:include page="./sb_nav.jsp"/>
 <script src="../sb_music/sb_lib/js/sb_music.js"></script>

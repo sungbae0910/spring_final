@@ -15,8 +15,8 @@
 		<header>
 			<form>
 				<div class="input-group">
-					<input type="text" id="search" class="form-control" placeholder="곡 검색">
-					<span class="input-group-addon"><img src="../lib/images/wm.png" id="search-left"></span>
+					<input type="text" id="search" class="form-control" placeholder="곡 검색" autocomplete="off">
+					<span class="input-group-addon"><img src="../sb_music/sb_lib/images/wm.png" id="search-left"></span>
 				</div>
 			</form>
 		</header>
@@ -129,12 +129,7 @@
 			</div>
 		</div>
 		
-		<form action="frm_top" id="frm_top" method="post">
-				<input type="hidden" name="m_serial" id="m_serial">
-				<input type="hidden" name="m_music" id="m_music">
-				<input type="hidden" name="m_artist" id="m_artist">
-				<input type="hidden" name="m_photo" id="m_photo">
-		</form>
+		
 		
 		<c:forEach var="v" items="${top10 }" varStatus="s">
 			<div id="top10_select">
@@ -142,7 +137,7 @@
 					<span id="ten1">${s.count}</span> 
 				</div>
 				<div class="col-sm-3">
-					<span id="ten2" class="tops">${v.music_name }</span>
+					<span id="ten2" class="tops" onclick="info('${v.music_serial}')">${v.music_name }</span>
 				</div>
 				<div class="col-sm-3">
 					<span id="ten3" class="tops">${v.artist_name }</span>
@@ -152,10 +147,10 @@
 				</div>
 				<input type="hidden">
 				<div class="col-sm-1">
-					<span id="ten5" class="tops" onclick="mu.movie('${v.music_serial}')">뮤비</span>
+					<span id="ten5" class="tops" onclick="movie('${v.music_serial}')">뮤비</span>
 				</div>
 				<div class="col-sm-1">
-					<span id="ten6" class="tops">담기</span>
+					<span id="ten6" class="tops" onclick="kimchi('${v.music_serial}')">담기</span>
 				</div>
 				<div class="col-sm-1">
 					<span id="ten7" class="tops">다운</span>

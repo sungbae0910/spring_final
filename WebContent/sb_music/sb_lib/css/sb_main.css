@@ -24,6 +24,12 @@ body{
 	height: 24px;
 }
 
+.hiddenStart{
+   	position: relative;
+    right: 45px;
+    width: 30px;	
+}
+
 
 #nav{
  	background-color: rgba(255,051,051,0.8);
@@ -159,14 +165,14 @@ body{
 #albumD{
 	position:relative;
 	top:8px;
-	width:120px;
+	width:100px;
 	height: auto;
 }
 
 #album{
 	position:relative;
 	top:8px;
-	width:120px;
+	width:100px;
 	height: auto;
 }
 
@@ -190,14 +196,14 @@ body{
 }
 
 .page{
-	background-image: url('../images/bg.gif');
+	background-image: url('../images/105210.gif');
 	background-position-y:0px;
 	width: 90%;
-	height: auto;
+	/* height: auto;
 	background-attachment:fixed;
 	background-position:center;
 	background-repeat:no-repeat;
-	background-size: cover;
+	background-size: cover; */
  	margin-left:280px;
  	padding-bottom: 128px;
 }
@@ -207,14 +213,22 @@ body{
 	background-color: rgba(000,102,051,0.8);
 }
 
+#removeAll{
+	color: #BE81F7;
+}
+#removeAll:hover{
+	cursor: pointer;
+	text-shadow: 0 0 3px black;
+}
+
 #prevBtn{
 	background-color: transparent;
 	border: 0;
 	outline: 0;
 }
 #nav-select{
-	color:#58FA58;
-	text-shadow: 0px 0px 2px #40FF00;
+	color:white;
+	text-shadow: 0px 0px 3px #81F79F;
 	
 	font-size: 20px;
 }
@@ -252,14 +266,19 @@ body{
 }
 
 #player-top{
-	position: absolute;
-    bottom: 460px;
+	position: relative;
+    bottom: 800px;
     border-radius: 10px;
-    right: 248px;
-    width: 433px;
-    height: 330px;
+    width: 451px;
+    height: 350px;
 }
 
+#start-time{
+    color: #64FE2E;
+    text-shadow: 0 0 3px #D8F781;
+}
+
+/*  플레이바게이지   */
 input[type=range] {
     -webkit-appearance: none;
     width: 100%;
@@ -292,6 +311,34 @@ input[type=range]::-moz-range-thumb{
     border-radius:50%;
     cursor: pointer;
 }
+
+ /* 알람창 */
+#alert {
+	display:none;
+    position: fixed;
+    bottom: 150px;
+    left: 41%;
+    padding: 20px;
+    background-color: #2196F3;
+    color: white;
+}
+
+.closebtn {
+	  margin-left: 15px;
+	  color: white;
+	  font-weight: bold;
+	  float: right;
+	  font-size: 22px;
+	  line-height: 20px;
+	  cursor: pointer;
+	  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+ /* footer */
 
 footer{
 	color:white;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="membership">
+
+
+
+	<insert id="register" parameterType="mybatis.MembershipVo">
+		
+		insert into membership(mId, pwd, mName, birth, phone, email, address, mDate, gender) 
+		values(#{mId}, #{pwd}, #{mName}, #{birth}, #{phone}, #{email}, #{address}, sysdate, #{gender})
+	
+	</insert>
+
+
+	<select id="CK_id" parameterType="String" resultType="String">
+	
+		select mId from membership where mId = #{mId} 
+	
+	</select>
+
+</mapper>

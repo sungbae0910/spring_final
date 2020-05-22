@@ -25,89 +25,190 @@ function changeVolume(v){
 	}
 }
 */
-var audio = new Audio("../lib/music/001 태연 (TAEYEON) - Happy.MP3");   
+var audio = new Audio();   
 
 
 $('#playBar').hide();
 $('#album').hide();
 
-play = function(serial){
+play = function(serial){ // 듣기 눌렀을 때
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	$.post('sb_play.mu', param, function(data){
+		
+		
+		$('#navBody').empty();
+		$('#navBody').append(data);
+		
+		$('#playBar').show();
+		$('#album').show();
+		
+		$('#playBarD').hide();
+		$('#albumD').hide();
+		
+		$("#show_list").hide();
+		$("#playerImg").hide();
+		
+
+		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		player();
+		$('#play-button').click();
+		
+	});
+}
+
+play2 = function(serial){
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	$.post('sb_play2.mu', param, function(data){
+		
+		
+		$('#navBody').empty();
+		$('#navBody').append(data);
+		
+		$('#playBar').show();
+		$('#album').show();
+		
+		$('#playBarD').hide();
+		$('#albumD').hide();
+		
+		$("#show_list").hide();
+		$("#playerImg").hide();
+		
+
+		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		player();
+		$('#play-button').click();
+		
+	});
+}
+
+kimchi = function(serial){ // 담기 눌렀을 때
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
 	
-	$.ajax({
-		type: "POST",
-		url: "../sb_play.mu",
-		data: param,	
-		dataType: "json",
-		contentType: "application/json;charset=UTF-8",
-		success : function(data){
-
-			alert("됨");
-			
-			
-			
-			$('music_play').empty();
-			
-		
-			alert("dd");
-			var txt = '';
-				txt += '<div class="col-sm-2"><img src="../lib/album/'
-				txt += data.m_photo + '.PNG" id="album"></div>'
-				txt += '<div class="col-sm-8"><div align="center"><br>'	
-				txt += '<span style="color: white;" id="playBar">'+ data.m_music +'</span> <br>'
-				txt += '<div class="audio-player__container__actions">'
-				txt += '<button id="prevBtn"><img src="../lib/images/prevBtn.png" width="50px;"></button>'
-				txt += '<button id="play-button"><img src="../lib/images/playBtn.png" width="50px;"></button>'
-				txt += '<button id="nextBtn"><img src="../lib/images/nextBtn.png" width="50px;"></button>'
-				txt += '</div>'
-				txt += '</div>'
-				txt += '</div>';
-			
-			audio = new Audio("../lib/music/" + item.m_photo +".MP3");
-			alert(item.m_music);
-			alert(item.m_photo);
-			$('#music_play').append(txt);
-			
-			
-			
-		},
-		error : function(error){
-			console.log(error.status);
-		}
-	})
+	$.post('sb_kimchi.mu', param);
 	
+	$('#alert').show();
+}
+
+var topP = function(){
+	$('#changePage').load('sb_top.mu');
+}
+
+function nice(){ // 나중에 지우자궁
+	alert(audio.src);
+}
+
+function audioBtn(num, serial){ // 전노래 다음노래 버튼
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	
+	if(num == 1){
+		$.ajax({
+			url : 'sb_prevMusic.mu',
+			data : param,
+			type: 'POST',
+			dataType: "json",
+			success : function(data){
+				
+				play2(data);
+				
+				
+			}
+		});		
+		
+	}else if(num == 2){
+		$.ajax({
+			url : 'sb_nextMusic.mu',
+			data : param,
+			type: 'POST',
+			dataType: "json",
+			success : function(data){
+				
+				
+				
+				play2(data);
+				
+			}
+		});		
+		
+		
+		
+	}
+}
+var reS = 0;
+var oneS = 0;
+function re(serial){
+	if(reS == 0){
+		$('#re').css('opacity','100%');
+		$('#one').css('opacity','30%');
+		oneS = 0;
+		reS = 1;
+	}else{
+		$('#re').css('opacity','30%');
+		reS = 0;
+	}
 	
 }
 
-window.onload = function(){
-	var playBtn = document.getElementById("play-button");
+function one(serial){
+	if(oneS == 0){
+		$('#one').css('opacity','100%');
+		$('#re').css('opacity','30%');
+		reS = 0;
+		oneS = 1;
+	}else{
+		$('#one').css('opacity','30%');
+		oneS = 0;
+	}
+	
+}
+
+function getTime(t){
+	var m=~~(t/60), s=~~(t % 60);
+	return (m<10?"0"+m:m)+':'+(s<10?"0"+s:s);
+	
+}
+
+var time = $('#start-time');
+
+function player(){
+	  audio.pause(); // 시작할때 다른 음악 끄기
+	  var playBtn = document.getElementById("play-button");
 	  var progressBar = document.getElementById("progress-bar");
 	  
 	  
 	  var playing = false;
 	  var duration = 0;
 	  
-	  
-	  
 	  progressBar.onchange=(e)=>{    
 	    audio.currentTime = +progressBar.value;
 	  };
 	  audio.addEventListener("timeupdate",(e)=>{    
 	        progressBar.value = audio.currentTime;
+	        
+	        time.text(getTime(audio.currentTime));
+	        
 	  });
 	  audio.addEventListener("ended",(e)=>{
 	    progressBar.value = 0;
-	    playBtn.innerText="Play"; 
+	    
+		$('#btn_play').attr("src","../sb_music/sb_lib/images/play.png");
 	    playing=false;
+	    
+	    
 	  });
 	  
 	  audio.addEventListener("play",(e)=>{    
-	    playBtn.innerText="Stop"; 
-	    playing=true;
+		$('#btn_play').attr("src","../sb_music/sb_lib/images/pause.png");
+		playing=true;
 	  });
 	  audio.addEventListener("pause",(e)=>{    
-	    playBtn.innerText="Play"; 
+		$('#btn_play').attr("src","../sb_music/sb_lib/images/play.png");
+	   
 	    playing=false;
 	  });
 	  audio.addEventListener("canplay",()=>{
@@ -129,6 +230,12 @@ window.onload = function(){
 	
 }
 
+function removeAll(){
+	let param = $('#frm_top').serialize();
+	$.post('sb_removeAll.mu',param);
+	
+	playList();
+}
 
 function showVolume(vol){
 	var view = document.getElementById("now-vol");
@@ -137,9 +244,9 @@ function showVolume(vol){
 	var now = audio.volume = vol/100;
 	
 	if(now > 0){
-		$("#sound").attr("src","../lib/images/vol1.png");
+		$("#sound").attr("src","../sb_music/sb_lib/images/vol1.png");
 	}else{
-		$("#sound").attr("src","../lib/images/vol2.png");
+		$("#sound").attr("src","../sb_music/sb_lib/images/vol2.png");
 	}
 }
 
@@ -148,6 +255,8 @@ function showVolume(vol){
 var nav_flag = 0;
 $("#show_list").hide();
 $("#playerImg").hide();
+
+
 function nav_list(){
 	if(nav_flag == 0){
 		$("#show_list").hide(1000);
@@ -158,7 +267,127 @@ function nav_list(){
 		$("#playerImg").show(1000);
 		nav_flag = 0;
 	}
+	playList();
+}
+
+
+var cnt = 0;
+var str;
+
+function playList(){
+	let param = $('#frm_top').serialize();
+	str = '';
+	$.ajax({
+		url : 'sb_playList.mu',
+		data : param,
+		type: 'POST',
+		dataType: "json",
+		success : function(data){
+			var tbody = $('#pl_tbody');
+			cnt = 0;
+			$('#list_val').empty();
+			
+			$('#pl_tbody').empty();
+			
+			
+			$.each( data,function(index , val){
+				tbody.append(
+						"<tr id='changing" + index + "' onmouseup='ChDrag("+ index + ","+ val.music_serial  +")'>" +
+						"<td> <span>" + index + "</span> </td>" +
+						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
+						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play2("+ val.music_serial +")'> " + 
+						"</td>" +
+						"<td> <span>" + val.music_name + "</span>" +
+						"<br>" +
+						"<span>" + val.artist_name + "</span> </td>" +
+						"<td> <span id='tb_delete' onclick='delList(" + val.music_serial + ")'>X</span>" +
+						"</td>" +
+						"</tr>"
+						
+				)
+				cnt++;
+				
+			})
+			
+			
+			
+		},
+		error : function(request, status, error){
+			/*alert(request.status + "\n에러메시지:" + error);*/
+		}
+		
+	})
+}
+
+
+function delList(serial){
+	frm_top.m_serial.value = serial;
+	let param = $('#frm_top').serialize();
+	str = '';
 	
+	$.ajax({
+		url : 'sb_delList.mu',
+		data: param,
+		type: 'POST',
+		dataType: "json",
+		success : function(data){
+			cnt = 0;
+			var tbody = $('#pl_tbody');
+
+			$('#list_val').empty();
+			
+			$('#pl_tbody').empty();
+			
+			
+			$.each( data,function(index , val){
+				
+				tbody.append(
+						"<tr id='changing" + index + "' onmouseup='ChDrag("+ index + ","+ val.music_serial  +")'>" +
+						"<td> <span>" + index + "</span> </td>" +
+						"<td> <img src='../sb_music/sb_lib/album/" + val.album_photo + ".PNG' width='55px' id='tplay'>" +
+						" <img src='../sb_music/sb_lib/images/start.png' id='hiddenStart" + index + "' class='hiddenStart' onclick='play2("+ val.music_serial +")'> " + 
+						"</td>" +
+						"<td> <span>" + val.music_name + "</span>" +
+						"<br>" +
+						"<span>" + val.artist_name + "</span> </td>" +
+						"<td> <span id='tb_delete' onclick='delList(" + val.music_serial + ")'>X</span>" +
+						"</td>" +
+						"</tr>"
+						
+				)
+				$('#hiddenS').hide();
+				cnt++;
+			})
+			
+		},
+		
+		error: function(request, status, error){
+			/*alert(request.status + "\n에러메시지:" + error);*/
+		}
+		
+		
+	})
+}
+
+
+function ChDrag(index, music_serial){
+	var os;
+	var arr = new Array();
+	
+	
+	for(var i=0; i<cnt; i++){
+		os = $('#changing'+i).offset();
+		
+		
+		arr.push(os.top);
+	}
+	frm_top.listV.value = arr;
+
+	
+	let param = $('#frm_top').serialize();
+	str = '';
+	
+	$.post('sb_ChDrag.mu', param);
 }
 
 
@@ -178,7 +407,7 @@ $(document).ready(function() {
 		}
 	})
 	
-
+	$('#list_val').hide();
 	
 	
 	$('#myCarousel').carousel({
