@@ -14,7 +14,7 @@ var daumAdd = function(){
 
 	// 로그인 버튼 눌렀을때
 	$('#login_s').click(function(){
-		$('frm_login_s').attr('action', 'login.mem').submit();
+		$('#frm_login_s').attr('action', 'login.mem').submit();
 	})
 
 	// 회원가입 버튼 눌렀을때

@@ -25,6 +25,12 @@ option {
 	height: 40px;
 }
 
+#login_s{
+	font-size::;px;
+	width: 400px;
+	height: 40px;
+}
+
 
 #checkId{
 	color:red;
