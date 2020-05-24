@@ -6,13 +6,14 @@ import java.util.List;
 public class BlogBoardVo {
 	int brdNo; //게시물 번호
 	int bNo; //블로그 번호
-	String cName; //카테고리 이름
-	String mId; //회원 아이디
-	String brdHeader; //게시물 헤더사진
-	String oriBrdHeader; //게시물 원본 헤더사진
-	String subject; //게시물 제목
-	String content; //게시물 내용
-	String brdDate; //게시물 작성일자
+	String cName = ""; //카테고리 이름
+	String cnt = ""; //카데고리 게시물 수
+	String mId = ""; //회원 아이디
+	String brdHeader = ""; //게시물 헤더사진
+	String oriBrdHeader = ""; //게시물 원본 헤더사진
+	String subject = ""; //게시물 제목
+	String content = ""; //게시물 내용
+	String brdDate = ""; //게시물 작성일자
 	int hit; //게시물 조회 수
 	int brdLike; //게시물 공감 수
 	List<BlogVo> blogInfo = new ArrayList<BlogVo>(); //블로그 이름, 유저사진
@@ -25,6 +26,8 @@ public class BlogBoardVo {
 	public void setbNo(int bNo) {this.bNo = bNo;}
 	public String getcName() {return cName;}
 	public void setcName(String cName) {this.cName = cName;}
+	public String getCnt() {return cnt;}
+	public void setCnt(String cnt) {this.cnt = cnt;}
 	public String getmId() {return mId;}
 	public void setmId(String mId) {this.mId = mId;}
 	public String getBrdHeader() {return brdHeader;}

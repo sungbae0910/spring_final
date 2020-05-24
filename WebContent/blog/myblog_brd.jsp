@@ -3,16 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="c_dimmedSidebar"></div>
 <form id="c_blog_frm" name="c_blog_frm" method="post">
-	<input type="hidden" name="c_brdNo" value="${brdVo.brdNo}"/>
+	<input type="hidden" name="c_brdNo" id="c_brdNo" value="${board.brdNo}"/>
 	<input type="hidden" name="c_mId" id="c_mId" value="${myblogHeader.mId}"/>
 	<input type="hidden" name="c_cName" id="c_cName"/>
+	<input type="hidden" name="c_bNo" id="c_bNo" value="${board.bNo}"/>
 </form>
 <aside id="c_sidebar">
 	<div id="c_innerSidebar">
 		<button type="button" class="btn btn-default btn-lg x" id="c_sidebar_close">
   			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 		</button>
-		<button type="button"class="btn btn-default btn-lg home" onclick="blog.myblog()">
+		<button type="button"class="btn btn-default btn-lg home" onclick="blog.otherBlog()">
 	  		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${myblogHeader.bTitle}
 		</button>
 		<div id="c_myblog_Cate">
@@ -31,12 +32,12 @@
 	<div class="container-fluid">
 	    <div class="row">
 	        <div class="col-xs-12">
-	        	<img id="c_myBlog_headerImg" src="./blog_image/${brdVo.brdHeader}">
+	        	<img id="c_myBlog_headerImg" src="./blog_image/${board.brdHeader}">
 	        	<img id="c_sidebar_open" src="./blog_image/menu2.png">
-	        	<div id="c_myblogTitle" onclick="blog.myblog()">${myblogHeader.bTitle}</div>
+	        	<div id="c_myblogTitle" onclick="blog.otherBlog()">${myblogHeader.bTitle}</div>
 	        	<div id="c_brdItem">
-		        	<div id="c_brd_Subject">${brdVo.subject}</div>
-		        	<div id="c_brd_Date">${brdVo.brdDate}</div>
+		        	<div id="c_brd_Subject">${board.subject}</div>
+		        	<div id="c_brd_Date">${board.brdDate}</div>
 	        	</div>
 	        </div>
 	    </div>
@@ -47,14 +48,14 @@
 	    <div class="row">
 	    	<div class="col-md-2"></div>
 	        <div class="col-md-8">
-		        <div id="c_brd_Cont">${brdVo.content}</div>
+		        <div id="c_brd_Cont">${board.content}</div>
 	        	<div id="c_brd_btn_group">
 	        		<c:choose>
-	        			<c:when test="${brdVo.brdLike == 0}">
+	        			<c:when test="${board.brdLike == 0}">
   							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true">공감</span>
 	        			</c:when>
 	        			<c:otherwise>
-  							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true">${brdVo.brdLike}</span>
+  							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true">${board.brdLike}</span>
 	        			</c:otherwise>
 	        		</c:choose>
   					<div class="dropdown" id="c_brd_manage">

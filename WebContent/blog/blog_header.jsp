@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- <form id="c_frmMain" name="c_frmMain" method="post" action="../blogMain.bg">
-	<input type="hidden" name="test" value="test"/>
-</form> -->
 <!-- 슬라이드 사진 -->
 <div id="c_mainBlog">
 	<div class="container-fluid" id="c_mainHeader">
@@ -42,13 +39,5 @@
 	    </div>
 	</div>
 </div>
-<%-- <% 
-String inc2 = "../blogMain.bg";
-	if (request.getParameter("inc2") != null) {
-		inc2 = request.getParameter("inc2");
-	}
-%> --%>
-<div id="c_blogContent">
-	<%-- <jsp:include page="&inc2=<%=inc2 %>"/> --%>
-</div> 
+<div id="c_blogContent"></div> 
 <script>blog.mainContent();</script>
