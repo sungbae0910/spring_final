@@ -56,6 +56,7 @@
 
 
 <script src="../news/js/register_s.js">
+	login_ck();
 </script>
 </body>
 </html>

@@ -58,7 +58,7 @@
 			<div class="col-sm-3" style="background-color: #D8D8D8;">
 				<div align="center">
 					레반에 로그인하세요
-					<button>로그인</button>			
+					<a href="./sb_music/login.jsp" style="color:black;"><button>로그인</button></a>			
 				</div>
 			</div>
 			

@@ -89,6 +89,8 @@ var daumAdd = function(){
 	})
 	
 	
-	
+var loginCk = function(){
+		
+}	
 	
 	
