@@ -2,8 +2,8 @@ package w_foodcontroller;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +40,35 @@ public class FoodController {
 	 return mv;
   }
   
+  @RequestMapping(value="/w_insert.fd", method= {RequestMethod.POST})  
+  public ModelAndView insert() {
+	  
+	  ModelAndView mv = new ModelAndView();
+	  
+	  mv.setViewName("w_image_insert");
+	  return mv;
+  }
   
+  
+  
+  @RequestMapping(value="/w_insertR.fd", method= {RequestMethod.POST})
+  public ModelAndView insertR(HttpServletRequest req, HttpServletResponse resp) {
+	  ModelAndView mv = new ModelAndView();
+	  String msg = "게시판 정보가 저장되었습니다.";
+	  System.out.println(12341231);
+	  //FileUpload
+	  FileUpload fu = new FileUpload(req, resp);
+	  HttpServletRequest newReq = fu.uploading();
+	  FoodVo vo = (FoodVo)newReq.getAttribute("vo");
+	  System.out.println(vo.getFoodName());
+	  System.out.println(vo.getFoodPrice());
+	  System.out.println(vo.getFoodType());
+	  List<w_AttVo> attList = (List<w_AttVo>)newReq.getAttribute("attList");
+	  msg = dao.insert(vo, attList);
+	  
+	  mv.addObject("msg",msg);
+	  mv.setViewName("w_result");
+	  return mv;  
+  }
   
 }

@@ -9,7 +9,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/jquery.dropotron.min.js"></script>
 <script src="./js/w_brand.js"></script>
 
@@ -52,44 +52,16 @@
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
-					<c:choose>
-        <c:when test="${empty sessionScope.w_mid}">
-            <!-- 로그인이 안되어 있으면 -->
-            <form id="frm_food" name="frm_food" action="w_LoginCheck.fd">
-                <table>
-                    <tr>
-                        <td>아이디</td>
-                        <td><input type="text" name="w_mid" id="w_mid" placeholder="10글자" maxlength="10"></td>
-                    </tr>
-                    <tr>
-                        <td>패스워드</td>
-                        <td><input type="password" name="w_pwd" id="w_pwd" maxlength="20"></td>
-                    </tr>
-                    <c:if test="${msg == '실패'}">
-                        <tr>
-                            <td colspan=2>
-                                아이디 또는 패스워드가 틀렸습니다.
-                            </td>
-                        </tr>
-                    </c:if>
-                    <tr>
-                        <td colspan=2>
-                            <input type="button" id="w_btnLogin1" value="로그인" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </c:when>
-        <c:otherwise>
-            <h3>${sessionScope.w_mid}님 환영합니다.</h3>
-            <a href="w_Logout.fd">로그아웃</a>
-        </c:otherwise>
-    </c:choose>
+	                        <form id="frm_food" name="frm_food" action="">
+								<font color="red">${message}</font>
+								ID:<input type="text" id="mid" name="mid"><br>
+								PW:<input type="password" id="pwd" name="pwd"><br>
+								<input type="submit" id="BtnLogin" value="login">
+				            </form>
+
 				          </div>
 						</div>
 					</div>
-				</div>
-
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container">
@@ -114,29 +86,8 @@
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>	
 						</div>
-
+				<script src="../sb_music/sb_lib/js/sb_login.js"></script>
 				</div>
 			</div>
-			<script type="text/javascript">
-		    $(document).ready(function(e) {
-		        $('#w_btnLogin1').click(function() {
-
-		            // 입력 값 체크
-		            if ($.trim($('#w_mid').val()) == '') {
-		                alert("아이디를 입력해 주세요.");
-		                $('#w_mid').focus();
-		                return;
-		            } else if ($.trim($('#w_pwd').val()) == '') {
-		                alert("패스워드를 입력해 주세요.");
-		                $('#w_pwd').focus();
-		                return;
-		            }
-
-		            //전송
-		            $('#frm_food').submit();
-		        });
-
-		    });
-		</script>
 	</body>
 </html>

@@ -14,13 +14,14 @@
   select f.foodcode , f.foodname, f.foodprice, fi.foodcode , fi.foodorifile, fi.foodsysfile
   from w_food f , w_food_image fi 
   where f.foodtype=#{type} and f.foodcode = fi.foodcode
-
  </select>
  
- <!-- 로그인 셀렉트 -->
- <select id='w_LoginCheck' resultType="String">
-   select mid , pwd from membership where mid=#{mid} and pwd = #{pwd}
- </select>
+ <insert id="w_insert" parameterType="w_foodcontroller.FoodVo">
+  insert into W_FOOD(foodCode,foodName,foodPrice,foodType) values(w_seq_code.nextval,#{foodName},#{foodPrice},#{foodType});
+ </insert>
  
+ <insert id="w_att_insert" parameterType="w_foodcontroller.w_AttVo">
+   insert into w_food_image(foodCode,foodOrifile,foodSysfile) values(w_seq_att.nextval,#{oriFile},#{sysFile})
+ </insert>
  
 </mapper>

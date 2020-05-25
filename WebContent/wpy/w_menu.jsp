@@ -10,7 +10,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/jquery.dropotron.min.js"></script>
 <script src="./js/w_brand.js"></script>
 
@@ -107,5 +107,6 @@
 						</div>
 				</div>
 			</div>
+<script>fd.func()</script>
 	</body>
 </html>
