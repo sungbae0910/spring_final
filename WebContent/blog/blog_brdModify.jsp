@@ -25,6 +25,12 @@
 	       		<textarea id="c_brdSubject" placeholder="제목을 입력하세요">${board.subject}</textarea>
 	       		<br/>
 	        	<textarea id="c_summernote">${board.content}</textarea>
+	        	<div id="c_tagList">
+	        		<span class="c_tag">
+		        		<span></span>
+		        		<input type="text" id="c_tag" placeholder="#태그입력"/>
+	        		</span>
+	        	</div>
 	        	<button type="button" id="c_btnBrdInsert">글 등록</button>
 	        </div>
 	        <div class="col-xs-1 col-md-2"></div>
