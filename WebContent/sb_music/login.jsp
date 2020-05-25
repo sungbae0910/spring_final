@@ -18,16 +18,14 @@
 		<h1>로고</h1>
 		<br><br>
 		<div class="container">	
-			<form id="frm_login_s" name="frm_register">
+			<form id="frm_login_s" method="post" name="frm_register">
 				
 				<span>아이디</span><br> 
 				<input type="text" id="lId" name="lId" placeholder="아이디"><div id="checkId" ></div><br>
 				<span>비밀번호</span> <br> 
 				<input type="password" id="lPwd" name="lPwd" placeholder="비밀번호"><br>
 				<br><br>
-				
 				<button id="login_s" type="button">로그인</button>
-			
 			</form>
 		</div>
 	</div>	

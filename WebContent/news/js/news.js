@@ -24,6 +24,12 @@ let news = function(){
 		$(this).addClass('active');
 	})
 	
+	$('.search-box input[type=text]').keypress(function(e){
+		if(e.keyCode==13){
+			news_search();
+		}
+	})
+	
 }
 
 let comment_go = function(nowPage, index){
@@ -267,3 +273,12 @@ let cate_ui = function(n){
 	}
 }
 
+// 뉴스검색
+var news_search = function(){
+	$('#frm_news_search').attr('action', 'newsSearch.news').submit();
+}
+
+var news_search_paging = function(nowPage){
+	$('.nowPage').val(nowPage);
+	$('#frm_news_search').attr('action', 'newsSearch.news').submit();
+}

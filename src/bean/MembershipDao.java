@@ -12,6 +12,7 @@ public class MembershipDao {
 
 	SqlSession sqlSession;
 	
+	
 	public MembershipDao() {
 		sqlSession = Factory.getFactory().openSession();
 	}

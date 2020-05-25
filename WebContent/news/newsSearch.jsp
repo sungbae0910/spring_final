@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +30,8 @@
 <!-- js -->
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/news.js"></script>
-
 </head>
-
 <body>
-<form id="news_s" method="post">
-	<input type="hidden" value="${sessionScope.mName}" name="mName"/>
-</form>
     <header>
         <!-- Header Start -->
        <div class="header-area">
@@ -85,7 +80,7 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="#" onclick="go_all()">홈</a></li>
+                                            <li><a href="newsMainT.jsp">홈</a></li>
                                             <li><a href="categori.html">사회</a></li>
                                             <li><a href="about.html">정치</a></li>
                                             <li><a href="latest_news.html">경제</a></li>
@@ -99,11 +94,11 @@
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
                                     <i class="fas fa-search special-tag"></i>
-                                    <img src="./img/icon/search_icon.png" style="width:23px; height: 25px;">
+                                    <img src="./img/icon/search_icon.png" onclick="news_search()" style="width:23px; height: 25px;">
                                     <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
-                                            
+                                        <form method="post" id="frm_news_search">
+                                            <input type="text" name="searchText" class="searchText" placeholder="Search" value="${p.findStr}">
+                                            <input type="text" name="nowPage" class="nowPage" value="${p.nowPage}"/>
                                         </form>
                                     </div>
                                 </div>
@@ -119,32 +114,75 @@
        </div>
         <!-- Header End -->
     </header>
-
-    <main>
-    <form id="tess_s" method="post">
     
-    </form>
-
-    <!-- top 뉴스 시작 -->
-	<div id="top_news_s">
-	
+    <main>
+    <div class="container" style="margin-top: 10px;">
+    	<div class="row">
+    		<div class="search_top">
+	    		<h3 class="widget_title">검색 결과</h3>
+				<div class="section-top-border">
+					<div class="row">
+						<c:forEach items="${vo}" var="i" varStatus="ii">
+							<div class="col-md-3 se_do">
+								<c:forEach begin="${ii.index}" end="${ii.index}" items="${vo2}" var="pho">
+									<img src="./img/newsImages/${pho.pName}" alt="" class="img-fluid">
+								</c:forEach>
+							</div>
+							<div class="col-md-9 mt-sm-20">
+								<div class="search_domain">
+									<span class="info_view">
+										<a href="#" class="search_value">${i.nTitle}</a>
+										<fmt:formatDate value="${i.nDate}" pattern="yyyy-MM-dd" var="fmtDate"/>
+										<span class="txt_info_se">${fmtDate} |</span>
+										<span class="txt_info_se">${i.nCategory} |</span>
+										<span class="txt_info_se">${i.nCompany}</span>
+									</span>	
+									<p>
+										${i.nContent}
+									</p>
+								</div>
+							</div>
+						</c:forEach>						
+					</div>
+				</div>
+	    	</div>
+	    	
+    	</div>
+    </div>
+    
+    	<!--Start pagination -->
+	<div class="pagination-area pb-45 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="single-wrap d-flex justify-content-center">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-start">
+								<c:if test="${p.startPage>p.blockSize }">
+									<li class="page-item"><a class="page-link" href="#" onclick="news_search_paging(${p.startPage-1})"><img src="./img/news/previous.png" alt=""></a></li>
+								</c:if>
+								
+								<c:forEach var="i" begin="${p.startPage}" end="${p.endPage}" varStatus="ii">
+									<li class="page-item ${(i==1)?'active':''}"><a class="page-link" href="#" onclick="news_search_paging(${i},${ii.index})">${i}</a></li>
+								</c:forEach>
+								
+								<c:if test="${p.endPage<p.totPage}">
+									<li class="page-item"><a class="page-link" href="#" onclick="news_search_paging(${p.endPage+1})"><img src="./img/news/next.png" alt=""></a></li>
+								</c:if>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<!-- top 뉴스 끝 -->
-	
-	<!-- 카테고리별 뉴스 시작 -->
-	<div id="category_s">
-		
-	</div>
-	<!-- 카테고리별 뉴스 끝 -->
-	
-	<!-- 많이 본 뉴스 시작 -->
-	<div id="weekly_s">
-	
-	</div>
-	<!-- 많이 본 뉴스 끝 -->
-
+	<!-- End pagination  --> 
+    
+    
+    
     </main>
     
+        
    <footer>
        <!-- footer-bottom aera -->
        <div class="footer-bottom-area">
@@ -214,8 +252,7 @@
       <script src="./js/plugins.js"></script>
       <script src="./js/main.js"></script>
 <script>
-	go_all();
 	news()
-</script>        
+</script>      
 </body>
 </html>

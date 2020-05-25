@@ -1,5 +1,6 @@
 package newsController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -386,5 +388,39 @@ public class NewsController {
 		obj.put("unLikeA", unLikeA);
 		
 		return obj.toJSONString();
+	}
+	
+	@RequestMapping(value="/news/newsSearch.news", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView newsSearch(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		NewsService ns = new NewsService();
+		List<NewsVo> vo = null;
+		List<NewsPhotoVo> vo2 = new ArrayList<NewsPhotoVo>();
+		String searchText = req.getParameter("searchText");
+		Page page = new Page();
+		
+		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
+			page.setNowPage(1);
+		}else {
+			page.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		}
+		
+		System.out.println(page.getNowPage());
+		
+		page.setFindStr(searchText);
+		vo = ns.neswSearch(page);
+		
+		for(NewsVo list : vo) {
+			int nSerial = list.getnSerial();
+			NewsPhotoVo pho = ns.newsSearchPho(nSerial);
+			vo2.add(pho);
+		}
+		
+		mv.addObject("p", page);
+		mv.addObject("vo", vo);
+		mv.addObject("vo2", vo2);
+		mv.setViewName("newsSearch");
+		
+		return mv;
 	}
 }

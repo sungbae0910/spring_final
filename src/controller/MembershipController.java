@@ -104,6 +104,7 @@ public class MembershipController {
 		}
 		
 		mv.addObject("reuslt", result);
+		mv.setViewName("index");
 		
 		return mv;
 	}

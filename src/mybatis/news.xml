@@ -21,13 +21,13 @@
 	</select>
 	
 	<select id="main_hit_desc" resultMap="mm_news">
-	select * from 
-		(select * from 
-			(select * from news_photo where rowid in 
-			 	(select max(rowid) 
-			 	 from news_photo group by nserial)
-			 )a join news_info b on a.nserial = b.nserial order by nhit desc
-		 ) where rownum &lt;=5
+		select * from 
+			(select * from 
+				(select * from news_photo where rowid in 
+				 	(select max(rowid) 
+				 	 from news_photo group by nserial)
+				 )a join news_info b on a.nserial = b.nserial order by nhit desc
+			 ) where rownum &lt;=5
 	</select>
 	
 	<select id="detail_side" parameterType="String" resultType="newsController.NewsVo">
@@ -91,6 +91,26 @@
 	
 	<select id="un_like_cnt" parameterType="newsController.LikeVo" resultType="String">
 		select cDiLike from news_comment where cSerial=#{cSerial}
+	</select>
+	
+	<select id="news_search_info" parameterType="newsController.Page" resultType="newsController.NewsVo">
+		select * from ( 
+			select rownum rn , A.* from (
+				select * from news_info
+				where nTitle like '%${findStr}%' or nContent like '%${findStr}%'
+			order by nDate desc ) A
+		) where rn between #{startNo} and #{endNo}	
+	</select>
+	
+	<select id="news_search_cnt" parameterType="newsController.Page" resultType="int">
+		select count(*) from news_info where nTitle like '%${findStr}%' or nContent like '%${findStr}%'
+	</select>
+	
+	<select id="news_search_photo" parameterType="int" resultType="newsController.NewsPhotoVo">
+		select * from(
+			select * from news_photo where rowid in (
+				select max(rowid) from news_photo group by nserial) 
+		)where nserial = #{value}
 	</select>
 	
 	
