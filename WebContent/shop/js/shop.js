@@ -42,21 +42,32 @@ shop.func = function(){
 		})
 	})
 	
-	$("#item1_category").click(function(){
+	$("#item1_category").click(function(item_category){
+		shop_frm.item_category.value = 0;
 		let param = $("#shop_frm").serialize();
 		$.post("../more.shop", param, function(data, state){
 			$("#main").html(data);
 		})
 	})
 	
-	$("#item2_category").click(function(){
+	$("#item2_category").click(function(item_category){
+		shop_frm.item_category.value = 1;
 		let param = $("#shop_frm").serialize();
 		$.post("../more.shop", param, function(data, state){
 			$("#main").html(data);
 		})
 	})
 	
-	$("#item3_category").click(function(){
+	$("#item3_category").click(function(item_category){
+		shop_frm.item_category.value = 2;
+		let param = $("#shop_frm").serialize();
+		$.post("../more.shop", param, function(data, state){
+			$("#main").html(data);
+		})
+	})
+	
+	$("#item4_category").click(function(item_category){
+		shop_frm.item_caategory.value = 3;
 		let param = $("#shop_frm").serialize();
 		$.post("../more.shop", param, function(data, state){
 			$("#main").html(data);

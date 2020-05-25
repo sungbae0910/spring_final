@@ -23,11 +23,13 @@ public class ShopController {
 	public ModelAndView shopMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
+		List<ShopItemVo> headerMenu = dao.headerCategoryMenu();
 		List<ShopItemVo> earringList = dao.earringMainSelect();
 		List<ShopItemVo> necklaceList = dao.necklaceMainSelect();
 		List<ShopItemVo> ringList = dao.ringMainSelect();
 		List<ShopItemVo> braceletList = dao.braceletMainSelect();
 		
+		mv.addObject("headerMenu", headerMenu);
 		mv.addObject("earringList", earringList);
 		mv.addObject("necklaceList", necklaceList);
 		mv.addObject("ringList", ringList);
@@ -40,6 +42,10 @@ public class ShopController {
 	public ModelAndView shopMore(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
+		ShopItemVo vo = (ShopItemVo)req.getAttribute("vo");
+		List<ShopItemVo> moreList = dao.MoreSelect(vo);
+		
+		mv.addObject("moreList", moreList);
 		mv.setViewName("shop_itemMore");
 		return mv;
 	}

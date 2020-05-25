@@ -35,8 +35,8 @@
 							      		</span>
 							    	</div><!-- /input-group -->
 							  	</div><!-- /.col-lg-6 -->
-							  </div>
 							</div>
+						</div>
 						<div class="col-xs-3 item1">
 						    <a href="#" id="item1_category" ><span>귀걸이</span></a>
 						</div>

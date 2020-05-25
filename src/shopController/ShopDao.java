@@ -14,6 +14,17 @@ public class ShopDao {
 		/*sqlSession = Factory.getFactory().openSession();*/
 	}
 	
+	public List<ShopItemVo> headerCategoryMenu(){
+		List<ShopItemVo> headerMenu = null;
+		try {
+			headerMenu = sqlSession.selectList("shop.header_category_menu");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return headerMenu;
+		}
+	}
+	
 	public List<ShopItemVo> earringMainSelect(){
 		List<ShopItemVo> earringList = null;
 		try {
@@ -55,6 +66,17 @@ public class ShopDao {
 			ex.printStackTrace();
 		}finally {
 			return braceletList;
+		}
+	}
+	
+	public List<ShopItemVo> MoreSelect(ShopItemVo vo){
+		List<ShopItemVo> list = null;
+		try {
+			list = sqlSession.selectList("shop.item_more_select");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return list;
 		}
 	}
 	

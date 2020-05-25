@@ -56,6 +56,9 @@
 	margin-top: -7%;
 	width: 63%;
 }
+#shop_main #item_thumbnail .thumbnail #item_photo{
+	height: 210px;
+}
 #shop_main span{
 	font-size: large;
 }
