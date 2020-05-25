@@ -25,7 +25,6 @@ public class BlogDao {
 			brdNo = sqlSession.selectList("blog.tag", tag);
 			//주제별 인기있는 게시물 조회
 			bestBrdList = sqlSession.selectList("blog.mainBestBrd", brdNo);
-			//주제별 게시물 전체 조회
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,20 +45,10 @@ public class BlogDao {
 		return brdList;
 	}
 	
-	/*public List<BlogVo> category(int bNo) {
-		List<BlogVo> category = null;
-		try {
-			//해당 블로그 카테고리
-			category = sqlSession.selectList("blog.category", bNo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return category;
-	}*/
-	
 	public BlogVo myblogHeaderSelect(String mId) {
 		BlogVo myblogHeader = null;
 		try {
+			//블로그 헤더, 카테고리 조회
 			myblogHeader = sqlSession.selectOne("blog.myblogHeader", mId);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,10 +56,14 @@ public class BlogDao {
 		return myblogHeader;
 	}
 	
-	public List<BlogBoardVo> myblogBrdSelect(String mId) {
+	public List<BlogBoardVo> myblogBrdSelect(BlogBoardVo boardVo) {
 		List<BlogBoardVo> myblogBrdList = null;
 		try {
-			myblogBrdList = sqlSession.selectList("blog.myblogBrdSelect", mId);
+			if (boardVo.getcName() == "" || boardVo.getcName() == null) { //내 블로그 게시물 전체 조회
+				myblogBrdList = sqlSession.selectList("blog.myblogBrdSelect", boardVo);
+			} else { //내 블로그 카테고리 게시물 조회
+				myblogBrdList = sqlSession.selectList("blog.myblogCategoryBrdSelect", boardVo);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,14 +71,37 @@ public class BlogDao {
 	}
 	
 	public BlogBoardVo brdView(int brdNo) {
-		BlogBoardVo brdVo = null;
+		BlogBoardVo board = null;
 		try {
-			brdVo = sqlSession.selectOne("blog.brdView", brdNo);
+			//게시물 상세보기
+			board = sqlSession.selectOne("blog.brdView", brdNo);
 			//선택한 게시물 조회
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return brdVo;
+		return board;
+	}
+	
+	public List<BlogVo> category(int bNo) {
+		List<BlogVo> category = null;
+		try {
+			//블로그 카테고리 이름 조회
+			category = sqlSession.selectList("blog.category", bNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return category;
+	}
+	
+	public BlogBoardVo brdModify(int brdNo) {
+		BlogBoardVo board = null;
+		try {
+			//게시물 정보 조회
+			board = sqlSession.selectOne("blog.brdView", brdNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return board;
 	}
 	/*public BlogBoardVo brdView(String brdLike,String brdNo, String mId) {
 		BlogBoardVo brdVo = null;

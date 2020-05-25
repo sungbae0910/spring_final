@@ -1,6 +1,9 @@
 package blogController;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,30 +39,30 @@ public class BlogController {
 		mv.setViewName("blog_content");
 		return mv;
 	}
-	/*@RequestMapping(value = "/myblogHeader.bg", method = {RequestMethod.POST})
-	public ModelAndView myblogHeader(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		int bNo = 0;
-		System.out.println("1");
-		String cName = req.getParameter("c_cName");
-		String mId = req.getParameter("c_mId");
-		System.out.println(mId);
-		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
-		System.out.println("들어갔나");
-		mv.addObject("cName", cName);
-		mv.addObject("myblogInfo", myblogHeader);
-		mv.setViewName("myblog_header");
-		return mv;
-	}*/
+
 	@RequestMapping(value = "/myblogMain.bg", method = {RequestMethod.POST})
 	public ModelAndView myblogMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		/*String cName = req.getParameter("c_cName");*/
+		Map<String, String> category = new HashMap<String, String>();
+		BlogBoardVo boardVo = new BlogBoardVo();
 		String mId = req.getParameter("c_mId");
+		boardVo.setmId(mId);
+		
+		if (req.getParameter("c_cName") =="" || req.getParameter("c_cName") == null) { //전체 글
+			category.put("cName", "전체 글");
+		} else { //카테고리 글
+			String cName = req.getParameter("c_cName");
+			boardVo.setcName(cName);
+			category.put("cName", cName);
+		}
+		
 		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
-		System.out.println(myblogHeader.getCategory());
-		List<BlogBoardVo> myblogBrdList = blogDao.myblogBrdSelect(mId);
-		/*mv.addObject("cName", cName);*/
+		List<BlogBoardVo> myblogBrdList = blogDao.myblogBrdSelect(boardVo);
+		
+		String cnt = String.valueOf(myblogBrdList.size());
+		category.put("cnt", cnt);
+			
+		mv.addObject("category", category);
 		mv.addObject("myblogHeader", myblogHeader);
 		mv.addObject("myblogBrdList", myblogBrdList);
 		mv.setViewName("myblog_main");
@@ -76,8 +79,8 @@ public class BlogController {
 			brdLike = Integer.parseInt(req.getParameter("c_brdLike"));
 		}*/
 		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
-		BlogBoardVo brdVo = blogDao.brdView(brdNo);
-		mv.addObject("brdVo", brdVo);
+		BlogBoardVo board = blogDao.brdView(brdNo);
+		mv.addObject("board", board);
 		mv.addObject("myblogHeader", myblogHeader);
 		mv.setViewName("myblog_brd");
 		return mv;
@@ -92,9 +95,16 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value = "/brdModify.bg", method = {RequestMethod.POST})
-	public ModelAndView brdModify() {
+	public ModelAndView brdModify(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
 		
+		List<BlogVo> category = blogDao.category(bNo);
+		BlogBoardVo board = blogDao.brdModify(brdNo);
+		
+		mv.addObject("category", category);
+		mv.addObject("board", board);
 		mv.setViewName("blog_brdModify");
 		return mv;
 	}

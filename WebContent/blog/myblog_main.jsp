@@ -13,7 +13,7 @@
 		<button type="button" id="c_sidebar_close" class="btn btn-default btn-lg x">
   			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 		</button>
-		<button type="button" class="btn btn-default btn-lg home" onclick="blog.myblog()">
+		<button type="button" class="btn btn-default btn-lg home" onclick="blog.otherBlog()">
   			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${myblogHeader.bTitle}
 		</button>
 		<div id="c_myblog_Cate">
@@ -34,37 +34,30 @@
 	        <div class="col-xs-12">
 	        	<img id="c_myBlog_headerImg" src="./blog_image/${myblogHeader.hPhoto}">
 	        	<img id="c_sidebar_open" src="./blog_image/menu2.png">
-	        	<div id="c_myblogTitle" onclick="blog.myblog()">${myblogHeader.bTitle}</div>
+	        	<div id="c_myblogTitle" onclick="blog.otherBlog()">${myblogHeader.bTitle}</div>
 	        </div>
 	    </div>
 	</div>
 </div>
-	<div id="c_myBlog_content">
-		<div class="container">
-		    <div class="row">
-		        <div class="col-xs-12">
-		        	<c:choose>
-		        		<c:when test="${cName == null || cName == ''}">
-				        	<span id="c_myBlog_allBrd">전체 글 <span class="badge">10</span></span>
-		        		</c:when>
-		        		<c:when test="${cName != null || cName != ''}">
-				        	<span id="c_myBlog_allBrd">${cName} <span class="badge">10</span></span>
-		        		</c:when>
-		        	</c:choose>
-		        	<div id="c_myBlog_list">
-		        		<c:forEach  var="brdList" items="${myblogBrdList}">
-			        		<div class="c_myBlog_brd_item" onclick="blog.brdView(${brdList.mId}, ${brdList.brdNo})">
-			        			<img src="./blog_image/${brdList.brdHeader}" class="img-rounded">
-			        			<div class="c_brd_Subject">${brdList.subject}</div>
-			        			<div class="c_brd_Cont">${brdList.content}</div>
-			        			<div class="c_brd_Date">${brdList.brdDate}</div>
-			        		</div>
-		        		</c:forEach>
-		        	</div>	
-		        </div>
-		    </div>
-		</div>
+<div id="c_myBlog_content">
+	<div class="container">
+	    <div class="row">
+	        <div class="col-xs-12">
+				<span id="c_myBlog_allBrd">${category.cName} <span class="badge">${category.cnt}</span></span>
+	        	<div id="c_myBlog_list">
+	        		<c:forEach  var="brdList" items="${myblogBrdList}">
+		        		<div class="c_myBlog_brd_item" onclick="blog.brdView('${brdList.mId}', ${brdList.brdNo})">
+		        			<img src="./blog_image/${brdList.brdHeader}" class="img-rounded">
+		        			<div class="c_brd_Subject">${brdList.subject}</div>
+		        			<div class="c_brd_Cont">${brdList.content}</div>
+		        			<div class="c_brd_Date">${brdList.brdDate}</div>
+		        		</div>
+	        		</c:forEach>
+	        	</div>	
+	        </div>
+	    </div>
 	</div>
+</div>
 
 <div id="c_blog_paging">
 	<div class="container">

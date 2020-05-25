@@ -21,35 +21,6 @@
 </head>
 <body>
 <script>
-/* let tag = ["일상", "데일리"];
-$.setJSON('../blogMain.bg', {"tag" : tag}, function() {
-		$("#c_blogContent").html(data);
-	}); */
-	/* blog.Main(); */
-	/* 
-	let tag = ["일상", "데일리"];
-	let form = $("#c_frmMain");
-	for (let i=0; i<tag.length; i++) {
-		/*$("<input> <input/>").attr({type : "hidden", name : "tag", value : tag[i]}).appendTo(form);
-		let input = document.createElement("input");
-		 $(input).attr("type", "hidden");
-		 $(input).attr("name", "tag");
-		 $(input).attr("value", tag[i]);
-		 $(form).append(input);
-	}
-	alert(1);
-	$("#c_frmMain").submit();
-	alert(2); 
-	
-let tag = ["일상", "데일리"]		
-	let el;
-	for (let i=0; i<tag.length; i++) {
-		el = document.createElement("input");
-		el.type = "hidden";
-		el.name = "tag";
-		el.value = tag[i];
-		document.form.appendChild(el);    
-	} */
 	sessionStorage.setItem("LoginId", "wlgus5120");
 </script>
 <%

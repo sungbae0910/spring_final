@@ -5,32 +5,17 @@ import java.util.List;
 
 public class BlogVo {
 	int bNo; //블로그 번호
-	String mId; //회원 아이디
-	String bTitle; //블로그 이름
-	String bSkin; //블로그 스킨
-	String mPhoto; //회원 프로필 사진
-	String oriMphoto; //회원 프로필 원본사진
-	String hPhoto; //블로그 헤더사진
-	String oriHphoto; //블로그 헤더 원본사진
-	String cName;
-	int cnt;
-	public String getcName() {
-		return cName;
-	}
-
-	public void setcName(String cName) {
-		this.cName = cName;
-	}
-
-	public int getCnt() {
-		return cnt;
-	}
-
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
-	}
-
+	String mId = ""; //회원 아이디
+	String bTitle = ""; //블로그 이름
+	String bSkin = ""; //블로그 스킨
+	String mPhoto = ""; //회원 프로필 사진
+	String oriMphoto = ""; //회원 프로필 원본사진
+	String hPhoto = ""; //블로그 헤더사진
+	String oriHphoto = ""; //블로그 헤더 원본사진
+	String cName = ""; //카테고리 이름
+	int cnt; //게시물 수
 	List<String> category = new ArrayList<String>(); //해당 블로그 카테고리 (카테고리 이름, 게시물 수)
+	
 	public BlogVo() {}
 	
 	public int getbNo() {return bNo;}
@@ -49,6 +34,10 @@ public class BlogVo {
 	public void sethPhoto(String hPhoto) {this.hPhoto = hPhoto;}
 	public String getOriHphoto() {return oriHphoto;}
 	public void setOriHphoto(String oriHphoto) {this.oriHphoto = oriHphoto;}
+	public String getcName() {return cName;}
+	public void setcName(String cName) {this.cName = cName;}
+	public int getCnt() {return cnt;}
+	public void setCnt(int cnt) {this.cnt = cnt;}
 	public List<String> getCategory() {return category;}
 	public void setCategory(List<String> category) {this.category = category;}
 }
