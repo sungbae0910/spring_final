@@ -196,16 +196,16 @@ body{
 }
 
 .page{
-	background-image: url('../images/105210.gif');
+	background-image: url('../images/bg.gif');
 	background-position-y:0px;
 	width: 90%;
-	/* height: auto;
+	height: auto;
 	background-attachment:fixed;
 	background-position:center;
 	background-repeat:no-repeat;
-	background-size: cover; */
- 	margin-left:280px;
- 	padding-bottom: 128px;
+	background-size: cover;
+ 	margin-left:264px;
+ 	padding-bottom: 144px;
 }
 
 #show_list{

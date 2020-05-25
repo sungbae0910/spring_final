@@ -27,7 +27,7 @@
  
   <nav class="col-sm-3 sidenav">
   
-  	<img src="../sb_music/sb_lib/images/logo.png" id="logo" onclick="home()"> <!-- 로고 -->
+  	<img src="../sb_music/sb_lib/images/mylogo.png" id="logo" onclick="home()"> <!-- 로고 -->
   	<img src="../sb_music/sb_lib/images/wtm.gif" width="70px">
   	
   	<br><br><br><br>
