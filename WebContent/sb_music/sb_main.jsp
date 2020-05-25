@@ -20,6 +20,9 @@
  	if(request.getParameter("p") != null){
  		p = request.getParameter("p");
  	}
+ 	
+ 	
+ 	
  %>
  
  
@@ -32,13 +35,23 @@
   	
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
-   		<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
-	    <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a>
-	    	<ul>
-	    		<li>마이페이지</li>
-	    		<li>로그아웃</li>
-	    	</ul>
-	    </li>
+   		<c:if test="${empty sessionscope.mId}" var="mId" >
+   			
+					<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
+  				<li><a href="./sb_register.jsp" id="sideA">회원가입</a></li>
+		</c:if>
+			 <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a>
+		    			<ul>
+		    				<li>마이페이지</li>
+		    				<li>로그아웃</li>
+		    			</ul>
+		  			  </li>
+   				
+	   		
+   		
+   		
+		   
+	    
 	    <li><a href="#" id="sideA" onclick="topP()">TOP 100</a></li>
 	    <li><a href="sb_main.jsp?p=./sb_new.jsp" id="sideA">최신 앨범</a></li>
     </ul>
@@ -47,7 +60,7 @@
     <img src="../sb_music/sb_lib/images/service.png">
    	<ul class="nav nav-pills nav-stacked">
    		<li><a href="sb_service.jsp" id="sideA">서비스 소개</a></li>
-	    <li><a href="sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
+	    <li><a href="sb_main.jsp?p=sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
 	    
     </ul>	
     
@@ -101,8 +114,6 @@
 						이메일 - tommy631@naver.com
 					</div>
 				</div>
-				
-				
 				
 			</div>
 

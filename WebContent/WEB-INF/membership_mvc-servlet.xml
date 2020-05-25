@@ -20,10 +20,11 @@
       <bean id="msDao" class="bean.MembershipDao"/>
       
       <bean id="ms_controller" class="controller.MembershipController">
-      	
+      	<constructor-arg ref="msDao"/>
       </bean>
       
       <bean class='org.springframework.web.servlet.view.InternalResourceViewResolver'>
+      	<property name="prefix" value="../"></property>
       	<property name="suffix" value=".jsp"/>
       </bean>  
     

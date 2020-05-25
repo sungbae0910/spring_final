@@ -93,10 +93,10 @@ public class MusicController {
 		
 		int s = Integer.parseInt(serial);
 		 
-		MusicVo vo = dao.play(s); // nav¹Ù¿¡ À½¾ÇÁ¤º¸ °¡Á®¿Í¼­ ½ÇÇà
+		MusicVo vo = dao.play(s); // 
 		
 		
-		//ÇÃ·¹ÀÌ ¸®½ºÆ® °¡Á®¿Í¼­ Ãß°¡
+		//ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ß°ï¿½
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
 
@@ -122,10 +122,10 @@ public class MusicController {
 		
 		int s = Integer.parseInt(serial);
 		 
-		MusicVo vo = dao.play(s); // nav¹Ù¿¡ À½¾ÇÁ¤º¸ °¡Á®¿Í¼­ ½ÇÇà
+		MusicVo vo = dao.play(s); // navï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		
-		//ÇÃ·¹ÀÌ ¸®½ºÆ® °¡Á®¿Í¼­ Ãß°¡
+		//ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ß°ï¿½
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
 
@@ -152,22 +152,22 @@ public class MusicController {
 		Gson gson = new GsonBuilder().create();
 		
 		
-		String mId = req.getParameter("mId"); // mId °¡Á®¿Í¼­
+		String mId = req.getParameter("mId"); // mId ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½
 
 		
-		MusicListVo vo = dao.playList(mId); // ÇÃ·¹ÀÌ¸®½ºÆ® °¡Á®¿À°í
+		MusicListVo vo = dao.playList(mId); // ï¿½Ã·ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		
-		String ml = vo.getMusic_list(); // ¸®½ºÆ® ³Ö¾îÁØ´ã¿¡
+		String ml = vo.getMusic_list(); // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö¾ï¿½ï¿½Ø´ã¿¡
 
 		
-		String[] num = ml.split(","); // (,) ÄÄ¸¶ Á×¿©¼­
+		String[] num = ml.split(","); // (,) ï¿½Ä¸ï¿½ ï¿½×¿ï¿½ï¿½ï¿½
 		
 		
-		int[] nums = new int[num.length]; // ¹è¿­¿¡ ³Ö¾îÁØµÚ
+		int[] nums = new int[num.length]; // ï¿½è¿­ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Øµï¿½
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // °ø¹é°ª ÀÖÀ»¼ö ÀÖÀ¸´Ï Á×¿©¼­ ¼ýÀÚ ¹è¿­¿¡ ´ã°í
+			nums[i] = Integer.parseInt(num[i].trim()); // ï¿½ï¿½ï¿½é°ª ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½
 		}
 			
 		
@@ -201,7 +201,7 @@ public class MusicController {
 		
 		dao.addList(vo);
 		
-		str = "ÇÃ·¹ÀÌ ¸®½ºÆ®¿¡ ´ã°å½À´Ï´Ù.";
+		str = "ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		
 		return str;
 		
@@ -209,7 +209,7 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_removeAll.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String removeAll(HttpServletRequest req) {
-		String str="ÀüÃ¼ »èÁ¦";
+		String str="ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½";
 		String mId = req.getParameter("mId");
 		
 		dao.removeAll(mId);
@@ -229,28 +229,28 @@ public class MusicController {
 	Gson gson = new GsonBuilder().create();
 		
 
-		String mId = req.getParameter("mId"); // mId °¡Á®¿Í¼­
-		String ms = req.getParameter("m_serial"); // À½¾Ç ½Ã¸®¾óµµ °¡Á®¿Í¼­
+		String mId = req.getParameter("mId"); // mId ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½
+		String ms = req.getParameter("m_serial"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½
 
-		MusicListVo vo = dao.playList(mId); // ÇÃ·¹ÀÌ¸®½ºÆ® °¡Á®¿À°í
-		vo.setmId(mId); // mid ³Ö¾îÁÖ°í
-		vo.setMusic_serial(ms); // music_serial ³Ö¾îÁÖ°í
+		MusicListVo vo = dao.playList(mId); // ï¿½Ã·ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		vo.setmId(mId); // mid ï¿½Ö¾ï¿½ï¿½Ö°ï¿½
+		vo.setMusic_serial(ms); // music_serial ï¿½Ö¾ï¿½ï¿½Ö°ï¿½
 		
 		
-		dao.delList(vo); // ÇÃ·¹ÀÌ¸®½ºÆ® x´­·¯¼­ »èÁ¦
+		dao.delList(vo); // ï¿½Ã·ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½Æ® xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		MusicListVo vo2 = dao.playList(mId);
 		
-		String ml = vo2.getMusic_list(); // ¸®½ºÆ® ³Ö¾îÁØ´ã¿¡
+		String ml = vo2.getMusic_list(); // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö¾ï¿½ï¿½Ø´ã¿¡
 		
 		
-		String[] num = ml.split(","); // (,) ÄÄ¸¶ Á×¿©¼­
+		String[] num = ml.split(","); // (,) ï¿½Ä¸ï¿½ ï¿½×¿ï¿½ï¿½ï¿½
 		
 		
-		int[] nums = new int[num.length]; // ¹è¿­¿¡ ³Ö¾îÁØµÚ
+		int[] nums = new int[num.length]; // ï¿½è¿­ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Øµï¿½
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // °ø¹é°ª ÀÖÀ»¼ö ÀÖÀ¸´Ï Á×ÀÌ°í
+			nums[i] = Integer.parseInt(num[i].trim()); // ï¿½ï¿½ï¿½é°ª ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½
 		}
 		
 		List<MusicVo> list = new ArrayList<MusicVo>();
@@ -342,11 +342,11 @@ public class MusicController {
 		String mId = req.getParameter("mId");
 		
 		MusicListVo vo = dao.playList(mId);
-		String ml = vo.getMusic_list(); // ¸®½ºÆ® ³Ö¾îÁØ´ã¿¡
-		String[] num = ml.split(","); // (,) ÄÄ¸¶ Á×¿©¼­
-		int[] nums = new int[num.length]; // ¹è¿­¿¡ ³Ö¾îÁØµÚ
+		String ml = vo.getMusic_list(); // ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö¾ï¿½ï¿½Ø´ã¿¡
+		String[] num = ml.split(","); // (,) ï¿½Ä¸ï¿½ ï¿½×¿ï¿½ï¿½ï¿½
+		int[] nums = new int[num.length]; // ï¿½è¿­ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Øµï¿½
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // °ø¹é°ª ÀÖÀ»¼ö ÀÖÀ¸´Ï Á×ÀÌ°í
+			nums[i] = Integer.parseInt(num[i].trim()); // ï¿½ï¿½ï¿½é°ª ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½
 		}
 		String[] listnum = listV.split(",");
 		double[] listnums = new double[listnum.length];

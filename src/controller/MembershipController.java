@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,6 +81,7 @@ public class MembershipController {
 	
 	@RequestMapping(value="/sb_music/login.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login(HttpServletRequest req) {
+
 		ModelAndView mv = new ModelAndView();
 		String result = "";
 		String id = req.getParameter("lId");
@@ -89,22 +91,27 @@ public class MembershipController {
 		
 		ck = dao.confirmId(id);
 		
-		System.out.println("asdad");
 		if(ck==0){
 			ck = dao.userCheck(id, password);
 			if(ck==1) {
 				httpSession.setAttribute("mName", id);
-				System.out.println("로그인 완료");
 				mv.setViewName("login");
 			}else {
-				result = "아이디나 비밀번호를 확인해주세요";
+				result = "아이디 비밀번호를 확인해주세요";
 			}
 		}else {
-			result = "아이디나 비밀번호를 확인해주세요";
+			result = "아이디 비밀번호를 확인해주세요";
 		}
 		
-		mv.addObject("reuslt", result);
 		
+		mv.addObject("result", result);
+		mv.setViewName("index");
 		return mv;
 	}
 }
+
+
+
+
+
+

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset=utf-8 />
 <title>Insert title here</title>
 <link rel="stylesheet" href="../sb_music/sb_lib/css/jquery-ui.css">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/bootstrap.min.css">
@@ -55,7 +55,7 @@
 	</div>
 
 
-<script src="../news/js/register_s.js">
+<script src="../news/js/register_s.js" >
 	login_ck();
 </script>
 </body>
