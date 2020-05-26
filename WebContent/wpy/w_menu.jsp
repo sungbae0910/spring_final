@@ -58,6 +58,8 @@
 				                 	메뉴 소개
 				                 </span>
 				               </h5>
+				          
+ 						 <form name='frm_food' id='frm_food' method='post'>
 				          <ul class="w_tabs">
 				             <li class="w_active"  rel="tab1" onclick="fd.foodj('전')" >
 				              	전	
@@ -72,11 +74,10 @@
 				              	사이드
 				             </li>    
 				          </ul>
-				          
 				        	<div class="w_tab_container">
 				        	  
 				        	</div>
-				        	
+				         </form>
 						</div>
 					</div>
 				</div>

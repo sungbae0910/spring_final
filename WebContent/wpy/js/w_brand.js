@@ -7,15 +7,29 @@ fd.foodj = function(type) {
  })
 }
 
+fd.foodv = function(foodCode){
+	frm_food.foodCode.value = foodCode;
+	
+	let param = $('#frm_food').serialize();
+	$.post("../w_view.fd", param, function(data, state) {
+    $('.w_tab_container').html(data)
+	})
+}
+
+
+/*fd.foodv = function(foodCode){
+	$.post("../w_view.fd",{"foodCode" : foodCode}, function(data,state){
+		$(".w_tab_container").html(data)
+	})
+	
+}*/
+
 fd.func = function(){
 	
 	$("#w_btninsert").click(function(){
 		$("#content").load("w_image_insert.jsp");
 	});
 	
-	$('#w_btnMenu').click(function() {
-		$("#content").load("w_menu.jsp");
-	});
 	
 	
    $('#w_btnRegister').click(function(){

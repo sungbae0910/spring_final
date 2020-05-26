@@ -32,7 +32,7 @@ public class FoodDao {
 	  String msg = "정상적으로 입력되었습니다.";
 	  
 	  try {
-		int cnt = sqlSession.insert("food.w_image_insert",vo);
+		int cnt = sqlSession.insert("food.w_insert",vo);
 		  if(cnt<1) {
 			  throw new Exception("본문저장중 오류");
 		  }
@@ -55,6 +55,25 @@ public class FoodDao {
 	}
 	  
   }
+  
+  public FoodVo view(String foodCode) {
+	  FoodVo vo = new FoodVo();
+	  
+	  try {
+		vo = sqlSession.selectOne("food.w_view", foodCode);
+		
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    
+	}finally {
+		return vo;
+	}
+	  
+	  
+  }
+  
+  
+  
   
   public void delFile(List<w_AttVo> delList) {
 	  for(w_AttVo attVo : delList) {

@@ -55,18 +55,17 @@ public class FileUpload {
 				
 				if(fi.isFormField()) {
 				switch(k) {
-				case "foodCode" :
-					vo.setFoodCode(Integer.parseInt(v));
-					
+				case "w_foodType" :
+					vo.setFoodType(v);
 					break;
-				case "foodName" :
+				case "w_foodName" :
 					vo.setFoodName(v);
-					System.out.println(vo.getFoodName());
+			
 					break;
-				case "foodPrice" :
+				case "w_price" :
 					vo.setFoodPrice(Integer.parseInt(v));
 				    break;
-                 
+				    
 				case "delFile":
 					w_AttVo attVo = new w_AttVo();
 					attVo.setSysFile(v);

@@ -27,7 +27,7 @@
       <input type="file" id="w_btnPhoto" name="w_photo">
     <div id="w_button">
       <input type="button" id="w_btnRegister" value="저장"/>
-	  <input type="button" id="w_btnMenu" value="취소"/>
+	  <input type="button" id="w_btnMenu" value="취소" onclick= "location.href = 'w_menu.jsp' " />
 	</div>
 </form>
 <script>fd.func();</script>

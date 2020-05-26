@@ -16,12 +16,19 @@
   where f.foodtype=#{type} and f.foodcode = fi.foodcode
  </select>
  
+ <select id="w_view" parameterType="String" resultType="w_foodcontroller.FoodVo">
+   select f.foodcode, f.foodname, f.foodprice, f.foodtype, fi.foodcode, fi.foodorifile, fi.foodsysfile
+   from w_food f , w_food_image fi
+   where f.foodcode = fi.foodcode
+   and f.foodcode = #{foodCode}
+ </select>
+ 
  <insert id="w_insert" parameterType="w_foodcontroller.FoodVo">
-  insert into W_FOOD(foodCode,foodName,foodPrice,foodType) values(w_seq_code.nextval,#{foodName},#{foodPrice},#{foodType});
+  insert into W_FOOD(foodCode,foodName,foodPrice,foodType) values(w_seq_code.nextval,#{foodName},#{foodPrice},#{foodType})
  </insert>
  
  <insert id="w_att_insert" parameterType="w_foodcontroller.w_AttVo">
-   insert into w_food_image(foodCode,foodOrifile,foodSysfile) values(w_seq_att.nextval,#{oriFile},#{sysFile})
+   insert into w_food_image(foodCode,foodOrifile,foodSysfile) values(w_seq_code.currval,#{oriFile},#{sysFile})
  </insert>
  
 </mapper>

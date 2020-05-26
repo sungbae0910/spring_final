@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,67 +15,35 @@
 <link rel="stylesheet" href="./css/style.css" />
 </head>
 
-<body class="homepage">
+<body>
 
-		<!-- Header -->
-			<div id="header">
-				<div class="container">
-						
-					<!-- Logo -->
-						<img src="./w_images/w_mainimage1.png">
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="w_index.jsp">Home</a></li>
-								<li>
-									<a href="w_menu.jsp">브랜드 소개</a>
-									<ul>
-										<li><a href="w_menu.jsp">전 메뉴</a></li>						
-									</ul>
-								</li>
-								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_customersupport.jsp">고객문의</a></li>
-								<li><a href="w_mymap.jsp">매장안내</a></li>
-							</ul>
-						</nav>
+  <form name='frm_food' id='frm_food' method='post'>
+		<!-- UI  -->
+		<c:forEach var='v' items="${vo }">
+		<label>메뉴 가격</label>
+		<input type='text' readonly name='foodPrice' value='${v.foodPrice }'/><br/>
+		
+		<label>메뉴 이름</label>
+		<input type='text' name='foodName' size='90' value='${v.foodName }'/><br/>
+		
+		<label>메뉴 종류</label>
+		<input type='text' name='foodType' size='90' value='${v.foodType }'/><br/>
 
-	
-		<!-- Main -->
-			<div id="main" class="wrapper style1">
-				<div class="container">
-						<!-- Content -->
-						<div id="content" class="8u skel-cell-important">
-									
-						</div>
-						
-						
-					</div>
+		<fieldset><legend>[ 첨부된 파일 ]</legend>
+				<div>
+					<span>첨부된 파일${v.sysFile }</span>
 				</div>
+		</fieldset>
+        </c:forEach>
 
-		<!-- Footer -->
-			<div id="footer">
-				<div class="container">
 
-					<!-- Lists -->
-						<div class="row">
-							<div class="8u">
-							   <h2></h2>
-							</div>
-						</div>
+	    
+		<input type='button' id='btnModify' value='수정'/>
+		<input type='button' id='btnDelete' value='삭제'/>
+		<input type='button' id='btnFind' onclick="location.href='w_menu.jsp'" value='목록으로'/>
+		
 
-					<!-- Copyright -->
-						<div class="copyright">
-						      <span>주식회사 :꼬치예전</span>
-						      <span>대표자 :원필연 </span>
-						      <span>전화번호 :010-9413-5834</span>
-						      <br/>		 
-						      <span>이메일 :wkymonk@gmail.com</span>
-						      <span>사업자 등록번호 :217-18-15486</span>
-						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
-						</div>
+	</form>
 
-				</div>
-			</div>
-
-	</body>
+</body>
 </html>

@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="./js/jquery-3.4.1.js"></script>
+<script src="./js/jquery.dropotron.min.js"></script>
+<script src="./js/w_brand.js"></script>
 </head>
 <body>
    <c:forEach var="i" items="${list }">
-	<div  class="tab_content" style="display: block;">
-		<ul>
+	<div onclick="fd.foodv('${i.foodCode}')" class="tab_content" style="display: block;">
+		   <ul>
 			<li><img src="./w_images/${i.foodSysFile }" alt width="340" class="w_menu_image">
 			<h3 class="w_h1">
 			  ${i.foodName } <img src="./w_images/w_best.jpg" alt="인기" width="32" class="w_best">

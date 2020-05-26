@@ -60,15 +60,32 @@ public class FoodController {
 	  FileUpload fu = new FileUpload(req, resp);
 	  HttpServletRequest newReq = fu.uploading();
 	  FoodVo vo = (FoodVo)newReq.getAttribute("vo");
-	  System.out.println(vo.getFoodName());
-	  System.out.println(vo.getFoodPrice());
-	  System.out.println(vo.getFoodType());
+
 	  List<w_AttVo> attList = (List<w_AttVo>)newReq.getAttribute("attList");
 	  msg = dao.insert(vo, attList);
 	  
 	  mv.addObject("msg",msg);
-	  mv.setViewName("w_result");
+	  mv.setViewName("w_index");
 	  return mv;  
   }
+  
+  @RequestMapping(value="/w_view.fd",method = {RequestMethod.POST})
+  public ModelAndView view(HttpServletRequest req) {
+	  ModelAndView mv = new ModelAndView();
+
+	  FoodVo vo = null;
+	  
+	  String foodCode = req.getParameter("foodCode");
+	  System.out.println(foodCode);
+	  vo = dao.view(foodCode);
+
+	  mv.addObject("vo",vo);
+	  mv.setViewName("w_image_view");
+	  
+	  return mv;
+  }
+  
+  
+  
   
 }
