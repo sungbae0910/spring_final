@@ -1,17 +1,26 @@
 package blogController;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Controller
 public class BlogController {
@@ -107,6 +116,64 @@ public class BlogController {
 		mv.addObject("board", board);
 		mv.setViewName("blog_brdModify");
 		return mv;
+	}
+	
+	@RequestMapping(value = "/brdModifyR.bg", method = {RequestMethod.POST})
+	public ModelAndView brdModifyR(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		BlogBoardVo brdVo = new BlogBoardVo();
+		brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
+		brdVo.setcName(req.getParameter("c_cName"));
+		brdVo.setBrdHeader(req.getParameter("c_brdHeaderImg"));
+		brdVo.setSubject(req.getParameter("c_subject"));
+		brdVo.setContent(req.getParameter("c_content"));
+		brdVo.setTagContent(req.getParameter("c_tagContent"));
+		System.out.println(req.getParameter("c_content"));
+		
+		
+		/*mv.setViewName("blog_brdModify");*/
+		return mv;
+	}
+	
+	@RequestMapping(value = "/uploadSummernoteImg.bg",  produces = "application/json", method = {RequestMethod.POST})
+	@ResponseBody
+	public String brdImg(MultipartFile file) {
+		JSONObject json = new JSONObject();
+		String fileRoot = "C:\\Users\\SamSung\\eclipse-workspace\\spring_final\\WebContent\\blog\\summernoteImage\\"; //저장될 외부 파일 경로
+		String originalFileName = file.getOriginalFilename(); //오리지널 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); //파일 확장자	
+		String sysFileName = UUID.randomUUID() + extension; //저장될 파일 명
+		
+		File targetFile = new File(fileRoot + sysFileName);	
+		
+		try {
+			InputStream fileStream = file.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile); //파일 저장
+			
+			json.put("url", "C:/summernote_image/" + sysFileName);
+			json.put("responseCode", "success");
+				
+		} catch (Exception e) {
+			FileUtils.deleteQuietly(targetFile); //저장된 파일 삭제
+			json.put("responseCode", "error");
+			e.printStackTrace();
+		}
+		
+		return json.toJSONString();
+	}
+	
+	@Configuration
+	public class WebMvcConfig implements WebMvcConfigurer {
+		//web root가 아닌 외부 경로에 있는 리소스를 url로 불러올 수 있도록 설정
+	    //현재 localhost:8888/summernoteImage/1234.jpg
+	    //로 접속하면 C:/summernote_image/1234.jpg 파일을 불러온다.
+	    @Override
+	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	    	System.out.println(1);
+	        registry.addResourceHandler("/summernoteImage/**")
+	                .addResourceLocations("file:///C:/summernote_image/");
+	        System.out.println(2);
+	    }
 	}
 	
 	@RequestMapping(value = "/blogManage.bg", method = {RequestMethod.POST})

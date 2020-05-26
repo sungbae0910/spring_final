@@ -17,6 +17,7 @@ public class BlogBoardVo {
 	int hit; //게시물 조회 수
 	int brdLike; //게시물 공감 수
 	List<BlogVo> blogInfo = new ArrayList<BlogVo>(); //블로그 이름, 유저사진
+	String tagContent = "";
 	
 	public BlogBoardVo() {}
 
@@ -46,4 +47,7 @@ public class BlogBoardVo {
 	public void setBrdLike(int brdLike) {this.brdLike = brdLike;}
 	public List<BlogVo> getBlogInfo() {return blogInfo;}
 	public void setBlogInfo(List<BlogVo> blogInfo) {this.blogInfo = blogInfo;}
+	public String getTagContent() {return tagContent;}
+	public void setTagContent(String tagContent) {this.tagContent = tagContent;}
+	
 }
