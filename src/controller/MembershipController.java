@@ -93,7 +93,7 @@ public class MembershipController {
 		if(ck==0){
 			ck = dao.userCheck(id, password);
 			if(ck==1) {
-				httpSession.setAttribute("mName", id);
+				httpSession.setAttribute("mId", id);
 				System.out.println("로그인 완료");
 				mv.setViewName("login");
 			}else {

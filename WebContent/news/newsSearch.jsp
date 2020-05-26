@@ -98,7 +98,6 @@
                                     <div class="search-box">
                                         <form method="post" id="frm_news_search">
                                             <input type="text" name="searchText" class="searchText" placeholder="Search" value="${p.findStr}">
-                                            <input type="text" name="nowPage" class="nowPage" value="${p.nowPage}"/>
                                         </form>
                                     </div>
                                 </div>
@@ -116,6 +115,9 @@
     </header>
     
     <main>
+    <form id="frm_search_s" method="post">
+    	<input type="hidden" name="nSerial" class="nSerial"/>
+    </form>
     <div class="container" style="margin-top: 10px;">
     	<div class="row">
     		<div class="search_top">
@@ -131,11 +133,12 @@
 							<div class="col-md-9 mt-sm-20">
 								<div class="search_domain">
 									<span class="info_view">
-										<a href="#" class="search_value">${i.nTitle}</a>
+										<a href="#" onclick="news_detail4(${ii.index})" class="search_value">${i.nTitle}</a>
 										<fmt:formatDate value="${i.nDate}" pattern="yyyy-MM-dd" var="fmtDate"/>
 										<span class="txt_info_se">${fmtDate} |</span>
 										<span class="txt_info_se">${i.nCategory} |</span>
 										<span class="txt_info_se">${i.nCompany}</span>
+										<input type="hidden" class="serial${ii.index}" value="${i.nSerial}"/>
 									</span>	
 									<p>
 										${i.nContent}
@@ -163,7 +166,7 @@
 								</c:if>
 								
 								<c:forEach var="i" begin="${p.startPage}" end="${p.endPage}" varStatus="ii">
-									<li class="page-item ${(i==1)?'active':''}"><a class="page-link" href="#" onclick="news_search_paging(${i},${ii.index})">${i}</a></li>
+									<li class="page-item ${(i==p.nowPage)?'active':''}"><a class="page-link" href="#" onclick="news_search_paging(${i},${ii.index})">${i}</a></li>
 								</c:forEach>
 								
 								<c:if test="${p.endPage<p.totPage}">

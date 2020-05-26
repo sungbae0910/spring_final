@@ -111,7 +111,7 @@
 											<li><a href="latest_news.html">경제</a></li>
 											<li><a href="contact.html">국제</a></li>
 											<li><a href="contact.html">문화</a></li>
-											<li><a href="#" onclick="like_func_s(0)">IT</a></li>
+											<li><a href="#">IT</a></li>
 										</ul>
 									</nav>
 								</div>

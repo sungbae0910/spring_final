@@ -405,8 +405,6 @@ public class NewsController {
 			page.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
 		}
 		
-		System.out.println(page.getNowPage());
-		
 		page.setFindStr(searchText);
 		vo = ns.neswSearch(page);
 		
