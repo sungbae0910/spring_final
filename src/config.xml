@@ -25,6 +25,7 @@
 		<mapper resource="mybatis/membership.xml"/>
 		<mapper resource="mybatis/blog.xml"/>
 		<mapper resource="mybatis/shop.xml"/>
+		<mapper resource="w_foodcontroller/w_food.xml"/>
 	</mappers>
 	
 

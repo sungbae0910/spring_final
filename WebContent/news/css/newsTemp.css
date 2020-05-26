@@ -139,3 +139,34 @@ h3 {
 .img_cmt2{
 	text-align: right;
 }
+
+/* 뉴스 검색 */
+.info_view .txt_info_se{
+	color: #919191;
+}
+
+.info_view .search_value{
+	font-size: 1.17em;
+}
+
+.search_domain p{
+    overflow: hidden;
+    white-space: normal; 
+    line-height: 20px; 
+    height: 80px; 
+    text-align: left; 
+    word-wrap: break-word; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
+}
+
+.search_domain a{
+	text-decoration: underline;
+	color: #1a0dab;
+	margin-right: 5px;
+}
+
+.se_do{
+	margin-bottom: 30px;
+}

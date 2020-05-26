@@ -11,6 +11,7 @@ public class Page {
 	int startPage;
 	int endPage;
 	String nSerial;
+	String findStr="";
 	
 	public Page() {}
 	public Page(int totListSize, int nowPage) {
@@ -106,6 +107,15 @@ public class Page {
 	public void setnSerial(String nSerial) {
 		this.nSerial = nSerial;
 	}
+	public String getFindStr() {
+		return findStr;
+	}
+	public void setFindStr(String findStr) {
+		this.findStr = findStr;
+	}
+
+	
+	
 
 	
 	

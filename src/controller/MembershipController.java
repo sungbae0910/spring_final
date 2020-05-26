@@ -94,7 +94,8 @@ public class MembershipController {
 		if(ck==0){
 			ck = dao.userCheck(id, password);
 			if(ck==1) {
-				httpSession.setAttribute("mName", id);
+				httpSession.setAttribute("mId", id);
+				System.out.println("로그인 완료");
 				mv.setViewName("login");
 			}else {
 				result = "아이디 비밀번호를 확인해주세요";
@@ -103,6 +104,8 @@ public class MembershipController {
 			result = "아이디 비밀번호를 확인해주세요";
 		}
 		
+		mv.addObject("reuslt", result);
+		mv.setViewName("index");
 		
 		mv.addObject("result", result);
 		mv.setViewName("index");

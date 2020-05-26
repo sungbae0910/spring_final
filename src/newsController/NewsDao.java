@@ -402,5 +402,33 @@ public class NewsDao {
 		
 		return likeCnt;
 	}
+	
+	// 뉴스 검색 정보
+	public List<NewsVo> newsSearch(Page page){
+		List<NewsVo> list = new ArrayList<NewsVo>();
+		
+		try {
+			int totList = sqlSession.selectOne("news.news_search_cnt", page);
+			page.setTotListSize(totList);
+			page.pageCompute();
+			list = sqlSession.selectList("news.news_search_info", page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//뉴스 검색 사진
+	public NewsPhotoVo newsSearchPho(int nSerial){
+		NewsPhotoVo list = new NewsPhotoVo();
+		try {
+			list = sqlSession.selectOne("news.news_search_photo", nSerial);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 
 }

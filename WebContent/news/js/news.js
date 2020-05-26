@@ -24,6 +24,13 @@ let news = function(){
 		$(this).addClass('active');
 	})
 	
+	// 검색창에서 엔터 눌렀을 경우
+	$('.search-box input[type=text]').keypress(function(e){
+		if(e.keyCode==13){
+			news_search();
+		}
+	})
+	
 }
 
 let comment_go = function(nowPage, index){
@@ -45,8 +52,6 @@ let hide_come = function(replyCount){
 		$('.reply_close'+replyCount).addClass('reply_count'+replyCount).removeClass('reply_close'+replyCount);
 		$('.hide_comment'+replyCount).css('display', 'none');
 	}
-		
-	
 }
 
 let go_all = function(){
@@ -82,9 +87,7 @@ let cate_detail = function(detail, n){
 }
 
 let news_detail = function(serial){
-	alert(serial);
 	let nSerial = $('.serial'+serial).val();
-	alert(nSerial);
 	if(nSerial!=""){
 		$('.nSerial').val(nSerial);
 	}
@@ -107,6 +110,14 @@ let news_detail3 = function(serial){
 	$('#tes_s').attr('action', 'newsDetail.news').submit();
 }
 
+let news_detail4 = function(serial){
+	var nSerial = $('.serial'+serial).val();
+	if(nSerial!=""){
+		$('.nSerial').val(nSerial);
+	}
+	$('#frm_search_s').attr('action', 'newsDetail.news').submit();
+	
+}
 let news_detail_side = function(category){
 	$('.nCategory').val(category);
 	
@@ -124,6 +135,7 @@ let weekly = function(){
 	})
 }
 
+// 뉴스 댓글 달기
 let news_comment = function(){
 	let param = $('#tes_s').serialize();
 	$.post("comment.news", param, function(data, status){
@@ -132,6 +144,8 @@ let news_comment = function(){
 	})
 }
 
+
+// 뉴스 대댓글 달기
 let news_re_comment = function(serial){
 	let cg = $('.cg'+serial).val();
 	let reCon = $('.reC'+serial).val();
@@ -146,6 +160,7 @@ let news_re_comment = function(serial){
 	})
 }
 
+// 뉴스 댓글삭제
 let news_comment_delete = function(cSerial, cGroup){
 	let asd = $('.serial'+cSerial).val();
 	let asd2 = $('.indent'+cSerial).val();
@@ -159,6 +174,7 @@ let news_comment_delete = function(cSerial, cGroup){
 	})
 }
 
+// 뉴스대댓글 삭제
 let news_comment_deletes = function(cSerial){
 	let asb = $('.sserial'+cSerial).val();
 	let asb2 = $('.iindent'+cSerial).val();
@@ -178,6 +194,7 @@ let login_s = function(){
 	alert("로그인 먼저해주세요!!");
 }
 
+// 싫어요
 let diLike_func_s = function(serial){
 	let cSerial = $('.serial'+serial).val();
 	$('.cSerial').val(cSerial);
@@ -206,6 +223,8 @@ let diLike_func_s = function(serial){
 	});
 }
 
+
+// 좋아요
 let like_func_s = function(serial){
 	let cSerial = $('.serial'+serial).val();
 	$('.cSerial').val(cSerial);
@@ -267,3 +286,12 @@ let cate_ui = function(n){
 	}
 }
 
+// 뉴스검색
+var news_search = function(){
+	$('#frm_news_search').attr('action', 'newsSearch.news').submit();
+}
+
+var news_search_paging = function(nowPage){
+	$('.nowPage').val(nowPage);
+	$('#frm_news_search').attr('action', 'newsSearch.news').submit();
+}
