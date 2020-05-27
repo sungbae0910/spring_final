@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="../sb_music/sb_lib/images/favicon.ico">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/sb_service.css">
 </head>
 <body id="service_body">

@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>WaterMelon 최고의 음악사이트</title>
+<link rel="icon" href="../sb_music/sb_lib/images/favicon.ico">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/jquery-ui.css">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/bootstrap.min.css">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/bootstrap-theme.min.css">
@@ -20,33 +21,39 @@
  	if(request.getParameter("p") != null){
  		p = request.getParameter("p");
  	}
- 	
- 	
- 	
+ 	String mId = "guest";
+ 	if(session.getAttribute("mId") != null){
+	 	mId = (String)session.getAttribute("mId");	
+	 	
+ 	}
+	System.out.println("mId = " + mId);
+
  %>
  
  
  <div class="container-fluid">
  
   <nav class="col-sm-3 sidenav">
-  
+  	
   	<img src="../sb_music/sb_lib/images/mylogo.png" id="logo" onclick="home()"> <!-- 로고 -->
   	<img src="../sb_music/sb_lib/images/wtm.gif" width="70px">
   	
   	<br><br><br><br>
    	<ul class="nav nav-pills nav-stacked">
-   		<c:if test="${empty sessionscope.mId}" var="mId" >
-   			
-					<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
+   		<li><a href="../index.jsp" id="sideA">ROOT</a></li>
+   		
+   		<c:if test="${empty mId || mId == 'guest'}">
+				<li><a href="./sb_login.jsp" id="sideA">로그인</a></li>
   				<li><a href="./sb_register.jsp" id="sideA">회원가입</a></li>
 		</c:if>
-			 <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA">닉네임</a>
-		    			<ul>
-		    				<li>마이페이지</li>
-		    				<li>로그아웃</li>
-		    			</ul>
-		  			  </li>
-   				
+		
+		<c:if test="${!empty mId && mId != 'guest'}" var="mId" >
+			 <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA"><%=mId %></a>
+	    			<ul>
+	    				<li id="loBtn" onclick="logout()">로그아웃</li>
+	    			</ul>
+  			  </li>
+		</c:if>
 	   		
    		
    		
@@ -60,7 +67,7 @@
     <img src="../sb_music/sb_lib/images/service.png">
    	<ul class="nav nav-pills nav-stacked">
    		<li><a href="sb_service.jsp" id="sideA">서비스 소개</a></li>
-	    <li><a href="sb_main.jsp?p=sb_membership.jsp" id="sideA">멤버쉽 가입</a></li>
+	    <li><a href="sb_main.jsp?p=./sb_membership.jsp" id="sideA" >멤버쉽 가입</a></li>
 	    
     </ul>	
     
@@ -71,7 +78,7 @@
 				<input type="hidden" name="m_music" id="m_music">
 				<input type="hidden" name="m_artist" id="m_artist">
 				<input type="hidden" name="m_photo" id="m_photo">
-				<input type="hidden" name="mId" id="mId" value="id">
+				<input type="hidden" name="mId" id="mId" value="<%=mId%>">
 				<input type="hidden" name="as" id="as" value="">
 				<input type="hidden" name="listV" id="listV">
 		</form>
@@ -88,7 +95,7 @@
 					<div class="col-sm-8">
 						Logo WaterMelon Music Platform
 					</div>
-					<div class="col-sm-2" onclick="nice()">
+					<div class="col-sm-2">
 						이용약관
 					</div>
 					<div class="col-sm-2">

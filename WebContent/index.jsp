@@ -57,9 +57,8 @@
 			</div>
 			<div class="col-sm-3" id="loginDiv">
 				<div align="center">
-					<a href="${pageContext.request.contextPath}/sb_music/login.jsp" style="color:black;"><button>로그인</button></a>			
 					<span id="logintop">여태까지 아무도 뚫지못한 철통보안</span><br><br>
-					<button id="loginBtn">로그인</button>			
+					<a href="${pageContext.request.contextPath}/sb_music/login.jsp" style="color:black;"><button id="loginBtn">로그인</button></a>
 				</div>
 			</div>
 			

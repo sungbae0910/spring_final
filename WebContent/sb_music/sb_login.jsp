@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>watermelon login</title>
+<link rel="icon" href="../sb_music/sb_lib/images/favicon.ico">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/jquery-ui.css">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/bootstrap.min.css">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/bootstrap-theme.min.css">
@@ -18,7 +19,7 @@
 	<nav class="navbar-fixed-top" role="navigation">
 		<div class="container-fluid" id="logNav">
 			<div align="left">
-				메인로고
+				<img src="../sb_music/sb_lib/images/root.png" width="100px" id="rootLogo" onclick="location.href='../index.jsp'">
 			</div>
 			
 			<div align="right">
@@ -33,14 +34,14 @@
 		
 		<div align="center" id="loginDiv">
 			<img src="../sb_music/sb_lib/images/watermelon.gif">
-			<form id="frm_login" name="frm_login">
+			<form id="frm_login" method="post" name="frm_login">
 				<input type="text" placeholder="회원 아이디" id="mId" name="mId" autocomplete="off">
 				<br><br>
 				<input type="password" placeholder="비밀번호" id="pwd" name="pwd" autocomplete="off">
 				<br><br>
 				<button type="submit" id="BtnLogin">로그인</button>
 				<br><br>
-				<button type="button" id="BtnRegister">회원가입</button>
+				<button type="button" id="BtnRegister" onclick="location.href='sb_register.jsp'">회원가입</button>
 				<br><br>
 				<div id="findId">
 					<span id="">아이디 찾기</span>/<span id="">비밀번호 찾기</span>

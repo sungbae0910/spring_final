@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import mybatis.Factory;
 import mybatis.MembershipVo;
+import mybatis.sb_clientVo;
 
 public class MembershipDao {
 
@@ -35,6 +36,24 @@ public class MembershipDao {
 			return str;
 		}
 		
+	}
+	
+	public void sb_client(sb_clientVo vo) {
+		
+		try {
+			sqlSession.insert("membership.sb_client", vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void sb_playlist(sb_clientVo vo) {
+		try {
+			sqlSession.insert("membership.sb_playlist", vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String ck_id(String mId) {
@@ -86,4 +105,26 @@ public class MembershipDao {
 		return ck;
 	}
 	
+	public void payMembership(String mId) {
+		
+		try {
+			sqlSession.update("membership.payMembership", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public MembershipVo Membership(String mId) {
+		MembershipVo vo = new MembershipVo();
+		System.out.println("멤버쉽id" + mId);
+		try {
+			vo = sqlSession.selectOne("membership.membership", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+		
+	}
 }
+

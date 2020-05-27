@@ -10,7 +10,7 @@
 <body>
 
 <%
-	String mId = "";
+	String mId = "guest";
 	if(session.getAttribute("mId") != null){
 		mId = (String)session.getAttribute("mId");
 	}
@@ -46,7 +46,8 @@
 					● 구독비용이 통보 없이 오를 수 있습니다. <br>
 				</span>
 			<form action="sb_pay.jsp">
-				<input type="hidden" name="mId" value="<%=mId%>">
+				<input type="hidden" id="mId" name="mId" value="<%=mId%>">
+				
 				<button type="submit" id="mem_pay">
 					구독하기
 				</button>
@@ -64,6 +65,6 @@
 			
 		</div>
 	</div>
-
+<script type="text/javascript" src="../sb_music/sb_lib/js/sb_membership.js"></script>
 </body>
 </html>

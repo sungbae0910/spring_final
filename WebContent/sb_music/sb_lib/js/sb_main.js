@@ -49,8 +49,8 @@ play = function(serial){ // 듣기 눌렀을 때
 		$("#show_list").hide();
 		$("#playerImg").hide();
 		
-
-		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		audio.src ="../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3";			
 		
 		player();
 		$('#play-button').click();
@@ -76,8 +76,9 @@ play2 = function(serial){
 		$("#show_list").hide();
 		$("#playerImg").hide();
 		
-
-		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		audio.src ="../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3";			
+		
 		
 		player();
 		$('#play-button').click();
@@ -97,10 +98,12 @@ kimchi = function(serial){ // 담기 눌렀을 때
 var topP = function(){
 	$('#changePage').load('sb_top.mu');
 }
-
-function nice(){ // 나중에 지우자궁
-	alert(audio.src);
+var membership = function(){
+	let param = $('#frm_top').serialize();
+	$('#changePage').load('sb_Membership.mem', param);
 }
+
+
 
 function audioBtn(num, serial){ // 전노래 다음노래 버튼
 	frm_top.m_serial.value = serial;
@@ -191,6 +194,15 @@ function player(){
 	        progressBar.value = audio.currentTime;
 	        
 	        time.text(getTime(audio.currentTime));
+	        
+
+	        // 게스트용 1분 미리 듣기
+	        if($("#mId").val() == 'guest'){
+	    		if(audio.currentTime > 60){
+	    			audio.currentTime = 0;
+	    			audio.pause();
+	    		}
+			}
 	        
 	  });
 	  audio.addEventListener("ended",(e)=>{
@@ -408,6 +420,14 @@ $(document).ready(function() {
 	})
 	
 	$('#list_val').hide();
+	var cId = $('#mId').val();
+	
+	if(cId != 'guest'){
+		$('#guest').hide();
+	}else{
+		$('#guest').show();
+	}
+	
 	
 	
 	$('#myCarousel').carousel({
@@ -419,7 +439,12 @@ $(document).ready(function() {
 	});
 });
 
-
+function logout(){
+	$.post('sb_logout.mem');
+	alert("로그아웃 되었습니다.");
+	location.reload(true);
+	
+}
 
 
 

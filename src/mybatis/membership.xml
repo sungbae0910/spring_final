@@ -10,6 +10,17 @@
 		insert into membership(mId, pwd, mName, birth, phone, email, address, mDate, gender) 
 		values(#{mId}, #{pwd}, #{mName}, #{birth}, #{phone}, #{email}, #{address}, sysdate, #{gender})
 	</insert>
+	
+	<insert id="sb_client" parameterType="mybatis.sb_clientVo">
+		insert into sb_client(id, pwd, pl_serial)
+		values (#{ID}, #{pwd}, pl_seq.nextval)
+	</insert>
+	
+	<insert id="sb_playlist" parameterType="mybatis.sb_clientVo">
+		insert into sb_playlist(pl_serial, mId)
+		values (pl_seq.currval, #{ID})
+	
+	</insert>
 
 	<!-- select -->
 	<select id="ck_id" parameterType="String" resultType="String">
@@ -23,5 +34,19 @@
 	<select id="login_pass_ck" parameterType="String" resultType="String">
 		select pwd from membership where mId = #{value}
 	</select>
+	
+	<select id="membership" parameterType="String" resultType="mybatis.MembershipVo">
+		select mId, mName, phone, email, address from membership where mId = #{_parameter}
+	</select>
+	
+	<!-- update -->
+	
+	<update id="payMembership" parameterType="String">
+		update sb_client
+		set membership = sysdate + (INTERVAL '1' MONTH)
+		where ID = #{_parameter}
+		
+	</update>
+	
 
 </mapper>

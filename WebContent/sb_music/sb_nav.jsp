@@ -51,6 +51,7 @@
 					       <br>	
 					       		<span style="color: white;" id="playBarD">노래를 선택해주세요</span>
 					       		<span style="color: white;" id="playBar">${play.music_name} - ${play.artist_name }</span>
+					       		<span style="color: #58FA82;" id="guest">(1분 미리듣기 중)</span>
 					       <br>
 					       		<span style="color: white;" id="timer"></span>
 					       <br>

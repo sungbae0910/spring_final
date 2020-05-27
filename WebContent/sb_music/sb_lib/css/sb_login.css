@@ -7,11 +7,14 @@
 }
 
 
-#loginDiv{
-	
-	
+#rootLogo{
+	position: relative;
+    top: 15px;
 }
+
 #goMain{
+	position: relative;
+    bottom: 13px;
 	border:none;
 	background-color: #ED7393;
 	color:white;

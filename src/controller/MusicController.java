@@ -96,7 +96,7 @@ public class MusicController {
 		MusicVo vo = dao.play(s); // 
 		
 		
-		//�÷��� ����Ʈ �����ͼ� �߰�
+	
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
 
@@ -122,10 +122,10 @@ public class MusicController {
 		
 		int s = Integer.parseInt(serial);
 		 
-		MusicVo vo = dao.play(s); // nav�ٿ� �������� �����ͼ� ����
+		MusicVo vo = dao.play(s); 
 		
 		
-		//�÷��� ����Ʈ �����ͼ� �߰�
+
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
 
@@ -152,22 +152,22 @@ public class MusicController {
 		Gson gson = new GsonBuilder().create();
 		
 		
-		String mId = req.getParameter("mId"); // mId �����ͼ�
+		String mId = req.getParameter("mId");
 
 		
-		MusicListVo vo = dao.playList(mId); // �÷��̸���Ʈ ��������
+		MusicListVo vo = dao.playList(mId); 
 
 		
-		String ml = vo.getMusic_list(); // ����Ʈ �־��ش㿡
+		String ml = vo.getMusic_list();
 
 		
-		String[] num = ml.split(","); // (,) �ĸ� �׿���
+		String[] num = ml.split(","); 
 		
 		
-		int[] nums = new int[num.length]; // �迭�� �־��ص�
+		int[] nums = new int[num.length];
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // ���鰪 ������ ������ �׿��� ���� �迭�� ���
+			nums[i] = Integer.parseInt(num[i].trim());
 		}
 			
 		
@@ -201,7 +201,6 @@ public class MusicController {
 		
 		dao.addList(vo);
 		
-		str = "�÷��� ����Ʈ�� �����ϴ�.";
 		
 		return str;
 		
@@ -209,7 +208,7 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_removeAll.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String removeAll(HttpServletRequest req) {
-		String str="��ü ����";
+		String str="";
 		String mId = req.getParameter("mId");
 		
 		dao.removeAll(mId);
@@ -229,28 +228,28 @@ public class MusicController {
 	Gson gson = new GsonBuilder().create();
 		
 
-		String mId = req.getParameter("mId"); // mId �����ͼ�
-		String ms = req.getParameter("m_serial"); // ���� �ø��� �����ͼ�
+		String mId = req.getParameter("mId");
+		String ms = req.getParameter("m_serial"); 
 
-		MusicListVo vo = dao.playList(mId); // �÷��̸���Ʈ ��������
-		vo.setmId(mId); // mid �־��ְ�
-		vo.setMusic_serial(ms); // music_serial �־��ְ�
+		MusicListVo vo = dao.playList(mId);
+		vo.setmId(mId); 
+		vo.setMusic_serial(ms); 
 		
 		
-		dao.delList(vo); // �÷��̸���Ʈ x������ ����
+		dao.delList(vo); 
 		
 		MusicListVo vo2 = dao.playList(mId);
 		
-		String ml = vo2.getMusic_list(); // ����Ʈ �־��ش㿡
+		String ml = vo2.getMusic_list();
 		
 		
-		String[] num = ml.split(","); // (,) �ĸ� �׿���
+		String[] num = ml.split(",");
 		
 		
-		int[] nums = new int[num.length]; // �迭�� �־��ص�
+		int[] nums = new int[num.length];
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // ���鰪 ������ ������ ���̰�
+			nums[i] = Integer.parseInt(num[i].trim());
 		}
 		
 		List<MusicVo> list = new ArrayList<MusicVo>();
@@ -342,11 +341,11 @@ public class MusicController {
 		String mId = req.getParameter("mId");
 		
 		MusicListVo vo = dao.playList(mId);
-		String ml = vo.getMusic_list(); // ����Ʈ �־��ش㿡
-		String[] num = ml.split(","); // (,) �ĸ� �׿���
-		int[] nums = new int[num.length]; // �迭�� �־��ص�
+		String ml = vo.getMusic_list(); 
+		String[] num = ml.split(",");
+		int[] nums = new int[num.length]; 
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // ���鰪 ������ ������ ���̰�
+			nums[i] = Integer.parseInt(num[i].trim()); 
 		}
 		String[] listnum = listV.split(",");
 		double[] listnums = new double[listnum.length];

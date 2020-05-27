@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import bean.MembershipDao;
 import mybatis.MembershipVo;
+import mybatis.sb_clientVo;
 
 @Controller
 public class MembershipController {
@@ -29,6 +33,7 @@ public class MembershipController {
 	public ModelAndView Register(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		MembershipVo vo = new MembershipVo();
+		sb_clientVo cvo = new sb_clientVo();
 		String str = null;
 		
 		String mId = req.getParameter("mId");
@@ -48,11 +53,16 @@ public class MembershipController {
 		vo.setEmail(eMail);
 		vo.setAddress(address);
 		vo.setGender(gender);
+		
+		cvo.setID(mId);
+		cvo.setPwd(pwd);
+		dao.sb_client(cvo);
+		dao.sb_playlist(cvo);
 	
 		str = dao.register(vo);
 		System.out.println(str);
 		
-		mv.setViewName("sb_register");
+		mv.setViewName("index");
 		
 		return mv;
 	}
@@ -111,6 +121,86 @@ public class MembershipController {
 		mv.setViewName("index");
 		return mv;
 	}
+	
+	@RequestMapping(value="/sb_music/sb_login.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView music_login(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		HttpSession httpSession = req.getSession();
+		String cp = "";
+		String str;
+		
+		MembershipDao dao = new MembershipDao();
+		String mId = req.getParameter("mId");
+		String pwd = req.getParameter("pwd");
+		int ck = 0;
+		
+		ck = dao.confirmId(mId);
+		if(ck==0){
+			ck = dao.userCheck(mId, pwd);
+			if(ck==1) {
+				httpSession.setAttribute("mId", mId);
+				System.out.println("워멜 로긴");
+				cp = "1";
+			}else {
+				cp = "2";
+			}
+		}else {
+			cp = "2";
+		}
+		
+		if(cp == "1") {
+			mv.setViewName("/sb_music/sb_main");
+		}else {
+			mv.setViewName("/sb_music/sb_login");
+		}
+		
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/sb_music/sb_logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView musicLogout(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		req.getSession().invalidate();
+		
+		mv.setViewName("/sb_music/sb_main");
+		return mv;
+	}
+	
+	
+	
+	@RequestMapping(value="/sb_music/sb_payMembership.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView payMembership(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String mId = req.getParameter("mId");
+		
+		dao.payMembership(mId);
+	
+		
+		mv.setViewName("/sb_music/sb_main");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="/sb_music/sb_Membership.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView Membership(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String mId = req.getParameter("mId");
+		
+		MembershipVo vo = dao.Membership(mId);
+		
+		mv.addObject("vo", vo);
+		
+		
+		mv.setViewName("/sb_music/sb_membership");
+		return mv;
+	}
+	
+	
 }
 
 
