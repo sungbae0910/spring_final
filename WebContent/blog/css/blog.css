@@ -173,8 +173,10 @@ textarea:focus {outline: 1px solid #000;}
 #c_brdWrite #c_btnBrdInsert {float: right; padding: 5px 28px; border-radius: 15px; border: none; background-color: black; color: white; font-weight: bold; font-size: 1.2em; margin-bottom: 50px;}
 #c_brdWrite #c_brdCategory {border-radius: 5px; padding: 6px 30px; color: #999; border: 1px solid #ddd; margin-bottom: 20px; outline: none;}
 #c_brdWrite #c_brdCategory option {color: black;}
-
-
+#c_brdWrite #c_tagBox #c_tagList {display: inline-block;}
+#c_brdWrite #c_tagBox #c_tagList .c_txtTag {margin-right: 15px;}
+#c_brdWrite #c_tagBox #c_tagList .c_txtTag .tagDelBtn {cursor: pointer; color: #909090;}
+#c_brdWrite #c_tagBox .c_inpTag #c_tag {outline: none; border: none;}
 
 
 
