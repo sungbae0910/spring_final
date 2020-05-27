@@ -56,7 +56,7 @@ public class FoodDao {
 	  
   }
   
-  public FoodVo view(String foodCode) {
+  public FoodVo view(int foodCode) {
 	  FoodVo vo = new FoodVo();
 	  
 	  try {
@@ -70,6 +70,48 @@ public class FoodDao {
 	}
 	  
 	  
+  }
+  
+  public String modify(FoodVo vo , List<w_AttVo> attList, List<w_AttVo> delFile) {
+	  String msg = "정상적으로 수정 되었습니다.";
+	  
+	  try {
+		int cnt = sqlSession.update("food.w_update",vo);
+		if(cnt<1) {
+			throw new Exception("수정중 오류 발생");
+		}
+		for(w_AttVo attVo : attList) {
+			attVo.setFoodCode(vo.getFoodCode());
+			cnt = sqlSession.insert("food.att_insert2",attVo);
+			if(cnt<1) throw new Exception("첨부데이터중 오류");
+		}
+		for(w_AttVo attVo : delFile) {
+			cnt = sqlSession.delete("food.w_att_delete",attVo);
+			if(cnt<1) throw new Exception ("첨부데이터중 오류");
+		}
+		delFile(delFile);
+		sqlSession.commit();
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+		msg = e.getMessage();
+		sqlSession.rollback();
+	}
+	  return msg;
+  }
+  
+  public List<w_AttVo> getAttList(int foodCode){
+	  List<w_AttVo> attList = null;
+	  
+
+	  try {
+		attList = sqlSession.selectList("food.w_att_list",foodCode);
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	  return attList;
   }
   
   

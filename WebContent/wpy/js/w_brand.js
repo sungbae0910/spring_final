@@ -7,7 +7,7 @@ fd.foodj = function(type) {
  })
 }
 
-fd.foodv = function(foodCode){
+/*fd.foodv = function(foodCode){
 	frm_food.foodCode.value = foodCode;
 	
 	let param = $('#frm_food').serialize();
@@ -15,14 +15,14 @@ fd.foodv = function(foodCode){
     $('.w_tab_container').html(data)
 	})
 }
+*/
 
-
-/*fd.foodv = function(foodCode){
+fd.foodv = function(foodCode){
 	$.post("../w_view.fd",{"foodCode" : foodCode}, function(data,state){
 		$(".w_tab_container").html(data)
 	})
 	
-}*/
+}
 
 fd.func = function(){
 	
@@ -38,6 +38,18 @@ fd.func = function(){
 		$('#frm_food').submit();
 		
 	});
-	
+   
+   $("#w_btnModify").click(function(){
+	   let param = $('#frm_food').serialize();
+		$.post("../w_modify.fd", param, function(data, state) {
+			$('#content').html(data)
+		})
+   })
+   
+   $("w_btnUpdate").click(function(){
+	   let food = new FormData($('#frm_food')[0]);
+	   $("#frm_food").attr("action","../w_modifyR.fd");
+	   $("#frm_food").submit();
+   })
 }
 

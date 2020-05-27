@@ -75,8 +75,8 @@ public class FoodController {
 
 	  FoodVo vo = null;
 	  
-	  String foodCode = req.getParameter("foodCode");
-	  System.out.println(foodCode);
+	  int foodCode = Integer.parseInt(req.getParameter("foodCode"));
+	  
 	  vo = dao.view(foodCode);
 
 	  mv.addObject("vo",vo);
@@ -84,7 +84,45 @@ public class FoodController {
 	  
 	  return mv;
   }
+  @RequestMapping(value="/w_modify.fd", method= {RequestMethod.POST})
+  public ModelAndView modify(HttpServletRequest req) {
+	  ModelAndView mv = new ModelAndView();
+	  FoodVo vo = null;
+	  
+	  int foodCode = Integer.parseInt(req.getParameter("foodCode"));
+	  System.out.println(foodCode);
+	  vo = dao.view(foodCode);
+
+	  mv.addObject("vo",vo);
+	  mv.setViewName("w_image_modify");
+	  
+	  return mv;
+	  
+	  
+  }
   
+  
+  @RequestMapping(value="/modifyR.fd",method= {RequestMethod.POST})
+  public ModelAndView modifyR(HttpServletRequest req, HttpServletResponse resp) {
+	  ModelAndView mv = new ModelAndView();
+	  FoodVo vo = null;
+	  List<w_AttVo> attList = null;
+	  List<w_AttVo> delFile = null;
+	  
+	  FileUpload fu = new FileUpload(req, resp);
+	  fu.uploading();
+	  
+	  vo = (FoodVo)req.getAttribute("vo");
+	  attList = (List<w_AttVo>)req.getAttribute("attList");
+	  attList = (List<w_AttVo>)req.getAttribute("delFile");
+	  
+	  String msg = dao.modify(vo, attList, delFile);
+	  
+	  mv.addObject("msg",msg);
+	  mv.setViewName("w_result");
+	  
+	  return mv;
+  }
   
   
   

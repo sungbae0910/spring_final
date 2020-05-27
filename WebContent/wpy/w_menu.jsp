@@ -59,7 +59,7 @@
 				                 </span>
 				               </h5>
 				          
- 						 <form name='frm_food' id='frm_food' method='post'>
+ 						 <!-- <form name='frm_food' id='frm_food' method='post'> -->
 				          <ul class="w_tabs">
 				             <li class="w_active"  rel="tab1" onclick="fd.foodj('전')" >
 				              	전	
@@ -77,7 +77,7 @@
 				        	<div class="w_tab_container">
 				        	  
 				        	</div>
-				         </form>
+				         <!-- </form> -->
 						</div>
 					</div>
 				</div>

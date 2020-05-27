@@ -55,6 +55,10 @@ public class FileUpload {
 				
 				if(fi.isFormField()) {
 				switch(k) {
+				case "foodCode" : 
+					vo.setFoodCode(Integer.parseInt(v));
+					break;
+				
 				case "w_foodType" :
 					vo.setFoodType(v);
 					break;

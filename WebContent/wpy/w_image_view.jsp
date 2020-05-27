@@ -6,44 +6,45 @@
 <head>
 <meta charset="UTF-8">
 <title>꼬치예전</title>
-<script src="./w_js/jquery.min.js"></script>
-		<script src="./js/jquery.dropotron.min.js"></script>
-		<script src="./js/skel.min.js"></script>
-		<script src="./js/skel-layers.min.js"></script>
-		<script src="./js/init.js"></script>
+<script src="./js/jquery-3.4.1.js"></script>
+<script src="./js/jquery.dropotron.min.js"></script>
+<script src="./js/w_brand.js"></script>
+
 <link rel="stylesheet" href="./css/skel.css" />
 <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
 
-  <form name='frm_food' id='frm_food' method='post'>
+
 		<!-- UI  -->
-		<c:forEach var='v' items="${vo }">
+   <form name='frm_food' id='frm_food' method='post'>
 		<label>메뉴 가격</label>
-		<input type='text' readonly name='foodPrice' value='${v.foodPrice }'/><br/>
+		<input type='text' readonly name='foodPrice' value='${vo.foodPrice }'/><br/>
 		
 		<label>메뉴 이름</label>
-		<input type='text' name='foodName' size='90' value='${v.foodName }'/><br/>
+		<input type='text' name='foodName' size='90' value='${vo.foodName }'/><br/>
 		
 		<label>메뉴 종류</label>
-		<input type='text' name='foodType' size='90' value='${v.foodType }'/><br/>
+		<input type='text' name='foodType' size='90' value='${vo.foodType }'/><br/>
+
 
 		<fieldset><legend>[ 첨부된 파일 ]</legend>
 				<div>
-					<span>첨부된 파일${v.sysFile }</span>
+					<span><img src="./w_images/${vo.foodSysFile }" alt width="340" class="w_menu_image"></span>
 				</div>
 		</fieldset>
-        </c:forEach>
+
 
 
 	    
-		<input type='button' id='btnModify' value='수정'/>
-		<input type='button' id='btnDelete' value='삭제'/>
-		<input type='button' id='btnFind' onclick="location.href='w_menu.jsp'" value='목록으로'/>
+		<input type='button' id='w_btnModify' value='수정'/>
+		<input type='button' id='w_btnDelete' value='삭제'/>
+		<input type='button' id='w_btnFind' onclick="location.href='w_menu.jsp'" value='목록으로'/>
 		
+		<input type='text' name='foodCode' value='${vo.foodCode}'/>
 
 	</form>
-
+<script>fd.func()</script>
 </body>
 </html>
