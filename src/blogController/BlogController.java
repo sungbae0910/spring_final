@@ -139,7 +139,7 @@ public class BlogController {
 	@ResponseBody
 	public String brdImg(MultipartFile file) {
 		JSONObject json = new JSONObject();
-		String fileRoot = "C:\\Users\\SamSung\\eclipse-workspace\\spring_final\\WebContent\\blog\\summernoteImage\\"; //저장될 외부 파일 경로
+		String fileRoot = "C:\\Users\\JHTA\\eclipse-workspace\\spring_final\\WebContent\\blog\\summernoteImage\\"; //저장될 외부 파일 경로
 		String originalFileName = file.getOriginalFilename(); //오리지널 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); //파일 확장자	
 		String sysFileName = UUID.randomUUID() + extension; //저장될 파일 명
@@ -150,7 +150,7 @@ public class BlogController {
 			InputStream fileStream = file.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile); //파일 저장
 			
-			json.put("url", "C:/summernote_image/" + sysFileName);
+			json.put("url", "/summernoteImage/" + sysFileName);
 			json.put("responseCode", "success");
 				
 		} catch (Exception e) {
@@ -171,7 +171,7 @@ public class BlogController {
 	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	    	System.out.println(1);
 	        registry.addResourceHandler("/summernoteImage/**")
-	                .addResourceLocations("file:///C:/summernote_image/");
+	                .addResourceLocations("file:///C:/Users/JHTA/eclipse-workspace/spring_final/WebContent/blog/summernoteImage/");
 	        System.out.println(2);
 	    }
 	}

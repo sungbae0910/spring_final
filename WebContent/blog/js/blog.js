@@ -237,7 +237,7 @@ blog.brdModi = function () {
         	processData : false,
         	dataType : "json",
         	success : function(data) {
-          		$(el).summernote("editor.insertImage", data.url);
+          		$(el).summernote("insertImage", data.url);
         	}
       	});
     }

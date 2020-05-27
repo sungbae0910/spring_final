@@ -170,3 +170,35 @@ h3 {
 .se_do{
 	margin-bottom: 30px;
 }
+
+.figure-caption {
+    font-size: 90%;
+    max-width: 100%;
+    color: #6c757d;
+}
+
+.figure_frm figcaption {
+    max-width: 100%;
+    caption-side: bottom;
+    word-break: break-word;
+    margin: 11px auto 0;
+    font-size: 13px;
+    line-height: 18px;
+    color: #919191;
+}
+
+.news_view section img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.news_view .summary_view {
+    display: block;
+    position: relative;
+    padding-left: 14px;
+    margin: -4px 0 29px;
+    font-weight: normal;
+    line-height: 1.5;
+}

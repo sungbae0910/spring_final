@@ -159,11 +159,14 @@
 				<div class="col-lg-8">
 					<!-- Trending Tittle -->
 					<div class="about-right mb-90">
+						<c:set var="flag" value="${vo.photos[0].flag}"/>
+						<c:if test="${flag eq 0}">
 						<figure class="figure">
 							<img src="./img/newsImages/${vo.photos[0].pName}"
 								class="figure-img img-fluid rounded" alt="...">
 							<figcaption class="figure-caption">${vo.photos[0].pContent }</figcaption>
 						</figure>
+						</c:if>
 						<div class="about-prea">
 							<p class="about-pera1 mb-25">${vo.nContent }</p>
 						</div>

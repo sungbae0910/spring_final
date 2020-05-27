@@ -15,15 +15,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import newsController.NewsDao;
 import newsController.NewsPhotoVo;
 import newsController.NewsVo;
 
-@Service
-public class NewsCrawling {
+public class NewsCrawling2 {
 	NewsDao dao;
 	
 /*	@Autowired
@@ -31,13 +28,13 @@ public class NewsCrawling {
 		this.dao = newsDao;
 	}
 	*/
-	public NewsCrawling() {
+	public NewsCrawling2() {
 	}
 	
 	public void insert() throws IOException{
 		String con = "";
 		String msg = "";
-		String url = "https://news.v.daum.net/v/20200527141517880";
+		String url = "https://news.v.daum.net/v/20200527005210100";
 		String company = "";
 		Document doc = null; 
 		Elements element; // 크롤링한 정보를 담기 위한 객체
@@ -75,16 +72,7 @@ public class NewsCrawling {
 		
 		// 기사 내용 및 사진
 		elements = doc.select("div.news_view");
-		element = elements.select("div#harmonyContainer p");
-		for(Element e : element) {
-			con += e.text()+"<br/>";
-		}
-		vo.setnContent(con);
-		/*System.out.println(vo.getnContent());*/
-		
-		
-		Element imgEle = doc.select("p.link_figure").get(cnt);
-		element = imgEle.select("img");
+		vo.setnContent(elements.html());
 		
 		elements = doc.select("p.link_figure");
 		element = elements.select("img");
@@ -94,7 +82,7 @@ public class NewsCrawling {
 			URL imgUrl = new URL(imgUr);
 			
 			//db에 저장하기 위한 이미지파일 이름 저장
-			//이미지 이름을 구분하기 위해 뒤에서부터 글자를 잘라옴
+			//	이미지 이름을 구분하기 위해 뒤에서부터 글자를 잘라옴 
 			imgUr = imgUr.substring(imgUr.length()-10, imgUr.length());
 			phoVo.setpName(imgUr);
 			phoVo.setpContent(figure);
@@ -114,6 +102,7 @@ public class NewsCrawling {
 			}
 			
 			cnt+=1;
+			phoVo.setFlag(2);
 			
 			bos.close();
 			os.close();
@@ -121,6 +110,7 @@ public class NewsCrawling {
 			is.close();
 			
 			list.add(phoVo);
+			break;
 		}
 		
 		dao = new NewsDao();
@@ -131,7 +121,7 @@ public class NewsCrawling {
 	
 	
 	public static void main(String[] args) {
-		NewsCrawling news = new NewsCrawling();
+		NewsCrawling2 news = new NewsCrawling2();
 		
 		try {
 			news.insert();
@@ -141,3 +131,4 @@ public class NewsCrawling {
 	}
 	
 }
+

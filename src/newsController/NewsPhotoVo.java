@@ -6,7 +6,7 @@ public class NewsPhotoVo {
 	String nSerial;
 	String pName;
 	String pContent;
-	
+	int flag;
 	
 	public NewsPhotoVo() {}
 
@@ -48,6 +48,16 @@ public class NewsPhotoVo {
 
 	public void setpContent(String pContent) {
 		this.pContent = pContent;
+	}
+
+
+	public int getFlag() {
+		return flag;
+	}
+
+
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 	
 	

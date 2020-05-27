@@ -41,7 +41,7 @@
 	</select>
 	
 	<select id="detailView" parameterType="String" resultMap="mm_news">
-		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.nSerial='${value}'
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where a.nSerial=#{value}
 	</select>
 	
 <!-- 	<select id="comment_List" parameterType="String" resultType="newsController.CommentVo">
@@ -120,7 +120,7 @@
 	</insert>
 	
 	<insert id='news_photo_insert' parameterType="newsController.NewsPhotoVo">
-		insert into news_photo values(seq_nphoto_serial.nextval, seq_news_serial.currval, #{pName}, #{pContent})
+		insert into news_photo values(seq_nphoto_serial.nextval, seq_news_serial.currval, #{pName}, #{pContent}, #{flag})
 	</insert>
 	
 	<insert id="comment_insert" parameterType="newsController.CommentVo">
@@ -193,6 +193,7 @@
 			<result column="nSerial" property="nSerial"/>
 			<result column="pName" property="pName"/>
 			<result column="pContent" property="pContent"/>
+			<result column="flag" property="flag"/>
 		</collection>
 	</resultMap>
 
