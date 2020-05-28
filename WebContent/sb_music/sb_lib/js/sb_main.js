@@ -92,13 +92,17 @@ kimchi = function(serial){ // 담기 눌렀을 때
 	
 	$.post('sb_kimchi.mu', param);
 	
-	$('#alert').show();
+	$('#alert').show();		
+	setTimeout(function(){
+		$('#alert').hide(500);
+	},2000);
 }
 
 var topP = function(){
 	$('#changePage').load('sb_top.mu');
 }
-var membership = function(){
+
+var myPage = function(){
 	let param = $('#frm_top').serialize();
 	$('#changePage').load('sb_Membership.mem', param);
 }
@@ -332,6 +336,8 @@ function playList(){
 }
 
 
+
+
 function delList(serial){
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
@@ -428,15 +434,27 @@ $(document).ready(function() {
 		$('#guest').show();
 	}
 	
+	let param = $('#frm_top').serialize();
+	$.ajax({
+		url:'sb_IsMembership.mem',
+		data:param,
+		type: 'POST',
+		dataType : 'json',
+		success : function(data){
+			
+			console.log("data - "+data);
+			
+		}
+		
+		
+	});
+	
 	
 	
 	$('#myCarousel').carousel({
 	interval: 10000
 	})
     
-    $('#myCarousel').on('slid.bs.carousel', function() {
-    	//alert("slid");
-	});
 });
 
 function logout(){

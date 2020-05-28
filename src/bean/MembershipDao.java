@@ -1,5 +1,6 @@
 package bean;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,8 +43,10 @@ public class MembershipDao {
 		
 		try {
 			sqlSession.insert("membership.sb_client", vo);
+			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			sqlSession.rollback();
 		}
 		
 	}
@@ -51,8 +54,10 @@ public class MembershipDao {
 	public void sb_playlist(sb_clientVo vo) {
 		try {
 			sqlSession.insert("membership.sb_playlist", vo);
+			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			sqlSession.rollback();
 		}
 	}
 	
@@ -109,8 +114,10 @@ public class MembershipDao {
 		
 		try {
 			sqlSession.update("membership.payMembership", mId);
+			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			sqlSession.rollback();
 		}
 	}
 	
@@ -124,6 +131,19 @@ public class MembershipDao {
 		}
 		
 		return vo;
+	}
+	
+	public Date IsMembership(String mId) {
+		Date date = new Date(0);
+		
+		try {
+			date = sqlSession.selectOne("membership.IsMembership", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return date;
 		
 	}
 }

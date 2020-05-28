@@ -20,7 +20,11 @@
 	<input type="hidden" id="mId" name="mId" value="<%=mId%>">
 </form>
 
+
 <script src="../sb_music/sb_lib/js/jquery-3.4.1.js"></script>
+
+
+
 <script type="text/javascript" src="../sb_music/sb_lib/js/sb_resultPay.js"></script>
 </body>
 </html>

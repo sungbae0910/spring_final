@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>watermelon login</title>
+<title>워터멜론 로그인</title>
 <link rel="icon" href="../sb_music/sb_lib/images/favicon.ico">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/jquery-ui.css">
 <link rel="stylesheet" href="../sb_music/sb_lib/css/bootstrap.min.css">

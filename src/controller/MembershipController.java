@@ -54,6 +54,7 @@ public class MembershipController {
 		vo.setAddress(address);
 		vo.setGender(gender);
 		
+		//음악사이트 계정정보 추가
 		cvo.setID(mId);
 		cvo.setPwd(pwd);
 		dao.sb_client(cvo);
@@ -175,14 +176,14 @@ public class MembershipController {
 	public ModelAndView payMembership(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String mId = req.getParameter("mId");
-		
+		System.out.println("페이후");
+		System.out.println(mId);
 		dao.payMembership(mId);
-	
+		
+		System.out.println("페이 완료");
 		
 		mv.setViewName("/sb_music/sb_main");
-		
 		return mv;
-		
 	}
 	
 	@RequestMapping(value="/sb_music/sb_Membership.mem", method= {RequestMethod.GET, RequestMethod.POST})
@@ -196,10 +197,25 @@ public class MembershipController {
 		mv.addObject("vo", vo);
 		
 		
-		mv.setViewName("/sb_music/sb_membership");
+		mv.setViewName("/sb_music/sb_myPage");
 		return mv;
 	}
 	
+	@RequestMapping(value="/sb_music/sb_IsMembership.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String IsMembership(HttpServletRequest req) {
+		String s = "";
+		Gson gson = new GsonBuilder().create();
+		
+		String mId = req.getParameter("mId");
+		
+		Date date = dao.IsMembership(mId);
+		
+		
+		s = gson.toJson(date);
+		
+		return s;
+	}
 	
 }
 

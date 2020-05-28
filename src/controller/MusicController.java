@@ -148,40 +148,26 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_playList.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String playList(HttpServletRequest req) {
-		
 		Gson gson = new GsonBuilder().create();
-		
 		
 		String mId = req.getParameter("mId");
 
-		
 		MusicListVo vo = dao.playList(mId); 
 
-		
 		String ml = vo.getMusic_list();
-
 		
 		String[] num = ml.split(","); 
-		
-		
 		int[] nums = new int[num.length];
-		
 		for(int i=0; i<num.length; i++) {
 			nums[i] = Integer.parseInt(num[i].trim());
 		}
-			
-		
 		List<MusicVo> list = new ArrayList<MusicVo>();
 		for(int i = 0; i < nums.length; i++) {
 			int a = nums[i];
 			MusicVo mv = dao.pL_music(a);
 			list.add(mv);
 		}
-		
 		String list2 =  gson.toJson(list);
-
-		
-
 
 		
 		return list2;	
@@ -230,7 +216,7 @@ public class MusicController {
 
 		String mId = req.getParameter("mId");
 		String ms = req.getParameter("m_serial"); 
-
+		System.out.println("mId : "+mId);
 		MusicListVo vo = dao.playList(mId);
 		vo.setmId(mId); 
 		vo.setMusic_serial(ms); 

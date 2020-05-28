@@ -19,7 +19,7 @@
 	<!-- 뮤직 실행바 -->
  <nav class="navbar nav-default navbar-fixed-bottom" role="navigation" id="nav">
  			
- 			<input type="hidden" id="audioH" value="${play.album_photo }">
+ 			<input type="hidden" id="audioH" value="${play.album_photo}">
  			
  			
  			<div class="wrapper">
@@ -122,6 +122,8 @@
 			
 		</div>
  </nav>
+ 
+ 
 
 
 

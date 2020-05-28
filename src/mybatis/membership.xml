@@ -39,6 +39,10 @@
 		select mId, mName, phone, email, address from membership where mId = #{_parameter}
 	</select>
 	
+	<select id="IsMembership" parameterType="String" resultType="java.sql.Date">
+		select membership from sb_client where id = #{_parameter}
+	</select>
+	
 	<!-- update -->
 	
 	<update id="payMembership" parameterType="String">

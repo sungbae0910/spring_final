@@ -26,8 +26,6 @@
 	 	mId = (String)session.getAttribute("mId");	
 	 	
  	}
-	System.out.println("mId = " + mId);
-
  %>
  
  
@@ -48,7 +46,7 @@
 		</c:if>
 		
 		<c:if test="${!empty mId && mId != 'guest'}" var="mId" >
-			 <li><a href="sb_main.jsp?p=./sb_myPage.jsp" id="sideA"><%=mId %></a>
+			 <li><a href="#" id="sideA" onclick="myPage()"><%=mId %></a>
 	    			<ul>
 	    				<li id="loBtn" onclick="logout()">로그아웃</li>
 	    			</ul>
@@ -81,6 +79,7 @@
 				<input type="hidden" name="mId" id="mId" value="<%=mId%>">
 				<input type="hidden" name="as" id="as" value="">
 				<input type="hidden" name="listV" id="listV">
+				<input type="hidden" name="membership" id="membership">
 		</form>
   
 	  <div class="col-sm-9 page">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,18 @@
 <link rel="stylesheet" href="../sb_music/sb_lib/css/sb_service.css">
 </head>
 <body id="service_body">
+
+<%
+	String mId = "";
+	if(session.getAttribute("mId") != null){
+ 		mId = (String)session.getAttribute("mId");	
+	}
+%>
 	<img src="../sb_music/sb_lib/images/mylogo.png" width="130px"  onclick="location.href='sb_main.jsp'">
 	<div align="right">
-		<button id="serviceBtn1"  onclick="location.href='login.jsp'">로그인</button>
+		<c:if test="${empty mId}">
+			<button id="serviceBtn1"  onclick="location.href='sb_login.jsp'">로그인</button>
+		</c:if>
 		<button id="serviceBtn2"  onclick="location.href='sb_main.jsp'">워터멜론<br>시작하기</button>
 	</div>
 	<div class="container" id="service_top">
