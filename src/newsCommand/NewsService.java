@@ -2,6 +2,10 @@ package newsCommand;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import newsController.CommentVo;
@@ -13,12 +17,15 @@ import newsController.Page;
 
 @Service
 public class NewsService {
-
-	public NewsService() {}
+	NewsDao dao;
+	
+	@Autowired
+	public NewsService(NewsDao newsDao) {
+		this.dao = newsDao;
+	}
 	
 	//뉴스 최상단 글 조회
 	public List<NewsVo> selectI() {
-		NewsDao dao = new NewsDao();
 		List<NewsVo> list = null;
 		
 		list = dao.selectI();
@@ -27,7 +34,6 @@ public class NewsService {
 	}
 	//뉴스 최상단 사진 조회	
 	public List<NewsPhotoVo> selectP() {
-		NewsDao dao = new NewsDao();
 		List<NewsPhotoVo> list = null;
 		list = dao.selectP();
 		
@@ -36,7 +42,6 @@ public class NewsService {
 	
 	// 뉴스 카테고리 랜덤 조회
 	public List<NewsVo> selectCateAi() {
-		NewsDao dao = new NewsDao();
 		List<NewsVo> list = null;
 		
 		list = dao.selectCateA();
@@ -46,7 +51,6 @@ public class NewsService {
 	
 	// 뉴스 카테고리별 조회
 	public List<NewsVo> selectCateDe(String cateName){
-		NewsDao dao = new NewsDao();
 		List<NewsVo> list = null;
 		
 		list = dao.selectCateDe(cateName);
@@ -56,7 +60,6 @@ public class NewsService {
 	
 	//댓글 갯수
 	public String commentCnt(String nSerial) {
-		NewsDao dao = new NewsDao();
 		String cnt = "";
 		
 		cnt = dao.commentCnt(nSerial);
@@ -64,8 +67,16 @@ public class NewsService {
 		return cnt;
 	}
 	
+	public String commentCnt(HttpServletRequest req) {
+		String cnt = "";
+		String nSerial = req.getParameter("nSerial");
+		
+		cnt = dao.commentCnt(nSerial);
+		
+		return cnt;
+	}
+	
 	public List<NewsVo> weekly(){
-		NewsDao dao = new NewsDao();
 		List<NewsVo> vo = null;
 		
 		vo = dao.weekly();
@@ -75,7 +86,6 @@ public class NewsService {
 	
 	public NewsVo newsDetail(String nSerial){
 		NewsVo vo = null;
-		NewsDao dao = new NewsDao();
 		
 		vo = dao.newsDetail(nSerial);
 		
@@ -84,7 +94,6 @@ public class NewsService {
 	
 	public List<NewsVo> newsDetailSide(String nCategory) {
 		List<NewsVo> list = null;
-		NewsDao dao = new NewsDao();
 		
 		list = dao.newsDetailSide(nCategory);
 		
@@ -104,7 +113,22 @@ public class NewsService {
 	
 	public List<CommentVo> commentView(Page p ) {
 		List<CommentVo> comment = null;
-		NewsDao dao = new NewsDao();
+		
+		comment = dao.commentView(p);
+		
+		return comment;
+	}
+	
+	public List<CommentVo> commentView(HttpServletRequest req) {
+		List<CommentVo> comment = null;
+		Page p = new Page();
+		String nSerial = req.getParameter("nSerial");
+		p.setnSerial(nSerial);
+		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
+			p.setNowPage(1);
+		}else {
+			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		}
 		
 		comment = dao.commentView(p);
 		
@@ -116,7 +140,15 @@ public class NewsService {
 	//대댓글
 	public List<CommentVo> reComment(String nSerial){
 		List<CommentVo> reComment = null;
-		NewsDao dao = new NewsDao();
+		
+		reComment = dao.reComment(nSerial);
+		
+		return reComment;
+	}
+	
+	public List<CommentVo> reComment(HttpServletRequest req){
+		List<CommentVo> reComment = null;
+		String nSerial = req.getParameter("nSerial");
 		
 		reComment = dao.reComment(nSerial);
 		
@@ -124,13 +156,44 @@ public class NewsService {
 	}
 		
 	public void commentInsert(CommentVo vo) {
-		NewsDao dao = new NewsDao();
 		
 		dao.commentInsert(vo);
 	}
 	
-	public void reCommentInsert(CommentVo vo) {
+	public void commentInsert(HttpServletRequest req) {
+		CommentVo vo = new CommentVo();
+		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
+		String mName = req.getParameter("mName");
+		String cContent = req.getParameter("content");
+		
+		
+		vo.setnSerial(nSerial);
+		vo.setmName(mName);
+		vo.setcContent(cContent);
+		
+		dao.commentInsert(vo);
+	}
+
+	
+/*	public void reCommentInsert(CommentVo vo) {
 		NewsDao dao = new NewsDao();
+		
+		dao.reCommentInsert(vo);
+	}*/
+	
+	public void reCommentInsert(HttpServletRequest req) {
+		CommentVo vo = new CommentVo();
+		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
+		String nSerial2 = req.getParameter("nSerial");
+		int cGroup = Integer.parseInt(req.getParameter("cGroup"));
+		String mName = req.getParameter("mName");
+		String cContent = req.getParameter("reContent");
+		
+		vo.setnSerial(nSerial);
+		vo.setcGroup(cGroup);
+		vo.setmName(mName);
+		vo.setcContent(cContent);
+		
 		
 		dao.reCommentInsert(vo);
 	}
@@ -145,13 +208,11 @@ public class NewsService {
 	}*/
 	
 	public void commentDeletes(String cSerial) {
-		NewsDao dao = new NewsDao();
 				
 		dao.commentDeletes(cSerial);		
 	}
 	
 	public void commentDelete(String cGroup) {
-		NewsDao dao = new NewsDao();
 		
 		dao.commentDelete(cGroup);
 	}
@@ -159,17 +220,16 @@ public class NewsService {
 	// 좋아요 확인
 	public int likeCheck(LikeVo vo) {
 		int check = 0;
-		NewsDao dao = new NewsDao();
 		
 		check = dao.likeCheck(vo);
 		
 		return check;
 	}
 	
+	
 	// 좋아요 클릭
 	public String likeIn(LikeVo vo) {
 		String likeCnt = "";
-		NewsDao dao = new NewsDao();
 		
 		likeCnt = dao.likeIn(vo);
 		
@@ -179,7 +239,6 @@ public class NewsService {
 	// 좋아요 취소
 	public String likeOut(LikeVo vo) {
 		String likeCnt = "";
-		NewsDao dao = new NewsDao();
 		
 		likeCnt = dao.likeOut(vo);
 		
@@ -189,7 +248,6 @@ public class NewsService {
 	//싫어요 확인
 	public int unLikeCheck(LikeVo vo) {
 		int check = 0;
-		NewsDao dao = new NewsDao();
 		
 		check = dao.unLikeCheck(vo);
 		
@@ -199,7 +257,6 @@ public class NewsService {
 	// 싫어요 클릭
 	public String unLikeIn(LikeVo vo) {
 		String likeCnt = "";
-		NewsDao dao = new NewsDao();
 		
 		likeCnt = dao.unLikeIn(vo);
 		
@@ -209,7 +266,6 @@ public class NewsService {
 	// 싫어요 취소
 	public String unLikeOut(LikeVo vo) {
 		String likeCnt = "";
-		NewsDao dao = new NewsDao();
 		
 		likeCnt = dao.unLikeOut(vo);
 		
@@ -219,7 +275,6 @@ public class NewsService {
 	//검색
 	public List<NewsVo> neswSearch(Page page){
 		List<NewsVo> list = null;
-		NewsDao dao = new NewsDao();
 		
 		list = dao.newsSearch(page);
 		
@@ -228,11 +283,17 @@ public class NewsService {
 	
 	public NewsPhotoVo newsSearchPho(int nSerial){
 		NewsPhotoVo list = null;
-		NewsDao dao = new NewsDao();
 		
 		list = dao.newsSearchPho(nSerial);
 		
 		return list;
+	}
+	
+	
+	// 조회수 증가(쿠키를 사용하여 중복 조회 방지)
+	public void upHit(String nSerial) {
+		dao.upHit(nSerial);
+		
 	}
 	
 }

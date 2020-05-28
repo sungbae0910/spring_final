@@ -13,6 +13,8 @@
 	<context:annotation-config/>
 	<!-- bean -->
 	<!-- <bean id="newsDao" class="newsController.NewsDao"/> -->
+	<bean id="newsService" class="newsCommand.NewsService"/>
+	<bean id="newsDao" class="newsController.NewsDao"/>
 	
 	<!-- controller -->
 	<bean id="news_controller" class="newsController.NewsController"/>

@@ -26,7 +26,6 @@ option {
 }
 
 #login_s{
-	font-size::;px;
 	width: 400px;
 	height: 40px;
 }
@@ -34,5 +33,12 @@ option {
 
 #checkId{
 	color:red;
-	
+}
+
+.login_find{
+	font-size : 15px;
+}
+
+.login_find a{
+	text-decoration: none;
 }

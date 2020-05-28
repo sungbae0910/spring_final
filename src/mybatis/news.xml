@@ -177,6 +177,10 @@
 		update news_comment set cDiLike=cDiLike-1 where cSerial=#{cSerial} and mName=#{mName}
 	</update>
 	
+	<update id="up_hit" parameterType="String">
+		update news_info set nHit=nHit+1 where nSerial=${value}
+	</update>
+	
 	<!-- resultMap -->
 	<resultMap id="mm_news" type="newsController.NewsVo">
 		<result column="nSerial" property="nSerial"/>

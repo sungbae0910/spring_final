@@ -143,7 +143,8 @@
 							<button type="button" id="alexCounter" class="emph_g2 link_cmt">
 								댓글						
 							</button>
-						</span>				
+						</span>
+						<span class="txt_hit">조회수 ${vo.nHit}</span>
 					</div>
 				</div>				
 			</div>
@@ -317,7 +318,7 @@
 													<img src="./img/icon/vertical-dots.png" > 
 												</a>
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
-													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}')">삭제</a>
+													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}','${ii.index}')">삭제</a>
 												</div>
 											</div>
 											<!-- 삭제버튼  끝-->

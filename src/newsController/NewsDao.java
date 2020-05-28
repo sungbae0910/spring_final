@@ -430,5 +430,22 @@ public class NewsDao {
 		return list;
 	}
 	
+	// 조회수 증가(쿠키를 사용하여 중복 조회 방지)
+	public void upHit(String nSerial) {
+		int result = 0;
+		try {
+			result = sqlSession.update("news.up_hit", nSerial);
+			
+			if(result<1) {
+				throw new Exception("조회수 증가 문제 발생");
+			}
+			
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		}
+		
+	}
 
 }

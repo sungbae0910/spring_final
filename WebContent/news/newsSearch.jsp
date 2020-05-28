@@ -98,6 +98,7 @@
                                     <div class="search-box">
                                         <form method="post" id="frm_news_search">
                                             <input type="text" name="searchText" class="searchText" placeholder="Search" value="${p.findStr}">
+                                            <input type="hidden" name="nowPage" class="nowPage"/>
                                         </form>
                                     </div>
                                 </div>

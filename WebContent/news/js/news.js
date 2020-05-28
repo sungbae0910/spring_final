@@ -175,7 +175,7 @@ let news_comment_delete = function(cSerial, cGroup){
 }
 
 // 뉴스대댓글 삭제
-let news_comment_deletes = function(cSerial){
+let news_comment_deletes = function(cSerial, nSerial){
 	let asb = $('.sserial'+cSerial).val();
 	let asb2 = $('.iindent'+cSerial).val();
 	$('.cSerial').val(asb);
@@ -184,6 +184,7 @@ let news_comment_deletes = function(cSerial){
 	let param = $('#tes_s').serialize();
 	$.post("commentDelete.news", param, function(data, status){
 		$('#news_comment_s').html(data);
+		$('.reply_count'+nSerial).trigger("click");
 	})
 }
 /*let weekly = function(){
@@ -291,7 +292,7 @@ var news_search = function(){
 	$('#frm_news_search').attr('action', 'newsSearch.news').submit();
 }
 
-var news_search_paging = function(nowPage){
+var news_search_paging = function(nowPage, tt){
 	$('.nowPage').val(nowPage);
 	$('#frm_news_search').attr('action', 'newsSearch.news').submit();
 }

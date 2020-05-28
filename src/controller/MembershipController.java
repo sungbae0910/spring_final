@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import bean.MembershipDao;
 import mybatis.MembershipVo;
+import newsCommand.SendMail;
 
 @Controller
 public class MembershipController {
@@ -105,6 +106,39 @@ public class MembershipController {
 		
 		mv.addObject("reuslt", result);
 		mv.setViewName("index");
+		
+		return mv;
+	}
+	
+	// 비밀번호 찾기 인증번호
+	@RequestMapping(value="/pwFind.mem", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView pwFind(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String keyCode = "";
+		String eMail = req.getParameter("eMail");
+		HttpSession httpSession = req.getSession(true);
+		
+		try {
+			keyCode = SendMail.createKey();
+			httpSession.setAttribute("keyCode", keyCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 메일 제목
+		String subject = "비밀번호 찾기 인증코드";
+		// 메일 내용
+		String msg = "";
+		msg+= "<div align='center' style='border:1px solid black; font-fiamily : verdana'>";
+		msg+="<h3 style='color: blue;'> 비밀번호 찾기 코드입니다. </h3>";
+		msg+="<div style='font-size: 130%'>";
+		msg+="<strong>" + keyCode + "</strong>를 입력해주세요. </div><br/>";
+		
+		try {
+			SendMail.sendMial(eMail, subject, msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return mv;
 	}
