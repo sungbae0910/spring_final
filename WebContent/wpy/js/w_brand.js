@@ -46,10 +46,30 @@ fd.func = function(){
 		})
    })
    
-   $("w_btnUpdate").click(function(){
+  /* $("w_btnUpdate").click(function(){
 	   let food = new FormData($('#frm_food')[0]);
 	   $("#frm_food").attr("action","../w_modifyR.fd");
 	   $("#frm_food").submit();
-   })
+   })*/
+   
+   $('#w_btnUpdate').click(function() {
+
+		let fd = new FormData($('#frm_food')[0]);
+		$.ajax({
+	     url : '../w_modifyR.fd',
+	     type : 'post',
+	     data : fd, 
+	     contentType : false,
+	     processData : false,
+	     error : function(status, error){
+	    	 console.log(error);
+	     },
+		 success : function(data, status){
+			 $('#').html(data);
+		 }
+		
+		})
+	});
+   
 }
 

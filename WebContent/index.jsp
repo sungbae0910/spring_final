@@ -52,8 +52,8 @@
 		
 		<!-- 메인 -->
 		<div class="container">
-			<div class="col-sm-8" style="border:2px solid black;">
-				조필연씨 배너
+			<div class="col-sm-8"  >
+				<a href="./wpy/w_index.jsp"><img  src="./wpy/w_images/foodB.jpg"></a> 
 			</div>
 			<div class="col-sm-3" id="loginDiv">
 				<div align="center">

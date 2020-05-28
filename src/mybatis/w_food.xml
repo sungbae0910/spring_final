@@ -23,12 +23,12 @@
    and f.foodcode =#{foodCode} 
  </select>
  
- <select id = "w_att_list" parameterType="Integer" resultType="w_foodcontroller.w_AttVo">
+<!--  <select id = "w_att_list" parameterType="Integer" resultType="w_foodcontroller.w_AttVo">
   select foodCode, foodorifile, foodSysFile
   from w_food_image
   where foodCode = #{foodCode}
  
- </select>
+ </select> -->
  
  <update id = "w_update" parameterType="w_foodcontroller.FoodVo">
    update w_food set foodname =#{foodName}, foodprice = #{foodPrice} , foodtype=#{foodType} 

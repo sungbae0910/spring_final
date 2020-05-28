@@ -102,24 +102,24 @@ public class FoodController {
   }
   
   
-  @RequestMapping(value="/modifyR.fd",method= {RequestMethod.POST})
+  @RequestMapping(value="/w_modifyR.fd",method= {RequestMethod.GET,RequestMethod.POST})
   public ModelAndView modifyR(HttpServletRequest req, HttpServletResponse resp) {
 	  ModelAndView mv = new ModelAndView();
 	  FoodVo vo = null;
 	  List<w_AttVo> attList = null;
 	  List<w_AttVo> delFile = null;
-	  
+
 	  FileUpload fu = new FileUpload(req, resp);
 	  fu.uploading();
 	  
 	  vo = (FoodVo)req.getAttribute("vo");
-	  attList = (List<w_AttVo>)req.getAttribute("attList");
+	  
 	  attList = (List<w_AttVo>)req.getAttribute("delFile");
 	  
 	  String msg = dao.modify(vo, attList, delFile);
 	  
 	  mv.addObject("msg",msg);
-	  mv.setViewName("w_result");
+	  mv.setViewName("w_menu");
 	  
 	  return mv;
   }
