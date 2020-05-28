@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopItemVo {
+	String item_serial;
 	String item_id;
 	int item_category;
 	String item_optioin;
@@ -20,6 +21,14 @@ public class ShopItemVo {
 	String item_photo;
 	String photo_serial;
 	
+	public String getItem_serial() {
+		return item_serial;
+	}
+
+	public void setItem_serial(String item_serial) {
+		this.item_serial = item_serial;
+	}
+
 	public String getCategory_name() {
 		return category_name;
 	}

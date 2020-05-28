@@ -13,18 +13,7 @@ public class ShopDao {
 		sqlSession = Factory.getFactory().openSession();
 		/*sqlSession = Factory.getFactory().openSession();*/
 	}
-	
-	public List<ShopItemVo> headerCategoryMenu(){
-		List<ShopItemVo> headerMenu = null;
-		try {
-			headerMenu = sqlSession.selectList("shop.header_category_menu");
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}finally {
-			return headerMenu;
-		}
-	}
-	
+
 	public List<ShopItemVo> earringMainSelect(){
 		List<ShopItemVo> earringList = null;
 		try {
@@ -69,10 +58,10 @@ public class ShopDao {
 		}
 	}
 	
-	public List<ShopItemVo> MoreSelect(ShopItemVo vo){
+	public List<ShopItemVo> MoreSelect(int item_category){
 		List<ShopItemVo> list = null;
 		try {
-			list = sqlSession.selectList("shop.item_more_select");
+			list = sqlSession.selectList("shop.item_more_select", item_category);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -80,5 +69,97 @@ public class ShopDao {
 		}
 	}
 	
+	public ShopItemVo itemDetailView(String item_id) {
+		ShopItemVo vo = null;
+		try {
+			vo = sqlSession.selectOne("item_detail_view", item_id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return vo;
+		}
+	}
 	
+	public List<ShopItemVo> typeOption(ShopItemVo vo){
+		List<ShopItemVo> typeOption = null;
+		vo.setOption_name(0);
+		try {
+			typeOption = sqlSession.selectList("shop.item_option", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return typeOption;
+		}
+	}
+	
+	public List<ShopItemVo> colorOption(ShopItemVo vo){
+		List<ShopItemVo> colorOption = null;
+		vo.setOption_name(1);
+		try {
+			colorOption = sqlSession.selectList("shop.item_option", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return colorOption;
+		}
+	}
+	
+	public List<ShopItemVo> sizeOption(ShopItemVo vo){
+		List<ShopItemVo> sizeOption = null;
+		vo.setOption_name(2);
+		try {
+			sizeOption = sqlSession.selectList("shop.item_option", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return sizeOption;
+		}
+	}
+	
+	public List<ShopItemVo> typeValue(ShopItemVo vo){
+		List<ShopItemVo> typeValue = null;
+		vo.setOption_name(0);
+		try {
+			typeValue = sqlSession.selectList("shop.item_option_value", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally { 
+			return typeValue;
+		}
+	}
+	
+	public List<ShopItemVo> colorValue(ShopItemVo vo){
+		List<ShopItemVo> colorValue = null;
+		vo.setOption_name(1);
+		try {
+			colorValue = sqlSession.selectList("shop.item_option_value", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return colorValue;
+		}
+	}
+	
+	public List<ShopItemVo> sizeValue(ShopItemVo vo){
+		vo.setOption_name(2);
+		List<ShopItemVo> sizeValue = null;
+		try {
+			sizeValue = sqlSession.selectList("shop.item_option_value", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return sizeValue;
+		}
+	}
+	
+	public List<ShopItemVo> itemPhoto(String item_id){
+		List<ShopItemVo> photo = null;
+		try {
+			photo = sqlSession.selectList("shop.item_detail_photo", item_id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return photo;
+		}
+	}
 }

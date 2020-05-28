@@ -3,6 +3,32 @@
  */
 let shop = {}
 
+shop.category = function(item_category) {
+	$("#item_category").val(item_category)
+	let param = $("#shop_frm").serialize();
+		$.post("../more.shop", param, function(data, state){
+			$("#main").html(data);
+	})
+}
+
+shop.changeUp = function(){
+	console.log($(".itemView_num_count").val());
+	var ea = Number($(".itemView_num_count").val())+1;
+	console.log(ea);;
+	$(".itemView_num_count").val(ea);
+}
+
+shop.changeDown = function(){
+	var ea = Number($(".itemView_num_count").val())-1;
+	$(".itemView_num_count").val(ea);
+}
+
+shop.itemView = function(item_id){
+	$.post("../view.shop", {"item_id" : item_id}, function(data, state){
+		$("#main").html(data);
+	})
+}
+
 shop.mainFunc = function(){
 	let param = $("#shop_frm").serialize();
 	$.post("../main.shop", param, function(data, state){
@@ -20,14 +46,6 @@ shop.func = function(){
 		})
 	})
 	
-	$(".btn_detail").click(function(){
-		alert(1);
-		let param = $("#shop_frm").serialize();
-		$.post("../view.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
 	$(".btn_basket").click(function(){
 		let param = $("#shop_frm").serialize();
 		$.post("../basket.shop", param, function(data, state){
@@ -41,39 +59,7 @@ shop.func = function(){
 			$("#main").html(data);
 		})
 	})
-	
-	$("#item1_category").click(function(item_category){
-		shop_frm.item_category.value = 0;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
-	$("#item2_category").click(function(item_category){
-		shop_frm.item_category.value = 1;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
-	$("#item3_category").click(function(item_category){
-		shop_frm.item_category.value = 2;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
-	$("#item4_category").click(function(item_category){
-		shop_frm.item_caategory.value = 3;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
+
 	$(".btn_itemView_payment").click(function(){
 		alert("결제하시겠습니까?")
 		let param = $("#shop_frm").serialize();

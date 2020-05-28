@@ -23,13 +23,11 @@ public class ShopController {
 	public ModelAndView shopMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<ShopItemVo> headerMenu = dao.headerCategoryMenu();
 		List<ShopItemVo> earringList = dao.earringMainSelect();
 		List<ShopItemVo> necklaceList = dao.necklaceMainSelect();
 		List<ShopItemVo> ringList = dao.ringMainSelect();
 		List<ShopItemVo> braceletList = dao.braceletMainSelect();
 		
-		mv.addObject("headerMenu", headerMenu);
 		mv.addObject("earringList", earringList);
 		mv.addObject("necklaceList", necklaceList);
 		mv.addObject("ringList", ringList);
@@ -41,10 +39,8 @@ public class ShopController {
 	@RequestMapping(value="/more.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopMore(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
-		ShopItemVo vo = (ShopItemVo)req.getAttribute("vo");
-		List<ShopItemVo> moreList = dao.MoreSelect(vo);
-		
+		int item_category = Integer.parseInt(req.getParameter("item_category"));
+		List<ShopItemVo> moreList = dao.MoreSelect(item_category);
 		mv.addObject("moreList", moreList);
 		mv.setViewName("shop_itemMore");
 		return mv;
@@ -53,8 +49,30 @@ public class ShopController {
 	@RequestMapping(value="/view.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(1);
+		ShopItemVo sVo = new ShopItemVo();
+
+		String item_id = req.getParameter("item_id");
+		sVo.setItem_id(item_id);
+				
+		ShopItemVo vo = dao.itemDetailView(item_id);
+	 	List<ShopItemVo> typeOption = dao.typeOption(sVo);
+		List<ShopItemVo> colorOption = dao.colorOption(sVo);
+		List<ShopItemVo> sizeOption = dao.sizeOption(sVo);
+		List<ShopItemVo> typeValue = dao.typeValue(sVo);
+		List<ShopItemVo> colorValue = dao.colorValue(sVo);
+		List<ShopItemVo> sizeValue = dao.sizeValue(sVo);
+		List<ShopItemVo> photo = dao.itemPhoto(item_id);
+		
+		mv.addObject("vo", vo);
+		mv.addObject("typeOption", typeOption);
+		mv.addObject("colorOption", colorOption);
+		mv.addObject("sizeOption", sizeOption);
+		mv.addObject("typeValue", typeValue);
+		mv.addObject("colorValue", colorValue);
+		mv.addObject("sizeValue", sizeValue);
+		mv.addObject("photo", photo);
 		mv.setViewName("shop_itemView");
+		
 		return mv;
 	}
 	
