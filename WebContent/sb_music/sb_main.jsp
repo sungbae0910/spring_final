@@ -24,7 +24,6 @@
  	String mId = "guest";
  	if(session.getAttribute("mId") != null){
 	 	mId = (String)session.getAttribute("mId");	
-	 	
  	}
  %>
  

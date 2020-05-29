@@ -1,8 +1,8 @@
 package bean;
 
-import java.sql.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Timestamp;
+
+import javax.xml.crypto.Data;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -111,7 +111,7 @@ public class MembershipDao {
 	}
 	
 	public void payMembership(String mId) {
-		
+
 		try {
 			sqlSession.update("membership.payMembership", mId);
 			sqlSession.commit();
@@ -123,7 +123,6 @@ public class MembershipDao {
 	
 	public MembershipVo Membership(String mId) {
 		MembershipVo vo = new MembershipVo();
-		System.out.println("멤버쉽id" + mId);
 		try {
 			vo = sqlSession.selectOne("membership.membership", mId);
 		} catch (Exception e) {
@@ -133,8 +132,8 @@ public class MembershipDao {
 		return vo;
 	}
 	
-	public Date IsMembership(String mId) {
-		Date date = new Date(0);
+	public Timestamp IsMembership(String mId) {
+		Timestamp date = new Timestamp(0);
 		
 		try {
 			date = sqlSession.selectOne("membership.IsMembership", mId);
@@ -146,5 +145,6 @@ public class MembershipDao {
 		return date;
 		
 	}
+
 }
 

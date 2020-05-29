@@ -1,7 +1,8 @@
 package controller;
 
-import java.io.UnsupportedEncodingException;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -209,14 +210,63 @@ public class MembershipController {
 		
 		String mId = req.getParameter("mId");
 		
-		Date date = dao.IsMembership(mId);
-		
-		
-		s = gson.toJson(date);
-		
-		return s;
+		Timestamp date = new Timestamp(0);
+		try {
+			date = dao.IsMembership(mId);		
+			Timestamp sysdate = new Timestamp(System.currentTimeMillis());
+			
+			Date cp = new Date();
+			cp.setTime(date.getTime());
+			
+			String fd = new SimpleDateFormat("yyyyMMddHHmm").format(cp);
+			System.out.println(fd);
+			
+			cp.setTime(sysdate.getTime());
+			
+			String fd2 = new SimpleDateFormat("yyyyMMddHHmm").format(cp);
+			System.out.println(fd2);
+			
+			Double n1 = Double.parseDouble(fd);
+			Double n2 = Double.parseDouble(fd2);
+			
+			
+			String result = "";
+			if(n1 > n2) {
+				result = "y";
+			}else {
+				result = "n";
+			}
+			
+			System.out.println(result);
+			s = gson.toJson(result);
+		} catch (Exception e) {
+			System.out.println("회원 멤버쉽 날짜 값이 없음");
+		} finally {
+			return s;			
+		}
 	}
 	
+	
+	@RequestMapping(value="/sb_music/IndexInfo.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String IndexInfo(HttpServletRequest req) {
+		String str = "";
+		Gson gson = new GsonBuilder().create();
+		try {
+			MembershipVo vo = new MembershipVo();
+			String mId = req.getParameter("mId");
+			
+			vo = dao.Membership(mId);
+			
+			str = gson.toJson(vo);
+			
+		} catch (Exception e) {
+			System.out.println("비로그인 상태");	
+		}
+		
+		return str;
+	}
+
 }
 
 

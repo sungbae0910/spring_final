@@ -103,8 +103,7 @@ var topP = function(){
 }
 
 var myPage = function(){
-	let param = $('#frm_top').serialize();
-	$('#changePage').load('sb_Membership.mem', param);
+	location = '../root/root_myPage.jsp';
 }
 
 
@@ -201,13 +200,18 @@ function player(){
 	        
 
 	        // 게스트용 1분 미리 듣기
-	        if($("#mId").val() == 'guest'){
+	       /* if($("#mId").val() == 'guest'){
 	    		if(audio.currentTime > 60){
 	    			audio.currentTime = 0;
 	    			audio.pause();
 	    		}
-			}
-	        
+			}*/
+	        if($('#membership').val() != 'y'){
+	        	if(audio.currentTime > 60){
+	    			audio.currentTime = 0;
+	    			audio.pause();
+	    		}
+	    	}
 	  });
 	  audio.addEventListener("ended",(e)=>{
 	    progressBar.value = 0;
@@ -428,22 +432,29 @@ $(document).ready(function() {
 	$('#list_val').hide();
 	var cId = $('#mId').val();
 	
-	if(cId != 'guest'){
+	// 1분 미리 듣기 안내
+/*	if(cId != 'guest'){
 		$('#guest').hide();
 	}else{
 		$('#guest').show();
-	}
+	}*/
 	
 	let param = $('#frm_top').serialize();
 	$.ajax({
-		url:'sb_IsMembership.mem',
-		data:param,
-		type: 'POST',
+		url : 'sb_IsMembership.mem',
+		data : param,
+		type : 'POST',
 		dataType : 'json',
 		success : function(data){
+			console.log(data);
+			$('#membership').val(data);
+			console.log($('#membership').val());
 			
-			console.log("data - "+data);
-			
+			if($('#membership').val() == 'y'){
+				$('#guest').hide();
+			}else{
+				$('#guest').show();
+			}
 		}
 		
 		

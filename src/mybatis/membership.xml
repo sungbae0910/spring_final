@@ -36,10 +36,10 @@
 	</select>
 	
 	<select id="membership" parameterType="String" resultType="mybatis.MembershipVo">
-		select mId, mName, phone, email, address from membership where mId = #{_parameter}
+		select * from membership where mId = #{_parameter}
 	</select>
 	
-	<select id="IsMembership" parameterType="String" resultType="java.sql.Date">
+	<select id="IsMembership" parameterType="String" resultType="java.sql.Timestamp">
 		select membership from sb_client where id = #{_parameter}
 	</select>
 	
