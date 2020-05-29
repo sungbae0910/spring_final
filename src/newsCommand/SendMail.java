@@ -32,6 +32,7 @@ public class SendMail {
 			mail.setSubject(subject);
 			mail.setHtmlMsg(msg);
 			mail.send();
+			System.out.println("메일 전송 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,7 +48,6 @@ public class SendMail {
 			int idx = (int) (charSet.length * Math.random());
 			key.append(charSet[idx]);
 		}
-		
 		return key.toString();
 	}
 
