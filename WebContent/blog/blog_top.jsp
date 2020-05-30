@@ -3,7 +3,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="c_blogNavbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
-    		<div id="c_logo" class="navbar-brand" onclick="blog.main()"><img src="">LOGO</div>
+    		<div id="c_logo" class="navbar-brand" onclick="blog.main()"><img src="../main_lib/images/root.png"></div>
   		</div>
    		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> 로그인 하기</a></li>

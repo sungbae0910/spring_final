@@ -17,7 +17,10 @@
 	  		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${myblogHeader.bTitle}
 		</button>
 		<div id="c_myblog_Cate">
-			<c:forEach var="c" items="${myblogHeader.category}">
+			<c:forEach var="c`" items="${myblogHeader.category}">
+				<c:if test="${c.cName eq '카테고리 없음'}">
+					<c:remove var="c" scope="request"/>
+				</c:if>
 				<div class="c_CateItem" onclick="blog.category('${c.cName}')">${c.cName} <span>(${c.cnt})</span></div>
 			</c:forEach>
 		</div>

@@ -7,7 +7,8 @@ textarea:focus {outline: 1px solid #000;}
 
 /* blog_top */
 #c_blogNavbar {padding: 10px 50px; height: 55px;}
-#c_blogNavbar #c_logo {cursor: pointer;}
+#c_blogNavbar #c_logo {cursor: pointer; position: relative; top: -16px;}
+#c_blogNavbar #c_logo img {height: 35px;}
 #c_blogNavbar .navbar-nav>li>a {position: fixed; top: 11px; right: 24px;}
 #c_blogNavbar .dropdown-toggle img {width: 36px; height: 36px; position: fixed; top: 10px; right: 30px;}
 .navbar-nav li .dropdown-menu {padding: 10px; border-radius: 3px; top: 38px; right: -18px;}
@@ -169,7 +170,7 @@ textarea:focus {outline: 1px solid #000;}
 #c_brdWrite #c_myblog_headerImg #c_myblog_headerImg_add {border-radius: 30px; position: relative; top: -113px; left: 45%; background-color: #77777782; border: none; outline: none;}
 #c_brdWrite #c_myblog_headerImg #c_myblog_headerImg_rem {position: relative; top: -199px; float: right; background-color: #77777782; padding: 0 6px; border: none; outline: none;}
 #c_brdWrite #c_myblog_headerImg #c_myblog_headerImg_add:hover, #c_myblog_headerImg_rem:hover {background-color: #777;}
-#c_brdWrite #c_brdSubject {border: none; resize: none; border-bottom: 1px solid #eee; outline: 0 none; width: 100%; height: 40px; font-size: 25px; margin-bottom: 10px;}
+#c_brdWrite #c_brdSubject {border: none; resize: none; border-bottom: 1px solid #eee; outline: 0 none; width: 100%; height: 40px; font-size: 25px; margin-bottom: 15px;}
 #c_brdWrite #c_btnBrdInsert {float: right; padding: 5px 28px; border-radius: 15px; border: none; background-color: black; color: white; font-weight: bold; font-size: 1.2em; margin-bottom: 50px;}
 #c_brdWrite #c_brdCategory {border-radius: 5px; padding: 6px 30px; color: #999; border: 1px solid #ddd; margin-bottom: 20px; outline: none;}
 #c_brdWrite #c_brdCategory option {color: black;}
@@ -177,6 +178,13 @@ textarea:focus {outline: 1px solid #000;}
 #c_brdWrite #c_tagBox #c_tagList .c_txtTag {margin-right: 15px;}
 #c_brdWrite #c_tagBox #c_tagList .c_txtTag .tagDelBtn {cursor: pointer; color: #909090;}
 #c_brdWrite #c_tagBox .c_inpTag #c_tag {outline: none; border: none;}
+#c_brdWrite #modifyModal .modal-body #c_basicSet {margin-top: 15px; font-size: 15px;}
+#c_brdWrite #modifyModal .modal-body #c_basicSet #c_setTitle {margin-right: 20px; font-weight: bold;}
+#c_brdWrite #modifyModal .modal-body #c_basicSet #c_setPublic {margin-right: 8px;}
+#c_brdWrite #modifyModal .modal-body #c_basicSet input[type="radio"]{margin-right: 5px;}
+#c_brdWrite #modifyModal .modal-footer button {border-radius: 18px; width: 70px; outline: none;}
+#c_brdWrite #modifyModal .modal-footer #c_btnBrdModify_Con {background-color: black; color: white;}
+#c_brdWrite .c_btnBrd {float: right; margin: 25px 0; padding: 4px 30px; background-color: black; color: white; border: none; border-radius: 15px; outline: none;}
 
 
 

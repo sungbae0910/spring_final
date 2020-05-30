@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlogBoardVo {
-	int brdNo; //게시물 번호
 	int bNo; //블로그 번호
+	int brdNo; //게시물 번호
 	String cName = ""; //카테고리 이름
 	String cnt = ""; //카데고리 게시물 수
 	String mId = ""; //회원 아이디
@@ -17,10 +17,11 @@ public class BlogBoardVo {
 	int hit; //게시물 조회 수
 	int brdLike; //게시물 공감 수
 	List<BlogVo> blogInfo = new ArrayList<BlogVo>(); //블로그 이름, 유저사진
-	String tagContent = "";
+	String tContent = "";
+	int basicSet;
 	
 	public BlogBoardVo() {}
-
+	
 	public int getBrdNo() {return brdNo;}
 	public void setBrdNo(int brdNo) {this.brdNo = brdNo;}
 	public int getbNo() {return bNo;}
@@ -47,7 +48,9 @@ public class BlogBoardVo {
 	public void setBrdLike(int brdLike) {this.brdLike = brdLike;}
 	public List<BlogVo> getBlogInfo() {return blogInfo;}
 	public void setBlogInfo(List<BlogVo> blogInfo) {this.blogInfo = blogInfo;}
-	public String getTagContent() {return tagContent;}
-	public void setTagContent(String tagContent) {this.tagContent = tagContent;}
+	public String getTContent() {return tContent;}
+	public void setTContent(String tContent) {this.tContent = tContent;}
+	public int getBasicSet() {return basicSet;}
+	public void setBasicSet(int basicSet) {this.basicSet = basicSet;}
 	
 }

@@ -16,11 +16,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import blogCommand.BlogService;
+import blogCommand.FileUpload;
 
 @Controller
 public class BlogController {
@@ -118,63 +123,64 @@ public class BlogController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/uploadSummernoteImg.bg",  produces = "application/json", method = {RequestMethod.POST})
+	@ResponseBody
+	public String uploadSummernoteImg(MultipartHttpServletRequest req) {
+		FileUpload upload = new FileUpload();
+		String json = upload.brdSummernoteImgUploading(req);
+		
+		System.out.println(json);
+		return json;
+	}
+	
 	@RequestMapping(value = "/brdModifyR.bg", method = {RequestMethod.POST})
-	public ModelAndView brdModifyR(HttpServletRequest req) {
+	public ModelAndView brdModifyR(MultipartHttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		BlogBoardVo brdVo = new BlogBoardVo();
-		brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
-		brdVo.setcName(req.getParameter("c_cName"));
-		brdVo.setBrdHeader(req.getParameter("c_brdHeaderImg"));
-		brdVo.setSubject(req.getParameter("c_subject"));
-		brdVo.setContent(req.getParameter("c_content"));
-		brdVo.setTagContent(req.getParameter("c_tagContent"));
-		System.out.println(req.getParameter("c_content"));
+		BlogBoardVo brdVo = null;
+		if	(req.getFile("c_brdHeaderImg") != null) { //게시물 헤더 사진이 있을 때만
+			FileUpload upload = new FileUpload();
+			brdVo = upload.brdHeaderFileUploading(req);
+		}
 		
+		System.out.println(brdVo.getbNo());
+		System.out.println(brdVo.getBrdNo());
+		System.out.println(brdVo.getcName());
+		System.out.println(brdVo.getSubject());
+		System.out.println(brdVo.getContent());
+		System.out.println(brdVo.getTContent());
+		System.out.println(brdVo.getBasicSet());
+		System.out.println(brdVo.getOriBrdHeader());
+		System.out.println(brdVo.getBrdHeader());
 		
-		/*mv.setViewName("blog_brdModify");*/
+		blogDao.brdModifyR(brdVo, req);
+		
+		mv.setViewName("blog_manage");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/uploadSummernoteImg.bg",  produces = "application/json", method = {RequestMethod.POST})
-	@ResponseBody
-	public String brdImg(MultipartFile file) {
-		JSONObject json = new JSONObject();
-		String fileRoot = "C:\\Users\\SamSung\\eclipse-workspace\\spring_final\\WebContent\\blog\\summernoteImage\\"; //저장될 외부 파일 경로
-		String originalFileName = file.getOriginalFilename(); //오리지널 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); //파일 확장자	
-		String sysFileName = UUID.randomUUID() + extension; //저장될 파일 명
+	/*@RequestMapping(value = "/brdModifyR.bg", method = {RequestMethod.POST})
+	public ModelAndView brdModifyR(HttpServletRequest req, @RequestParam("c_brdHeaderImg") MultipartFile file) {
+		ModelAndView mv = new ModelAndView();
 		
-		File targetFile = new File(fileRoot + sysFileName);	
+		BlogBoardVo brdVo = new BlogBoardVo();
+		brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
+		brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));
+		brdVo.setcName(req.getParameter("c_cName"));
+		brdVo.setSubject(req.getParameter("c_subject"));
+		brdVo.setContent(req.getParameter("c_content"));
+		brdVo.setTagContent(req.getParameter("c_tagContent"));
+		brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));
+		System.out.println(brdVo.getbNo());
+		System.out.println(brdVo.getcName());
+		System.out.println(brdVo.getSubject());
+		System.out.println(brdVo.getContent());
+		System.out.println(brdVo.getTagContent());
+		System.out.println(file.getOriginalFilename());
+		System.out.println(brdVo.getBasicSet());
 		
-		try {
-			InputStream fileStream = file.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile); //파일 저장
-			
-			json.put("url", "C:/summernote_image/" + sysFileName);
-			json.put("responseCode", "success");
-				
-		} catch (Exception e) {
-			FileUtils.deleteQuietly(targetFile); //저장된 파일 삭제
-			json.put("responseCode", "error");
-			e.printStackTrace();
-		}
-		
-		return json.toJSONString();
-	}
-	
-	@Configuration
-	public class WebMvcConfig implements WebMvcConfigurer {
-		//web root가 아닌 외부 경로에 있는 리소스를 url로 불러올 수 있도록 설정
-	    //현재 localhost:8888/summernoteImage/1234.jpg
-	    //로 접속하면 C:/summernote_image/1234.jpg 파일을 불러온다.
-	    @Override
-	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	    	System.out.println(1);
-	        registry.addResourceHandler("/summernoteImage/**")
-	                .addResourceLocations("file:///C:/summernote_image/");
-	        System.out.println(2);
-	    }
-	}
+		mv.setViewName("blog_manage");
+		return mv;
+	}*/
 	
 	@RequestMapping(value = "/blogManage.bg", method = {RequestMethod.POST})
 	public ModelAndView blogManage() {

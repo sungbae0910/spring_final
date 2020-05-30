@@ -155,15 +155,16 @@ blog.myblog_func = function () {
 		$(".modal-title").text("답글 입력");
 	});
 	
-	$("#c_btnBrdModify").click(function () {
-		let param = $("#c_blog_frm").serialize(); 
-		alert($("#c_tagContent").val());
-		alert($("#c_summernote").text());
-		$.post("../brdModifyR.bg", param, function(data, state) { 
-			if(data != null){
-				alert("성공")
+	/* 블로그 게시물 수정 */
+	$("#c_btnBrdModify_Con").click(function () {
+		//라디오 체크된 값 input태그에 넣기
+		let basicSet = document.getElementsByName("c_basicSet");
+		for (let i=0; i<basicSet.length; i++){
+			if (basicSet[i].checked == true){ 
+				$("#c_basicSetVal").val(basicSet[i].value);
 			}
-		});
+		}
+		$("#c_blog_frm").attr("action", "?inc=../brdModifyR.bg").submit();
 	});
 }
 
@@ -201,7 +202,7 @@ blog.brdModi = function () {
 	
 	/* 썸머노트 */
 	$("#c_summernote").summernote({
-		height : 420,
+		height : 550,
 		lang : "ko-KR",
 		toolbar : [
 			["style", ["style"]],
@@ -216,9 +217,8 @@ blog.brdModi = function () {
 		],
 		callbacks: { //이미지 첨부
 			onImageUpload : function(files) {
-				alert("사진");
-				sendFile(files[0], this);
 	            for (var i = files.length - 1; i >= 0; i--) {
+	            	sendFile(files[i], this);
 	            }
 	        }
 		}
@@ -227,7 +227,6 @@ blog.brdModi = function () {
 	function sendFile(file, el) { //이미지 파일 업로드
 		var form_data = new FormData();
       	form_data.append("file", file);
-		console.log(file);
       	$.ajax({
         	data : form_data,
         	type : "POST",

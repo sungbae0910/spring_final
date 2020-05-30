@@ -1,12 +1,11 @@
 package blogController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.catalina.Session;
+import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import mybatis.Factory;
 
@@ -103,6 +102,39 @@ public class BlogDao {
 		}
 		return board;
 	}
+	
+	public void brdModifyR(BlogBoardVo brdVo, MultipartHttpServletRequest req) {
+		String delbrdHeader = null;
+		try {
+			if(brdVo.getBrdHeader() != "") { //헤더사진을 추가, 변경 하였을 때
+				//삭제 할 헤더사진조회
+				System.out.println(brdVo.getBrdNo() + "번호");
+				delbrdHeader = sqlSession.selectOne("blog.brdHeader", brdVo.getBrdNo());
+				delHeader(req, delbrdHeader); //서버경로에 파일 삭제
+				
+				System.out.println("모두 변경!");
+				sqlSession.update("blog.brdModify", brdVo);
+			} else { //헤더사진을 추가, 변경 하지 않았을 때
+				System.out.println("헤더사진 노 변경!");
+				/*sqlSession.update("blog.brdModifyNoHeader", brdVo);*/
+			}
+			/*sqlSession.update("blog.brdTagModify", brdVo);*/
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public void delHeader(MultipartHttpServletRequest req, String delbrdHeader) { //서버경로에 파일 삭제
+		String filePath = req.getSession().getServletContext().getRealPath("/blog/blog_image/"); 
+		File file = new File(filePath + delbrdHeader);
+		
+		if (file.exists()) {
+			FileUtils.deleteQuietly(file); //파일 삭제
+		}
+	}
+	
 	/*public BlogBoardVo brdView(String brdLike,String brdNo, String mId) {
 		BlogBoardVo brdVo = null;
 		try {

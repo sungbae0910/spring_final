@@ -46,12 +46,14 @@
 				<span id="c_myBlog_allBrd">${category.cName} <span class="badge">${category.cnt}</span></span>
 	        	<div id="c_myBlog_list">
 	        		<c:forEach  var="brdList" items="${myblogBrdList}">
-		        		<div class="c_myBlog_brd_item" onclick="blog.brdView('${brdList.mId}', ${brdList.brdNo})">
-		        			<img src="./blog_image/${brdList.brdHeader}" class="img-rounded">
-		        			<div class="c_brd_Subject">${brdList.subject}</div>
-		        			<div class="c_brd_Cont">${brdList.content}</div>
-		        			<div class="c_brd_Date">${brdList.brdDate}</div>
-		        		</div>
+	        			<c:if test="${brdList.basicSet == 0}">
+			        		<div class="c_myBlog_brd_item" onclick="blog.brdView('${brdList.mId}', ${brdList.brdNo})">
+			        			<img src="./blog_image/${brdList.brdHeader}" class="img-rounded">
+			        			<div class="c_brd_Subject">${brdList.subject}</div>
+			        			<div class="c_brd_Cont">${brdList.content}</div>
+			        			<div class="c_brd_Date">${brdList.brdDate}</div>
+			        		</div>
+	        			</c:if>
 	        		</c:forEach>
 	        	</div>	
 	        </div>
