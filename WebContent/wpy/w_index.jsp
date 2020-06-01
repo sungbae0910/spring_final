@@ -23,12 +23,12 @@
 						
 					<!-- 로그인 버튼 -->	
 						<input type="button" id="w_btnLogin" value="로그인">
-						<input type="button" id="w_btnLogout" value="로그아웃">
+						
 						
 						<!-- <a id="w_btnLogin" href="w_login.jsp">로그인</a>
 						<a id="w_btnLogout" href="w_index.jsp">로그아웃</a> -->
 					<!-- Logo -->
-						<img src="./w_images/w_mainimage1.png">
+						<img id="img1" src="./w_images/w_mainimage1.png">
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
@@ -40,7 +40,7 @@
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_customersupport.jsp">고객문의</a></li>
+								<!--  <li><a href="w_customersupport.jsp">고객문의</a></li>-->
 								<li><a href="w_mymap.jsp">매장안내</a></li>
 							</ul>
 						</nav>

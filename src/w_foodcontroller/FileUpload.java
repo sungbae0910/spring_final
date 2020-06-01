@@ -36,8 +36,8 @@ public class FileUpload {
 	
 	public HttpServletRequest uploading() {
 		FoodVo vo = new FoodVo();
-		List<w_AttVo> attList = new ArrayList<w_AttVo>();
-		List<w_AttVo> delList = new ArrayList<w_AttVo>();
+		w_AttVo attVo = new w_AttVo();
+	    w_AttVo delVo = new w_AttVo();
 		
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(4096);
@@ -69,20 +69,20 @@ public class FileUpload {
 				case "w_price" :
 					vo.setFoodPrice(Integer.parseInt(v));
 				    break;
-				    
-				case "delFile":
+				
+				/*case "delFile":
 					w_AttVo attVo = new w_AttVo();
 					attVo.setSysFile(v);
-					delList.add(attVo);break;
+					delList.add(attVo);break;*/
 				}
 				} else {
 					if(fi.getSize() > 0) {
 						String f = fi.getName();
 						String sysfile = new Date().getTime() + "-" + f;
-						w_AttVo attVo = new w_AttVo();
+						w_AttVo attVo1 = new w_AttVo();
 						attVo.setOriFile(f);
 						attVo.setSysFile(sysfile);
-						attList.add(attVo);
+						attVo.add(attVo1);
 						
 						File file = new File(upload + sysfile);
 						fi.write(file);
@@ -95,8 +95,8 @@ public class FileUpload {
 			
 		}
 		req.setAttribute("vo", vo);
-		req.setAttribute("attList", attList);
-		req.setAttribute("delList", delList);
+		req.setAttribute("attVo", attVo);
+		//req.setAttribute("delList", delList);
 		
 		return req;
 	}
