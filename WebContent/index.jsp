@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/main_lib/css/main_page.css">
 <script src="${pageContext.request.contextPath}/main_lib/js/main_page.js"></script>
 <script src="${pageContext.request.contextPath}/main_lib/js/jquery-3.4.1.js"></script>
+<script src="${pageContext.request.contextPath}/main_lib/js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 </head>

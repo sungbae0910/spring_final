@@ -19,7 +19,7 @@
 			<div class="col-xs-12" id="loginDiv">
 					<c:if test="${empty mId}">
 						<span id="logintop">여태까지 아무도 뚫지못한 철통보안</span><br><br>
-						<a href="${pageContext.request.contextPath}/sb_music/login.jsp" style="color:black;"><button id="loginBtn">로그인</button></a>
+						<a href="${pageContext.request.contextPath}/login.jsp" style="color:black;"><button id="loginBtn">로그인</button></a>
 					</c:if>
 					<c:if test="${!empty mId}">
 						

@@ -1,6 +1,7 @@
 /**
  * http://usejsdoc.org/
  */
+
 $(document).ready(function() {
 	
 	let param = $('#index_frm').serialize();
