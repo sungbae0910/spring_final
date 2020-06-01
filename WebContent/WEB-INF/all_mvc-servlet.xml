@@ -13,11 +13,11 @@
 	<context:annotation-config/>
 	<!-- bean -->
 	<!-- <bean id="newsDao" class="newsController.NewsDao"/> -->
-	<bean id="newsService" class="newsCommand.NewsService"/>
-	<bean id="newsDao" class="newsController.NewsDao"/>
+	<bean id="allService" class="command.AllService"/>
+	<bean id="allDao" class="controller.AllDao"/>
 	
 	<!-- controller -->
-	<bean id="news_controller" class="newsController.NewsController"/>
+	<bean id="all_controller" class="controller.AllController"/>
 	<!--  <bean id="brd_controller" class="controller.BoardController">
 		<constructor-arg ref="brdDao" />
 	</bean> -->

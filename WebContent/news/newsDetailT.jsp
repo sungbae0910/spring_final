@@ -143,7 +143,8 @@
 							<button type="button" id="alexCounter" class="emph_g2 link_cmt">
 								댓글						
 							</button>
-						</span>				
+						</span>
+						<span class="txt_hit">조회수 ${vo.nHit}</span>
 					</div>
 				</div>				
 			</div>
@@ -159,11 +160,14 @@
 				<div class="col-lg-8">
 					<!-- Trending Tittle -->
 					<div class="about-right mb-90">
+						<c:set var="flag" value="${vo.photos[0].flag}"/>
+						<c:if test="${flag eq 0}">
 						<figure class="figure">
 							<img src="./img/newsImages/${vo.photos[0].pName}"
 								class="figure-img img-fluid rounded" alt="...">
 							<figcaption class="figure-caption">${vo.photos[0].pContent }</figcaption>
 						</figure>
+						</c:if>
 						<div class="about-prea">
 							<p class="about-pera1 mb-25">${vo.nContent }</p>
 						</div>
@@ -314,7 +318,7 @@
 													<img src="./img/icon/vertical-dots.png" > 
 												</a>
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
-													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}')">삭제</a>
+													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}','${ii.index}')">삭제</a>
 												</div>
 											</div>
 											<!-- 삭제버튼  끝-->

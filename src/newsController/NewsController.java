@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -23,8 +25,11 @@ import newsCommand.NewsService;
 
 @Controller
 public class NewsController {
+	NewsService ns;
 	
-	public NewsController(){
+	@Autowired
+	public NewsController(NewsService newsService){
+		this.ns = newsService;
 	}
 	
 	@RequestMapping(value="/newsDetailT.news", method= {RequestMethod.POST, RequestMethod.GET})
@@ -45,7 +50,6 @@ public class NewsController {
 		List<NewsVo> list = null;
 		// 메인상단 사진 
 		List<NewsPhotoVo> list2 = null;
-		NewsService ns = new NewsService();
 		HttpSession httpSession = req.getSession(true);
 		System.out.println("뭐가 문제죠");
 		
@@ -66,7 +70,6 @@ public class NewsController {
 	public ModelAndView cateAll(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		List<NewsVo> vo = null;
-		NewsService ns = new NewsService();
 		System.out.println("aasdasd");
 		vo = ns.selectCateAi();
 		
@@ -82,7 +85,6 @@ public class NewsController {
 	public ModelAndView cateDe(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		List<NewsVo> vo = null;
-		NewsService ns = new NewsService();
 		String cateName = req.getParameter("cate_name");
 		System.out.println("카테고리 상세");
 		
@@ -99,7 +101,6 @@ public class NewsController {
 	public ModelAndView weekly() {
 		ModelAndView mv = new ModelAndView();
 		List<NewsVo> vo = null;
-		NewsService ns = new NewsService();
 		
 		vo = ns.weekly();
 		
@@ -111,20 +112,34 @@ public class NewsController {
 	
 	// 뉴스 상세보기
 	@RequestMapping(value="/news/newsDetail.news", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView newsDetail(HttpServletRequest req) {
+	public ModelAndView newsDetail(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mv = new ModelAndView();
 		Page p = new Page();
 		NewsVo vo = null;
 		String cnt = "";
+		Cookie[] cookies = req.getCookies();
 		List<NewsVo> list = null;
 		//댓글
 		List<CommentVo> comment = null;
 		//대댓글
 		List<CommentVo> reComment = null;
-		NewsService ns = new NewsService();
 		String nSerial = req.getParameter("nSerial");
-		String mName = req.getParameter("mName");
-		System.out.println("상세보기");
+		
+		// 쿠키를 확인하여 조회수 중복 증가 방지
+		if(cookies != null && cookies.length >0) {
+			for(int i=0; i<cookies.length; i++) {
+				if(cookies[i].getName().equals("cookie"+nSerial)) {
+					System.out.println("중복 조회");
+					break;
+				}else {
+					Cookie newCookie = new Cookie("cookie"+nSerial, nSerial);
+					ns.upHit(nSerial);
+					res.addCookie(newCookie);
+					System.out.println("처음 조회");
+				}
+			}
+		}
+		
 		
 		p.setnSerial(nSerial);
 		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
@@ -135,7 +150,6 @@ public class NewsController {
 		
 		vo = ns.newsDetail(nSerial);
 		list = ns.newsDetailSide("경제");
-		/*comment = ns.commentView(nSerial);*/
 		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial);
 		cnt = ns.commentCnt(nSerial);
@@ -158,10 +172,7 @@ public class NewsController {
 	public ModelAndView newDetailSide(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		List<NewsVo> list = null;
-		NewsService ns = new NewsService();
 		String nCategory = req.getParameter("nCategory");
-		System.out.println("사이드");
-		System.out.println(nCategory);
 		
 		list = ns.newsDetailSide(nCategory);
 		
@@ -175,16 +186,11 @@ public class NewsController {
 	@RequestMapping(value="/news/commentPage.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView commentPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		CommentVo vo = new CommentVo();
 		Page p = new Page();
 		String cnt = "";
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
-		NewsService ns = new NewsService();
-		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
 		String nSerial2 = req.getParameter("nSerial");
-		String mName = req.getParameter("mName");
-		String cContent = req.getParameter("content");
 		
 		p.setnSerial(nSerial2);
 		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
@@ -193,13 +199,9 @@ public class NewsController {
 			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
 		}
 		
-		vo.setnSerial(nSerial);
-		vo.setmName(mName);
-		vo.setcContent(cContent);
-		
 		comment = ns.commentView(p);
-		reComment = ns.reComment(nSerial2);
-		cnt = ns.commentCnt(nSerial2);
+		reComment = ns.reComment(req);
+		cnt = ns.commentCnt(req);
 		
 		mv.addObject("p", p);
 		mv.addObject("comment", comment);
@@ -215,33 +217,15 @@ public class NewsController {
 	@RequestMapping(value="/news/comment.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView commentInsert(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		CommentVo vo = new CommentVo();
 		Page p = new Page();
 		String cnt = "";
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
-		NewsService ns = new NewsService();
-		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
-		String nSerial2 = req.getParameter("nSerial");
-		String mName = req.getParameter("mName");
-		String cContent = req.getParameter("content");
-		
-		p.setnSerial(nSerial2);
-		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
-			p.setNowPage(1);
-		}else {
-			p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
-		}
-		
-		vo.setnSerial(nSerial);
-		vo.setmName(mName);
-		vo.setcContent(cContent);
-		
-		ns.commentInsert(vo);
-		
-		comment = ns.commentView(p);
-		reComment = ns.reComment(nSerial2);
-		cnt = ns.commentCnt(nSerial2);
+
+		ns.commentInsert(req);
+		comment = ns.commentView(req);
+		reComment = ns.reComment(req);
+		cnt = ns.commentCnt(req);
 		
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
@@ -255,27 +239,14 @@ public class NewsController {
 	@RequestMapping(value="/news/reComment.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView reCommentInsert(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		NewsService ns = new NewsService();
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
 		CommentVo vo = new CommentVo();
-		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
-		String nSerial2 = req.getParameter("nSerial");
-		int cGroup = Integer.parseInt(req.getParameter("cGroup"));
-		String mName = req.getParameter("mName");
-		String cContent = req.getParameter("reContent");
 		
-		System.out.println("컨텐츠내용 : "+ cContent);
+		ns.reCommentInsert(req);
 		
-		vo.setnSerial(nSerial);
-		vo.setcGroup(cGroup);
-		vo.setmName(mName);
-		vo.setcContent(cContent);
-		
-		ns.reCommentInsert(vo);
-		
-/*		comment = ns.commentView(nSerial2);*/
-		reComment = ns.reComment(nSerial2);
+		reComment = ns.reComment(req);
+		comment = ns.commentView(req);
 		
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
@@ -291,7 +262,6 @@ public class NewsController {
 		Page p = new Page();
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
-		NewsService ns = new NewsService();
 		
 		String nSerial = req.getParameter("nSerial");
 		String cIndent = req.getParameter("indent");
@@ -326,7 +296,6 @@ public class NewsController {
 	@RequestMapping(value="/news/likeA.news", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String likeA(HttpServletRequest req) {
-		NewsService ns = new NewsService();
 		LikeVo like = new LikeVo();
 		String likeA = "";
 		int likeCheck = 0;
@@ -360,7 +329,6 @@ public class NewsController {
 	@RequestMapping(value="/news/unLikeA.news", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String unLikeA(HttpServletRequest req) {
-		NewsService ns = new NewsService();
 		LikeVo like = new LikeVo();
 		String unLikeA = "";
 		int likeCheck = 0;
@@ -393,7 +361,6 @@ public class NewsController {
 	@RequestMapping(value="/news/newsSearch.news", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView newsSearch(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		NewsService ns = new NewsService();
 		List<NewsVo> vo = null;
 		List<NewsPhotoVo> vo2 = new ArrayList<NewsPhotoVo>();
 		String searchText = req.getParameter("searchText");

@@ -23,6 +23,7 @@ import bean.MembershipDao;
 import blogController.BlogBoardVo;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
+import newsCommand.SendMail;
 
 @Controller
 public class MembershipController {

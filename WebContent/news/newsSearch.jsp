@@ -98,6 +98,7 @@
                                     <div class="search-box">
                                         <form method="post" id="frm_news_search">
                                             <input type="text" name="searchText" class="searchText" placeholder="Search" value="${p.findStr}">
+                                            <input type="hidden" name="nowPage" class="nowPage"/>
                                         </form>
                                     </div>
                                 </div>
@@ -127,6 +128,7 @@
 						<c:forEach items="${vo}" var="i" varStatus="ii">
 							<div class="col-md-3 se_do">
 								<c:forEach begin="${ii.index}" end="${ii.index}" items="${vo2}" var="pho">
+								<c:set var="flag" value="${pho.flag }"/>
 									<img src="./img/newsImages/${pho.pName}" alt="" class="img-fluid">
 								</c:forEach>
 							</div>
@@ -139,10 +141,19 @@
 										<span class="txt_info_se">${i.nCategory} |</span>
 										<span class="txt_info_se">${i.nCompany}</span>
 										<input type="hidden" class="serial${ii.index}" value="${i.nSerial}"/>
-									</span>	
-									<p>
-										${i.nContent}
-									</p>
+									</span>
+									<c:choose>
+										<c:when test="${flag eq 0}">
+											<p>
+												${i.nContent}
+											</p>
+										</c:when>
+										<c:otherwise>
+											<p>
+												<c:out value='${i.nContent.replaceAll("\\\<.*?\\\>","")}' />
+											</p>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</c:forEach>						
