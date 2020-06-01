@@ -141,7 +141,7 @@ public class MembershipDao {
 		try {
 			vo = sqlSession.selectOne("membership.membership", mId);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("비 로그인");
 		}
 		
 		return vo;
