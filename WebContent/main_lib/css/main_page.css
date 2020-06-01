@@ -90,6 +90,12 @@ a{
 	#mainContent #main_s {float: none;}
 }
 
+.indexNews_s h5{ overflow: hidden; white-space: normal; line-height: 20px; height: 60px; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+.indexNews_s a:hover{color:black;}
+.indexNewsT{font-weight: bold;}
+
+
+
 
 
 

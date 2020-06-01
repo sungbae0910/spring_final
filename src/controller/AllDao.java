@@ -1,7 +1,5 @@
 package controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.Factory;
@@ -59,6 +57,30 @@ public class AllDao {
 		}
 		
 		return ck;
+	}
+	
+	public int phoneCk(String phone){
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("all.phone_ck", phone);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public String idFind(String phone) {
+		String result = "";
+		
+		try {
+			result = sqlSession.selectOne("all.id_find", phone);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	

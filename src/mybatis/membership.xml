@@ -36,7 +36,7 @@
 	</select>
 	
 	<select id="membership" parameterType="String" resultType="mybatis.MembershipVo">
-		select * from membership where mId = #{_parameter}
+		select * from membership where mId = #{value}
 	</select>
 	
 	<select id="IsMembership" parameterType="String" resultType="java.sql.Timestamp">

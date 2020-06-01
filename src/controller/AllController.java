@@ -103,12 +103,38 @@ public class AllController {
 		ModelAndView mv = new ModelAndView();
 		
 		String mId = req.getParameter("mId");
-		System.out.println(mId);
 		mv.addObject("mId", mId);
 		
 		mv.setViewName("pwFind");
 		return mv;
 	}
 	
+	@RequestMapping(value="/phoneCk.all", method= {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String phoneCk(HttpServletRequest req) {
+		String result = "";
+		int ck = 0;
+		
+		ck = as.phoneCk(req);
+		if(ck == 1) {
+			result = "1";
+		}else {
+			result= "0";
+		}
+		
+		return result;
+	}
 	
+	@RequestMapping(value="/idFind.all", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView idFind(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String result = "";
+		
+		result = as.idFind(req);
+		
+		mv.addObject("result", result);
+		
+		mv.setViewName("/root/idResult");
+		return mv;
+	}
 }

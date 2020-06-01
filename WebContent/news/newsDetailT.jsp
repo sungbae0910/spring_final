@@ -13,24 +13,24 @@
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico">
 
 <!-- CSS here -->
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/owl.carousel.min.css">
-<link rel="stylesheet" href="./css/ticker-style.css">
-<link rel="stylesheet" href="./css/flaticon.css">
-<link rel="stylesheet" href="./css/slicknav.css">
-<link rel="stylesheet" href="./css/animate.min.css">
-<link rel="stylesheet" href="./css/magnific-popup.css">
-<link rel="stylesheet" href="./css/fontawesome-all.min.css">
-<link rel="stylesheet" href="./css/themify-icons.css">
-<link rel="stylesheet" href="./css/slick.css">
-<link rel="stylesheet" href="./css/nice-select.css">
-<link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/responsive.css">
-<link rel="stylesheet" href="./css/newsTemp.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/ticker-style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/slicknav.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/animate.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/magnific-popup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/themify-icons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/slick.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/nice-select.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/responsive.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/news/css/newsTemp.css">
 
 <!-- js -->
-<script src="./js/jquery-3.4.1.js"></script>
-<script src="./js/news.js"></script>
+<script src="${pageContext.request.contextPath}/news/js/jquery-3.4.1.js"></script>
+<script src="${pageContext.request.contextPath}/news/js/news.js"></script>
 </head>
 <body>
 <form id="tes_s" method="post">
@@ -42,19 +42,6 @@
 	<input type="hidden" name="cGroup" class="cGroup"/>
 	<input type="hidden" name="reContent" class="reContent"/>
 	<input type="hidden" name="nowPage" value="${p.nowPage}" class="nowPage"/>
-	<!-- Preloader Start -->
-	<div id="preloader-active">
-		<div
-			class="preloader d-flex align-items-center justify-content-center">
-			<div class="preloader-inner position-relative">
-				<div class="preloader-circle"></div>
-				<div class="preloader-img pere-text">
-					<img src="./img/logo/logo.png" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Preloader Start -->
 
 	<header>
 		<!-- Header Start -->
@@ -67,14 +54,14 @@
 								class="row d-flex justify-content-between align-items-center">
 								<div class="header-info-left">
 									<ul>
-										<li><img src="./img/icon/header_icon1.png" alt="">34ºc,Sunny</li>
-										<li><img src="./img/icon/header_icon1.png" alt="">Tuesday,18th June, 2019</li>
+										<li><img src="${pageContext.request.contextPath}/news/img/icon/header_icon1.png" alt="">34ºc,Sunny</li>
+										<li><img src="${pageContext.request.contextPath}/news/img/icon/header_icon1.png" alt="">Tuesday,18th June, 2019</li>
 									</ul>
 								</div>
                                 <div class="header-info-right">
                                     <ul class="header-social">    
-                                        <li><a href="#"><img src="./img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
-                                        <li><a href="#"><img src="./img/icon/blog_s.png" style="width:25px; height:25px;"></a></li>
+                                        <li><a href="#"><img src="${pageContext.request.contextPath}/news/img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
+                                        <li><a href="#"><img src="${pageContext.request.contextPath}/news/img/icon/blog_s.png" style="width:25px; height:25px;"></a></li>
                                     </ul>
                                 </div>								
 							</div>
@@ -105,7 +92,7 @@
 								<div class="main-menu d-none d-md-block">
 									<nav>
 										<ul id="navigation">
-											<li><a href="newsMainT.jsp">홈</a></li>
+											<li><a href="${pageContext.request.contextPath}/news/newsMainT.jsp">홈</a></li>
 											<li><a href="categori.html">사회</a></li>
 											<li><a href="about.html">정치</a></li>
 											<li><a href="latest_news.html">경제</a></li>
@@ -163,7 +150,7 @@
 						<c:set var="flag" value="${vo.photos[0].flag}"/>
 						<c:if test="${flag eq 0}">
 						<figure class="figure">
-							<img src="./img/newsImages/${vo.photos[0].pName}"
+							<img src="${pageContext.request.contextPath}/news/img/newsImages/${vo.photos[0].pName}"
 								class="figure-img img-fluid rounded" alt="...">
 							<figcaption class="figure-caption">${vo.photos[0].pContent }</figcaption>
 						</figure>
@@ -225,7 +212,7 @@
 										<div class="test_s">
 											<div class="dropdown img_cmt2">
 												<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													<img src="./img/icon/vertical-dots.png" > 
+													<img src="${pageContext.request.contextPath}/news/img/icon/vertical-dots.png" > 
 												</a>
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
 													<a class="dropdown-item" href="#" onclick="news_comment_delete('${ii.index}','${i.cGroup}')">삭제</a>
@@ -240,7 +227,7 @@
 													<c:choose>
 														<c:when test="${not empty sessionScope.mName}">
 															<button type="button" class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span>
+																<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="${pageContext.request.contextPath}/news/img/news/unlike.png" style="width: 18px; height: 18px;"></span>
 																<span class="num_txt num_txtr${ii.index}">
 																	${i.cLike}
 																</span>
@@ -248,7 +235,7 @@
 														</c:when>
 														<c:otherwise>
 															<button type="button" class="btn_g btn_recomm" onclick="login_s()" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_recomm bounce"><img src="./img/news/unlike.png" style="width: 18px; height: 18px;"></span> 
+																<span class="img_cmt ico_recomm bounce"><img src="${pageContext.request.contextPath}/news/img/news/unlike.png" style="width: 18px; height: 18px;"></span> 
 																<span class="num_txt">
 																	${i.cLike}
 																</span>
@@ -258,7 +245,7 @@
 													<c:choose>
 														<c:when test="${not empty sessionScope.mName}">
 															<button type="button" class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="./img/news/like.png" style="width: 18px; height: 18px;"></span> 
+																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="${pageContext.request.contextPath}/news/img/news/like.png" style="width: 18px; height: 18px;"></span> 
 																<span class="num_txt num_txto${ii.index}">
 																	${i.cDiLike}
 																</span>
@@ -266,7 +253,7 @@
 														</c:when>
 														<c:otherwise>
 															<button type="button" class="btn_g btn_oppose" onclick="login_s()" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_oppose bounce"><img src="./img/news/like.png" style="width: 18px; height: 18px;"></span> 
+																<span class="img_cmt ico_oppose bounce"><img src="${pageContext.request.contextPath}/news/img/news/like.png" style="width: 18px; height: 18px;"></span> 
 																<span class="num_txt">
 																	${i.cDiLike}
 																</span>
@@ -315,7 +302,7 @@
 											<!-- 삭제버튼 -->
 											<div class="dropdown img_cmt2">
 												<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													<img src="./img/icon/vertical-dots.png" > 
+													<img src="${pageContext.request.contextPath}/news/img/icon/vertical-dots.png" > 
 												</a>
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
 													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}','${ii.index}')">삭제</a>
@@ -361,7 +348,7 @@
 					</div>
 					<!-- Detail Side 영역 -->					
 					<div class="news-poster d-none d-lg-block">
-						<img src="./img/news/news_card.jpg" alt="">
+						<img src="${pageContext.request.contextPath}/news/img/news/news_card.jpg" alt="">
 					</div>
 				</div>
 			</div>
@@ -377,7 +364,7 @@
 						<nav aria-label="Page navigation example">
 							<ul class="pagination justify-content-start">
 								<c:if test="${p.startPage>p.blockSize }">
-									<li class="page-item"><a class="page-link" href="#" onclick="comment_go(${p.startPage-1})"><img src="./img/news/previous.png" alt=""></a></li>
+									<li class="page-item"><a class="page-link" href="#" onclick="comment_go(${p.startPage-1})"><img src="${pageContext.request.contextPath}/news/img/news/previous.png" alt=""></a></li>
 								</c:if>
 								
 								<c:forEach var="i" begin="${p.startPage}" end="${p.endPage}" varStatus="ii">
@@ -385,7 +372,7 @@
 								</c:forEach>
 								
 								<c:if test="${p.endPage<p.totPage}">
-									<li class="page-item"><a class="page-link" href="#" onclick="comment_go(${p.endPage+1})"><img src="./img/news/next.png" alt=""></a></li>
+									<li class="page-item"><a class="page-link" href="#" onclick="comment_go(${p.endPage+1})"><img src="${pageContext.request.contextPath}/news/img/news/next.png" alt=""></a></li>
 								</c:if>
 							</ul>
 						</nav>
@@ -436,44 +423,43 @@
 	<!-- JS here -->
 
 	<!-- All JS Custom Plugins Link Here here -->
-	<script src="./js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/vendor/modernizr-3.5.0.min.js"></script>
 
 	<!-- Jquery, Popper, Bootstrap -->
-	<script src="./js/vendor/jquery-1.12.4.min.js"></script>
-	<script src="./js/popper.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/popper.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/bootstrap.min.js"></script>
 	<!-- Jquery Mobile Menu -->
-	<script src="./js/jquery.slicknav.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.slicknav.min.js"></script>
 
 	<!-- Jquery Slick , Owl-Carousel Plugins -->
-	<script src="./js/owl.carousel.min.js"></script>
-	<script src="./js/slick.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/slick.min.js"></script>
 	<!-- Date Picker -->
-	<script src="./js/gijgo.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/gijgo.min.js"></script>
 	<!-- One Page, Animated-HeadLin -->
-	<script src="././js/wow.min.js"></script>
-	<script src="./js/animated.headline.js"></script>
-	<script src="./js/jquery.magnific-popup.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/animated.headline.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.magnific-popup.js"></script>
 
 	<!-- Breaking New Pluging -->
-	<script src="./js/jquery.ticker.js"></script>
-	<script src="./js/site.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.ticker.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/site.js"></script>
 
 	<!-- Scrollup, nice-select, sticky -->
-	<script src="./js/jquery.scrollUp.min.js"></script>
-	<script src="./js/jquery.nice-select.min.js"></script>
-	<script src="./js/jquery.sticky.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.scrollUp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.nice-select.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.sticky.js"></script>
 
 	<!-- contact js -->
-	<script src="./js/contact.js"></script>
-	<script src="./js/jquery.form.js"></script>
-	<script src="./js/jquery.validate.min.js"></script>
-	<script src="./js/mail-script.js"></script>
-	<script src="./js/jquery.ajaxchimp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/contact.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.form.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/mail-script.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/jquery.ajaxchimp.min.js"></script>
 
 	<!-- Jquery Plugins, main Jquery -->
-	<script src="./js/plugins.js"></script>
-	<script src="./js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/plugins.js"></script>
+	<script src="${pageContext.request.contextPath}/news/js/main.js"></script>
 	<script>
 	news()
 </script>

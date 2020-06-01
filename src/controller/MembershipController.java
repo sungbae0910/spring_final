@@ -5,13 +5,16 @@ import java.util.List;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +25,13 @@ import bean.MembershipDao;
 import blogController.BlogBoardVo;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
+import newsCommand.NewsService;
 import newsCommand.SendMail;
+import newsController.CommentVo;
+import newsController.NewsDao;
+import newsController.NewsPhotoVo;
+import newsController.NewsVo;
+import newsController.Page;
 
 @Controller
 public class MembershipController {
@@ -248,14 +257,14 @@ public class MembershipController {
 	}
 	
 	
-	@RequestMapping(value="/sb_music/IndexInfo.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/IndexInfo.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public String IndexInfo(HttpServletRequest req) {
+	public String IndexInfo(HttpServletRequest req, HttpSession session) {
 		String str = "";
 		Gson gson = new GsonBuilder().create();
 		try {
 			MembershipVo vo = new MembershipVo();
-			String mId = req.getParameter("mId");
+			String mId = (String)session.getAttribute("mId");
 			
 			vo = dao.Membership(mId);
 			
@@ -272,14 +281,25 @@ public class MembershipController {
 	@RequestMapping(value="/main.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("1");
 		List<BlogBoardVo> blogList = dao.blogSelect();
-		System.out.println("2");
+		List<NewsVo> newsInfo = dao.selectI();
+		List<NewsPhotoVo> newsPhoto = dao.selectP();
+		
+		mv.addObject("newsInfo", newsInfo);
+		mv.addObject("newsPhoto", newsPhoto);
 		mv.addObject("blogList", blogList);
-		System.out.println("3");
 		mv.setViewName("main");
+		
 		return mv;
 	}
+	
+	@RequestMapping(value="/newsDetail.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public String newsDetail(@RequestParam("s_nserial") String nSerial) {
+		
+		return "redirect:/news/newsDetail.news?nSerial="+nSerial;
+	}
+	
+	
 }
 
 

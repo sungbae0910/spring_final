@@ -51,7 +51,6 @@ public class NewsController {
 		// 메인상단 사진 
 		List<NewsPhotoVo> list2 = null;
 		HttpSession httpSession = req.getSession(true);
-		System.out.println("뭐가 문제죠");
 		
 		list = ns.selectI();
 		list2 = ns.selectP();

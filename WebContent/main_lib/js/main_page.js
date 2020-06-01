@@ -14,3 +14,11 @@ main.brdView = function(mId, brdNo) {
 	$("#c_brdNo").val(brdNo);
 	$("#c_blog_frm").attr("action", "./blog/blog_Index.jsp?inc=../blogBrd.bg").submit();
 }
+
+var news_detail = function(serial){
+	let nSerial = $('.serial'+serial).val();
+	if(nSerial!=""){
+		$('.s_nserial').val(nSerial);
+	}
+	$('#s_news_frm').attr('action', 'newsDetail.mem').submit();
+}

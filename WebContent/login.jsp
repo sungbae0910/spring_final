@@ -27,7 +27,7 @@
 					<br><br>
 					<button id="login_s" type="button">로그인</button><br/>
 					<span class="login_find">
-						<a href="idfind.jsp">아이디</a> | <a href="idCk.jsp">비밀번호 찾기</a> | <a href="/sb_music/sb_register.jsp">회원가입</a>
+						<a href="idFind.jsp">아이디 찾기</a> | <a href="idCk.jsp">비밀번호 찾기</a> | <a href="./sb_music/sb_register.jsp">회원가입</a>
 					</span>
 				</div>
 			</form>
