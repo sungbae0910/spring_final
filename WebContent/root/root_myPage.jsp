@@ -47,9 +47,11 @@
 			<span>이메일 주소: ${vo.email }</span>
 		
 		</div>
-		
-		<button>회원정보 수정</button>
-		
+		<div id="my_Btns">
+			<button id="my_Btn">회원정보 수정</button>
+			
+			<button id="my_Btn">회원 탈퇴</button>
+		</div>
 	</div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>

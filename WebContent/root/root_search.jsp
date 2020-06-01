@@ -119,7 +119,6 @@
 					
 				</table>
 				
-				<hr>
 			</c:forEach>
 			<div align="right">
 				<a href="./shop/shop_index.jsp">쇼핑 더보기</a>

@@ -31,3 +31,13 @@
 	padding: 50px;
 	font-size: 18px;
 }
+
+#my_Btns{
+	margin-top: 25px;
+}
+
+#my_Btn{
+	background-color: white;
+	border:none;
+	
+}
