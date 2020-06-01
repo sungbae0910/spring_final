@@ -136,6 +136,42 @@ public class FoodDao {
 			  
   }
   
+	public int confirmId(String mId) {
+		int ck = 0;
+		
+		try {
+			ck = sqlSession.selectOne("membership.login_id_ck", mId);
+			
+			if(ck == 1) {
+				ck = 0;
+			}else {
+				ck = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ck;
+	}
+	
+	public int userCheck(String mId, String pwd) {
+		int ck = 0;
+		String pass = "";
+		try {
+			pass = sqlSession.selectOne("membership.login_pass_ck", mId);
+			if(pwd.equals(pass)) {
+				ck = 1;
+			}else {
+				ck = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ck;
+	}
+  
+  
   
   
   public void delFile(w_AttVo delList) {
@@ -145,5 +181,9 @@ public class FoodDao {
 		  
 	  
   }
+  
+  
+  
+  
   
 }

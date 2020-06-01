@@ -89,5 +89,59 @@ fd.func = function(){
    })
    
    
+   $('#login_w').click(function(){
+		$('#frm_login_w').attr('action', '../w_login.mem').submit();
+	})
+
+
+	$('#mId').blur(function(){
+		if(!/^[a-z0-9]{4,20}$/.test($('#mId').val())){
+			$('#checkId').text("id must be alphabet, insert number between 4~20");
+			$('#sm').attr("disabled", true);
+		}else{
+			var param = $('#w_frm_register').serialize();
+			$.ajax({
+				url : "../mIdCk.mem",
+				type : "POST",
+				cache : false,
+				dataType : "json",
+				data : param,
+				success : function(data){
+					if(data == 1){
+						$('#checkId').text("Already used Id");
+						$('#sm').attr("disabled", true);
+					}else{
+						$('#checkId').text("Nice Id");
+						$('#sm').attr("disabled", false);
+					}
+				},
+				error : function(request, status, error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
+				}
+			})
+		}
+		
+	})
+	
+
+	$('#pwdCk').blur(function(){
+		var pass = $('#pwd').val();
+		var passCk = $('#pwdCk').val();
+		
+		if(pass != passCk){
+			$('#checkPass').text("Deffernt password.");
+		}else{
+			$('#checkPass').text("");
+		}
+	})
+	
+
+
+	
+
+   
 }
 
+var loginCk = function(){
+	
+}
