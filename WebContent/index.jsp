@@ -13,6 +13,7 @@
 <script src="${pageContext.request.contextPath}/main_lib/js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
+<script src="./main_lib/js/index.js"></script>
 </head>
 <body>
    
@@ -26,16 +27,16 @@
             <img id="logo" src="${pageContext.request.contextPath}/main_lib/images/root.png">        
           </div>
           <div class="col-xs-8 col-sm-9 col-md-10">
-            <span>
-            
-               <input type="text" id='searchBar'/>
-            </span>
+          
+          	<form action="search.mem">
+            	<input type="text" id='searchBar' name="searchBar" autocomplete="off"/>
+            </form>
          </div>
        </div>
    </div>
 </div>
    <hr>
-   <div class="container-fluid" id="header_bot">
+   <div class="container" id="header_bot">
       <div class="row" align="center" >
          <div class="col-xs-2">
             <a href="${pageContext.request.contextPath}/news/newsMainT.jsp" style="color:black;">뉴스</a>
@@ -47,10 +48,7 @@
             <a href="${pageContext.request.contextPath}/shop/shop_index.jsp" style="color:black;">쇼핑</a>
          </div>
          <div class="col-xs-2">
-            <p>SNS</p>
-         </div>
-         <div class="col-xs-2">
-            <a href="${pageContext.request.contextPath}/sb_music/sb_main.jsp" style="color:black;">음악</a>
+            <a href="./sb_music/sb_main.jsp" style="color:black;">음악</a>
          </div>
          <div class="col-xs-2">
             <p>더보기</p>

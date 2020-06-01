@@ -103,7 +103,7 @@ var topP = function(){
 }
 
 var myPage = function(){
-	location = '../root/root_myPage.jsp';
+	$('#frm_top').attr('action', 'Membership.mem').submit();
 }
 
 

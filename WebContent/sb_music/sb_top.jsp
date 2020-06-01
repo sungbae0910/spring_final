@@ -36,13 +36,13 @@
 					${v.artist_name }
 				</div>
 				<div class="col-sm-1">
-					듣기
+					<span>듣기</span>
 				</div>
 				<div class="col-sm-1">
-					가사
+					<span>가사</span>
 				</div>
 				<div class="col-sm-1">
-					다운
+					<span>다운</span>
 				</div>
 			</div>
 		</c:forEach>

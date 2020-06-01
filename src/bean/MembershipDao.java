@@ -1,6 +1,11 @@
 package bean;
 
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,11 +13,14 @@ import java.util.Map;
 import javax.xml.crypto.Data;
 
 import org.apache.ibatis.session.SqlSession;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import blogController.BlogBoardVo;
 import mybatis.Factory;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
+import mybatis.searchVo;
 
 public class MembershipDao {
 
@@ -159,6 +167,330 @@ public class MembershipDao {
 		}
 		
 		return blogList;
+	}
+	
+	public List<searchVo> Search(String query){
+		String clientID = "nUaA_ODtTxwyOvPV3Bqx";
+		String clientSecret = "QM5FKfGNfj";
+				
+		
+		List<searchVo> list = null;
+		
+		try {
+			URL url;
+            url = new URL("https://openapi.naver.com/v1/search/"
+                    + "news.xml?query=" 
+            		+ URLEncoder.encode(query, "UTF-8")
+            		+ "&display=5"
+            		);
+ 
+            URLConnection urlConn = url.openConnection();
+            urlConn.setRequestProperty("X-Naver-Client-Id", clientID);
+            urlConn.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+            
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = factory.newPullParser();
+            parser.setInput(
+                    new InputStreamReader(urlConn.getInputStream())
+                    );
+            
+            int eventType = parser.getEventType();
+            searchVo vo = null;
+            while(eventType != XmlPullParser.END_DOCUMENT) {
+            	switch (eventType) {
+	                case XmlPullParser.END_DOCUMENT: // 문서의 끝
+	                    break;
+	                case XmlPullParser.START_DOCUMENT:
+	                    list = new ArrayList<searchVo>();
+	                    break;
+	                case XmlPullParser.END_TAG: {
+	                    String tag = parser.getName();
+	                    if(tag.equals("item"))
+	                    {
+	                        list.add(vo);
+	                        vo = null;
+	                    }
+	
+	                }
+	                case XmlPullParser.START_TAG: {
+	                	String tag = parser.getName();
+	                	switch (tag) {
+						case "item":
+							vo = new searchVo();
+							break;
+						case "title":
+							if(vo != null)
+								vo.setTitle(parser.nextText());
+							break;
+						case "link":
+							if(vo != null)
+								vo.setLink(parser.nextText());
+							break;
+						case "originallink":
+							if(vo != null)
+								vo.setOriginallink(parser.nextText());
+							break;
+						case "description":
+							if(vo != null)
+								vo.setDescription(parser.nextText());
+							break;
+	                	}
+	                }
+	        	
+	        	}
+            	eventType = parser.next();
+            }
+            
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
+	}
+	
+	public List<searchVo> kin(String query){
+		List<searchVo> list = null;
+		String clientID = "nUaA_ODtTxwyOvPV3Bqx";
+		String clientSecret = "QM5FKfGNfj";
+		
+		
+		try {
+			URL url;
+            url = new URL("https://openapi.naver.com/v1/search/"
+                    + "kin.xml?query=" 
+            		+ URLEncoder.encode(query, "UTF-8")
+            		+ "&display=5"
+            		);
+ 
+            URLConnection urlConn = url.openConnection();
+            urlConn.setRequestProperty("X-Naver-Client-Id", clientID);
+            urlConn.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+            
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = factory.newPullParser();
+            parser.setInput(
+                    new InputStreamReader(urlConn.getInputStream())
+                    );
+            
+            int eventType = parser.getEventType();
+            searchVo vo = null;
+            while(eventType != XmlPullParser.END_DOCUMENT) {
+            	switch (eventType) {
+	                case XmlPullParser.END_DOCUMENT: // 문서의 끝
+	                    break;
+	                case XmlPullParser.START_DOCUMENT:
+	                    list = new ArrayList<searchVo>();
+	                    break;
+	                case XmlPullParser.END_TAG: {
+	                    String tag = parser.getName();
+	                    if(tag.equals("item"))
+	                    {
+	                        list.add(vo);
+	                        vo = null;
+	                    }
+	
+	                }
+	                case XmlPullParser.START_TAG: {
+	                	String tag = parser.getName();
+	                	switch (tag) {
+						case "item":
+							vo = new searchVo();
+							break;
+						case "title":
+							if(vo != null)
+								vo.setTitle(parser.nextText());
+							break;
+						case "link":
+							if(vo != null)
+								vo.setLink(parser.nextText());
+							break;
+						case "description":
+							if(vo != null)
+								vo.setDescription(parser.nextText());
+							break;
+	                	}
+	                }
+	        	
+	        	}
+            	eventType = parser.next();
+            }
+            
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
+	}
+	
+	public List<searchVo> SearchBlog(String query){
+		List<searchVo> list = null;
+		String clientID = "nUaA_ODtTxwyOvPV3Bqx";
+		String clientSecret = "QM5FKfGNfj";
+		
+		
+		try {
+			URL url;
+            url = new URL("https://openapi.naver.com/v1/search/"
+                    + "blog.xml?query=" 
+            		+ URLEncoder.encode(query, "UTF-8")
+            		+ "&display=5"
+            		);
+ 
+            URLConnection urlConn = url.openConnection();
+            urlConn.setRequestProperty("X-Naver-Client-Id", clientID);
+            urlConn.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+            
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = factory.newPullParser();
+            parser.setInput(
+                    new InputStreamReader(urlConn.getInputStream())
+                    );
+            
+            int eventType = parser.getEventType();
+            searchVo vo = null;
+            while(eventType != XmlPullParser.END_DOCUMENT) {
+            	switch (eventType) {
+	                case XmlPullParser.END_DOCUMENT: // 문서의 끝
+	                    break;
+	                case XmlPullParser.START_DOCUMENT:
+	                    list = new ArrayList<searchVo>();
+	                    break;
+	                case XmlPullParser.END_TAG: {
+	                    String tag = parser.getName();
+	                    if(tag.equals("item"))
+	                    {
+	                        list.add(vo);
+	                        vo = null;
+	                    }
+	
+	                }
+	                case XmlPullParser.START_TAG: {
+	                	String tag = parser.getName();
+	                	switch (tag) {
+						case "item":
+							vo = new searchVo();
+							break;
+						case "title":
+							if(vo != null)
+								vo.setTitle(parser.nextText());
+							break;
+						case "link":
+							if(vo != null)
+								vo.setLink(parser.nextText());
+							break;
+						case "description":
+							if(vo != null)
+								vo.setDescription(parser.nextText());
+							break;
+						case "bloggername":
+							if(vo != null)
+								vo.setBloggername(parser.nextText());
+							break;
+						case "bloggerlink":
+							if(vo != null)
+								vo.setBloggerlink(parser.nextText());
+							break;
+	                	}
+	                }
+	        	
+	        	}
+            	eventType = parser.next();
+            }
+            
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
+		
+	}
+	
+	
+	public List<searchVo> SearchShop(String query){
+		List<searchVo> list = null;
+		String clientID = "nUaA_ODtTxwyOvPV3Bqx";
+		String clientSecret = "QM5FKfGNfj";
+		
+		
+		try {
+			URL url;
+            url = new URL("https://openapi.naver.com/v1/search/"
+                    + "shop.xml?query=" 
+            		+ URLEncoder.encode(query, "UTF-8")
+            		+ "&display=6"
+            		);
+ 
+            URLConnection urlConn = url.openConnection();
+            urlConn.setRequestProperty("X-Naver-Client-Id", clientID);
+            urlConn.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+            
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = factory.newPullParser();
+            parser.setInput(
+                    new InputStreamReader(urlConn.getInputStream())
+                    );
+            
+            int eventType = parser.getEventType();
+            searchVo vo = null;
+            while(eventType != XmlPullParser.END_DOCUMENT) {
+            	switch (eventType) {
+	                case XmlPullParser.END_DOCUMENT: // 문서의 끝
+	                    break;
+	                case XmlPullParser.START_DOCUMENT:
+	                    list = new ArrayList<searchVo>();
+	                    break;
+	                case XmlPullParser.END_TAG: {
+	                    String tag = parser.getName();
+	                    if(tag.equals("item"))
+	                    {
+	                        list.add(vo);
+	                        vo = null;
+	                    }
+	
+	                }
+	                case XmlPullParser.START_TAG: {
+	                	String tag = parser.getName();
+	                	switch (tag) {
+						case "item":
+							vo = new searchVo();
+							break;
+						case "title":
+							if(vo != null)
+								vo.setTitle(parser.nextText());
+							break;
+						case "link":
+							if(vo != null)
+								vo.setLink(parser.nextText());
+							break;
+						case "description":
+							if(vo != null)
+								vo.setDescription(parser.nextText());
+							break;
+						case "image":
+							if(vo != null)
+								vo.setImage(parser.nextText());
+							break;	
+						case "lprice":
+							if(vo != null)
+								vo.setLprice(Integer.parseInt(parser.nextText()));
+							break;
+						case "hprice":
+							if(vo != null)
+								vo.setHprice(Integer.parseInt(parser.nextText()));
+							break;
+	                	}
+	                }
+	        	
+	        	}
+            	eventType = parser.next();
+            }
+            
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
+		
 	}
 	
 }

@@ -11,6 +11,10 @@
  		mId = (String)session.getAttribute("mId");	
 	}
 %>
+
+<form id="frm_top">
+	<input type="hidden" name="mId" value="<%=mId%>">
+</form>
 <div class="container" id="mainContent">
     <div class="row">
     
@@ -24,7 +28,7 @@
 					<c:if test="${!empty mId}">
 						
 							
-						<span><%=mId %>님</span> | <span>내 정보  </span> 
+						<span><%=mId %>님</span> | <span onclick="myPage()">내 정보  </span> 
 						<button id="logout">로그아웃</button>
 						<br>
 						<span id="email"></span><br>
