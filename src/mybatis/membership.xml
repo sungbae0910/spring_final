@@ -60,4 +60,17 @@
 		where rownum &lt;=5
 	</select>
 
+	<!-- shop -->
+<!-- 	<select id="item_more_select" parameterType="Integer" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, I.item_main_photo, C.category_name, I.item_id
+		from shop_item I join shop_category C
+		on I.item_category = C.item_category
+		where I.item_category = ${_parameter}
+	</select> -->
+	<select id="main_shopItem_select" parameterType="shopController.ShopItemVo" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, I.item_main_photo, I.item_id
+		from shop_item I join shop_category C
+		on I.item_category = C.item_category
+		where I.item_category = ${item_category}
+	</select>
 </mapper>

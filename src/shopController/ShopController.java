@@ -50,7 +50,7 @@ public class ShopController {
 	public ModelAndView shopView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		ShopItemVo sVo = new ShopItemVo();
-
+		System.out.println(1);
 		String item_id = req.getParameter("item_id");
 		sVo.setItem_id(item_id);
 				

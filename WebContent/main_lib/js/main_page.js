@@ -14,3 +14,8 @@ main.brdView = function(mId, brdNo) {
 	$("#c_brdNo").val(brdNo);
 	$("#c_blog_frm").attr("action", "./blog/blog_Index.jsp?inc=../blogBrd.bg").submit();
 }
+
+/*main.shopView = function(item_id){
+	$("#h_item_id").val(item_id);
+	$("#h_shop_frm").attr("action", "./shop/shop_index.jsp?inc=../view.shop").submit();
+}*/
