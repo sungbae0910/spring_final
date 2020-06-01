@@ -10,7 +10,7 @@ body{
 }
 
 img#logo{
-	width: 155px;
+	width: 100%;
 	height: 50px;
 }
 a{
@@ -18,7 +18,7 @@ a{
 }
 
 #searchBar{
-	width: 800px;
+	width: 100%;
 	height: 45px;
 	
 	border-color: #5858FA;
@@ -31,20 +31,18 @@ a{
     outline: none;
 }
 
-#header_top{
-	position: relative;
-	top: 20px;
-}
+#header_top {margin: 75px 0;}
 
 #header_bot{
-	font-size: 17px;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 #loginDiv{
 	background-color: #f7f9fa; 
 	border:1px solid #dae1e6;
 	padding: 16px 16px 12px 17px;
-	margin-left: 20px;
+	margin: 10px 0;
 }
 
 #hr{
@@ -69,8 +67,23 @@ a{
     border: none;
 }
 
+/* main.jsp */
+#mainContent #main_s {float: right;}
+#mainContent #main_s #loginDiv button {width: 100%;}
 
-
+#mainContent .col-xs-12 {margin: 10px 0;}
+#mainContent .col-xs-12.blog {border-top: 2px solid #eee; border-bottom: 2px solid #eee;}
+#mainContent .list img {width: 100%; height: 115px;}
+#mainContent .list .content img {display: none;}
+#mainContent .list .listItem {margin: 15px 0;}
+#mainContent .list .listItem:hover {cursor: pointer;}
+#mainContent .list .listItem .col-xs-8.col-md-9 div {margin: 10px 0;}
+#mainContent .list .listItem .subject{font-size: 15px; font-weight: bold;}
+#mainContent .list .content {overflow: hidden; text-overflow: ellipsis; line-height: 1.5; height: 3em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+#mainContent .list .date {color: #909090;}
+@media (max-width: 989px) {
+	#mainContent #main_s {float: none;}
+}
 
 
 

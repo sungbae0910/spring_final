@@ -69,7 +69,7 @@ public class BlogController {
 			boardVo.setcName(cName);
 			category.put("cName", cName);
 		}
-		
+	
 		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
 		List<BlogBoardVo> myblogBrdList = blogDao.myblogBrdSelect(boardVo);
 		
@@ -85,6 +85,7 @@ public class BlogController {
 	
 	@RequestMapping(value = "/blogBrd.bg", method = {RequestMethod.POST})
 	public ModelAndView blogBrdView(HttpServletRequest req) {
+		System.out.println("들어왔당");
 		ModelAndView mv = new ModelAndView();
 		int brdLike = -1;
 		String mId = req.getParameter("c_mId");
@@ -100,29 +101,6 @@ public class BlogController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/brdInsert.bg", method = {RequestMethod.POST})
-	public ModelAndView brdInsert() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("blog_brdInsert");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/brdModify.bg", method = {RequestMethod.POST})
-	public ModelAndView brdModify(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
-		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
-		
-		List<BlogVo> category = blogDao.category(bNo);
-		BlogBoardVo board = blogDao.brdModify(brdNo);
-		
-		mv.addObject("category", category);
-		mv.addObject("board", board);
-		mv.setViewName("blog_brdModify");
-		return mv;
-	}
-	
 	@RequestMapping(value = "/uploadSummernoteImg.bg",  produces = "application/json", method = {RequestMethod.POST})
 	@ResponseBody
 	public String uploadSummernoteImg(MultipartHttpServletRequest req) {
@@ -133,15 +111,63 @@ public class BlogController {
 		return json;
 	}
 	
+	@RequestMapping(value = "/brdInsert.bg", method = {RequestMethod.POST})
+	public ModelAndView brdInsert(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
+		System.out.println(req.getParameter("c_bNo"));
+		
+		List<BlogVo> category = blogDao.category(bNo);
+		System.out.println(category.get(0).getbNo());
+		mv.addObject("category", category);
+		mv.setViewName("blog_brdInsert");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdInsertR.bg", method = {RequestMethod.POST})
+	public ModelAndView brdInsertR(MultipartHttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		BlogBoardVo brdVo = null;
+		/*if (req.getFile("c_brdHeaderImg") != null) { //게시물 헤더 사진이 있을 때만
+		}*/
+		FileUpload upload = new FileUpload();
+		brdVo = upload.brdFileUploading(req);
+		
+		blogDao.brdInsertR(brdVo, req);
+		mv.setViewName("blog_manage");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdModify.bg", method = {RequestMethod.POST})
+	public ModelAndView brdModify(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
+		
+		List<BlogVo> category = blogDao.category(bNo);
+		BlogBoardVo board = blogDao.brdView(brdNo);
+		
+		//태그 리스트형태로 만들기
+		BlogService service = new BlogService();
+		/*List<String> tagList = service.tagSplit(board.getTContent());*/
+		List<String> tagList = service.tagSplit(board.getTContent());
+		mv.addObject("category", category);
+		mv.addObject("board", board);
+		mv.addObject("tagList", tagList);			
+		mv.setViewName("blog_brdModify");
+		return mv;
+	}
+	
+	
 	@RequestMapping(value = "/brdModifyR.bg", method = {RequestMethod.POST})
 	public ModelAndView brdModifyR(MultipartHttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		BlogBoardVo brdVo = null;
-		if	(req.getFile("c_brdHeaderImg") != null) { //게시물 헤더 사진이 있을 때만
+		if (req.getFile("c_brdHeaderImg") != null) { //게시물 헤더 사진이 있을 때만
 			FileUpload upload = new FileUpload();
-			brdVo = upload.brdHeaderFileUploading(req);
+			brdVo = upload.brdFileUploading(req);
 		}
-		
+		System.out.println(brdVo.getmId());
 		System.out.println(brdVo.getbNo());
 		System.out.println(brdVo.getBrdNo());
 		System.out.println(brdVo.getcName());
@@ -155,6 +181,17 @@ public class BlogController {
 		blogDao.brdModifyR(brdVo, req);
 		
 		mv.setViewName("blog_manage");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdDelete.bg", method = {RequestMethod.POST})
+	public ModelAndView brdDelete(HttpServletRequest req) {
+		System.out.println("삭제");
+		ModelAndView mv = new ModelAndView();
+		
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		blogDao.brdDelete(brdNo);
+		
 		return mv;
 	}
 	

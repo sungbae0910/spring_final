@@ -23,5 +23,12 @@
 	<select id="login_pass_ck" parameterType="String" resultType="String">
 		select pwd from membership where mId = #{value}
 	</select>
+	
+	<!-- 블로그 게시물 -->
+	<select id="blogSelect" resultType="blogController.BlogBoardVo">
+		select B.* from (
+			select bNo, brdNo, mId, brdHeader, subject, content, brdDate from blog_board where basicSet=0 order by hit desc) B 
+		where rownum &lt;=5
+	</select>
 
 </mapper>

@@ -39,6 +39,6 @@
 	                                       
 	<%@ include file="blog_footer.jsp"%>
 
-</div>0
+</div>
 </body>
 </html>

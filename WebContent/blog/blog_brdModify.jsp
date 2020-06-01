@@ -21,7 +21,15 @@
 		       		<br/>
 		        	<textarea id="c_summernote" name="c_content">${board.content}</textarea>
 		        	<div id="c_tagBox">
-						<div id="c_tagList"></div>
+						<div id="c_tagList">
+							<c:if test="${!empty tagList || tagList ne ''}">		
+								<c:forEach var="t" items="${tagList}">
+									<span class='c_txtTag'>
+										<span class='c_tagItem'>#${t}</span><span class='tagDelBtn' idx=counter>x</span>
+									</span>
+								</c:forEach>
+							</c:if>
+						</div>
 						<span class="c_inpTag">
 							<span>#</span>
 								<input type="text" class="c_tag" id="c_tag" placeholder="태그입력"/>
@@ -68,7 +76,7 @@
 </div>
 
 <script>
-	blog.brdModi(); 
+	blog.brdAction(); 
 	blog.myblog_func();
 	
 	//게시물 공개여부데이터 라디오버튼체크 

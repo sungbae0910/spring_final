@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import bean.MembershipDao;
+import blogController.BlogBoardVo;
 import mybatis.MembershipVo;
 
 @Controller
@@ -105,6 +107,16 @@ public class MembershipController {
 		
 		mv.addObject("reuslt", result);
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="/main.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView main() {
+		ModelAndView mv = new ModelAndView();
+		List<BlogBoardVo> blogList = dao.blogSelect();
+		
+		mv.addObject("blogList", blogList);
+		mv.setViewName("main");
 		return mv;
 	}
 }

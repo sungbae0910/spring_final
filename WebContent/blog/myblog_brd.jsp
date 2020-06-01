@@ -67,7 +67,7 @@
       					</span>
 	        			<ul class="dropdown-menu">
 	        			  <li><a href="#" onclick="blog.brdModify()">수정</a></li>
-			      		  <li><a href="#" id="c_btnBrdDelete">삭제</a></li>
+			      		  <li><a href="#" id="c_btnBrdDelete" onclick="blog.brdDelete(${board.brdNo})">삭제</a></li>
 			      		  <li><a href="#" id="c_btnBrdPublic"> 공개로 전환</a></li>
 			      		  <li><a href="#" id="c_btnBrdSecret"> 비공개로 전환</a></li>
 	        			</ul>

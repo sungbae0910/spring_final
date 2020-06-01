@@ -2,6 +2,8 @@ package blogCommand;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -39,7 +41,7 @@ public class FileUpload {
 		return json.toJSONString();
 	}
 	
-	public BlogBoardVo brdHeaderFileUploading(MultipartHttpServletRequest req) {
+	public BlogBoardVo brdFileUploading(MultipartHttpServletRequest req) {
 		BlogBoardVo brdVo = new BlogBoardVo();
 		MultipartFile file = req.getFile("c_brdHeaderImg");
 		
@@ -62,6 +64,38 @@ public class FileUpload {
 			}
 		}
 		
+		 Enumeration<String> e = req.getParameterNames();
+		while (e.hasMoreElements()) {
+			String k = e.nextElement();
+			System.out.println(k);
+			switch(k) {
+				case "c_mId" : 
+					brdVo.setmId(req.getParameter("c_mId"));
+				break;
+				case "c_bNo" : 
+					brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
+					break;
+				case "c_brdNo" :
+					brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));
+					break;
+				case "c_cName" :
+					brdVo.setcName(req.getParameter("c_cName"));
+					break;
+				case "c_subject" :
+					brdVo.setSubject(req.getParameter("c_subject"));
+					break;
+				case "c_content" :
+					brdVo.setContent(req.getParameter("c_content"));
+					break;
+				case "c_tagContent" :
+					brdVo.setTContent(req.getParameter("c_tagContent"));
+					break;
+				case "c_basicSet" :
+					brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));
+					break;
+			}
+		}
+		/*
 		//게시물 정보
 		brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
 		brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));
@@ -69,7 +103,7 @@ public class FileUpload {
 		brdVo.setSubject(req.getParameter("c_subject"));
 		brdVo.setContent(req.getParameter("c_content"));
 		brdVo.setTContent(req.getParameter("c_tagContent"));
-		brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));
+		brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));*/
 		return brdVo;
 	}
 }

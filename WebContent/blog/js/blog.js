@@ -88,15 +88,21 @@ blog.brdModify = function () { //게시물 수정
 	});
 }*/
 
-
+blog.brdDelete = function (brdNo) { //게시물 삭제
+	$.post("../brdDelete.bg", {"c_brdNo" : brdNo}, function(data, state) { 
+		histroy.go(-1);
+	});
+}
 
 blog.brdInsert = function () { //글 쓰기
-	let param = $("#c_blog_frm").serialize(); 
+	$("#c_blog_frm").attr("action", "?inc=../brdInsert.bg").submit();
+	/*let param = $("#c_blog_frm").serialize(); 
 	$.post("../brdInsert.bg", param, function(data, state) { 
 		$("#c_blogContent").html(data);
-	});
+	});*/
 
 }
+
 
 
 blog.manageMain = function () { //블로그 관리
@@ -155,18 +161,31 @@ blog.myblog_func = function () {
 		$(".modal-title").text("답글 입력");
 	});
 	
+	/* 블로그 게시물 입력 */
+	$("#c_btnBrdInsert_Con").click(function () {
+		let mId = sessionStorage.getItem("LoginId");
+		$("#c_mId").val(mId);
+		basicSetAdd();
+		$("#c_blog_frm").attr("action", "?inc=../brdInsertR.bg").submit();
+	});
+	
 	/* 블로그 게시물 수정 */
 	$("#c_btnBrdModify_Con").click(function () {
-		//라디오 체크된 값 input태그에 넣기
+		basicSetAdd();
+		$("#c_blog_frm").attr("action", "?inc=../brdModifyR.bg").submit();
+	});
+	
+	//라디오 체크된 값 input태그에 넣기
+	function basicSetAdd() {
 		let basicSet = document.getElementsByName("c_basicSet");
 		for (let i=0; i<basicSet.length; i++){
 			if (basicSet[i].checked == true){ 
 				$("#c_basicSetVal").val(basicSet[i].value);
 			}
 		}
-		$("#c_blog_frm").attr("action", "?inc=../brdModifyR.bg").submit();
-	});
+	}
 }
+
 
 blog.brdLikeUpdate = function () { //공감버튼 값 변경
 	let param = $("#c_brd_frm").serialize(); 
@@ -174,8 +193,7 @@ blog.brdLikeUpdate = function () { //공감버튼 값 변경
 	});
 }
 
-
-blog.brdModi = function () {
+blog.brdAction = function () {
 	/*이미지 헤더 사진*/
 	$("#c_myblog_headerImg_add").click(function () { //이미지 추가 버튼
 		$("#c_btn_bHeaderImg").trigger('click');
@@ -282,7 +300,7 @@ blog.brdModi = function () {
 	            
 	                // 태그 중복 검사
 	                if (result.length == 0) { 
-	                	$("#c_tagList").append("<span class='c_txtTag'><span class='c_tagItem'>"+'#'+tagValue+"</span><span class='tagDelBtn' idx='"+counter+"'>x</span></span>");	                		
+	                	$("#c_tagList").append("<span class='c_txtTag'><span class='123'>"+'#'+tagValue+"</span><span class='tagDelBtn' idx='"+counter+"'>x</span></span>");          		
 	                    addTag(tagValue);
 	                    $(this).val("");
 	                    
@@ -298,10 +316,12 @@ blog.brdModi = function () {
 	    
 	    //태그 삭제
 	    $(document).on("click", ".tagDelBtn", function (e) {
-	        var index = $(this).attr("idx");
-	        tag[index] = "";
-	        $(this).parent().remove();
+	    	var index = $(this).attr("idx");
+	    	tag[index] = "";
+	    	$(this).parent().remove();
 	    });
+	});
+	
 	    
 	  	/*//태그 수정
 		 $(document).on("click", ".c_tagItem", function () {
@@ -316,14 +336,5 @@ blog.brdModi = function () {
 		       let tagChange = "<span class='c_txtTag'><span class='c_tagItem'>"+v+"</span><span class='tagDelBtn' idx='"+counter+"'>x</span></span>";
 		       $(this).parent().replaceWith(tagChange); //객체 바꾸기
 		    });*/
-	});
+
 }
-
-
-
-
-
-
-
-
-

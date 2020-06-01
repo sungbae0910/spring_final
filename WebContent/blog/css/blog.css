@@ -46,7 +46,7 @@ textarea:focus {outline: 1px solid #000;}
 #c_mainBlog #c_blogList .c_listData {float: left; padding-top: 5px; margin-right: 4%; height: 100px;}
 #c_mainBlog #c_blogList .c_listBrdDate {color: #909090;}
 #c_mainBlog #c_blogList .c_listSubject {padding: 2px 0 6px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width:500px; font-size: 1.7em;}
-#c_mainBlog #c_blogList .c_listInnerCont {overflow: hidden; text-overflow: ellipsis; width: 800px; line-height: 1.5; height: auto; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+#c_mainBlog #c_blogList .c_listInnerCont {overflow: hidden; text-overflow: ellipsis; width: 800px; line-height: 1.5; height: 3em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
 #c_mainBlog #c_blogList .c_listUserImg {float: left; width: 30px; height: 30px; margin-right: 8px;}
 #c_mainBlog #c_blogList .c_listUserImg img {width: 100%; height: 100%;}
 #c_mainBlog #c_blogList .c_listTitle, #c_blogList .c_listMid {vertical-align: -webkit-baseline-middle;}
@@ -178,12 +178,12 @@ textarea:focus {outline: 1px solid #000;}
 #c_brdWrite #c_tagBox #c_tagList .c_txtTag {margin-right: 15px;}
 #c_brdWrite #c_tagBox #c_tagList .c_txtTag .tagDelBtn {cursor: pointer; color: #909090;}
 #c_brdWrite #c_tagBox .c_inpTag #c_tag {outline: none; border: none;}
-#c_brdWrite #modifyModal .modal-body #c_basicSet {margin-top: 15px; font-size: 15px;}
-#c_brdWrite #modifyModal .modal-body #c_basicSet #c_setTitle {margin-right: 20px; font-weight: bold;}
-#c_brdWrite #modifyModal .modal-body #c_basicSet #c_setPublic {margin-right: 8px;}
-#c_brdWrite #modifyModal .modal-body #c_basicSet input[type="radio"]{margin-right: 5px;}
-#c_brdWrite #modifyModal .modal-footer button {border-radius: 18px; width: 70px; outline: none;}
-#c_brdWrite #modifyModal .modal-footer #c_btnBrdModify_Con {background-color: black; color: white;}
+#c_brdWrite .modal-body #c_basicSet {margin-top: 15px; font-size: 15px;}
+#c_brdWrite .modal-body #c_basicSet #c_setTitle {margin-right: 20px; font-weight: bold;}
+#c_brdWrite .modal-body #c_basicSet #c_setPublic {margin-right: 8px;}
+#c_brdWrite .modal-body #c_basicSet input[type="radio"]{margin-right: 5px;}
+#c_brdWrite .modal-footer button {border-radius: 18px; width: 70px; outline: none;}
+#c_brdWrite .modal-footer #c_btnInsert_Con, .modal-footer #c_btnModify_Con {background-color: black; color: white;}
 #c_brdWrite .c_btnBrd {float: right; margin: 25px 0; padding: 4px 30px; background-color: black; color: white; border: none; border-radius: 15px; outline: none;}
 
 

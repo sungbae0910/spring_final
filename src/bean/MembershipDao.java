@@ -1,10 +1,12 @@
 package bean;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import blogController.BlogBoardVo;
 import mybatis.Factory;
 import mybatis.MembershipVo;
 
@@ -83,6 +85,17 @@ public class MembershipDao {
 		}
 		
 		return ck;
+	}
+	
+	public List<BlogBoardVo> blogSelect() {
+		List<BlogBoardVo> blogList = null;
+		try {
+			blogList = sqlSession.selectList("membership.blogSelect");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return blogList;
 	}
 	
 }

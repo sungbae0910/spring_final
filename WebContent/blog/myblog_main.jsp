@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <div id="c_dimmedSidebar"></div>
 <form id="c_blog_frm" name="c_blog_frm" method="post">
-	<input type="hidden" name="c_bNo" id="c_bNo"/>
+	<input type="hidden" name="c_bNo" id="c_bNo" value="${myblogHeader.bNo}"/>
 	<input type="hidden" name="c_brdNo" id="c_brdNo"/>
 	<input type="hidden" name="c_cName" id="c_cName"/>
 	<input type="hidden" name="c_mId" id="c_mId" value="${myblogHeader.mId}"/>

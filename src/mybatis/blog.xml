@@ -61,25 +61,42 @@
 		on B.cName=C.cName where C.cName=#{cName} and B.mId=#{mId}
 	</select>
 	<select id="brdView" parameterType="Integer" resultType="blogController.BlogBoardVo">
-		select brdNo, bNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, brdLike, basicSet from blog_board where brdNo=${brdNo}
+		select B.brdNo, bNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, brdLike, basicSet, tContent
+		from blog_board B left outer join blog_tag T 
+		on B.brdNo=T.brdNo 
+		where B.brdNo=${brdsNo}
 	</select>
 	<select id="category" parameterType="Integer" resultType="blogController.BlogVo">
-		select cName from blog_category where bNo=${bNo} order by cIndex asc
+		select bNo, cName from blog_category where bNo=${bNo} order by cIndex asc
 	</select>
 	<select id="brdHeader" parameterType="Integer" resultType="String">
 		select brdHeader from blog_board where brdNo=${brdNo}
 	</select>
+	<!-- <select id="tagSelect" parameterType="Integer" resultType="Integer">
+		select count(tNo) from blog_tag where brdNo=${brdNo}
+	</select> -->
 	
-	<update id="brdModify" parameterType="blogController.BlogBrdVo">
-		update blog_board set cName=#{cName}, subject=#{subject}, content=#{content}, brdHeader=#{brdHeader}, oriBrdHeader=#{oriBrdHeader}, basicSet=${basicSet} where brdNo=${brdNo}
+	<update id="brdModify" parameterType="blogController.BlogBoardVo">
+		update blog_board set bNo=${bNo}, cName=#{cName}, subject=#{subject}, content=#{content}, brdHeader=#{brdHeader}, oriBrdHeader=#{oriBrdHeader}, basicSet=${basicSet} where brdNo=${brdNo}
 	</update>
-	
-	<!-- <update id="brdModifyNoHeader" parameterType="blogController.BlogBrdVo">
-		update blog_board set cName=#{cName}, subject=#{subject}, content=#{content} where brdNo=${brdNo}
+	<update id="brdModifyNoHeader" parameterType="blogController.BlogBoardVo">
+		update blog_board set bNo=${bNo}, cName=#{cName}, subject=#{subject}, content=#{content} where brdNo=${brdNo}
 	</update>
-	<update id="brdTagModify" parameterType="blogController.BlogBrdVo">
+	<update id="brdTagModify" parameterType="blogController.BlogBoardVo">
 		update blog_tag set tContent=#{tContent} where brdNo=#{brdNo}
-	</update> -->
+	</update>
+	
+	<insert id="brdInsert" parameterType="blogController.BlogBoardVo">
+		insert into blog_board(brdNo, bNo, cName, mId, brdHeader, oriBrdHeader, subject, content, brdDate) 
+		values (seq_blog_brdNo.nextval, ${bNo}, #{cName}, #{mId}, #{brdHeader}, #{oriBrdHeader}, #{subject}, #{content}, SYSDATE)
+	</insert>
+	<insert id="brdTagInsert" parameterType="blogController.BlogBoardVo">
+		insert into blog_tag(tNo, brdNo, tContent) VALUES(seq_blog_tNo.nextval, seq_blog_brdNo.currval, #{tContent})
+	</insert>
+	
+	<delete id="brdDelete" parameterType="Integer">
+		delete from blog_board where brdNo=${brdNo}
+	</delete>
 	<!-- <insert id="Like_insert" parameterType="hashMap">
 		insert into blog_brdLike(likeNo, brdNo, mId) values(seq_blog_likeNo.nextval, ${brdNo}, #{likeMid})
 	</insert>
