@@ -20,10 +20,10 @@ shop.optionValue_click = function(option_value, item_price){
 							+ "<div class='row'>"
 								+ "<input type='text' class='itemView_num_count' name='count' value='1' />"
 								+ "<div class='btn_select_item_num_frm'>"
-									+ "<button type='button' class='btn btn-default btn-lg btn_count_up' onclick='shop.countUp(" + option_value + ")'>"
+									+ "<button type='button' class='btn btn-default btn-lg btn_count_up' onclick='shop.countUp(this)'>"
 										+ "<span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>"
 									+ "</button>"
-									+ "<button type='button' class='btn btn-default btn-lg btn_count_down' onclick='shop.countDown(" + option_value + ")'>"
+									+ "<button type='button' class='btn btn-default btn-lg btn_count_down' onclick='shop.countDown(this)'>"
 										+ "<span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>"
 									+ "</button>"
 								+ "</div>"
@@ -35,21 +35,24 @@ shop.optionValue_click = function(option_value, item_price){
 							+ "</button>"
 						+ "</div>"
 					+ "</li>";
-	
 	$("#select_item_frm_ul").append(option_list);
 }
 
-shop.countUp = function(option_value){
-	if(this == option_value){
-		let ea = Number($(".itemView_num_count").val())+1;
-		$(".itemView_num_count").val(ea);
+shop.countUp = function(value){
+	if(value == value){
+		let ea = Number($(value).parents().prev("input").val())+1;
+		$(value).parents().prev("input").val(ea);
 	}
 }
 
-shop.countDown = function(option_value){
-	if(this == option_value){
-		let ea = Number($(".itemView_num_count").val())-1;
-		$(".itemView_num_count").val(ea);
+/*$('btn_count_up').click = function(){
+	$(value).colset("span")
+} 
+*/
+shop.countDown = function(value){
+	if(value == value){
+		let ea = Number($(value).parents().prev("input").val())-1;
+		$(value).parents().prev("input").val(ea);
 	}
 }
 

@@ -28,6 +28,7 @@ import mybatis.sb_clientVo;
 import mybatis.searchVo;
 import newsCommand.NewsService;
 import newsCommand.SendMail;
+import shopController.ShopItemVo;
 import newsController.CommentVo;
 import newsController.NewsDao;
 import newsController.NewsPhotoVo;
@@ -292,13 +293,24 @@ public class MembershipController {
 	@RequestMapping(value="/main.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
+		ShopItemVo sVo = new ShopItemVo();
 		List<BlogBoardVo> blogList = dao.blogSelect();
+		List<ShopItemVo> earringList = dao.earringList(sVo);
+		List<ShopItemVo> necklaceList = dao.necklaceList(sVo);
+		List<ShopItemVo> ringList = dao.ringList(sVo);
+		List<ShopItemVo> braceletList = dao.braceletList(sVo);
+
 		List<NewsVo> newsInfo = dao.selectI();
 		List<NewsPhotoVo> newsPhoto = dao.selectP();
 		
 		mv.addObject("newsInfo", newsInfo);
 		mv.addObject("newsPhoto", newsPhoto);
 		mv.addObject("blogList", blogList);
+		mv.addObject("earringList", earringList);
+		mv.addObject("necklaceList", necklaceList);
+		mv.addObject("ringList", ringList);
+		mv.addObject("braceletList", braceletList);
+
 		mv.setViewName("main");
 		
 		return mv;

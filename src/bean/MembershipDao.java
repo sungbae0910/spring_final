@@ -22,6 +22,7 @@ import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
 import newsController.NewsPhotoVo;
 import newsController.NewsVo;
+import shopController.ShopItemVo;
 
 public class MembershipDao {
 
@@ -515,5 +516,53 @@ public class MembershipDao {
 		return photo;
 	}
 	
+	
+	public List<ShopItemVo> earringList(ShopItemVo vo){
+		List<ShopItemVo> earringList = null;
+		vo.setItem_category(0);
+		try {
+			earringList = sqlSession.selectList("membership.main_shopItem_select", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return earringList;
+		}
+	}
+	
+	public List<ShopItemVo> necklaceList(ShopItemVo vo){
+		List<ShopItemVo> necklaceList = null;
+		vo.setItem_category(1);
+		try {
+			necklaceList = sqlSession.selectList("membership.main_shopItem_select", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return necklaceList;
+		}
+	}
+	
+	public List<ShopItemVo> ringList(ShopItemVo vo){
+		List<ShopItemVo> ringList = null;
+		vo.setItem_category(2);
+		try {
+			ringList = sqlSession.selectList("membership.main_shopItem_select", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return ringList;
+		}
+	}
+	
+	public List<ShopItemVo> braceletList(ShopItemVo vo){
+		List<ShopItemVo> braceletList = null;
+		vo.setItem_category(3);
+		try {
+			braceletList = sqlSession.selectList("membership.main_shopItem_select", vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return braceletList;
+		}
+	}
 }
 

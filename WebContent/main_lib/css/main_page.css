@@ -73,6 +73,113 @@ img#logo{
 	
 	
 }
+/* shop */
+#mainContent #main_shop_frm{
+	border-left: 2px solid #eee;
+}
+#mainContent #main_shop_frm #shop{
+	margin-left: 2%;
+}
+#mainContent #main_shop_frm #shop h3{
+	font-weight: bold;
+	margin: 0;
+	margin-top: 2%;
+	color: #5882FA;
+}
+#mainContent #main_shop_frm #shop #shop_earringList{
+	margin-top: 5%;
+}
+#mainContent #main_shop_frm #shop #shop_necklaceList{
+	margin-top: 5%;
+}
+#mainContent #main_shop_frm #shop #shop_ringList{
+	margin-top: 5%;
+}
+#mainContent #main_shop_frm #shop #shop_braceletList{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+#mainContent #main_shop_frm #shop .page-header{
+	margin-top: 5%;
+	padding-bottom: 0%;
+	margin: 0;
+}
+#mainContent #main_shop_frm #shop .page-header h4{
+	margin-left: 2%;
+	font-weight: 600;
+	margin: 0;
+}
+#mainContent #main_shop_frm #shop .page-header .btn_more{
+	border-style: none;
+	background-image: none;
+	box-shadow: none;
+	color: gray;
+	font-weight: 600;
+}
+#mainContent #main_shop_frm #shop #shop_earringList #shop_earring_img{
+	width: 110%;
+	margin-top: 5%;
+	height: 115px;
+}
+#mainContent #main_shop_frm #shop #shop_earringList #shop_earring_information{
+	text-align: center;
+	font-size: 150%;
+	margin-top: 7%;
+}
+#mainContent #main_shop_frm #shop #shop_earringList .earring_name{
+	font-weight: 600;
+}
+#mainContent #main_shop_frm #shop #shop_earringList .earring_price{
+	
+}
+#mainContent #main_shop_frm #shop #shop_necklaceList #shop_necklace_img{
+	width: 110%;
+	margin-top: 5%;
+	height: 115px;
+}
+#mainContent #main_shop_frm #shop #shop_necklaceList #shop_necklace_information{
+	font-size: 150%;
+	text-align: center;
+	margin-top: 7%;
+}
+#mainContent #main_shop_frm #shop #shop_necklaceList .necklace_name{
+	font-weight: 600;
+}
+#mainContent #main_shop_frm #shop #shop_necklaceList .necklace_price{
+	
+}
+#mainContent #main_shop_frm #shop #shop_ringList #shop_ring_img{
+	width: 110%;
+	margin-top: 5%;
+	height: 115px;
+}
+#mainContent #main_shop_frm #shop #shop_ringList #shop_ring_information{
+	text-align: center;
+	font-size: 150%;
+	margin-top: 7%;
+}
+#mainContent #main_shop_frm #shop #shop_ringList .ring_name{
+	font-weight: 600;
+}
+#mainContent #main_shop_frm #shop #shop_ringList .ring_price{
+	
+}
+#mainContent #main_shop_frm #shop #shop_braceletList #shop_bracelet_img{
+	width: 110%;
+	margin-top: 5%;
+	height: 115px;
+}
+#mainContent #main_shop_frm #shop #shop_braceletList #shop_bracelet_information{
+	font-size: 150%;
+	text-align: center;
+	margin-top: 7%;
+}
+#mainContent #main_shop_frm #shop #shop_braceletList .bracelet_name{
+	font-weight: 600;
+}
+#mainContent #main_shop_frm #shop #shop_braceletList .bracelet_price{
+	
+}
 
 #mainContent .col-xs-12 {margin: 10px 0;}
 #mainContent #promotion img {width: 100%;}
@@ -92,31 +199,3 @@ img#logo{
 .indexNews_s h5{ overflow: hidden; white-space: normal; line-height: 20px; height: 60px; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
 .indexNews_s a:hover{color:black;}
 .indexNewsT{font-weight: bold;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
