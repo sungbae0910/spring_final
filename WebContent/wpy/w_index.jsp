@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>꼬치예전</title>
-<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/jquery.dropotron.min.js"></script>
 <script src="./js/w_brand.js"></script>
 

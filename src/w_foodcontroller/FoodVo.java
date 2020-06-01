@@ -4,11 +4,11 @@ public class FoodVo {
 	int foodCode;
 	String foodName;
 	int foodPrice;
-	String foodtype;
+	String foodType;
 	String foodOriFile;
 	String foodSysFile;
-    
-	
+
+
 	public int getFoodCode() {
 		return foodCode;
 	}
@@ -27,6 +27,14 @@ public class FoodVo {
 
 	public int getFoodPrice() {
 		return foodPrice;
+	}
+
+	public String getFoodType() {
+		return foodType;
+	}
+
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
 	}
 
 	public void setFoodPrice(int foodPrice) {

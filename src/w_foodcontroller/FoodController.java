@@ -2,8 +2,8 @@ package w_foodcontroller;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +38,90 @@ public class FoodController {
 	 mv.setViewName("w_foodimageview");
 	 
 	 return mv;
+  }
+  
+  @RequestMapping(value="/w_insert.fd", method= {RequestMethod.POST})  
+  public ModelAndView insert() {
+	  
+	  ModelAndView mv = new ModelAndView();
+	  
+	  mv.setViewName("w_image_insert");
+	  return mv;
+  }
+  
+  
+  
+  @RequestMapping(value="/w_insertR.fd", method= {RequestMethod.POST})
+  public ModelAndView insertR(HttpServletRequest req, HttpServletResponse resp) {
+	  ModelAndView mv = new ModelAndView();
+	  String msg = "게시판 정보가 저장되었습니다.";
+	  System.out.println(12341231);
+	  //FileUpload
+	  FileUpload fu = new FileUpload(req, resp);
+	  HttpServletRequest newReq = fu.uploading();
+	  FoodVo vo = (FoodVo)newReq.getAttribute("vo");
+
+	  List<w_AttVo> attList = (List<w_AttVo>)newReq.getAttribute("attList");
+	  msg = dao.insert(vo, attList);
+	  
+	  mv.addObject("msg",msg);
+	  mv.setViewName("w_index");
+	  return mv;  
+  }
+  
+  @RequestMapping(value="/w_view.fd",method = {RequestMethod.POST})
+  public ModelAndView view(HttpServletRequest req) {
+	  ModelAndView mv = new ModelAndView();
+
+	  FoodVo vo = null;
+	  
+	  int foodCode = Integer.parseInt(req.getParameter("foodCode"));
+	  
+	  vo = dao.view(foodCode);
+
+	  mv.addObject("vo",vo);
+	  mv.setViewName("w_image_view");
+	  
+	  return mv;
+  }
+  @RequestMapping(value="/w_modify.fd", method= {RequestMethod.POST})
+  public ModelAndView modify(HttpServletRequest req) {
+	  ModelAndView mv = new ModelAndView();
+	  FoodVo vo = null;
+	  
+	  int foodCode = Integer.parseInt(req.getParameter("foodCode"));
+	  System.out.println(foodCode);
+	  vo = dao.view(foodCode);
+
+	  mv.addObject("vo",vo);
+	  mv.setViewName("w_image_modify");
+	  
+	  return mv;
+	  
+	  
+  }
+  
+  
+  @RequestMapping(value="/w_modifyR.fd",method= {RequestMethod.GET,RequestMethod.POST})
+  public ModelAndView modifyR(HttpServletRequest req, HttpServletResponse resp) {
+	  ModelAndView mv = new ModelAndView();
+	  FoodVo vo = null;
+	  List<w_AttVo> attList = null;
+	  List<w_AttVo> delFile = null;
+
+	  FileUpload fu = new FileUpload(req, resp);
+	  fu.uploading();
+	  
+	  vo = (FoodVo)req.getAttribute("vo");
+	  
+	  attList = (List<w_AttVo>)req.getAttribute("delFile");
+	  
+	  String msg = dao.modify(vo, attList, delFile);
+	  
+	  mv.addObject("msg",msg);
+	  mv.setViewName("w_menu");
+	  
+	  return mv;
   }
   
   

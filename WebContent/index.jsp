@@ -63,8 +63,8 @@
 		
 		<!-- 메인 -->
 		<div class="container">
-			<div class="col-sm-8" style="border:2px solid black;">
-				조필연씨 배너
+			<div class="col-sm-8"  >
+				
 			</div>
 			<div class="col-sm-3" id="loginDiv">
 			
