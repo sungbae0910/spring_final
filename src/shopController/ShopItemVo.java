@@ -10,7 +10,7 @@ public class ShopItemVo {
 	int item_category;
 	String item_optioin;
 	String item_name;
-	String item_price;
+	int item_price;
 	String item_information;
 	String category_name;
 	String item_option;
@@ -104,11 +104,11 @@ public class ShopItemVo {
 		this.item_name = item_name;
 	}
 
-	public String getItem_price() {
+	public int getItem_price() {
 		return item_price;
 	}
 
-	public void setItem_price(String item_price) {
+	public void setItem_price(int item_price) {
 		this.item_price = item_price;
 	}
 

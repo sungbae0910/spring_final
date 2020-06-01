@@ -64,25 +64,25 @@
 													${i.option_name_values}<span class="caret"></span>
 												</button>
 											</c:forEach>	
-												<ul class="dropdown-menu" id="btn_itemView_typeOption_menu" role="menu">
-													<li><span>필수 옵션</span></li>
-													<li class="divider"></li>
-													<c:forEach var="i" items="${typeValue}">
-														<li><a href="#">${i.option_value}</a></li>
-													</c:forEach>
-												</ul>
-											</div>
-											<div class="btn-group">
-												<c:forEach var="i" items="${colorOption}">
+											<ul class="dropdown-menu option_menu" id="btn_itemView_typeOption_menu" role="menu">
+												<li><span>필수 옵션</span></li>
+												<li class="divider"></li>
+												<c:forEach var="i" items="${typeValue}">
+													<li><a href="#" onclick="shop.optionValue_click('${i.option_value}')">${i.option_value}</a></li>
+												</c:forEach>
+											</ul>
+										</div>
+										<div class="btn-group">
+											<c:forEach var="i" items="${colorOption}">
 												<button type="button" class="btn btn-default dropdown-toggle btn_itemView_colorOption" data-toggle="dropdown" aria-expanded="false">
 													${i.option_name_values}<span class="caret"></span>
 												</button>
 											</c:forEach>
-											<ul class="dropdown-menu" id="btn_itemView_colorOption_menu" role="menu">
+											<ul class="dropdown-menu option_menu" id="btn_itemView_colorOption_menu" role="menu">
 												<li><span>필수 옵션</span></li>
 												<li class="divider"></li>
 												<c:forEach var="i" items="${colorValue}">
-													<li><a href="#">${i.option_value}</a></li>
+													<li><a href="#" onclick="shop.optionValue_click('${i.option_value}')">${i.option_value}</a></li>
 												</c:forEach>
 											</ul>
 										</div>
@@ -92,36 +92,30 @@
 													${i.option_name_values}<span class="caret"></span>
 												</button>
 											</c:forEach>
-											<ul class="dropdown-menu" id="btn_itemView_sizeOption_menu" role="menu">
+											<ul class="dropdown-menu option_menu" id="btn_itemView_sizeOption_menu" role="menu">
 												<li><span>필수 옵션</span></li>
 												<li class="divider"></li>
 												<c:forEach var="i" items="${sizeValue}">
-													<li><a href="#">${i.option_value}</a></li>
+													<li><a href="#" onclick="shop.optionValue_click('${i.option_value}')">${i.option_value}</a></li>
 												</c:forEach>
 											</ul>
 										</div>
 									</div>
 								</div>
-								<div class="row itemView_num_frm">
-									<div class="col-xs-4 itemView_num">
-										<span id="itemView_num_title">수량</span>
-									</div>
-									<div class="col-xs-8 itemView_num_text">
+								<div class="row select_item_frm">
+									<div class="col-xs-8 col-xs-offset-2 select_item">
 										<div class="row">
-											<div class="col-xs-6 col-xs-offset-3 itemView_num_text_frm">
-												<div class="row">
-													<div class="input-group itemView_num_content">
-													  	<button type="button" class="btn btn-default btn-lg btn_count_up" onclick="shop.changeUp()">
-														 	<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
-														</button>
-													  <input type="text" class="itemView_num_count" name="count" value="0" />
-													  	<button type="button" class="btn btn-default btn-lg btn_count_down" onclick="shop.changeDown()">
-														 	<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-													  	</button>
-													</div>
-												</div>
-											</div>
+											<ul id="select_item_frm_ul">
+											</ul>
 										</div>
+									</div>
+								</div>
+								<div class="row select_item_tot_price">
+									<div class="col-xs-4 select_item_tot_price_title_frm">
+										<span id="select_item_tot_price_title">총 가격</span>
+									</div>
+									<div class="col-xs-8 select_item_tot_price_text_frm">
+										<span id="select_item_tot_price_text">${vo.item_price}</span>
 									</div>
 								</div>
 								<div class="row itemView_btn_frm">
@@ -136,8 +130,8 @@
 										</button>
 									</div>
 									<div class="col-xs-4 itemView_btn_like">
-										<button type="button" class="btn btn-default btn-lg btn_itemView_like" >
-											<span class="glyphicon glyphicon-heart-empty" id="btn_itemView_like_click" aria-hidden="true">찜하기</span>
+										<button type="button" class="btn btn-default btn-lg btn_itemView_like">
+											<span class="glyphicon glyphicon-heart-empty" id="btn_itemView_like_click" aria-hidden="true"></span>
 										</button>
 									</div>
 								</div>
@@ -148,5 +142,5 @@
 		    </div>
 		</div>
 	</form>
-	<script>shop.func()</script>
+<script>shop.func()</script>
 </div>
