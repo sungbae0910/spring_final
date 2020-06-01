@@ -12,26 +12,18 @@ shop.category = function(item_category) {
 }
 shop.optionValue_click = function(option_value, item_price){
 	
-	$(".btn_count_up").click(function(){
-		var ea = Number($(".itemView_num_count").val())+1;
-		$(".itemView_num_count").val(ea);
-	})
-	$(".btn_count_down").click(function(){
-		var ea = Number($(".itemView_num_count").val())-1;
-		$(".itemView_num_count").val(ea);
-	})
 	let option_list = "<li id='select_item_frm_li'>"
-							+ "<div class='col-xs-6 select_item_option_name'>"
+						+ "<div class='col-xs-6 select_item_option_name'>"
 							+ "<span class='select_item_option_name_text'>" + option_value + "</span>"
 						+ "</div>"
 						+ "<div class='col-xs-3 select_item_num'>"
 							+ "<div class='row'>"
 								+ "<input type='text' class='itemView_num_count' name='count' value='1' />"
 								+ "<div class='btn_select_item_num_frm'>"
-									+ "<button type='button' class='btn btn-default btn-lg btn_count_up'>"
+									+ "<button type='button' class='btn btn-default btn-lg btn_count_up' onclick='shop.countUp(" + option_value + ")'>"
 										+ "<span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>"
 									+ "</button>"
-									+ "<button type='button' class='btn btn-default btn-lg btn_count_down'>"
+									+ "<button type='button' class='btn btn-default btn-lg btn_count_down' onclick='shop.countDown(" + option_value + ")'>"
 										+ "<span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>"
 									+ "</button>"
 								+ "</div>"
@@ -45,7 +37,20 @@ shop.optionValue_click = function(option_value, item_price){
 					+ "</li>";
 	
 	$("#select_item_frm_ul").append(option_list);
+}
 
+shop.countUp = function(option_value){
+	if(this == option_value){
+		let ea = Number($(".itemView_num_count").val())+1;
+		$(".itemView_num_count").val(ea);
+	}
+}
+
+shop.countDown = function(option_value){
+	if(this == option_value){
+		let ea = Number($(".itemView_num_count").val())-1;
+		$(".itemView_num_count").val(ea);
+	}
 }
 
 shop.itemView = function(item_id){
