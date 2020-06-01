@@ -19,7 +19,7 @@ $(document).ready(function() {
 		}
 	})
 });
-*/
+
 var myPage = function(){
 	$('#frm_top').attr('action', './sb_music/Membership.mem').submit();
 }

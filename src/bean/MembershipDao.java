@@ -20,6 +20,7 @@ import blogController.BlogBoardVo;
 import mybatis.Factory;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
+import mybatis.searchVo;
 import newsController.NewsPhotoVo;
 import newsController.NewsVo;
 import shopController.ShopItemVo;
