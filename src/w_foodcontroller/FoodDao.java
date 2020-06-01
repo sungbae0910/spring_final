@@ -28,7 +28,7 @@ public class FoodDao {
 	  }
   }
 	
-  public String insert(FoodVo vo , List<w_AttVo> attList) {
+  public String insert(FoodVo vo , w_AttVo attVo) {
 	  String msg = "정상적으로 입력되었습니다.";
 	  
 	  try {
@@ -36,11 +36,11 @@ public class FoodDao {
 		  if(cnt<1) {
 			  throw new Exception("본문저장중 오류");
 		  }
-		  for(w_AttVo attVo : attList) {
+		      attVo.setFoodCode(vo.getFoodCode());
 			  cnt = sqlSession.insert("food.w_att_insert",attVo);
 			  if(cnt<1) {
 				  throw new Exception("첨부 데이터 저장시 오류 발생");
-			  }
+
 		  }
 		  
 		  sqlSession.commit();
@@ -48,7 +48,7 @@ public class FoodDao {
 		// TODO: handle exception
 		msg = ex.getMessage();
 		sqlSession.rollback();
-		delFile(attList);
+		/*delFile(attList);*/
         ex.printStackTrace();
 	}finally {
 		return msg;
@@ -72,7 +72,7 @@ public class FoodDao {
 	  
   }
   
-  public String modify(FoodVo vo , List<w_AttVo> attList, List<w_AttVo> delFile) {
+  public String modify(FoodVo vo , w_AttVo attVo) {
 	  String msg = "정상적으로 수정 되었습니다.";
 	  
 	  try {
@@ -80,16 +80,14 @@ public class FoodDao {
 		if(cnt<1) {
 			throw new Exception("수정중 오류 발생");
 		}
-		for(w_AttVo attVo : attList) {
+
 			attVo.setFoodCode(vo.getFoodCode());
-			cnt = sqlSession.insert("food.att_insert2",attVo);
+
+			cnt = sqlSession.update("food.w_att_update2",attVo);
 			if(cnt<1) throw new Exception("첨부데이터중 오류");
-		}
-		for(w_AttVo attVo : delFile) {
-			cnt = sqlSession.delete("food.w_att_delete",attVo);
-			if(cnt<1) throw new Exception ("첨부데이터중 오류");
-		}
-		delFile(delFile);
+
+
+
 		sqlSession.commit();
 		
 	} catch (Exception e) {
@@ -114,15 +112,38 @@ public class FoodDao {
 	  return attList;
   }
   
+  public String delete(FoodVo vo) {
+	  String msg = "게시물이 삭제 되었습니다";
+	  int cnt = 0;
+	  try {
+		cnt = sqlSession.delete("food.w_delete",vo);
+		if(cnt<1) {
+			throw new Exception("삭제중 오류 발생");
+		}
+		//w_AttVo delList = (w_AttVo) sqlSession.selectList("food.w_att_list",vo.getFoodCode());
+		//cnt = sqlSession.delete("food.w_att_list",delList);
+
+		sqlSession.commit();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+		sqlSession.rollback();
+		msg = e.getMessage();
+		e.printStackTrace();
+	} finally {
+		return msg;
+	}
+			  
+  }
   
   
   
-  public void delFile(List<w_AttVo> delList) {
-	  for(w_AttVo attVo : delList) {
-		  File f = new File(FileUpload.upload + attVo.getSysFile());
+  public void delFile(w_AttVo delList) {
+
+		  File f = new File(FileUpload.upload + delList.getSysFile());
 		  if(f.exists()) f.delete();
 		  
-	  }
+	  
   }
   
 }

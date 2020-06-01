@@ -13,8 +13,8 @@ public class FoodVo {
 		return foodCode;
 	}
 
-	public void setFoodCode(int foodCode) {
-		this.foodCode = foodCode;
+	public void setFoodCode(int foodCode2) {
+		this.foodCode = foodCode2;
 	}
 
 	public String getFoodName() {

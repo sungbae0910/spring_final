@@ -39,11 +39,11 @@
 						      
 						      
 						    <div id="w_button">
-						      <input type="button" id="w_btnUpdate" value="수정"/>
-						      <input type="button" id="w_btndelete" value="삭제"/>
-							  <input type="button" id="w_btnFind" value="취소" onclick= "location.href = 'w_menu.jsp' " />
+						      <input type="button" id="w_btnUpdate" class="w_btnPhoto1" value="수정"/>
+						      <input type='button' id='w_btnDelete' class="w_btnPhoto2" value='삭제'/>
+							  <input type="button" id="w_btnFind"   class="w_btnPhoto3" value="취소" onclick= "location.href = 'w_menu.jsp' " />
 							</div>
-							<input type='text' name='foodCode' value='${vo.foodCode}'/>
+							<input type='hidden' name='foodCode' value='${vo.foodCode}'/>
 						</form>
 
 <script>fd.func()</script>

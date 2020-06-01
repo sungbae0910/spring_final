@@ -55,17 +55,17 @@ public class FoodController {
   public ModelAndView insertR(HttpServletRequest req, HttpServletResponse resp) {
 	  ModelAndView mv = new ModelAndView();
 	  String msg = "게시판 정보가 저장되었습니다.";
-	  System.out.println(12341231);
+
 	  //FileUpload
 	  FileUpload fu = new FileUpload(req, resp);
 	  HttpServletRequest newReq = fu.uploading();
 	  FoodVo vo = (FoodVo)newReq.getAttribute("vo");
 
-	  List<w_AttVo> attList = (List<w_AttVo>)newReq.getAttribute("attList");
+	  w_AttVo attList = (w_AttVo)newReq.getAttribute("attVo");
 	  msg = dao.insert(vo, attList);
 	  
 	  mv.addObject("msg",msg);
-	  mv.setViewName("w_index");
+	  mv.setViewName("w_menu");
 	  return mv;  
   }
   
@@ -90,7 +90,7 @@ public class FoodController {
 	  FoodVo vo = null;
 	  
 	  int foodCode = Integer.parseInt(req.getParameter("foodCode"));
-	  System.out.println(foodCode);
+
 	  vo = dao.view(foodCode);
 
 	  mv.addObject("vo",vo);
@@ -105,25 +105,42 @@ public class FoodController {
   @RequestMapping(value="/w_modifyR.fd",method= {RequestMethod.GET,RequestMethod.POST})
   public ModelAndView modifyR(HttpServletRequest req, HttpServletResponse resp) {
 	  ModelAndView mv = new ModelAndView();
-	  FoodVo vo = null;
-	  List<w_AttVo> attList = null;
-	  List<w_AttVo> delFile = null;
-
+	  FoodVo vo = new  FoodVo();
+	  w_AttVo attVo = new w_AttVo();
 	  FileUpload fu = new FileUpload(req, resp);
 	  fu.uploading();
+
 	  
 	  vo = (FoodVo)req.getAttribute("vo");
+
+	  attVo = (w_AttVo)req.getAttribute("attVo");
+
 	  
-	  attList = (List<w_AttVo>)req.getAttribute("delFile");
-	  
-	  String msg = dao.modify(vo, attList, delFile);
+	  String msg = dao.modify(vo, attVo);
 	  
 	  mv.addObject("msg",msg);
-	  mv.setViewName("w_result");
+	  mv.setViewName("w_menu");
 	  
 	  return mv;
   }
   
+  @RequestMapping(value="/w_delete.fd",method= {RequestMethod.POST})
+  public ModelAndView delete(HttpServletRequest req ) {
+	  ModelAndView mv = new ModelAndView();
+	  FoodVo vo = new FoodVo();
+	  int foodCode = Integer.parseInt(req.getParameter("foodCode"));
+	  
+      
+	  vo.setFoodCode(foodCode);
+
+
+	  String msg = dao.delete(vo);
+
+	  mv.addObject("msg",msg);
+	  mv.setViewName("w_menu");
+	  
+	  return mv;
+  }
   
   
 }

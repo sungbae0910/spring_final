@@ -38,11 +38,10 @@
 
 
 	    
-		<input type='button' id='w_btnModify' value='수정'/>
-		<input type='button' id='w_btnDelete' value='삭제'/>
-		<input type='button' id='w_btnFind' onclick="location.href='w_menu.jsp'" value='목록으로'/>
+		<input type='button' id='w_btnModify' class="w_btnPhoto1" value='수정'/>
+		<input type='button' id='w_btnFind' class="w_btnPhoto2" onclick="location.href='w_menu.jsp'" value='목록으로'/>
 		
-		<input type='text' name='foodCode' value='${vo.foodCode}'/>
+		<input type='hidden' name='foodCode' value='${vo.foodCode}'/>
 
 	</form>
 <script>fd.func()</script>
