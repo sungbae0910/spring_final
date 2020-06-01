@@ -25,8 +25,8 @@
 		
         <div class="col-sm-12 col-md-8" id="main_c">
         
-        	<div class="col-xs-12" id="promotion" style="border: 2px solid black;">
-				조필연씨 배너
+        	<div class="col-xs-12" id="promotion">
+				 <a href="./wpy/w_index.jsp"><img  src="./wpy/w_images/foodB.jpg"></a> 
 			</div>
 			
 			<div class="col-xs-12 " style="border: 2px solid black;">

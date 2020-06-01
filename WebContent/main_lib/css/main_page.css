@@ -72,6 +72,7 @@ a{
 #mainContent #main_s #loginDiv button {width: 100%;}
 
 #mainContent .col-xs-12 {margin: 10px 0;}
+#mainContent #promotion img {width: 100%;}
 #mainContent .col-xs-12.blog {border-top: 2px solid #eee; border-bottom: 2px solid #eee;}
 #mainContent .list img {width: 100%; height: 115px;}
 #mainContent .list .content img {display: none;}
