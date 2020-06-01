@@ -1,5 +1,7 @@
 package controller;
 
+import java.sql.Date;
+import java.util.List;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import bean.MembershipDao;
+import blogController.BlogBoardVo;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
 
@@ -267,6 +270,16 @@ public class MembershipController {
 		return str;
 	}
 
+	
+	@RequestMapping(value="/main.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView main() {
+		ModelAndView mv = new ModelAndView();
+		List<BlogBoardVo> blogList = dao.blogSelect();
+		
+		mv.addObject("blogList", blogList);
+		mv.setViewName("main");
+		return mv;
+	}
 }
 
 

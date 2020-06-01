@@ -17,7 +17,10 @@
 	  		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${myblogHeader.bTitle}
 		</button>
 		<div id="c_myblog_Cate">
-			<c:forEach var="c" items="${myblogHeader.category}">
+			<c:forEach var="c`" items="${myblogHeader.category}">
+				<c:if test="${c.cName eq '카테고리 없음'}">
+					<c:remove var="c" scope="request"/>
+				</c:if>
 				<div class="c_CateItem" onclick="blog.category('${c.cName}')">${c.cName} <span>(${c.cnt})</span></div>
 			</c:forEach>
 		</div>
@@ -64,7 +67,7 @@
       					</span>
 	        			<ul class="dropdown-menu">
 	        			  <li><a href="#" onclick="blog.brdModify()">수정</a></li>
-			      		  <li><a href="#" id="c_btnBrdDelete">삭제</a></li>
+			      		  <li><a href="#" id="c_btnBrdDelete" onclick="blog.brdDelete(${board.brdNo})">삭제</a></li>
 			      		  <li><a href="#" id="c_btnBrdPublic"> 공개로 전환</a></li>
 			      		  <li><a href="#" id="c_btnBrdSecret"> 비공개로 전환</a></li>
 	        			</ul>

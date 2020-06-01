@@ -1,11 +1,14 @@
 package bean;
 
-import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.xml.crypto.Data;
 
 import org.apache.ibatis.session.SqlSession;
 
+import blogController.BlogBoardVo;
 import mybatis.Factory;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
@@ -146,5 +149,16 @@ public class MembershipDao {
 		
 	}
 
+	public List<BlogBoardVo> blogSelect() {
+		List<BlogBoardVo> blogList = null;
+		try {
+			blogList = sqlSession.selectList("membership.blogSelect");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return blogList;
+	}
+	
 }
 

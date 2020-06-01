@@ -1,12 +1,11 @@
 package blogController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.catalina.Session;
+import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import mybatis.Factory;
 
@@ -49,6 +48,7 @@ public class BlogDao {
 		BlogVo myblogHeader = null;
 		try {
 			//블로그 헤더, 카테고리 조회
+			System.out.println(mId);
 			myblogHeader = sqlSession.selectOne("blog.myblogHeader", mId);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,16 +93,76 @@ public class BlogDao {
 		return category;
 	}
 	
-	public BlogBoardVo brdModify(int brdNo) {
-		BlogBoardVo board = null;
+	public void brdInsertR(BlogBoardVo brdVo, MultipartHttpServletRequest req) {
 		try {
-			//게시물 정보 조회
-			board = sqlSession.selectOne("blog.brdView", brdNo);
-		} catch (Exception e) {
+			//게시물 입력
+			sqlSession.update("blog.brdInsert", brdVo);
+			//게시물 태그 값이 있으면 추가
+			sqlSession.insert("blog.brdTagInsert", brdVo);
+			
+			sqlSession.commit();
+		} catch(Exception e) {
 			e.printStackTrace();
+			String delbrdHeader = brdVo.getBrdHeader();
+			delHeader(req, delbrdHeader);
+			sqlSession.rollback();
 		}
-		return board;
 	}
+	
+	public void brdModifyR(BlogBoardVo brdVo, MultipartHttpServletRequest req) {
+		String delbrdHeader = null;
+		try {
+			if (brdVo.getBrdHeader() != "") { //헤더사진을 추가, 변경 하였을 때
+				//삭제 할 헤더사진조회
+				delbrdHeader = sqlSession.selectOne("blog.brdHeader", brdVo.getBrdNo());
+				delHeader(req, delbrdHeader); //서버경로에 파일 삭제
+				
+				sqlSession.update("blog.brdModify", brdVo);
+			} else { //헤더사진을 추가, 변경 하지 않았을 때
+				sqlSession.update("blog.brdModifyNoHeader", brdVo);
+			}
+			
+			//태그 내용 입력 또는 수정
+			if (!brdVo.getTContent().isEmpty()) { //태그를 입력했을 때
+				sqlSession.update("blog.brdTagModify", brdVo);				
+				/*//게시물에 태그가 있는 지 확인
+				int tagCount = sqlSession.selectOne("blog.tagSelect", brdVo.getBrdNo());
+				
+				if (tagCount == 0) { //게시물에 태그 존재X
+					sqlSession.insert("blog.brdTagInsert", brdVo);
+				} else { //게시물에 태그 존재O
+				}*/
+			}
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			delHeader(req, delbrdHeader);
+			sqlSession.rollback();
+		}
+	}
+	
+	public void delHeader(MultipartHttpServletRequest req, String delbrdHeader) { //서버경로에 파일 삭제
+		String filePath = req.getSession().getServletContext().getRealPath("/blog/blog_image/"); 
+		File file = new File(filePath + delbrdHeader);
+		System.out.println(filePath);
+		if (file.exists()) {
+			FileUtils.deleteQuietly(file); //파일 삭제
+		}
+	}
+	
+	public void brdDelete(int brdNo) {
+		try {			
+			int cnt = sqlSession.delete("blog.brdDelete", brdNo);
+			if (cnt < 1) {
+				throw new Exception();
+			}
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
 	/*public BlogBoardVo brdView(String brdLike,String brdNo, String mId) {
 		BlogBoardVo brdVo = null;
 		try {

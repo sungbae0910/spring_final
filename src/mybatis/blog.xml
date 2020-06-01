@@ -9,11 +9,13 @@
 		<result column="bNo" property="bNo"/>
 		<result column="mId" property="mId"/>
 		<result column="brdHeader" property="brdHeader"/>
+		<result column="oriBrdHeader" property="oriBrdHeader"/>
 		<result column="subject" property="subject"/>
 		<result column="content" property="content"/>
 		<result column="brdDate" property="brdDate"/>
 		<result column="hit" property="hit"/>
 		<result column="brdLike" property="brdLike"/>
+		<result column="basicSet" property="basicSet"/>
 	</resultMap>
 	<resultMap id="bgInfo" type="blogController.BlogVo">
 		<result column="bNo" property="bNo"/>
@@ -35,35 +37,66 @@
 			select Brd.brdNo, Brd.mId, Brd.brdHeader, Brd.oriBrdHeader, Brd.subject, B.bNo, B.bTitle, B.mPhoto
 			from blog_board Brd join blog_info B
 			on Brd.bNo=B.bNo 
-			where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach>order by Brd.brdLike desc
+			where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach> and Brd.basicSet=0 order by Brd.brdLike desc
 		) Blog where rownum &lt;=3
 	</select>
 	<select id="mainBrd" parameterType="java.util.List" resultMap="bgBrd">
 		select Brd.brdNo, Brd.mId, Brd.brdHeader, Brd.oriBrdHeader, Brd.subject, Brd.content, Brd.brdDate, Brd.hit, Brd.brdLike, B.bNo, B.bTitle, B.mPhoto
 		from blog_board Brd join blog_info B
 		on Brd.bNo=B.bNo 
-		where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach>
+		where<foreach collection="list" item="item" index="index" separator="or">Brd.brdNo=${item.brdNo}</foreach> and Brd.basicSet=0
 	</select>
 	<select id="myblogHeader" parameterType="String" resultMap="bgInfo">
-		select B.bNo, B.mId, B.bTitle, B.hPhoto, C.cName, blogBrdCnt(C.cNo) cnt
+		select B.bNo, B.mId, B.bTitle, B.hPhoto, C.cName, blogBrdCnt(C.cName) cnt
 		from blog_info B left outer join blog_category C
 		on B.bNo=C.bNo 
 		where B.mId=#{mId} ORDER by C.cIndex asc
 	</select>
 	<select id="myblogBrdSelect" parameterType="String" resultType="blogController.BlogBoardVo">
-		select brdNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate from blog_board where mId=#{mId}
+		select brdNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, basicSet from blog_board where mId=#{mId}
 	</select>
 	<select id="myblogCategoryBrdSelect" parameterType="blogController.BlogVo" resultType="blogController.BlogBoardVo">
-		select B.brdNo, B.mId, B.brdHeader, B.oriBrdHeader, B.subject, B.content, to_char(B.brdDate, 'rrrr.mm.dd hh24:mi') brdDate
+		select B.brdNo, B.mId, B.brdHeader, B.oriBrdHeader, B.subject, B.content, to_char(B.brdDate, 'rrrr.mm.dd hh24:mi') brdDate, B.basicSet
 		from blog_board B join blog_category C
-		on B.cNo=C.cNo where C.cName=#{cName} and B.mId=#{mId}
+		on B.cName=C.cName where C.cName=#{cName} and B.mId=#{mId}
 	</select>
 	<select id="brdView" parameterType="Integer" resultType="blogController.BlogBoardVo">
-		select brdNo, bNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, brdLike from blog_board where brdNo=${brdNo}
+		select B.brdNo, bNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, brdLike, basicSet, tContent
+		from blog_board B left outer join blog_tag T 
+		on B.brdNo=T.brdNo 
+		where B.brdNo=${brdsNo}
 	</select>
 	<select id="category" parameterType="Integer" resultType="blogController.BlogVo">
-		select cName from blog_category where bNo=${bNo} order by cIndex asc
+		select bNo, cName from blog_category where bNo=${bNo} order by cIndex asc
 	</select>
+	<select id="brdHeader" parameterType="Integer" resultType="String">
+		select brdHeader from blog_board where brdNo=${brdNo}
+	</select>
+	<!-- <select id="tagSelect" parameterType="Integer" resultType="Integer">
+		select count(tNo) from blog_tag where brdNo=${brdNo}
+	</select> -->
+	
+	<update id="brdModify" parameterType="blogController.BlogBoardVo">
+		update blog_board set bNo=${bNo}, cName=#{cName}, subject=#{subject}, content=#{content}, brdHeader=#{brdHeader}, oriBrdHeader=#{oriBrdHeader}, basicSet=${basicSet} where brdNo=${brdNo}
+	</update>
+	<update id="brdModifyNoHeader" parameterType="blogController.BlogBoardVo">
+		update blog_board set bNo=${bNo}, cName=#{cName}, subject=#{subject}, content=#{content} where brdNo=${brdNo}
+	</update>
+	<update id="brdTagModify" parameterType="blogController.BlogBoardVo">
+		update blog_tag set tContent=#{tContent} where brdNo=#{brdNo}
+	</update>
+	
+	<insert id="brdInsert" parameterType="blogController.BlogBoardVo">
+		insert into blog_board(brdNo, bNo, cName, mId, brdHeader, oriBrdHeader, subject, content, brdDate) 
+		values (seq_blog_brdNo.nextval, ${bNo}, #{cName}, #{mId}, #{brdHeader}, #{oriBrdHeader}, #{subject}, #{content}, SYSDATE)
+	</insert>
+	<insert id="brdTagInsert" parameterType="blogController.BlogBoardVo">
+		insert into blog_tag(tNo, brdNo, tContent) VALUES(seq_blog_tNo.nextval, seq_blog_brdNo.currval, #{tContent})
+	</insert>
+	
+	<delete id="brdDelete" parameterType="Integer">
+		delete from blog_board where brdNo=${brdNo}
+	</delete>
 	<!-- <insert id="Like_insert" parameterType="hashMap">
 		insert into blog_brdLike(likeNo, brdNo, mId) values(seq_blog_likeNo.nextval, ${brdNo}, #{likeMid})
 	</insert>
