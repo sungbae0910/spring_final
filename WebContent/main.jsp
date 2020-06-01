@@ -5,16 +5,40 @@
 	<input type="hidden" id="c_mId" name="c_mId">
 	<input type="hidden" id="c_brdNo" name="c_brdNo">
 </form>
+<%
+	String mId = "";
+	if(session.getAttribute("mId") != null){
+ 		mId = (String)session.getAttribute("mId");	
+	}
+%>
 <div class="container" id="mainContent">
     <div class="row">
     
 	    <div class="col-sm-12 col-md-4" id="main_s">
+	    
 			<div class="col-xs-12" id="loginDiv">
-				<div align="center">
-					레반에 로그인하세요<br/>
-					<a href="${pageContext.request.contextPath}/login.jsp" style="color:black;"><button type="button">ROOT 로그인</button></a>			
-				</div>
+					<c:if test="${empty mId}">
+						<span id="logintop">여태까지 아무도 뚫지못한 철통보안</span><br><br>
+						<a href="${pageContext.request.contextPath}/sb_music/login.jsp" style="color:black;"><button id="loginBtn">로그인</button></a>
+					</c:if>
+					<c:if test="${!empty mId}">
+						
+							
+						<span><%=mId %>님</span> | <span>내 정보  </span> 
+						<button id="logout">로그아웃</button>
+						<br>
+						<span id="email"></span><br>
+
+						<div class="col-sm-3"><span>알림</span></div>	
+						<div class="col-sm-3"><span>구독</span></div>	
+						<div class="col-sm-3"><span>쇼핑</span></div>	
+						<div class="col-sm-3"><span>블로그</span></div>	
+					</c:if>
 			</div>
+			
+			
+			
+			
 			
 			<div class="col-xs-12" style="border: 2px solid black;">
 				<div align="center" id="shop">
