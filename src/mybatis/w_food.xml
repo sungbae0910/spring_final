@@ -36,7 +36,7 @@
  </update>
  
  <insert id="w_att_insert2" parameterType="w_foodcontroller.w_AttVo">
-   insert into w_food_image(foodCode,foodOrifile,foodSysfile) values(w_seq_code.currval,#{oriFile},#{sysFile})
+   insert into w_food_image(foodCode,foodOrifile,foodSysfile) values(w_seq_code.nextval,#{oriFile},#{sysFile})
  </insert>
  
  <delete id="w_att_delete" parameterType="w_foodcontroller.w_AttVo">

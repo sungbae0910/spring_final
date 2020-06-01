@@ -119,7 +119,7 @@ public class FoodController {
 	  String msg = dao.modify(vo, attList, delFile);
 	  
 	  mv.addObject("msg",msg);
-	  mv.setViewName("w_menu");
+	  mv.setViewName("w_result");
 	  
 	  return mv;
   }
