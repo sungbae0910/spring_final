@@ -19,7 +19,6 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<form id="pwdFind_s" method="post">
-					<input type="hidden" name="mId" value=""/>
 					<div class="pw_find_tt" style="text-align: center;">
 						<span class="pw_find_top">비밀번호 찾기</span><br/>
 					</div>

@@ -48,7 +48,7 @@ var codeIssue = function(){
 	})
 }
 
-var  pwdPage = function(){
+/*var  pwdPage = function(){
 	var param = $('#pwdFind_s').serialize();
 	$.ajax({
 		url : "pwdPage.all",
@@ -68,7 +68,7 @@ var  pwdPage = function(){
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
 		}
 	})
-}
+}*/
 
 var pwdIssue = function(){
 	var param = $('#pwdFind_s').serialize();
@@ -81,6 +81,7 @@ var pwdIssue = function(){
 		success : function(data){
 			if(data == 1){
 				alert("새 비밀번호 발급 완료");
+				window.location = "./sb_music/login.jsp";
 			}else{
 				alert('비밀번호 발급 실패');
 				return false;
@@ -102,10 +103,10 @@ $('.mId').blur(function(){
 		data : param,
 		success : function(data){
 			if(data == 1){
-				$('.eCk').attr("disabled", true);
+				$('.eCk').attr("disabled", false);
 			}else{
 				$('#mIdCk_s').text("아이디가 존재하지 않습니다.");
-				$('.eCk').attr("disabled", false);
+				$('.eCk').attr("disabled", true);
 			}
 		},
 		error : function(request, status, error){

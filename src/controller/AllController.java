@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import command.AllService;
 
 @Controller
@@ -46,7 +49,7 @@ public class AllController {
 		return obj.toJSONString();
 	}
 	
-	@RequestMapping(value="/pwdPage.all", method= {RequestMethod.POST, RequestMethod.GET})
+/*	@RequestMapping(value="/pwdPage.all", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String pwdPage(HttpServletRequest req, HttpSession session) {
 		int result = 0;
@@ -60,19 +63,20 @@ public class AllController {
 		
 		return obj.toJSONString();
 	}
-	
+	*/
 	@RequestMapping(value="/pwdIssue.all", method= {RequestMethod.POST, RequestMethod.GET}, produces ="application/text; charset=utf8")
 	@ResponseBody
 	public String pwdIssue(HttpServletRequest req, HttpSession session) {
 		int ck = 0;
 		String result = "";
+		Gson gson =	new GsonBuilder().create();
 		
 		ck = as.pwdIssue(req, session);
 		
 		if(ck == 1) {
-			result = "비밀번호 발급완료!!";
+			result = "1";
 		}else {
-			result = "비밀번호 변경 실패";
+			result = "0";
 		}
 		
 		return result;
@@ -83,7 +87,6 @@ public class AllController {
 	public String idCk(HttpServletRequest req) {
 		String result = "";
 		int ck = 0;
-		
 		ck = as.idCk(req);
 		
 		if(ck == 1) {
@@ -98,12 +101,14 @@ public class AllController {
 	@RequestMapping(value="/pwPageChange.all", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView pwPageChange(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		String mId = req.getParameter("mId");
 		
+		String mId = req.getParameter("mId");
+		System.out.println(mId);
 		mv.addObject("mId", mId);
 		
 		mv.setViewName("pwFind");
 		return mv;
 	}
+	
 	
 }
