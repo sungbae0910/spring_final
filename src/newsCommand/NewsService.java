@@ -1,9 +1,6 @@
 package newsCommand;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
@@ -217,6 +214,25 @@ public class NewsService {
 		likeCnt = dao.unLikeOut(vo);
 		
 		return likeCnt;
+	}
+	
+	//검색
+	public List<NewsVo> neswSearch(Page page){
+		List<NewsVo> list = null;
+		NewsDao dao = new NewsDao();
+		
+		list = dao.newsSearch(page);
+		
+		return list;
+	}
+	
+	public NewsPhotoVo newsSearchPho(int nSerial){
+		NewsPhotoVo list = null;
+		NewsDao dao = new NewsDao();
+		
+		list = dao.newsSearchPho(nSerial);
+		
+		return list;
 	}
 	
 }

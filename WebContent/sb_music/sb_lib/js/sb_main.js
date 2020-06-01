@@ -49,8 +49,8 @@ play = function(serial){ // 듣기 눌렀을 때
 		$("#show_list").hide();
 		$("#playerImg").hide();
 		
-
-		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		audio.src ="../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3";			
 		
 		player();
 		$('#play-button').click();
@@ -76,8 +76,9 @@ play2 = function(serial){
 		$("#show_list").hide();
 		$("#playerImg").hide();
 		
-
-		audio.src =("../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3");
+		
+		audio.src ="../sb_music/sb_lib/music/" + $('#audioH').val() + ".MP3";			
+		
 		
 		player();
 		$('#play-button').click();
@@ -91,16 +92,21 @@ kimchi = function(serial){ // 담기 눌렀을 때
 	
 	$.post('sb_kimchi.mu', param);
 	
-	$('#alert').show();
+	$('#alert').show();		
+	setTimeout(function(){
+		$('#alert').hide(500);
+	},2000);
 }
 
 var topP = function(){
 	$('#changePage').load('sb_top.mu');
 }
 
-function nice(){ // 나중에 지우자궁
-	alert(audio.src);
+var myPage = function(){
+	location = '../root/root_myPage.jsp';
 }
+
+
 
 function audioBtn(num, serial){ // 전노래 다음노래 버튼
 	frm_top.m_serial.value = serial;
@@ -192,6 +198,20 @@ function player(){
 	        
 	        time.text(getTime(audio.currentTime));
 	        
+
+	        // 게스트용 1분 미리 듣기
+	       /* if($("#mId").val() == 'guest'){
+	    		if(audio.currentTime > 60){
+	    			audio.currentTime = 0;
+	    			audio.pause();
+	    		}
+			}*/
+	        if($('#membership').val() != 'y'){
+	        	if(audio.currentTime > 60){
+	    			audio.currentTime = 0;
+	    			audio.pause();
+	    		}
+	    	}
 	  });
 	  audio.addEventListener("ended",(e)=>{
 	    progressBar.value = 0;
@@ -320,6 +340,8 @@ function playList(){
 }
 
 
+
+
 function delList(serial){
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
@@ -408,18 +430,50 @@ $(document).ready(function() {
 	})
 	
 	$('#list_val').hide();
+	var cId = $('#mId').val();
+	
+	// 1분 미리 듣기 안내
+/*	if(cId != 'guest'){
+		$('#guest').hide();
+	}else{
+		$('#guest').show();
+	}*/
+	
+	let param = $('#frm_top').serialize();
+	$.ajax({
+		url : 'sb_IsMembership.mem',
+		data : param,
+		type : 'POST',
+		dataType : 'json',
+		success : function(data){
+			console.log(data);
+			$('#membership').val(data);
+			console.log($('#membership').val());
+			
+			if($('#membership').val() == 'y'){
+				$('#guest').hide();
+			}else{
+				$('#guest').show();
+			}
+		}
+		
+		
+	});
+	
 	
 	
 	$('#myCarousel').carousel({
 	interval: 10000
 	})
     
-    $('#myCarousel').on('slid.bs.carousel', function() {
-    	//alert("slid");
-	});
 });
 
-
+function logout(){
+	$.post('sb_logout.mem');
+	alert("로그아웃 되었습니다.");
+	location.reload(true);
+	
+}
 
 
 

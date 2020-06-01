@@ -111,14 +111,7 @@
 											<li><a href="latest_news.html">경제</a></li>
 											<li><a href="contact.html">국제</a></li>
 											<li><a href="contact.html">문화</a></li>
-											<li><a href="#" onclick="like_func_s(0)">IT</a></li>
-											<li><a href="#">Pages</a>
-												<ul class="submenu">
-													<li><a href="elements.html">Element</a></li>
-													<li><a href="blog.html">Blog</a></li>
-													<li><a href="single-blog.html">Blog Details</a></li>
-													<li><a href="details.html">Categori Details</a></li>
-												</ul></li>
+											<li><a href="#">IT</a></li>
 										</ul>
 									</nav>
 								</div>
@@ -370,7 +363,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- About US End --> <!--Start pagination -->
+	<!-- About US End --> 
+	<!--Start pagination -->
 	<div class="pagination-area pb-45 text-center">
 		<div class="container">
 			<div class="row">
@@ -396,7 +390,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- End pagination  --> </main>
+	<!-- End pagination  --> 
+	</main>
 
 	<footer>
 		<!-- Footer Start-->

@@ -93,10 +93,10 @@ public class MusicController {
 		
 		int s = Integer.parseInt(serial);
 		 
-		MusicVo vo = dao.play(s); // nav바에 음악정보 가져와서 실행
+		MusicVo vo = dao.play(s); // 
 		
 		
-		//플레이 리스트 가져와서 추가
+	
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
 
@@ -122,10 +122,10 @@ public class MusicController {
 		
 		int s = Integer.parseInt(serial);
 		 
-		MusicVo vo = dao.play(s); // nav바에 음악정보 가져와서 실행
+		MusicVo vo = dao.play(s); 
 		
 		
-		//플레이 리스트 가져와서 추가
+
 		MusicListVo mlv = dao.playList(mId);
 		mlv.setMusic_serial(Integer.toString(vo.getMusic_serial())+"," );
 
@@ -148,40 +148,26 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_playList.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String playList(HttpServletRequest req) {
-		
 		Gson gson = new GsonBuilder().create();
 		
-		
-		String mId = req.getParameter("mId"); // mId 가져와서
+		String mId = req.getParameter("mId");
 
-		
-		MusicListVo vo = dao.playList(mId); // 플레이리스트 가져오고
+		MusicListVo vo = dao.playList(mId); 
 
+		String ml = vo.getMusic_list();
 		
-		String ml = vo.getMusic_list(); // 리스트 넣어준담에
-
-		
-		String[] num = ml.split(","); // (,) 컴마 죽여서
-		
-		
-		int[] nums = new int[num.length]; // 배열에 넣어준뒤
-		
+		String[] num = ml.split(","); 
+		int[] nums = new int[num.length];
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽여서 숫자 배열에 담고
+			nums[i] = Integer.parseInt(num[i].trim());
 		}
-			
-		
 		List<MusicVo> list = new ArrayList<MusicVo>();
 		for(int i = 0; i < nums.length; i++) {
 			int a = nums[i];
 			MusicVo mv = dao.pL_music(a);
 			list.add(mv);
 		}
-		
 		String list2 =  gson.toJson(list);
-
-		
-
 
 		
 		return list2;	
@@ -201,7 +187,6 @@ public class MusicController {
 		
 		dao.addList(vo);
 		
-		str = "플레이 리스트에 담겼습니다.";
 		
 		return str;
 		
@@ -209,7 +194,7 @@ public class MusicController {
 	@RequestMapping(value="/sb_music/sb_removeAll.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String removeAll(HttpServletRequest req) {
-		String str="전체 삭제";
+		String str="";
 		String mId = req.getParameter("mId");
 		
 		dao.removeAll(mId);
@@ -229,28 +214,28 @@ public class MusicController {
 	Gson gson = new GsonBuilder().create();
 		
 
-		String mId = req.getParameter("mId"); // mId 가져와서
-		String ms = req.getParameter("m_serial"); // 음악 시리얼도 가져와서
-
-		MusicListVo vo = dao.playList(mId); // 플레이리스트 가져오고
-		vo.setmId(mId); // mid 넣어주고
-		vo.setMusic_serial(ms); // music_serial 넣어주고
+		String mId = req.getParameter("mId");
+		String ms = req.getParameter("m_serial"); 
+		System.out.println("mId : "+mId);
+		MusicListVo vo = dao.playList(mId);
+		vo.setmId(mId); 
+		vo.setMusic_serial(ms); 
 		
 		
-		dao.delList(vo); // 플레이리스트 x눌러서 삭제
+		dao.delList(vo); 
 		
 		MusicListVo vo2 = dao.playList(mId);
 		
-		String ml = vo2.getMusic_list(); // 리스트 넣어준담에
+		String ml = vo2.getMusic_list();
 		
 		
-		String[] num = ml.split(","); // (,) 컴마 죽여서
+		String[] num = ml.split(",");
 		
 		
-		int[] nums = new int[num.length]; // 배열에 넣어준뒤
+		int[] nums = new int[num.length];
 		
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
+			nums[i] = Integer.parseInt(num[i].trim());
 		}
 		
 		List<MusicVo> list = new ArrayList<MusicVo>();
@@ -342,11 +327,11 @@ public class MusicController {
 		String mId = req.getParameter("mId");
 		
 		MusicListVo vo = dao.playList(mId);
-		String ml = vo.getMusic_list(); // 리스트 넣어준담에
-		String[] num = ml.split(","); // (,) 컴마 죽여서
-		int[] nums = new int[num.length]; // 배열에 넣어준뒤
+		String ml = vo.getMusic_list(); 
+		String[] num = ml.split(",");
+		int[] nums = new int[num.length]; 
 		for(int i=0; i<num.length; i++) {
-			nums[i] = Integer.parseInt(num[i].trim()); // 공백값 있을수 있으니 죽이고
+			nums[i] = Integer.parseInt(num[i].trim()); 
 		}
 		String[] listnum = listV.split(",");
 		double[] listnums = new double[listnum.length];

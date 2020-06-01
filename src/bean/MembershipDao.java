@@ -1,16 +1,19 @@
 package bean;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Timestamp;
+
+import javax.xml.crypto.Data;
 
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.Factory;
 import mybatis.MembershipVo;
+import mybatis.sb_clientVo;
 
 public class MembershipDao {
 
 	SqlSession sqlSession;
+	
 	
 	public MembershipDao() {
 		sqlSession = Factory.getFactory().openSession();
@@ -34,6 +37,28 @@ public class MembershipDao {
 			return str;
 		}
 		
+	}
+	
+	public void sb_client(sb_clientVo vo) {
+		
+		try {
+			sqlSession.insert("membership.sb_client", vo);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+		
+	}
+	
+	public void sb_playlist(sb_clientVo vo) {
+		try {
+			sqlSession.insert("membership.sb_playlist", vo);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
 	}
 	
 	public String ck_id(String mId) {
@@ -85,4 +110,41 @@ public class MembershipDao {
 		return ck;
 	}
 	
+	public void payMembership(String mId) {
+
+		try {
+			sqlSession.update("membership.payMembership", mId);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public MembershipVo Membership(String mId) {
+		MembershipVo vo = new MembershipVo();
+		try {
+			vo = sqlSession.selectOne("membership.membership", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	public Timestamp IsMembership(String mId) {
+		Timestamp date = new Timestamp(0);
+		
+		try {
+			date = sqlSession.selectOne("membership.IsMembership", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return date;
+		
+	}
+
 }
+
