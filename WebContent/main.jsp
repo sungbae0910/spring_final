@@ -11,6 +11,10 @@
  		mId = (String)session.getAttribute("mId");	
 	}
 %>
+
+<form id="frm_top">
+	<input type="hidden" name="mId" value="<%=mId%>">
+</form>
 <div class="container" id="mainContent">
     <div class="row">
     
@@ -24,7 +28,7 @@
 					<c:if test="${!empty mId}">
 						
 							
-						<span><%=mId %>님</span> | <span>내 정보  </span> 
+						<span><%=mId %>님</span> | <span onclick="myPage()">내 정보  </span> 
 						<button id="logout">로그아웃</button>
 						<br>
 						<span id="email"></span><br>
@@ -75,7 +79,7 @@
 		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
 		        			<div class="row">
 	        				<div class="col-xs-4 col-md-3">
-	        					<img src="./blog/blog_image/${bList.brdHeader}" class="img-rounded">
+	        					<img src="/blog/blog_image/${bList.brdHeader}" class="img-rounded">
 	        				</div>
        						<div class="col-xs-8 col-md-9">
 			        			<div class="subject">${bList.subject}</div>

@@ -22,6 +22,7 @@ import bean.MembershipDao;
 import blogController.BlogBoardVo;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
+import mybatis.searchVo;
 import newsCommand.SendMail;
 
 @Controller
@@ -172,6 +173,16 @@ public class MembershipController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/sb_music/logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView Logout(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		req.getSession().invalidate();
+		
+		mv.setViewName("index");
+		
+		return mv;
+	}
 	
 	
 	@RequestMapping(value="/sb_music/sb_payMembership.mem", method= {RequestMethod.GET, RequestMethod.POST})
@@ -188,18 +199,18 @@ public class MembershipController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/sb_music/sb_Membership.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/sb_music/Membership.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView Membership(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
 		String mId = req.getParameter("mId");
-		
+		System.out.println(mId);
 		MembershipVo vo = dao.Membership(mId);
 		
 		mv.addObject("vo", vo);
 		
 		
-		mv.setViewName("/sb_music/sb_myPage");
+		mv.setViewName("/root/root_myPage");
 		return mv;
 	}
 	
@@ -248,7 +259,7 @@ public class MembershipController {
 	}
 	
 	
-	@RequestMapping(value="/sb_music/IndexInfo.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/IndexInfo.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String IndexInfo(HttpServletRequest req) {
 		String str = "";
@@ -278,6 +289,36 @@ public class MembershipController {
 		mv.setViewName("main");
 		return mv;
 	}
+	
+	@RequestMapping(value="/search.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView search(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		try {
+			String search = req.getParameter("searchBar");
+			
+			List<searchVo> list = dao.Search(search); // 뉴스
+			List<searchVo> list2 = dao.kin(search); // 지식in
+			List<searchVo> list3 = dao.SearchBlog(search); // 블로그
+			List<searchVo> list4 = dao.SearchShop(search); // 상점
+			
+			
+			mv.addObject("searchList", list); //뉴스
+			mv.addObject("kinList",list2); // 지식in
+			mv.addObject("blogList",list3); // 블로그
+			mv.addObject("shopList",list4);
+			
+			mv.setViewName("root/root_search");
+		} catch (Exception e) {
+			System.out.println("검색값이 공백");
+		}
+		
+		
+		return mv;
+	}
+	
+	
+	
 }
 
 

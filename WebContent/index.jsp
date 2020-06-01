@@ -12,6 +12,7 @@
 <script src="./main_lib/js/jquery-3.4.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
+<script src="./main_lib/js/index.js"></script>
 </head>
 <body>
    
@@ -25,16 +26,16 @@
             <img id="logo" src="./main_lib/images/root.png">        
           </div>
           <div class="col-xs-8 col-sm-9 col-md-10">
-            <span>
-            
-               <input type="text" id='searchBar'/>
-            </span>
+          
+          	<form action="search.mem">
+            	<input type="text" id='searchBar' name="searchBar" autocomplete="off"/>
+            </form>
          </div>
        </div>
    </div>
 </div>
    <hr>
-   <div class="container-fluid" id="header_bot">
+   <div class="container" id="header_bot">
       <div class="row" align="center" >
          <div class="col-xs-2">
             <a href="./news/newsMainT.jsp" style="color:black;">뉴스</a>
@@ -44,9 +45,6 @@
          </div>
          <div class="col-xs-2">
             <a href="./shop/shop_index.jsp" style="color:black;">쇼핑</a>
-         </div>
-         <div class="col-xs-2">
-            <p>SNS</p>
          </div>
          <div class="col-xs-2">
             <a href="./sb_music/sb_main.jsp" style="color:black;">음악</a>

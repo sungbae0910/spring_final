@@ -1,6 +1,4 @@
-/**
- * http://usejsdoc.org/
- */
+/*
 $(document).ready(function() {
 	
 	let param = $('#index_frm').serialize();
@@ -18,3 +16,14 @@ $(document).ready(function() {
 		}
 	})
 });
+*/
+var myPage = function(){
+	$('#frm_top').attr('action', './sb_music/Membership.mem').submit();
+}
+
+function logout(){
+	$.post('logout.mem');
+	alert("로그아웃 되었습니다.");
+	location.reload(true);
+	
+}
