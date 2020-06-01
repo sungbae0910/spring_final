@@ -6,10 +6,10 @@
 <title>main_page</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="./sb_music/sb_lib/css/bootstrap.min.css"> -->
-<link rel="stylesheet" href="./sb_music/sb_lib/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="./main_lib/css/main_page.css">
-<script src="./main_lib/js/main_page.js"></script>
-<script src="./main_lib/js/jquery-3.4.1.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/sb_music/sb_lib/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/main_lib/css/main_page.css">
+<script src="${pageContext.request.contextPath}/main_lib/js/main_page.js"></script>
+<script src="${pageContext.request.contextPath}/main_lib/js/jquery-3.4.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 </head>
@@ -22,7 +22,7 @@
    <div class="row">
       <div id='header_top'>
           <div class="col-xs-4 col-sm-3 col-md-2">
-            <img id="logo" src="./main_lib/images/root.png">        
+            <img id="logo" src="${pageContext.request.contextPath}/main_lib/images/root.png">        
           </div>
           <div class="col-xs-8 col-sm-9 col-md-10">
             <span>
@@ -37,19 +37,19 @@
    <div class="container-fluid" id="header_bot">
       <div class="row" align="center" >
          <div class="col-xs-2">
-            <a href="./news/newsMainT.jsp" style="color:black;">뉴스</a>
+            <a href="${pageContext.request.contextPath}/news/newsMainT.jsp" style="color:black;">뉴스</a>
          </div>
          <div class="col-xs-2">
-            <a href="./blog/blog_Index.jsp" style="color:black;">블로그</a>
+            <a href="${pageContext.request.contextPath}/blog/blog_Index.jsp" style="color:black;">블로그</a>
          </div>
          <div class="col-xs-2">
-            <a href="./shop/shop_index.jsp" style="color:black;">쇼핑</a>
+            <a href="${pageContext.request.contextPath}/shop/shop_index.jsp" style="color:black;">쇼핑</a>
          </div>
          <div class="col-xs-2">
             <p>SNS</p>
          </div>
          <div class="col-xs-2">
-            <a href="./sb_music/sb_main.jsp" style="color:black;">음악</a>
+            <a href="${pageContext.request.contextPath}/sb_music/sb_main.jsp" style="color:black;">음악</a>
          </div>
          <div class="col-xs-2">
             <p>더보기</p>

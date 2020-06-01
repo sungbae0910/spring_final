@@ -12,7 +12,7 @@
 			<div class="col-xs-12" id="loginDiv">
 				<div align="center">
 					레반에 로그인하세요<br/>
-					<a href="./sb_music/login.jsp" style="color:black;"><button type="button">ROOT 로그인</button></a>			
+					<a href="${pageContext.request.contextPath}/login.jsp" style="color:black;"><button type="button">ROOT 로그인</button></a>			
 				</div>
 			</div>
 			
@@ -26,7 +26,7 @@
         <div class="col-sm-12 col-md-8" id="main_c">
         
         	<div class="col-xs-12" id="promotion">
-				 <a href="./wpy/w_index.jsp"><img  src="./wpy/w_images/foodB.jpg"></a> 
+				 <a href="${pageContext.request.contextPath}/wpy/w_index.jsp"><img  src="${pageContext.request.contextPath}/wpy/w_images/foodB.jpg"></a> 
 			</div>
 			
 			<div class="col-xs-12 " style="border: 2px solid black;">
@@ -51,7 +51,7 @@
 		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
 		        			<div class="row">
 	        				<div class="col-xs-4 col-md-3">
-	        					<img src="./blog/blog_image/${bList.brdHeader}" class="img-rounded">
+	        					<img src="${pageContext.request.contextPath}/blog/blog_image/${bList.brdHeader}" class="img-rounded">
 	        				</div>
        						<div class="col-xs-8 col-md-9">
 			        			<div class="subject">${bList.subject}</div>

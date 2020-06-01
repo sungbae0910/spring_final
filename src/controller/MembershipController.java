@@ -94,7 +94,7 @@ public class MembershipController {
 		return cp;
 	}
 	
-	@RequestMapping(value="/sb_music/login.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/login.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login(HttpServletRequest req) {
 
 		ModelAndView mv = new ModelAndView();
@@ -120,7 +120,7 @@ public class MembershipController {
 		}
 		
 		mv.addObject("reuslt", result);
-		mv.setViewName("../index");
+		mv.setViewName("index");
 		
 		return mv;
 	}
@@ -272,9 +272,11 @@ public class MembershipController {
 	@RequestMapping(value="/main.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("1");
 		List<BlogBoardVo> blogList = dao.blogSelect();
-		
+		System.out.println("2");
 		mv.addObject("blogList", blogList);
+		System.out.println("3");
 		mv.setViewName("main");
 		return mv;
 	}
