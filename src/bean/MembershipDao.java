@@ -20,7 +20,8 @@ import blogController.BlogBoardVo;
 import mybatis.Factory;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
-import mybatis.searchVo;
+import newsController.NewsPhotoVo;
+import newsController.NewsVo;
 
 public class MembershipDao {
 
@@ -491,6 +492,27 @@ public class MembershipDao {
 			return list;
 		}
 		
+	}
+	
+	public List<NewsVo> selectI(){
+		List<NewsVo> vo = new ArrayList<NewsVo>();
+		
+		try {
+			vo = sqlSession.selectList("news.main_t_news_i");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
+	public List<NewsPhotoVo> selectP(){
+		List<NewsPhotoVo> photo = new ArrayList<NewsPhotoVo>();
+		try {
+			photo = sqlSession.selectList("news.main_t_news_p");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return photo;
 	}
 	
 }

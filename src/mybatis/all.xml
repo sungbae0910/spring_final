@@ -13,6 +13,14 @@
 	<select id="id_ck" parameterType="String" resultType="int">
 		select count(*) from membership where mId = #{value}
 	</select>
+	
+	<select id="phone_ck" parameterType="String" resultType="int">
+		select count(mId) from membership where phone = #{value}
+	</select>
+	
+	<select id="id_find" parameterType="String" resultType="String">
+		select mId from membership where phone = #{value}
+	</select>
 
 	<!-- update -->
 	<update id="pwd_change" parameterType="mybatis.MembershipVo">

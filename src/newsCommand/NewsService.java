@@ -23,6 +23,7 @@ public class NewsService {
 		this.dao = newsDao;
 	}
 	
+	
 	//뉴스 최상단 글 조회
 	public List<NewsVo> selectI() {
 		List<NewsVo> list = null;
@@ -291,6 +292,7 @@ public class NewsService {
 	
 	// 조회수 증가(쿠키를 사용하여 중복 조회 방지)
 	public void upHit(String nSerial) {
+		System.out.println(nSerial);
 		dao.upHit(nSerial);
 		
 	}

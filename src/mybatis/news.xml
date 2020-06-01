@@ -6,10 +6,10 @@
 <mapper namespace="news">
 	<!-- select -->
 	<select id="main_t_news_i" resultMap="mm_news">
-		select * from (select * from news_info order by nserial asc) where rownum &lt;= 9
+		select * from (select * from news_info order by nserial desc) where rownum &lt;= 9
 	</select>
 	<select id="main_t_news_p" resultType="newsController.NewsPhotoVo">
-		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial asc  ) where rownum &lt;= 9	
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc  ) where rownum &lt;= 9	
 	</select>
 	
 	<select id="main_cate_All" resultMap="mm_news">

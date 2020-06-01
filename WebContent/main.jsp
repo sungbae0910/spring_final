@@ -5,6 +5,9 @@
 	<input type="hidden" id="c_mId" name="c_mId">
 	<input type="hidden" id="c_brdNo" name="c_brdNo">
 </form>
+<form id="s_news_frm" method="post">
+	<input type="hidden" class="s_nserial" name="s_nserial">
+</form>
 <%
 	String mId = "";
 	if(session.getAttribute("mId") != null){
@@ -61,13 +64,22 @@
 				<div id="news" class="list">
 	        		<div class="listItem">
 	        			<div class="row">
+	        				<c:forEach begin="0" end="3" var="i" items="${newsInfo}" varStatus="ii">
+	        				<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"> 
 	        				<div class="col-xs-4 col-md-3">
-	        					<img class="img-rounded">
-	        				</div>
-	        				<div class="col-xs-8 col-md-9 con">
-		        				<div class="subject"></div>
-		        				<div class="content"></div>
-	        				</div>
+	                            <div class="single-bottom mb-35">
+	                                <div class="trend-bottom-img mb-30">
+	                                	<c:forEach begin="${ii.index}" end="${ii.index}" var="pho" items="${newsPhoto}">
+	                                    	<img src="./news/img/newsImages/${pho.pName}" alt="" style="height:120px;">
+                                    	</c:forEach>
+	                                </div>
+	                                <div class="trend-bottom-cap indexNews_s">
+	                                    <span class="color1 indexNewsT">${i.nCompany}</span>
+	                                    <h5><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h5>
+	                                </div>
+	                            </div>
+	        				</div>	
+	        				</c:forEach> 	        					        				        				
 	        			</div>
 	        		</div>
         		</div>
@@ -79,7 +91,7 @@
 		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
 		        			<div class="row">
 	        				<div class="col-xs-4 col-md-3">
-	        					<img src="${pageContext.request.contextPath}/blog/blog_image/${bList.brdHeader}" class="img-rounded">
+	        					<img src="/blog/blog_image/${bList.brdHeader}" class="img-rounded">
 	        				</div>
        						<div class="col-xs-8 col-md-9">
 			        			<div class="subject">${bList.subject}</div>

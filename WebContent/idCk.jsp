@@ -26,7 +26,7 @@
 						<span>아이디</span><br/>
 						<input type="text" class="mId" name="mId" placeholder="가입시 입력한 아이디"/><br/>
 						<div id="idCk_s" ></div>
-						<button type="button" class="btn btn-secondary eCk" onclick="idCk()" disabled>코드발급</button><br/>
+						<button type="button" class="btn btn-secondary eCk" onclick="idCk()" disabled>비밀번호 찾기</button><br/>
 					</div>
 				</form>
 			</div>

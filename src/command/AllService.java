@@ -131,4 +131,22 @@ public class AllService {
 		
 		return ck;
 	}
+	
+	public int phoneCk(HttpServletRequest req) {
+		int result = 0;
+		String phone = req.getParameter("phone");
+		
+		result = dao.phoneCk(phone);
+		
+		return result; 
+	}
+	
+	public String idFind(HttpServletRequest req) {
+		String result = "";
+		String phone = req.getParameter("phone");
+		
+		result = dao.idFind(phone);
+		
+		return result;
+	}
 }

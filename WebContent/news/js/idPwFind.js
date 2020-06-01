@@ -81,7 +81,7 @@ var pwdIssue = function(){
 		success : function(data){
 			if(data == 1){
 				alert("새 비밀번호 발급 완료");
-				location.href = "./sb_music/login.jsp";
+				location.href = "./login.jsp";
 			}else{
 				alert('비밀번호 발급 실패');
 				return false;
@@ -104,6 +104,7 @@ $('.mId').blur(function(){
 		success : function(data){
 			if(data == 1){
 				$('.eCk').attr("disabled", false);
+				$('#mIdCk_s').text("");
 			}else{
 				$('#mIdCk_s').text("아이디가 존재하지 않습니다.");
 				$('.eCk').attr("disabled", true);
@@ -118,3 +119,31 @@ $('.mId').blur(function(){
 var idCk = function(){
 	$('#pwdFind_s').attr('action', 'pwPageChange.all').submit();
 }
+
+$('.phone').blur(function(){
+	var param = $('#idFind_s').serialize();
+	$.ajax({
+		url : "phoneCk.all",
+		type : "POST",
+		cache : false,
+		dataType : "json",
+		data : param,
+		success : function(data){
+			if(data == 1){
+				$('.eCk').attr("disabled", false);
+				$('#idCk_s').text("");
+			}else{
+				$('#idCk_s').text("전화번호가 존재하지 않습니다.");
+				$('.eCk').attr("disabled", true);
+			}
+		},
+		error : function(request, status, error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error)
+		}
+	})
+})
+
+var idFind = function(){
+	$('#idFind_s').attr('action', 'idFind.all').submit();
+}
+
