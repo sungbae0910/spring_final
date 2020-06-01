@@ -108,6 +108,7 @@
 			        <div class="col-sm-9 col-md-10">
 		        	   <!-- 관리 컨텐츠 -->
 			        	<div id="c_manageContent">
+			        		
 				        </div>
 			        </div>
 	    		</div>
@@ -116,6 +117,7 @@
 	    </div>
 	</div>
 </div>
+
 <script>
 	$.post("../blogSetManage.bg", function(data, state) { 
 		$("#c_manageContent").html(data);

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%
+	String mId = "";
+	if(session.getAttribute("mId") != null){
+ 		mId = (String)session.getAttribute("mId");	
+	}
+%>
 <div id="c_dimmedSidebar"></div>
 <form id="c_blog_frm" name="c_blog_frm" method="post">
 	<input type="hidden" name="c_bNo" id="c_bNo" value="${myblogHeader.bNo}"/>
@@ -23,7 +29,7 @@
 		</div>
 		<hr/>
 		<div id="c_myblog_manageTool">
-			<button type="button" onclick="blog.brdInsert()">글쓰기</button>
+			<button type="button" onclick="blog.brdInsert('<%=mId%>')">글쓰기</button>
 			<button type="button" onclick="blog.manageMain()">블로그 관리</button>
 		</div>
 	</div>

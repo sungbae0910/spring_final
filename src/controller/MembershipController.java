@@ -272,11 +272,8 @@ public class MembershipController {
 	@RequestMapping(value="/main.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("1");
 		List<BlogBoardVo> blogList = dao.blogSelect();
-		System.out.println("2");
 		mv.addObject("blogList", blogList);
-		System.out.println("3");
 		mv.setViewName("main");
 		return mv;
 	}

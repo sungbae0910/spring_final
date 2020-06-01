@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String mId = "";
+	if(session.getAttribute("mId") != null){
+ 		mId = (String)session.getAttribute("mId");	
+	}
+%>
 <div id="c_dimmedSidebar"></div>
 <form id="c_blog_frm" name="c_blog_frm" method="post">
 	<input type="hidden" name="c_brdNo" id="c_brdNo" value="${board.brdNo}"/>
@@ -65,12 +71,22 @@
       					<span class="dropdown-toggle" data-toggle="dropdown">
   							<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
       					</span>
-	        			<ul class="dropdown-menu">
-	        			  <li><a href="#" onclick="blog.brdModify()">수정</a></li>
-			      		  <li><a href="#" id="c_btnBrdDelete" onclick="blog.brdDelete(${board.brdNo})">삭제</a></li>
-			      		  <li><a href="#" id="c_btnBrdPublic"> 공개로 전환</a></li>
-			      		  <li><a href="#" id="c_btnBrdSecret"> 비공개로 전환</a></li>
-	        			</ul>
+      					<c:set var="id" scope="session" value="<%=mId%>"/>
+      					<c:choose>
+	      					<c:when test="${myblogHeader.mId eq id}">
+			        			<ul class="dropdown-menu">
+			        			  <li><a href="#" onclick="blog.brdModify()">수정</a></li>
+					      		  <li><a href="#" id="c_btnBrdDelete" onclick="blog.brdDelete()">삭제</a></li>
+					      		  <li><a href="#" id="c_btnBrdPublic"> 공개로 전환</a></li>
+					      		  <li><a href="#" id="c_btnBrdSecret"> 비공개로 전환</a></li>
+			        			</ul>
+	      					</c:when>
+	      					<c:otherwise>
+			        			<ul class="dropdown-menu">
+			        			  <li><a href="#" >신고하기</a></li>
+			        			</ul>
+	      					</c:otherwise>
+      					</c:choose>
       				</div>
 	        	</div>
 		        <div id="c_cmt">

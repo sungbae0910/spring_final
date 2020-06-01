@@ -75,7 +75,7 @@
 		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
 		        			<div class="row">
 	        				<div class="col-xs-4 col-md-3">
-	        					<img src="${pageContext.request.contextPath}/blog/blog_image/${bList.brdHeader}" class="img-rounded">
+	        					<img src=".//blog/blog_image/${bList.brdHeader}" class="img-rounded">
 	        				</div>
        						<div class="col-xs-8 col-md-9">
 			        			<div class="subject">${bList.subject}</div>
