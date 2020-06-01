@@ -71,6 +71,7 @@ public class FileUpload {
 			switch(k) {
 				case "c_mId" : 
 					brdVo.setmId(req.getParameter("c_mId"));
+					System.out.println(req.getParameter("c_mId"));
 				break;
 				case "c_bNo" : 
 					brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));

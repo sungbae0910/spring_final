@@ -6,11 +6,13 @@ body {overflow-x: hidden; }
 textarea:focus {outline: 1px solid #000;}
 
 /* blog_top */
-#c_blogNavbar {padding: 10px 50px; height: 55px;}
+#c_blogNavbar {padding: 10px 50px; height: 70px; background-color: white; border-bottom: 2px solid #ddd;}
 #c_blogNavbar #c_logo {cursor: pointer; position: relative; top: -16px;}
-#c_blogNavbar #c_logo img {height: 35px;}
-#c_blogNavbar .navbar-nav>li>a {position: fixed; top: 11px; right: 24px;}
-#c_blogNavbar .dropdown-toggle img {width: 36px; height: 36px; position: fixed; top: 10px; right: 30px;}
+#c_blogNavbar #c_logo img {height: 45px;}
+#c_blogNavbar #c_logo span {position: relative; top: -25px; left: 123px; font-size: 24px; color: #909090; font-weight: bold;}
+#c_blogNavbar .navbar-nav>li>a {position: fixed; top: 7px; right: 24px; font-size: 18px;}
+#c_blogNavbar .navbar-nav>li>a:hover {color: black;}
+#c_blogNavbar .dropdown-toggle img {width: 65px; height: 50px; position: fixed; top: 10px; right: 50px;}
 .navbar-nav li .dropdown-menu {padding: 10px; border-radius: 3px; top: 38px; right: -18px;}
 #c_blogNavbar #c_menuUserNname {font-size: 1.2em; font-weight: bold;}
 #c_blogNavbar .dropdown-menu #c_btnMenuMyBlog {padding-left: 22px;}
@@ -28,8 +30,8 @@ textarea:focus {outline: 1px solid #000;}
 #c_blog_footer {text-align: center; border-top: 1px solid #E0E5EE; padding: 35px 0;}
 
 /* blog_main */
-#c_mainBlog #c_mainHeader {margin-top: 105px;}
-#c_mainBlog #c_mainHeader img {height: 400px; width:100%;}
+#c_mainBlog #c_mainHeader {margin-top: 73px;}
+#c_mainBlog #c_mainHeader img {height: 500px; width:100%;}
 #c_mainBlog #c_subject {margin-top: 50px;}
 #c_mainBlog .c_subject {text-decoration: none; color: black; font-size: 1.5em; font-weight: bold; margin-right: 40px;}
 #c_mainBlog .c_subject:hover {text-decoration: none; box-shadow: 0 -10px rgba(75, 112, 253, 0.3) inset; cursor: pointer;}
@@ -47,6 +49,7 @@ textarea:focus {outline: 1px solid #000;}
 #c_mainBlog #c_blogList .c_listBrdDate {color: #909090;}
 #c_mainBlog #c_blogList .c_listSubject {padding: 2px 0 6px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width:500px; font-size: 1.7em;}
 #c_mainBlog #c_blogList .c_listInnerCont {overflow: hidden; text-overflow: ellipsis; width: 800px; line-height: 1.5; height: 3em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+#c_mainBlog #c_blogList .c_listInnerCont img {display: none;}
 #c_mainBlog #c_blogList .c_listUserImg {float: left; width: 30px; height: 30px; margin-right: 8px;}
 #c_mainBlog #c_blogList .c_listUserImg img {width: 100%; height: 100%;}
 #c_mainBlog #c_blogList .c_listTitle, #c_blogList .c_listMid {vertical-align: -webkit-baseline-middle;}
@@ -104,6 +107,7 @@ textarea:focus {outline: 1px solid #000;}
 #c_myBlog_content #c_myBlog_list img {float: left; margin-right: 24px; width: 260px; height: 160px;}
 #c_myBlog_content #c_myBlog_list .c_brd_Subject {font-size: 1.7em; font-weight: bold; margin: 10px 0;}
 #c_myBlog_content #c_myBlog_list .c_brd_Cont {overflow: hidden; text-overflow: ellipsis; width: 75%; line-height: 1.5; height: 4.5em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+#c_myBlog_content #c_myBlog_list .c_brd_Cont img {display: none;}
 #c_myBlog_content #c_myBlog_list .c_brd_Date {color: #999; margin: 10px 0;}
 @media (max-width: 1199px) {
 	#c_myBlog_content #c_myBlog_list .c_brd_Cont {width: 69%;}

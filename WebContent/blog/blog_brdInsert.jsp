@@ -9,7 +9,7 @@
 	        	<form id="c_blog_frm" name="c_blog_frm" method="post" enctype="multipart/form-data">
 		        	<input type="hidden" id="c_tagContent" name="c_tagContent"/> 
 		        	<input type="hidden" name="c_bNo" value="${category[0].bNo}"/>
-		        	<input type="hidden" id="c_mId" name="c_mId"/> 
+		        	<input type="hidden" id="c_mId" name="c_mId" value="${mId}"/> 
 		        	<select id="c_brdCategory" name="c_cName">
 		        		<option>카테고리 없음</option>
 		        		<c:forEach var="i" items="${category}">

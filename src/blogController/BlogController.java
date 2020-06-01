@@ -115,11 +115,12 @@ public class BlogController {
 	public ModelAndView brdInsert(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		int bNo = Integer.parseInt(req.getParameter("c_bNo"));
-		System.out.println(req.getParameter("c_bNo"));
+		String mId = req.getParameter("c_mId");
 		
 		List<BlogVo> category = blogDao.category(bNo);
 		System.out.println(category.get(0).getbNo());
 		mv.addObject("category", category);
+		mv.addObject("mId", mId);
 		mv.setViewName("blog_brdInsert");
 		return mv;
 	}
@@ -188,36 +189,14 @@ public class BlogController {
 	public ModelAndView brdDelete(HttpServletRequest req) {
 		System.out.println("삭제");
 		ModelAndView mv = new ModelAndView();
-		
+		String mId = req.getParameter("c_mId");
 		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
 		blogDao.brdDelete(brdNo);
 		
+		mv.addObject("myblogHeader.mId", mId);
+		mv.setViewName("myblogMain");
 		return mv;
 	}
-	
-	/*@RequestMapping(value = "/brdModifyR.bg", method = {RequestMethod.POST})
-	public ModelAndView brdModifyR(HttpServletRequest req, @RequestParam("c_brdHeaderImg") MultipartFile file) {
-		ModelAndView mv = new ModelAndView();
-		
-		BlogBoardVo brdVo = new BlogBoardVo();
-		brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
-		brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));
-		brdVo.setcName(req.getParameter("c_cName"));
-		brdVo.setSubject(req.getParameter("c_subject"));
-		brdVo.setContent(req.getParameter("c_content"));
-		brdVo.setTagContent(req.getParameter("c_tagContent"));
-		brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));
-		System.out.println(brdVo.getbNo());
-		System.out.println(brdVo.getcName());
-		System.out.println(brdVo.getSubject());
-		System.out.println(brdVo.getContent());
-		System.out.println(brdVo.getTagContent());
-		System.out.println(file.getOriginalFilename());
-		System.out.println(brdVo.getBasicSet());
-		
-		mv.setViewName("blog_manage");
-		return mv;
-	}*/
 	
 	@RequestMapping(value = "/blogManage.bg", method = {RequestMethod.POST})
 	public ModelAndView blogManage() {

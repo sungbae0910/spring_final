@@ -20,9 +20,6 @@
 <script src="./js/summernote-ko-KR.js"></script>
 </head>
 <body>
-<script>
-	sessionStorage.setItem("LoginId", "wlgus5120");
-</script>
 <%
 	String inc = "./blog_header.jsp";
 	if (request.getParameter("inc") != null) {
@@ -33,7 +30,7 @@
 <div id="c_blogMain">
 	<%@ include file="blog_top.jsp"%>
 
-	<div id="c_blogMain">
+	<div id="c_blogMainCon">
 		<jsp:include page="<%=inc%>"/>
 	</div>  		
 	                                       
