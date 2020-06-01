@@ -13,9 +13,12 @@
 }
 #shop_itemMore .thumbnail{
 	position: relative;
-	width: 90%;
-	margin-top: 10px;
+	min-height: 460px;
 	text-align: center;
+}
+#shop_itemMore .thumbnail #item_photo{
+	width: 260px;
+    height: 270px;
 }
 #shop_itemMore .thumbnail .btn_detail{
     font-size: medium;

@@ -2,6 +2,57 @@
  * http://usejsdoc.org/
  */
 let shop = {}
+let item_price_ori = $("#itemView_price_content").val();
+shop.category = function(item_category) {
+	$("#item_category").val(item_category)
+	let param = $("#shop_frm").serialize();
+		$.post("../more.shop", param, function(data, state){
+			$("#main").html(data);
+	})
+}
+shop.optionValue_click = function(option_value, item_price){
+	
+	$(".btn_count_up").click(function(){
+		var ea = Number($(".itemView_num_count").val())+1;
+		$(".itemView_num_count").val(ea);
+	})
+	$(".btn_count_down").click(function(){
+		var ea = Number($(".itemView_num_count").val())-1;
+		$(".itemView_num_count").val(ea);
+	})
+	let option_list = "<li id='select_item_frm_li'>"
+							+ "<div class='col-xs-6 select_item_option_name'>"
+							+ "<span class='select_item_option_name_text'>" + option_value + "</span>"
+						+ "</div>"
+						+ "<div class='col-xs-3 select_item_num'>"
+							+ "<div class='row'>"
+								+ "<input type='text' class='itemView_num_count' name='count' value='1' />"
+								+ "<div class='btn_select_item_num_frm'>"
+									+ "<button type='button' class='btn btn-default btn-lg btn_count_up'>"
+										+ "<span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>"
+									+ "</button>"
+									+ "<button type='button' class='btn btn-default btn-lg btn_count_down'>"
+										+ "<span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>"
+									+ "</button>"
+								+ "</div>"
+							+ "</div>"
+						+ "</div>"
+						+ "<div class='col-xs-3 select_item_remove'>"
+							+ "<button type='button' class='btn btn-default btn-lg btn_select_item_remove'>"
+								+ "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>"
+							+ "</button>"
+						+ "</div>"
+					+ "</li>";
+	
+	$("#select_item_frm_ul").append(option_list);
+
+}
+
+shop.itemView = function(item_id){
+	$.post("../view.shop", {"item_id" : item_id}, function(data, state){
+		$("#main").html(data);
+	})
+}
 
 shop.mainFunc = function(){
 	let param = $("#shop_frm").serialize();
@@ -20,14 +71,6 @@ shop.func = function(){
 		})
 	})
 	
-	$(".btn_detail").click(function(){
-		alert(1);
-		let param = $("#shop_frm").serialize();
-		$.post("../view.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
 	$(".btn_basket").click(function(){
 		let param = $("#shop_frm").serialize();
 		$.post("../basket.shop", param, function(data, state){
@@ -41,39 +84,7 @@ shop.func = function(){
 			$("#main").html(data);
 		})
 	})
-	
-	$("#item1_category").click(function(item_category){
-		shop_frm.item_category.value = 0;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
-	$("#item2_category").click(function(item_category){
-		shop_frm.item_category.value = 1;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
-	$("#item3_category").click(function(item_category){
-		shop_frm.item_category.value = 2;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
-	$("#item4_category").click(function(item_category){
-		shop_frm.item_caategory.value = 3;
-		let param = $("#shop_frm").serialize();
-		$.post("../more.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
-	
+
 	$(".btn_itemView_payment").click(function(){
 		alert("결제하시겠습니까?")
 		let param = $("#shop_frm").serialize();
@@ -94,11 +105,13 @@ shop.func = function(){
 		if($("#btn_itemView_like_click").hasClass("glyphicon-heart-empty")){
 			alert("찜 목록에 추가되었습니다.")
 			$("#btn_itemView_like_click").removeClass("glyphicon-heart-empty")
-			$("#btn_itemView_like_click").hasClass("glyphicon-heart")
+			$("#btn_itemView_like_click").addClass("glyphicon-heart")
+			document.getElementById("btn_itemView_like_click").style.color = "red";
 		}else{
 			alert("찜 목록에서 삭제되었습니다.")
 			$("#btn_itemView_like_click").removeClass("glyphicon-heart")
-			$("#btn_itemView_like_click").hasClass("glyphicon-heart-empty")
+			$("#btn_itemView_like_click").addClass("glyphicon-heart-empty")
+			document.getElementById("btn_itemView_like_click").style.color = "black";
 		}
 	})
 	

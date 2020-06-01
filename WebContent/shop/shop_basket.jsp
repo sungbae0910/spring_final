@@ -74,4 +74,5 @@
 			</div>
 		</div>
 	</form>	
+	<script>shop.func()</script>
 </div>

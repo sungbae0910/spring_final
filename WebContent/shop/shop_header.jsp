@@ -6,6 +6,9 @@
 	    	<div class="row">
 	        	<div class="col-xs-12">
 					<div class="row">
+						<div class="col-xs-4">
+							<img id="logo" src="../main_lib/images/root.png">
+						</div>
 						<div class="col-xs-4 col-xs-offset-8" id="btn">
 							<div class="row">
 								<div class="col-xs-4 login_frm">
@@ -38,17 +41,18 @@
 							</div>
 						</div>
 						<div class="col-xs-3 item1">
-						    <a href="#" id="item1_category" ><span>귀걸이</span></a>
+						    <a href="#" id="item1_category" onclick="shop.category(0)"><span>귀걸이</span></a>
 						</div>
 						<div class="col-xs-3 item2">
-						    <a href="#" id="item2_category" ><span>목걸이</span></a>
+						    <a href="#" id="item2_category" onclick="shop.category(1)"><span>목걸이</span></a>
 						</div>
 						<div class="col-xs-3 item3">
-							<a href="#" id="item3_category" ><span>반 지</span></a>
+							<a href="#" id="item3_category" onclick="shop.category(2)"><span>반 지</span></a>	
 						</div>
 						<div class="col-xs-3 item4">
-							<a href="#" id="item3_category" ><span>팔 찌</span></a>
+							<a href="#" id="item3_category" onclick="shop.category(3)"><span>팔 찌</span></a>	
 						</div>
+						    <input type="hidden" name="item_category" id="item_category"/>
 					</div><!-- /.row -->
 				</div>
 			</div>
