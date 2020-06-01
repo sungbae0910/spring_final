@@ -81,7 +81,7 @@ var pwdIssue = function(){
 		success : function(data){
 			if(data == 1){
 				alert("새 비밀번호 발급 완료");
-				window.location = "./sb_music/login.jsp";
+				location.href = "./sb_music/login.jsp";
 			}else{
 				alert('비밀번호 발급 실패');
 				return false;
