@@ -13,10 +13,10 @@
 
 	<div class="container" id="news">
 		<header>
-			<form>
+			<form onsubmit="this.action=search()" id="frm_search">
 				<div class="input-group">
-					<input type="text" id="search" class="form-control" placeholder="곡 검색" autocomplete="off">
-					<span class="input-group-addon"><img src="../sb_music/sb_lib/images/wm.png" id="search-left"></span>
+					<input type="text" id="search" name="search" class="form-control" placeholder="곡 검색" autocomplete="off">
+					<span class="input-group-addon" onclick="search()"><img src="../sb_music/sb_lib/images/wm.png" id="search-left"></span>
 				</div>
 			</form>
 		</header>

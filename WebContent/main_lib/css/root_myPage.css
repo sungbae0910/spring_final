@@ -32,6 +32,13 @@
 	font-size: 18px;
 }
 
+#my_coupons{
+	background-color: white;
+	border: 1px solid #BDBDBD;
+	padding: 50px;
+	font-size: 18px;
+}
+
 #my_Btns{
 	margin-top: 25px;
 }

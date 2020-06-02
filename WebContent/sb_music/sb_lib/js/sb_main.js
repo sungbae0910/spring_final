@@ -58,7 +58,7 @@ play = function(serial){ // 듣기 눌렀을 때
 	});
 }
 
-play2 = function(serial){
+play2 = function(serial){ // 플레이리스트 추가 x
 	frm_top.m_serial.value = serial;
 	let param = $('#frm_top').serialize();
 	$.post('sb_play2.mu', param, function(data){

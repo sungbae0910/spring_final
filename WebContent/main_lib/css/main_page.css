@@ -1,12 +1,22 @@
 @charset "UTF-8";
 
-@font-face{
+/* @font-face{
 	font-family: 'nanum';
 	src: url('../main_lib/fonts/NanumBarunGothic.ttf') format('ttf');
 }
 
 body{
 	font-family: nanum;
+}
+ */
+ 
+@font-face{
+	font-family: NanumBarunGothic;
+	src: url(NanumBarunGothic.ttf) format('ttf');
+}
+
+body{
+	font-family: 'NanumBarunGothic';
 }
 
 a{
@@ -64,6 +74,10 @@ img#logo{
     width: 207px;
     height: 43px;
     border: none;
+}
+
+#index_myPage{
+	cursor: pointer;
 }
 
 /* main.jsp */

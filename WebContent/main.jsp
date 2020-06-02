@@ -35,7 +35,7 @@
 					<c:if test="${!empty mId}">
 						
 							
-						<span><%=mId %>님</span> | <span onclick="myPage()">내 정보  </span> 
+						<span><%=mId %>님</span> | <span id="index_myPage" onclick="myPage()">내 정보  </span> 
 						<button id="logout">로그아웃</button>
 						<br>
 						<span id="email"></span><br>

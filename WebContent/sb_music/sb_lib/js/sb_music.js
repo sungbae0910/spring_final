@@ -16,7 +16,16 @@ var info = function(serial){
 	
 }
 
+var search = function(){
+	let param = $('#frm_search').serialize();
+	$('#changePage').load('sb_search.mu', param);
+}
 
-
-
+$('#search').keydown(function(){
+	if(event.keyCode === 13){
+		event.preventDefault();
+		search();
+		
+	}
+})
 

@@ -70,7 +70,14 @@
 		
 	</select>
 	
+	<select id="search" parameterType="String" resultType="mybatis.MusicVo">
+		select A.*, B.album_photo 
+		from sb_music A
+		join sb_album B
+		on a.album_serial = b.album_serial
+		where music_name LIKE '%' || #{_parameter} || '%'
 	
+	</select>
 	
 	<update id="addList" parameterType="mybatis.MusicListVo">
 		update sb_playlist set music_list = #{music_serial} ||

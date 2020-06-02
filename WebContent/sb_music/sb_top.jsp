@@ -21,36 +21,56 @@
 		</div>
 		<br><br><br>
 		
+		<div class="col-sm-12" id="top_header">
+			<div class="col-sm-2">
+				앨범 사진
+			</div>
+			<div class="col-sm-1">
+				곡 순위
+			</div>
+			<div class="col-sm-3">
+				곡 이름
+			</div>
+			<div class="col-sm-3">
+				가수
+			</div>
+			<div class="col-sm-1">
+				듣기
+			</div>
+			<div class="col-sm-1">
+				가사
+			</div>
+			<div class="col-sm-1">
+				다운
+			</div>
+		</div>
+		
 		<c:forEach var="v" items="${top100}" varStatus="s">
 			<div id="top100_list" class="col-sm-12">
 				<div class="col-sm-2">
 					<img src="../sb_music/sb_lib/album/${v.album_photo }.PNG" width="80px;">
 				</div>
-				<div class="col-sm-1">
+				<div class="col-sm-1" id="top_c">
 					${s.count }
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3" id="top_c">
 					${v.music_name }
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3" id="top_c">
 					${v.artist_name }
 				</div>
-				<div class="col-sm-1">
-					<span>듣기</span>
+				<div class="col-sm-1" id="top_c">
+					<span id="top_m" onclick="play2(${v.music_serial})">듣기</span>
 				</div>
-				<div class="col-sm-1">
-					<span>가사</span>
+				<div class="col-sm-1" id="top_c">
+					<span id="top_m" onclick="">가사</span>
 				</div>
-				<div class="col-sm-1">
-					<span>다운</span>
+				<div class="col-sm-1" id="top_c">
+					<span id="top_m">다운</span>
 				</div>
 			</div>
 		</c:forEach>
 		
-		
-		
-	
-	
 	</div>
 	
 	

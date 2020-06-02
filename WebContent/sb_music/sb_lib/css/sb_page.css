@@ -67,5 +67,24 @@
 	
 }
 
+#searchBody{
+	background-color: white;
+	
+}
 
+#search_top div{
+	font-weight: bold;
+}
 
+#top_header{
+	border-bottom: 1px solid #F2F2F2;
+	font-weight: bold;
+    padding-bottom: 10px;
+}
+#top_m:hover{
+	cursor: pointer;
+}
+
+#top_c{
+	padding-top: 30px;
+}

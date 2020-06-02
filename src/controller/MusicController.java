@@ -317,6 +317,34 @@ public class MusicController {
 		return str;
 	}
 	
+	@RequestMapping(value="/sb_music/sb_search.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView search(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<MusicVo> list = null;
+		
+		String str = req.getParameter("search");
+		System.out.println(str);
+		
+		list = dao.search(str);
+		for(MusicVo vo : list) {
+			System.out.println(vo.getMusic_name());
+		}
+		
+		mv.addObject("search", list);
+		mv.setViewName("sb_search");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/sb_music/sb_download.mu", method= {RequestMethod.GET, RequestMethod.POST})
+	public void download(HttpServletRequest req) {
+		
+		
+		
+		
+		
+	}
 	
 	@RequestMapping(value="/sb_music/sb_ChDrag.mu", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody

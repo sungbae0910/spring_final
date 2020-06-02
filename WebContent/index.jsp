@@ -3,7 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main_page</title>
+<title>최고의 포털 사이트 ROOT</title>
+<link rel="icon" href="./main_lib/images/root.ico">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="./sb_music/sb_lib/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/sb_music/sb_lib/css/bootstrap-theme.min.css">
@@ -49,7 +50,7 @@
             <a href="${pageContext.request.contextPath}/shop/shop_index.jsp" style="color:black;">쇼핑</a>
          </div>
          <div class="col-xs-2">
-            <a href="./sb_music/sb_main.jsp" style="color:black;">음악</a>
+            <a href="./sb_music/sb_service.jsp" style="color:black;">음악</a>
          </div>
          <div class="col-xs-2">
             <p>더보기</p>

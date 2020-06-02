@@ -68,7 +68,7 @@ public class MusicDao {
 		}
 	}
 	
-	public MusicVo play(int serial) { // À½¾Ç Á¤º¸ °¡Á®¿À±â
+	public MusicVo play(int serial) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		MusicVo vo = null;
 		try {
 			vo = sqlSession.selectOne("music.play", serial);
@@ -80,7 +80,7 @@ public class MusicDao {
 		}
 	}
 	
-	public MusicListVo playList(String mId){ // ÇØ´ç IDÀÇ ÇÃ·¹ÀÌ ¸®½ºÆ® ¹Þ¾Æ¿À±â
+	public MusicListVo playList(String mId){ // ï¿½Ø´ï¿½ IDï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		MusicListVo list = null;
 		
 		try {
@@ -94,7 +94,7 @@ public class MusicDao {
 		return list;
 	}
 	
-	public List<MusicVo> mL_music(int[] num) { //¹Þ¾Æ¿Â ÇÃ·¹ÀÌ¸®½ºÆ® °¢ Á¤º¸ Å×ÀÌºí¿¡ ³Ö´Â°Å
+	public List<MusicVo> mL_music(int[] num) { //ï¿½Þ¾Æ¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ö´Â°ï¿½
 		List<MusicVo> vo = null;
 		
 		try {
@@ -107,7 +107,7 @@ public class MusicDao {
 		}
 	}
 	
-	public MusicVo pL_music(int num) { //¹Þ¾Æ¿Â ÇÃ·¹ÀÌ¸®½ºÆ® °¢ Á¤º¸ Å×ÀÌºí¿¡ ³Ö´Â°Å
+	public MusicVo pL_music(int num) { //ï¿½Þ¾Æ¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ö´Â°ï¿½
 		MusicVo vo = null;
 		
 		try {
@@ -120,7 +120,7 @@ public class MusicDao {
 		}
 	}
 	
-	public void addList(MusicListVo vo) { // ´ã°Å³ª ½ÇÇà½Ã ÇÃ·¹ÀÌ ¸®½ºÆ®¿¡ À½¾Ç Ãß°¡
+	public void addList(MusicListVo vo) { // ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		
 		try {
 			
@@ -134,7 +134,7 @@ public class MusicDao {
 		
 	}
 	
-	public void delList(MusicListVo vo) { // x¹öÆ°À¸·Î À½¾Ç »èÁ¦
+	public void delList(MusicListVo vo) { // xï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		try {
 			sqlSession.update("music.delList", vo);
@@ -143,6 +143,18 @@ public class MusicDao {
 			e.printStackTrace();
 			sqlSession.rollback();
 		}
+	}
+	
+	public List<MusicVo> search(String str) {
+		List<MusicVo> list = null;
+		try {
+			list = sqlSession.selectList("music.search", str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
+		
 	}
 	
 	public void ChDrag(MusicListVo vo) {

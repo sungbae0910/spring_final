@@ -87,7 +87,7 @@
 		</div>
 		
 		<div class="col-sm-6">
-			<img src="./main_lib/images/wm_ad.png" onclick="location.href='./sb_music/sb_main.jsp'" id="wm_ad">
+			<img src="./main_lib/images/wm_ad.png" onclick="location.href='./sb_music/sb_service.jsp'" id="wm_ad">
 		</div>
 		
 		<hr id="dhr">
@@ -99,25 +99,21 @@
 		<div id="rt_shop">
 			<c:forEach items="${shopList }" var="s">
 			
-				<table>
-					<thead>
-						<tr>
-							<td>
-								<img src="${s.image }" width="150px">
-							</td>
-							<td>
-								<a href="${s.link }">${s.title }</a>
-								<br>
-								<span id="high">최저가${s.lprice}</span> 
-								<c:if test="${s.hprice != 0 }">
-									<span id="low">최고가${s.hprice}</span>
-								</c:if>
-							</td>
-						</tr>
-					</thead>
-					
-					
-				</table>
+				<div class="col-sm-6" id="shopDiv">
+					<div class="col-sm-4">
+						<img src="${s.image }" width="150px">
+					</div>
+					<div class="col-sm-8">
+						<br>
+						<br>
+						<a href="${s.link }">${s.title }</a>
+						<br>
+						<span id="high">최저가${s.lprice}</span> 
+						<c:if test="${s.hprice != 0 }">
+							<span id="low">최고가${s.hprice}</span>
+						</c:if>
+					</div>
+				</div>		
 				
 			</c:forEach>
 			<div align="right">
