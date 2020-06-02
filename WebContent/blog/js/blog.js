@@ -85,7 +85,7 @@ blog.myblog_func = function () {
 		});
 	
 	$("#c_btnBrdLike").click(function () { //공감버튼
-		let mId = session.getSession("mId");
+		/*let mId = session.getSession("mId");*/
 		let brdLike = $("#c_brdLike");
 		
 		if ($(this).hasClass("glyphicon-heart-empty")) {
@@ -103,7 +103,7 @@ blog.myblog_func = function () {
 				$(this).text(brdLike.val());
 			}
 		}
-		$("#c_mId").val(mId);
+		/*$("#c_mId").val(mId);*/
 		blog.brdLikeUpdate();
 	});
 	

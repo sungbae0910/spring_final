@@ -90,7 +90,7 @@
       				</div>
 	        	</div>
 		        <div id="c_cmt">
-		        	<span id="c_cmt_title">댓글 10</span>
+		        	<span id="c_cmt_title">댓글 2</span>
 		        	<hr/>
 			        <div class="c_cmt">
 		        		<img src="./blog_image/cat.jpg" class="img-circle" alt="">
@@ -103,10 +103,10 @@
 				      		  <li id="c_btnCmtDelete" class="c_delete"><span>삭제</span></li>
 		        			</ul>
       					</div>
-		        		<div class="c_cmtMid">댓글 단 사람</div>
+		        		<div class="c_cmtMid">ididid</div>
 		        		<div class="c_cmtDate">2020.05.07 23:53</div>
 		        		<div class="c_cmtBlame">신고</div>
-		        		<div class="c_cmtContent">안녕하세요 나는 댓글이에요</div>
+		        		<div class="c_cmtContent">음식이 너무 맛있어보여요 ㅎㅎ 꼭 가봐야겠네요!</div>
 		        		<div id="c_btnRepl" class="c_btnRepl" data-toggle="modal" data-target="#myModal">답글</div>
 		        	</div>
 		        	<div class="c_repl">
@@ -120,10 +120,10 @@
 				      		  <li id="c_btnReplDelete" class="c_delete"><span>삭제</span></li>
 		        			</ul>
       					</div>
-		        		<div class="c_cmtMid">답글 단 사람</div>
+		        		<div class="c_cmtMid">jhta</div>
 		        		<div class="c_cmtDate">2020.05.07 23:53</div>
 		        		<div class="c_cmtBlame">신고</div>
-		        		<div class="c_cmtContent">안녕하세요 나는 답글!!안녕하세요 나는 답글!!안녕하세요 나는 답글!!안녕하세요 나는 답글!!안녕하세요 나는 답글!!안녕하세요 나는 답글!!안녕하세요 나는 답글!!안녕하세요 나는 답글!!</div>
+		        		<div class="c_cmtContent">네^^ 감사합니다. 꼭 가보세요!</div>
 		        	</div>
 		        	<textarea placeholder="댓글을 입력해주세요."></textarea>
 		        	<label><input type="checkbox" name="c_cmtSecret"/> 비밀글</label>

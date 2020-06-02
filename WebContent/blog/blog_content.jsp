@@ -15,7 +15,14 @@
 			    	<div class="col-sm-4">
 			 			<div class="thumbnail">
 			   				<div onclick="blog.brdView('${i.mId}', ${i.brdNo})">
-			     			    <img src="./blog_image/${i.brdHeader}">
+			   					<c:choose>
+	        						<c:when test="${empty i.brdHeader}">
+	        							<img src="./blog_image/life.jpg" class="img-rounded">
+	        						</c:when>
+	        						<c:otherwise>
+			     			    		<img src="./blog_image/${i.brdHeader}">
+			     		    		</c:otherwise>
+			     		   		</c:choose>
 								<div class="caption">
 		          					<div class="c_bestSubject">${i.subject}</div>
 		          					<p/>
@@ -41,7 +48,14 @@
 		        	<div class="col-sm-12">
 		        		<div class="c_blogList" onclick="blog.brdView('${i.mId}', ${i.brdNo})">
 		        			<span class="c_listBrdImg">
-		        				<img src="./blog_image/${i.brdHeader}" class="img-rounded"/>
+			   					<c:choose>
+	        						<c:when test="${empty i.brdHeader}">
+	        							<img src="./blog_image/life.jpg" class="img-rounded">
+	        						</c:when>
+	        						<c:otherwise>
+				        				<img src="./blog_image/${i.brdHeader}" class="img-rounded"/>
+	        						</c:otherwise>
+	        					</c:choose>
 		        			</span>
 		        			<div class="c_listCont">
 		        				<div class="c_listData">
@@ -70,6 +84,20 @@
 	</div>
 </div>
 <script>
+	$(".c_listInnerCont p").each(function(){
+		$(this).closest(".c_listInnerCont").append($(this).text());
+	    $(this).remove();
+		$(".c_listInnerCont p br").remove();
+	});
+	$(".c_listInnerCont div").each(function(){
+		if (!$(".c_listInnerCont div").text().trim().length) {
+	    	$(".c_listInnerCont div").remove();
+	    }
+	});
+	$(".c_listInnerCont img").each(function(){
+		$(this).remove();
+	});
+
 	//게시물 시간
 	$(document).ready(function(){
 		$("time.c_listBrdDate").timeago();

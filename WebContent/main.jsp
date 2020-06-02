@@ -133,7 +133,7 @@
 				 <a href="${pageContext.request.contextPath}/wpy/w_index.jsp"><img  src="${pageContext.request.contextPath}/wpy/w_images/foodB.jpg"></a> 
 			</div>
 			
-			<div class="col-xs-12 " style="border: 2px solid black;">
+			<div class="col-xs-12 ">
 				<div id="news" class="list">
 	        		<div class="listItem">
 	        			<div class="row">
@@ -163,14 +163,21 @@
 	        		<c:forEach  var="bList" items="${blogList}">
 		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
 		        			<div class="row">
-	        				<div class="col-xs-4 col-md-3">
-	        					<img src="/blog/blog_image/${bList.brdHeader}" class="img-rounded">
-	        				</div>
-       						<div class="col-xs-8 col-md-9">
-			        			<div class="subject">${bList.subject}</div>
-			        			<div class="content">${bList.content}</div>
-			        			<time class="date" datetime="${bList.brdDate}"></time>
-       						</div>
+		        				<div class="col-xs-4 col-md-3">
+		        					<c:choose>
+		        						<c:when test="${empty bList.brdHeader}">
+		        							<img src="${pageContext.request.contextPath}/blog/blog_image/life.jpg" class="img-rounded">
+		        						</c:when>
+		        						<c:otherwise>
+				        					<img src="${pageContext.request.contextPath}/blog/blog_image/${bList.brdHeader}" class="img-rounded">
+			        					</c:otherwise>
+		        					</c:choose>
+		        				</div>
+	       						<div class="col-xs-8 col-md-9">
+				        			<div class="subject blog">${bList.subject}</div>
+				        			<div class="content blog">${bList.content}</div>
+				        			<time class="date" datetime="${bList.brdDate}"></time>
+	       						</div>
        						</div>
 		        		</div>
 	        		</c:forEach>
@@ -180,6 +187,20 @@
 	</div>
 </div>
 <script>
+	$(".content.blog p").each(function(){
+		$(this).closest(".content.blog").append($(this).text());
+	    $(this).remove();
+		$(".content.blog br").remove();
+	});
+	$(".content.blog div").each(function(){
+		if (!$(".content.blog div").text().trim().length) {
+	    	$(".content.blog div").remove();
+	    }
+	});
+	$(".content.blog img").each(function(){
+		$(this).remove();
+	});
+
 	//블로그 게시물 시간
 	$(document).ready(function(){
 		$("time.date").timeago();

@@ -54,14 +54,21 @@
 	        		<c:forEach  var="brdList" items="${myblogBrdList}">
 	        			<c:if test="${brdList.basicSet == 0}">
 			        		<div class="c_myBlog_brd_item" onclick="blog.brdView('${brdList.mId}', ${brdList.brdNo})">
-			        			<img src="./blog_image/${brdList.brdHeader}" class="img-rounded">
+			        			<c:choose>
+	        						<c:when test="${empty brdList.brdHeader}">
+	        							<img src="./blog_image/life.jpg" class="img-rounded">
+	        						</c:when>
+	        						<c:otherwise>
+						       			<img src="./blog_image/${brdList.brdHeader}" class="img-rounded">
+	    	    					</c:otherwise>
+	        					</c:choose>
 			        			<div class="c_brd_Subject">${brdList.subject}</div>
 			        			<div class="c_brd_Cont">${brdList.content}</div>
 			        			<div class="c_brd_Date">${brdList.brdDate}</div>
 			        		</div>
 	        			</c:if>
 	        		</c:forEach>
-	        	</div>	
+	        	</div>	 	
 	        </div>
 	    </div>
 	</div>
@@ -92,4 +99,4 @@
 		</div>
 	</div>
 </div>
-<script>blog.myblog_func();</script>
+<script> blog.myblog_func(); </script>

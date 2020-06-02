@@ -61,7 +61,7 @@
 		on B.cName=C.cName where C.cName=#{cName} and B.mId=#{mId}
 	</select>
 	<select id="brdView" parameterType="Integer" resultType="blogController.BlogBoardVo">
-		select B.brdNo, bNo, mId, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, brdLike, basicSet, tContent
+		select B.brdNo, bNo, mId, cName, brdHeader, oriBrdHeader, subject, content, to_char(brdDate, 'rrrr.mm.dd hh24:mi') brdDate, brdLike, basicSet, tContent
 		from blog_board B left outer join blog_tag T 
 		on B.brdNo=T.brdNo 
 		where B.brdNo=${brdsNo}
