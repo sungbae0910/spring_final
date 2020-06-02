@@ -36,7 +36,7 @@
 <form id="tes_s" method="post">
 	<input type="hidden" name="nCategory" class="nCategory"/>
 	<input type="hidden" name="nSerial" class="nSerial" value="${vo.nSerial }"/>
-	<input type="hidden" name="mName" value="${sessionScope.mName}"/>
+	<input type="hidden" name="mName" value="${sessionScope.mId}"/>
 	<input type="hidden" name="cSerial" class="cSerial"/>
 	<input type="hidden" name="indent" class="cIndent"/>
 	<input type="hidden" name="cGroup" class="cGroup"/>
@@ -168,8 +168,18 @@
 						<div class="input-group mb-3">
 							<input type="text" name="content" id="cC_s" class="form-control cContent" placeholder="댓글을 입력해주세요"/>
 							<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="button"
-									id="button-addon2" onclick="news_comment()">입력</button>
+								<c:choose>
+									<c:when test="${not empty sessionScope.mId}">
+										<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="news_comment()">
+											입력
+										</button>
+									</c:when>
+									<c:otherwise>
+										<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="login_s()">
+											입력
+										</button>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 						<div class="cmt_box">
@@ -214,9 +224,11 @@
 												<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													<img src="${pageContext.request.contextPath}/news/img/icon/vertical-dots.png" > 
 												</a>
+												<c:if test="${sessionScope.mId eq i.mName}">
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
 													<a class="dropdown-item" href="#" onclick="news_comment_delete('${ii.index}','${i.cGroup}')">삭제</a>
 												</div>
+												</c:if>
 											</div>									
 											<div>
 												<br />
@@ -225,7 +237,7 @@
 											<div>
 												<span class="comment_recomm" style="float: right;">
 													<c:choose>
-														<c:when test="${not empty sessionScope.mName}">
+														<c:when test="${not empty sessionScope.mId}">
 															<button type="button" class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
 																<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="${pageContext.request.contextPath}/news/img/news/unlike.png" style="width: 18px; height: 18px;"></span>
 																<span class="num_txt num_txtr${ii.index}">
@@ -243,7 +255,7 @@
 														</c:otherwise>
 													</c:choose>
 													<c:choose>
-														<c:when test="${not empty sessionScope.mName}">
+														<c:when test="${not empty sessionScope.mId}">
 															<button type="button" class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
 																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="${pageContext.request.contextPath}/news/img/news/like.png" style="width: 18px; height: 18px;"></span> 
 																<span class="num_txt num_txto${ii.index}">
@@ -286,9 +298,9 @@
 												<div class="desc">
 													<div class="d-flex justify-content-between">
 														<svg class="bi bi-arrow-return-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd" d="M10.146 5.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 9l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd" />
-													<path fill-rule="evenodd" d="M3 2.5a.5.5 0 00-.5.5v4A2.5 2.5 0 005 9.5h8.5a.5.5 0 000-1H5A1.5 1.5 0 013.5 7V3a.5.5 0 00-.5-.5z"clip-rule="evenodd" />
-												</svg>
+															<path fill-rule="evenodd" d="M10.146 5.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 9l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd" />
+															<path fill-rule="evenodd" d="M3 2.5a.5.5 0 00-.5.5v4A2.5 2.5 0 005 9.5h8.5a.5.5 0 000-1H5A1.5 1.5 0 013.5 7V3a.5.5 0 00-.5-.5z"clip-rule="evenodd" />
+														</svg>
 														<div class="d-flex align-items-center">
 															<h5>
 																<a href="#">${re.mName}</a>
@@ -304,9 +316,11 @@
 												<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													<img src="${pageContext.request.contextPath}/news/img/icon/vertical-dots.png" > 
 												</a>
+												<c:if test="${sessionScope.mId eq i.mName}">
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
 													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}','${ii.index}')">삭제</a>
 												</div>
+												</c:if>
 											</div>
 											<!-- 삭제버튼  끝-->
 										</div>

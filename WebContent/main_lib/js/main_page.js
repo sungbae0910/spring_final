@@ -23,6 +23,9 @@ var news_detail = function(serial){
 	$('#s_news_frm').attr('action', 'newsDetail.mem').submit();
 }
 
+var logout = function(){
+	$('#h_shop_frm').attr('action', 'logout.mem').submit();
+}
 
 /*main.shopView = function(item_id){
 	$("#h_item_id").val(item_id);

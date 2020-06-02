@@ -35,15 +35,15 @@
 					<c:if test="${!empty mId}">
 						
 							
-						<span><%=mId %>님</span> | <span id="index_myPage" onclick="myPage()">내 정보  </span> 
-						<button id="logout">로그아웃</button>
+						<span><%=mId %>님</span> | <span onclick="myPage()">내 정보  </span> 
+						<button type="button" onclick="logout()" id="logout_s">로그아웃</button>
 						<br>
 						<span id="email"></span><br>
 
 						<div class="col-sm-3"><span>알림</span></div>	
 						<div class="col-sm-3"><span>구독</span></div>	
 						<div class="col-sm-3"><span>쇼핑</span></div>	
-						<div class="col-sm-3"><span>블로그</span></div>	
+						<div class="col-sm-3"><span>블로그</span></div>
 					</c:if>
 			</div>
 			<div class="col-xs-12" id="main_shop_frm">

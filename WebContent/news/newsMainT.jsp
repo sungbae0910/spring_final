@@ -35,7 +35,7 @@
 
 <body>
 <form id="news_s" method="post">
-	<input type="hidden" value="${sessionScope.mName}" name="mName"/>
+	<input type="hidden" value="${sessionScope.mId}" name="mName"/>
 </form>
     <header>
         <!-- Header Start -->
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="header-info-right">
                                     <ul class="header-social">    
-                                        <li><a href="#" class="ins_s" onclick="weekly()"><img src="./img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
+                                        <li><a href="../login.jsp" class="ins_s"><img src="./img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
                                         <li><a href="#"><img src="./img/icon/blog_s.png" style="width:25px; height:25px;"></a></li>
                                     </ul>
                                 </div>	                                

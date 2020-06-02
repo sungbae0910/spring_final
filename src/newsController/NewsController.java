@@ -50,11 +50,9 @@ public class NewsController {
 		List<NewsVo> list = null;
 		// 메인상단 사진 
 		List<NewsPhotoVo> list2 = null;
-		HttpSession httpSession = req.getSession(true);
 		
 		list = ns.selectI();
 		list2 = ns.selectP();
-		httpSession.setAttribute("mName", "lee");
 		
 		mv.addObject("list", list);
 		mv.addObject("photo", list2);
