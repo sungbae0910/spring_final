@@ -21,6 +21,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%
+   String inc = "./shop_main.jsp"; 
+   if (request.getParameter("inc") != null) {
+      inc = request.getParameter("inc");
+   }
+%>
 <div id="shop_body">
 	<div class="container-fluid">
 		<div class="row">
@@ -28,7 +34,7 @@
 				<%@include file="shop_header.jsp" %>
 			</div>
 			<div class="col-xs-12" id="main">			
-				<script>shop.mainFunc();</script>
+				<jsp:include page="<%=inc%>" />
 			</div>
 			<div class="col-xs-12">
 				<%@include file="shop_footer.jsp" %>

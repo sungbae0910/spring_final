@@ -2,7 +2,7 @@
  * http://usejsdoc.org/
  */
 let shop = {}
-let item_price_ori = $("#itemView_price_content").val();
+
 shop.category = function(item_category) {
 	$("#item_category").val(item_category)
 	let param = $("#shop_frm").serialize();
@@ -10,7 +10,8 @@ shop.category = function(item_category) {
 			$("#main").html(data);
 	})
 }
-shop.optionValue_click = function(option_value, item_price){
+
+shop.optionValue_click = function(option_value){
 	
 	let option_list = "<li id='select_item_frm_li'>"
 						+ "<div class='col-xs-6 select_item_option_name'>"
@@ -35,24 +36,43 @@ shop.optionValue_click = function(option_value, item_price){
 							+ "</button>"
 						+ "</div>"
 					+ "</li>";
+					
 	$("#select_item_frm_ul").append(option_list);
+/*	$("#select_item_tot_price_text").text($("#itemView_price_content").text()*$(".itemView_num_count").length);*/
+}
+
+function shopItemTotPrice(){
+	var item_tot_price = $("#select_item_tot_price_text").text();
 }
 
 shop.countUp = function(value){
+	let item_price = Number($("#itemView_price_content").text());
+	let item_tot_price = $("#select_item_tot_price_text").text();
+	let ea = 0;
+	alert(item_price);
+	$("#select_item_tot_price_text").html(item_tot_price);
 	if(value == value){
-		let ea = Number($(value).parents().prev("input").val())+1;
+		ea = Number($(value).parents().prev("input").val())+1;
 		$(value).parents().prev("input").val(ea);
+		item_tot_price = item_price+item_price;
+		$("#select_item_tot_price_text").html(item_tot_price);
+		alert(item_tot_price);
 	}
 }
 
-/*$('btn_count_up').click = function(){
-	$(value).colset("span")
-} 
-*/
 shop.countDown = function(value){
+	let item_price = Number($("#itemView_price_content").text());
+	let ea = 0;
+	alert(item_price);
 	if(value == value){
-		let ea = Number($(value).parents().prev("input").val())-1;
-		$(value).parents().prev("input").val(ea);
+		item_tot_price = Number($("#select_item_tot_price_text").text());
+		if(Number($(value).parents().prev("input").val())>1){			
+			let ea = Number($(value).parents().prev("input").val())-1;
+			$(value).parents().prev("input").val(ea);
+			item_tot_price = item_tot_price-item_price;
+			$("#select_item_tot_price_text").html(item_tot_price);
+			alert(item_tot_price);
+		}
 	}
 }
 
