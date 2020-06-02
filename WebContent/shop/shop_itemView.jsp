@@ -115,7 +115,7 @@
 										<span id="select_item_tot_price_title">총 가격</span>
 									</div>
 									<div class="col-xs-8 select_item_tot_price_text_frm">
-										<span id="select_item_tot_price_text">${vo.item_price}</span>
+										<span id="select_item_tot_price_text"></span>
 									</div>
 								</div>
 								<div class="row itemView_btn_frm">

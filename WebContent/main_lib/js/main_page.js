@@ -27,7 +27,8 @@ var logout = function(){
 	$('#h_shop_frm').attr('action', 'logout.mem').submit();
 }
 
-/*main.shopView = function(item_id){
-	$("#h_item_id").val(item_id);
+main.shopView = function(item_id){
+	alert(item_id);
+	$("#item_id").val(item_id);
 	$("#h_shop_frm").attr("action", "./shop/shop_index.jsp?inc=../view.shop").submit();
-}*/
+}

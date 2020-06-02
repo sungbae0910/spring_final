@@ -6,7 +6,7 @@
 	<input type="hidden" id="c_brdNo" name="c_brdNo">
 </form>
 <form id="h_shop_frm" name="h_shop_frm" method="post">
-	<input type="hidden" id="h_item_id" name="h_item_id">
+	<input type="hidden" id="item_id" name="item_id">
 	<input type="hidden" name="h_item_category" id="h_item_category"/>
 </form>
 <form id="s_news_frm" method="post">
@@ -48,7 +48,9 @@
 			</div>
 			<div class="col-xs-12" id="main_shop_frm">
 				<div id="shop">
-					<h3>shop</h3>
+					<div class="col-xs-3" id="main_shop_title">
+						<h3>shop</h3>
+					</div>
 					<div class="row" id="shop_earringList">
 						<div class="page-header">
 					  		<h4>귀걸이<small><button type="button" onclick="shop.category(0)" class="btn btn-default btn_more">더보기</button></small></h4>
@@ -72,7 +74,7 @@
 					  		<h4>목걸이<small><button type="button" onclick="shop.category(1)" class="btn btn-default btn_more">더보기</button></small></h4>
 						</div>
 						<c:forEach var="i" items="${necklaceList}" begin="0" end="1">
-							<div id="shop_necklaceList" onclick="main.shopView('${i.item_id}')">
+							<div id="main_shop_necklaceList" onclick="main.shopView('${i.item_id}')">
 								<div class="col-xs-6">
 									<div>
 										<img src="${pageContext.request.contextPath}/shop/image/${i.item_main_photo}" class="img-rounded" id="shop_necklace_img">
@@ -90,7 +92,7 @@
 					  		<h4>반지<small><button type="button" onclick="shop.category(2)" class="btn btn-default btn_more">더보기</button></small></h4>
 						</div>
 						<c:forEach var="i" items="${ringList}" begin="0" end="1">
-							<div id="shop_ringList" onclick="main.shopView('${i.item_id}')">
+							<div id="main_shop_ringList" onclick="main.shopView('${i.item_id}')">
 								<div class="col-xs-6">
 									<div>
 										<img src="${pageContext.request.contextPath}/shop/image/${i.item_main_photo}" class="img-rounded" id="shop_ring_img">
@@ -108,7 +110,7 @@
 					  		<h4>팔찌<small><button type="button" onclick="shop.category(3)" class="btn btn-default btn_more">더보기</button></small></h4>
 						</div>
 						<c:forEach var="i" items="${braceletList}" begin="0" end="1">
-							<div id="shop_braceletList" onclick="main.shopView('${i.item_id}')">
+							<div id="main_shop_braceletList" onclick="main.shopView('${i.item_id}')">
 								<div class="col-xs-6">
 									<div>
 										<img src="${pageContext.request.contextPath}/shop/image/${i.item_main_photo}" class="img-rounded" id="shop_bracelet_img">

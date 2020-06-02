@@ -19,7 +19,7 @@ public class ShopController {
 	
 	String url = "./shop/";
 	
-	@RequestMapping(value="/main.shop", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/main.shop", method= {RequestMethod.POST})
 	public ModelAndView shopMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
