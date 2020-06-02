@@ -11,6 +11,7 @@
 		        	<input type="hidden" name="c_bNo" value="${board.bNo}"/>
 		        	<input type="hidden" name="c_brdNo" value="${board.brdNo}"/>
 		        	<input type="hidden" id="c_basicSetVal" name="c_basicSet" value="${board.basicSet}"/>
+		        	<input type="hidden" id="c_cName" value="${board.cName}">
 		        	<select id="c_brdCategory" name="c_cName">
 		        		<option>카테고리 없음</option>
 		        		<c:forEach var="i" items="${category}">
@@ -78,6 +79,10 @@
 <script>
 	blog.brdAction(); 
 	blog.myblog_func();
+	
+	//카테고리 데이터에 맞게 선택#가나다라
+	let cName = $("#c_cName").val();
+	$("#c_brdCategory").val(cName).prop("selected", true);
 	
 	//게시물 공개여부데이터 라디오버튼체크 
 	if ($("#c_basicSetVal").val() == 0) {

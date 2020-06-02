@@ -18,10 +18,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script src="./js/summernote-ko-KR.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 통계에 쓸 차트 -->
 </head>
 <body>
 <%
-	String inc = "./blog_header.jsp";
+	String inc = "./blog_header.jsp"; 
 	if (request.getParameter("inc") != null) {
 		inc = request.getParameter("inc");
 	}
