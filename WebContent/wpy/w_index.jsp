@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,6 @@
 <link rel="stylesheet" href="./css/style.css" />
 </head>
 
-
 <body class="homepage">
 
 		<!-- Header -->
@@ -22,11 +22,12 @@
 				<div class="container">
 						
 					<!-- 로그인 버튼 -->	
-						<input type="button" id="w_btnLogin" value="로그인">
-						
-						
-						<!-- <a id="w_btnLogin" href="w_login.jsp">로그인</a>
-						<a id="w_btnLogout" href="w_index.jsp">로그아웃</a> -->
+					    <c:if test="${empty mId}">
+						<a href="w_login.jsp"><button id="w_btnLogin">로그인</button></a>
+						</c:if>
+					 	<c:if test="${!empty mId}">
+					    <a id="w_btnLogout" href="w_index.jsp">로그아웃</a>
+					    </c:if>
 					<!-- Logo -->
 						<img id="img1" src="./w_images/w_mainimage1.png">
 					<!-- Nav -->
@@ -106,6 +107,8 @@
 						      <span>이메일 :wkymonk@gmail.com</span>
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
+						      <br/>
+						      <a href="../index.jsp" ><img src="./w_images/w_root.png" alt=""></a>      
 						</div>
 				</div>
 			</div>

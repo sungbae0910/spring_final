@@ -38,7 +38,6 @@
 									</ul>
 								</li>
 								<li><a href="w_founded.jsp">창업문의</a></li>
-								<li><a href="w_customersupport.jsp">고객문의</a></li>
 								<li><a href="w_mymap.jsp">매장안내</a></li>
 							</ul>
 						</nav>
@@ -52,7 +51,9 @@
 				<div class="container">
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">
+						<c:if test="${!empty mId}">
 						 <input type="button" id="w_btninsert" class='w_buttonmenu' value="신메뉴 입력">
+						 </c:if>
 				               <h5 class="w_menu_info">
 				                 <span class="w_deco">
 				                 	메뉴 소개

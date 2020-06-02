@@ -63,6 +63,12 @@
 <div id="main">
 </div>
    
+   
+   
+<!-- 하단 -->
+<div>
+<jsp:include page="footer.jsp"></jsp:include>
+</div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- <script src="./lib/js/bootstrap.min.js"></script> -->
 <script>main.view();</script>

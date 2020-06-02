@@ -45,6 +45,8 @@ img#logo{
 #header_bot{
 	font-size: 15px;
 	font-weight: bold;
+	margin-top: -17px;
+    margin-bottom: -18px;
 }
 
 #loginDiv{
