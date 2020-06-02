@@ -37,7 +37,7 @@ public class NewsCrawling {
 	public void insert() throws IOException{
 		String con = "";
 		String msg = "";
-		String url = "https://news.v.daum.net/v/20200527141517880";
+		String url = "https://news.v.daum.net/v/20200602132518124";
 		String company = "";
 		Document doc = null; 
 		Elements element; // 크롤링한 정보를 담기 위한 객체

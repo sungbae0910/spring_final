@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -106,9 +107,8 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/login.mem", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView login(HttpServletRequest req) {
-
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public String login(HttpServletRequest req) {
 		String result = "";
 		String id = req.getParameter("lId");
 		String password = req.getParameter("lPwd");
@@ -122,18 +122,15 @@ public class MembershipController {
 			if(ck==1) {
 				httpSession.setAttribute("mId", id);
 				System.out.println("로그인 완료");
-				mv.setViewName("login");
+				result = "1";
 			}else {
-				result = "아이디 비밀번호를 확인해주세요";
+				result = "0";
 			}
 		}else {
-			result = "아이디 비밀번호를 확인해주세요";
+			result = "0";
 		}
 		
-		mv.addObject("reuslt", result);
-		mv.setViewName("index");
-		
-		return mv;
+		return result;
 	}
 	
 	@RequestMapping(value="/sb_music/sb_login.mem", method= {RequestMethod.GET, RequestMethod.POST})
@@ -343,7 +340,15 @@ public class MembershipController {
 		return mv;
 	}
 	
-	
+	@RequestMapping(value="/logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		session.invalidate();
+		
+		mv.setViewName("index");
+		return mv;
+	}
 	
 	
 	@RequestMapping(value="/newsDetail.mem", method= {RequestMethod.GET, RequestMethod.POST})
