@@ -28,8 +28,8 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="w_index.jsp">Home</a></li>
-								<li>
-									<a href="">브랜드 소개</a>
+						        <li>
+									<a href="w_menu.jsp">브랜드 소개</a>
 									<ul>
 										<li><a href="w_menu.jsp">전 메뉴</a></li>						
 									</ul>

@@ -107,6 +107,8 @@
 						      <span>이메일 :wkymonk@gmail.com</span>
 						      <span>사업자 등록번호 :217-18-15486</span>
 						      <span>서울 중랑구 면목로 454 1층(서울 중랑구 면목동 91-65)</span>
+						      <br/>
+						      <a href="../index.jsp" ><img src="./w_images/w_root.png" alt=""></a>      
 						</div>
 				</div>
 			</div>

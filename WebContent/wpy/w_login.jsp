@@ -50,7 +50,7 @@
 		<div class="container">
 			<!-- Content -->
 			<div id="content" class="8u skel-cell-important">
-				<form id="frm_login_w" method="post" name="w_frm_register">
+				<form id="frm_login" method="post" name="frm_register">
 					<div class="login_form">
 						<span>아이디</span><br>
 						 <input type="text" id="lId" name="lId" placeholder="아이디">
@@ -58,7 +58,7 @@
 						<br> <span>비밀번호</span> <br> 
 						<input type="password" id="lPwd" name="lPwd" placeholder="비밀번호"><br> 
 						<br><br>
-						<button id="login_w" type="button">로그인</button><br /> 
+						<button id="login" type="button">로그인</button><br /> 
 					</div>
 				</form>
 

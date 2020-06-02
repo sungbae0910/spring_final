@@ -16,8 +16,8 @@ fd.foodj = function(type) {
 	})
 }
 */
-
 fd.foodv = function(foodCode){
+
 	$.post("../w_view.fd",{"foodCode" : foodCode}, function(data,state){
 		$(".w_tab_container").html(data)
 	})
@@ -90,7 +90,7 @@ fd.func = function(){
    
    
    $('#login_w').click(function(){
-		$('#frm_login_w').attr('action', '../w_login.mem').submit();
+		$('#frm_login').attr('action', '../login.mem').submit();
 	})
 
 
@@ -99,7 +99,7 @@ fd.func = function(){
 			$('#checkId').text("id must be alphabet, insert number between 4~20");
 			$('#sm').attr("disabled", true);
 		}else{
-			var param = $('#w_frm_register').serialize();
+			var param = $('#frm_register').serialize();
 			$.ajax({
 				url : "../mIdCk.mem",
 				type : "POST",
