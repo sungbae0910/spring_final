@@ -289,6 +289,8 @@ public class NewsDao {
 				throw new Exception("좋아요 하는 중 오류 발생");
 			}
 			
+			System.out.println("vo.getCserial : "+vo.getcSerial());
+			System.out.println("vo.getmNAme : "+vo.getmName());
 			ck = sqlSession.update("news.like_in_update", vo);
 			
 			if(ck<1) {

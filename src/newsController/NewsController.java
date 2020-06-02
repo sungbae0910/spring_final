@@ -114,6 +114,8 @@ public class NewsController {
 		Page p = new Page();
 		NewsVo vo = null;
 		String cnt = "";
+		//세션 비교
+		int result = 0;
 		Cookie[] cookies = req.getCookies();
 		List<NewsVo> list = null;
 		//댓글
@@ -126,17 +128,20 @@ public class NewsController {
 		if(cookies != null && cookies.length >0) {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("cookie"+nSerial)) {
+					result=0;
 					System.out.println("중복 조회");
 					break;
 				}else {
 					Cookie newCookie = new Cookie("cookie"+nSerial, nSerial);
-					ns.upHit(nSerial);
 					res.addCookie(newCookie);
 					System.out.println("처음 조회");
+					result=1;
 				}
 			}
 		}
-		
+		if(result==1) {
+			ns.upHit(nSerial);
+		}
 		
 		p.setnSerial(nSerial);
 		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {

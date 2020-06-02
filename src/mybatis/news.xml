@@ -162,23 +162,23 @@
 
 	<!-- update -->
 	<update id="like_in_update" parameterType="newsController.LikeVo">
-		update news_comment set cLike=cLike+1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cLike=cLike+1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="like_out_update" parameterType="newsController.LikeVo">
-		update news_comment set cLike=cLike-1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cLike=cLike-1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="un_like_in_update" parameterType="newsController.LikeVo">
-		update news_comment set cDiLike=cDiLike+1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cDiLike=cDiLike+1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="un_like_out_update" parameterType="newsController.LikeVo">
-		update news_comment set cDiLike=cDiLike-1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cDiLike=cDiLike-1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="up_hit" parameterType="String">
-		update news_info set nHit=nHit+1 where nSerial=${value}
+		update news_info set nHit=nHit+1 where nSerial=#{value}
 	</update>
 	
 	<!-- resultMap -->

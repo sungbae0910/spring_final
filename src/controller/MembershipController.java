@@ -341,13 +341,11 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView logout(HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+	public String logout(HttpSession session) {
 		
-		session.invalidate();
+		session.removeAttribute("mId");
 		
-		mv.setViewName("index");
-		return mv;
+		return "redirect:index.jsp";
 	}
 	
 	

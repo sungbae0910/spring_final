@@ -292,7 +292,6 @@ public class NewsService {
 	
 	// 조회수 증가(쿠키를 사용하여 중복 조회 방지)
 	public void upHit(String nSerial) {
-		System.out.println(nSerial);
 		dao.upHit(nSerial);
 		
 	}
