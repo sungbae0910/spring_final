@@ -113,6 +113,14 @@
 		)where nserial = #{value}
 	</select>
 	
+	<select id="like_ck_l" parameterType="String" resultType="newsController.LikeVo">
+		select * from news_like where mName = #{value} and cLike = 1
+	</select>
+	
+	<select id="like_ck_cl" parameterType="String" resultType="newsController.LikeVo">
+		select * from news_like where mName = #{value} and cDiLike = 1
+	</select>	
+	
 	
 	<!-- insert -->
 	<insert id='news_insert' parameterType="newsController.NewsVo">

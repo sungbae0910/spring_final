@@ -296,4 +296,20 @@ public class NewsService {
 		
 	}
 	
+	public List<LikeVo> likeCk(String mId){
+		List<LikeVo> likeCk = null;
+		
+		likeCk = dao.likeCk(mId);
+		
+		return likeCk;
+	}
+	
+	public List<LikeVo> likeCd(String mId){
+		List<LikeVo> likeCd = null;
+		
+		likeCd = dao.likeCd(mId);
+		
+		return likeCd;
+		
+	}
 }

@@ -122,7 +122,10 @@ public class NewsController {
 		List<CommentVo> comment = null;
 		//대댓글
 		List<CommentVo> reComment = null;
+		List<LikeVo> likeCk = null;
+		List<LikeVo> likeCd = null;
 		String nSerial = req.getParameter("nSerial");
+		String mId = req.getParameter("mId");
 		
 		// 쿠키를 확인하여 조회수 중복 증가 방지
 		if(cookies != null && cookies.length >0) {
@@ -155,7 +158,8 @@ public class NewsController {
 		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial);
 		cnt = ns.commentCnt(nSerial);
-		
+		likeCk = ns.likeCk(mId);
+		likeCd = ns.likeCd(mId);
 		
 		mv.addObject("p", p);
 		mv.addObject("list", list);
@@ -163,6 +167,8 @@ public class NewsController {
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
 		mv.addObject("cnt", cnt);
+		mv.addObject("likeCk", likeCk);
+		mv.addObject("likeCd", likeCd);
 		
 		mv.setViewName("newsDetailT");
 		

@@ -289,8 +289,6 @@ public class NewsDao {
 				throw new Exception("좋아요 하는 중 오류 발생");
 			}
 			
-			System.out.println("vo.getCserial : "+vo.getcSerial());
-			System.out.println("vo.getmNAme : "+vo.getmName());
 			ck = sqlSession.update("news.like_in_update", vo);
 			
 			if(ck<1) {
@@ -449,5 +447,28 @@ public class NewsDao {
 		}
 		
 	}
-
+	
+	public List<LikeVo> likeCk(String mId){
+		List<LikeVo> likeCk = new ArrayList<LikeVo>();
+		
+		try {
+			likeCk = sqlSession.selectList("news.like_ck_l", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeCk;
+	}
+	
+	public List<LikeVo> likeCd(String mId){
+		List<LikeVo> likeCd = new ArrayList<LikeVo>();
+		
+		try {
+			likeCd = sqlSession.selectList("news.like_ck_cl", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeCd;
+	}
 }

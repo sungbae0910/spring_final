@@ -11,6 +11,7 @@
     <form id="tes_s" class="tes_s" method="post">
     	<input type="hidden" name="cate_name" class='cate_name' /> 
     	<input type="hidden" name="nSerial" class="nSerial" />
+    	<input type="hidden" name="mId" value="${sessionScope.mId}"/>
 	</form>
     <!-- Trending Area Start -->
     <div class="trending-area fix">

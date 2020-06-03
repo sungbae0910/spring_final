@@ -218,7 +218,29 @@
 													<c:choose>
 														<c:when test="${not empty sessionScope.mId}">
 															<button type="button" class="btn_g btn_recomm" onclick="like_func_s(${ii.index})" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_recomm bounce"><img class="recomm${ii.index}" src="${pageContext.request.contextPath}/news/img/news/unlike.png" style="width: 18px; height: 18px;"></span>
+																<span class="img_cmt ico_recomm bounce">
+																<!-- 좋아요를 눌렀을시 이미지를 바꾸기 위한 로직 -->
+																<c:set var="flag" value="0"/>
+																<c:set var="loop" value="0"/>
+																<c:forEach var="ck" items="${likeCk}">
+																	<!-- loop가 1이 아닐때까지 돌아감 -->
+																	<c:if test="${loop ne 1}">
+																		<c:if test="${ck.cSerial eq i.cSerial}">
+																			<c:set var="flag" value="1"/>
+																			<!-- if조건이 맞으면 loop를 1로 바꾸어 for문을 멈춤 -->
+																			<c:set var="loop" value="1"/>
+																		</c:if>
+																	</c:if>																		
+																</c:forEach>
+																<c:choose>
+																	<c:when test="${flag eq 1}">	
+																		<img class="recomm${ii.index}" src="${pageContext.request.contextPath}/news/img/news/likeA.png" style="width: 18px; height: 18px;">
+																	</c:when>
+																	<c:otherwise>
+																		<img class="recomm${ii.index}" src="${pageContext.request.contextPath}/news/img/news/unlike.png" style="width: 18px; height: 18px;">
+																	</c:otherwise>		
+																</c:choose>																
+																</span>
 																<span class="num_txt num_txtr${ii.index}">
 																	${i.cLike}
 																</span>
@@ -236,7 +258,29 @@
 													<c:choose>
 														<c:when test="${not empty sessionScope.mId}">
 															<button type="button" class="btn_g btn_oppose" onclick="diLike_func_s(${ii.index})" style="border: none; cursor: pointer;">
-																<span class="img_cmt ico_oppose bounce"><img class="oppose${ii.index}" src="${pageContext.request.contextPath}/news/img/news/like.png" style="width: 18px; height: 18px;"></span> 
+																<span class="img_cmt ico_oppose bounce">
+																<!-- 싫어요를 눌렀을시 이미지를 바꾸기 위한 로직 -->
+																<c:set var="flag" value="0"/>
+																<c:set var="loop" value="0"/>
+																<c:forEach var="cd" items="${likeCd}">
+																	<!-- loop가 1이 아닐때까지 돌아감 -->
+																	<c:if test="${loop ne 1}">
+																		<c:if test="${cd.cSerial eq i.cSerial}">
+																			<c:set var="flag" value="1"/>
+																			<!-- if조건이 맞으면 loop를 1로 바꾸어 for문을 멈춤 -->
+																			<c:set var="loop" value="1"/>
+																		</c:if>
+																	</c:if>																		
+																</c:forEach>
+																<c:choose>
+																	<c:when test="${flag eq 1}">	
+																		<img class="oppose${ii.index}" src="${pageContext.request.contextPath}/news/img/news/unlikeA.png" style="width: 18px; height: 18px;">
+																	</c:when>
+																	<c:otherwise>
+																		<img class="oppose${ii.index}" src="${pageContext.request.contextPath}/news/img/news/like.png" style="width: 18px; height: 18px;">
+																	</c:otherwise>		
+																</c:choose>	
+																</span> 
 																<span class="num_txt num_txto${ii.index}">
 																	${i.cDiLike}
 																</span>
