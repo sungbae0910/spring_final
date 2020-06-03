@@ -350,6 +350,14 @@ public class MembershipController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/blogLogout.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public void blogLogout(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		session.invalidate();
+		return;
+	}
 	
 	@RequestMapping(value="/newsDetail.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public String newsDetail(@RequestParam("s_nserial") String nSerial) {

@@ -21,7 +21,7 @@
    
 <div class="container">
    <!-- 헤더 -->
-   
+
    <!-- 로고, 검색창 -->
    <div class="row">
       <div id='header_top'>

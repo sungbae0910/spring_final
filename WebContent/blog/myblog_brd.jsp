@@ -8,11 +8,12 @@
 	}
 %>
 <div id="c_dimmedSidebar"></div>
-<form id="c_blog_frm" name="c_blog_frm" method="post">
+<form id="c_brd_frm" name="c_brd_frm" method="post">
 	<input type="hidden" name="c_brdNo" id="c_brdNo" value="${board.brdNo}"/>
 	<input type="hidden" name="c_mId" id="c_mId" value="${myblogHeader.mId}"/>
 	<input type="hidden" name="c_cName" id="c_cName"/>
 	<input type="hidden" name="c_bNo" id="c_bNo" value="${board.bNo}"/>
+	<input type="hidden" name="c_likeFlag" id="c_likeFlag"/>
 </form>
 <aside id="c_sidebar">
 	<div id="c_innerSidebar">
@@ -23,11 +24,8 @@
 	  		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> ${myblogHeader.bTitle}
 		</button>
 		<div id="c_myblog_Cate">
-			<c:forEach var="c`" items="${myblogHeader.category}">
-				<c:if test="${c.cName eq '카테고리 없음'}">
-					<c:remove var="c" scope="request"/>
-				</c:if>
-				<div class="c_CateItem" onclick="blog.category('${c.cName}')">${c.cName} <span>(${c.cnt})</span></div>
+			<c:forEach var="c" items="${myblogHeader.category}">
+				<div class="c_CateItem" onclick="blog.category('${c.cName}')">${c.cName} <span>(${c.cnt})</span></div>					
 			</c:forEach>
 		</div>
 		<hr/>
@@ -61,10 +59,10 @@
 	        	<div id="c_brd_btn_group">
 	        		<c:choose>
 	        			<c:when test="${board.brdLike == 0}">
-  							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true">공감</span>
+  							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true" onclick="blog.brdLike('<%=mId%>')">공감</span>
 	        			</c:when>
 	        			<c:otherwise>
-  							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true">${board.brdLike}</span>
+  							<span id="c_btnBrdLike" class="glyphicon glyphicon-heart-empty" aria-hidden="true" onclick="blog.brdLike('<%=mId%>')">${board.brdLike}</span>
 	        			</c:otherwise>
 	        		</c:choose>
   					<div class="dropdown" id="c_brd_manage">
@@ -154,4 +152,24 @@
 	    </div>
 	</div>
 </div>
-<script>blog.myblog_func();</script>
+<c:forEach var="likeList" items="${board.likeMid}">
+	<input type="hidden" name="c_likeMid" value="${likeList}"/>
+</c:forEach>
+<input type="hidden" id="loginId" value="<%=mId%>"/>
+<script>
+  	if ($("#c_btnBrdLike").text() != "0") { //해당 게시글에 공감 수가 있을 경우 실행
+		var list = $("input[name=c_likeMid]");
+		var listMid = new Array(list.length)
+		
+		//로그인한 회원과 공감을 누른 회원이 같으면 공감버튼 눌려지게
+		for (var i=0; i<list.length; i++) {
+			listMid[i] = list.eq(i).val();
+			if ($("#loginId").val() == listMid[i]) { 
+				$("#c_btnBrdLike").removeClass("glyphicon-heart-empty");
+				$("#c_btnBrdLike").addClass("glyphicon-heart");
+			}
+		}
+	}
+	
+	blog.myblog_func();
+</script>

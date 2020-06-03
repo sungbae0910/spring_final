@@ -17,7 +17,7 @@ import blogController.BlogBoardVo;
 @Service
 public class FileUpload {
 	
-	public String brdSummernoteImgUploading(MultipartHttpServletRequest req) { //썸머노트 이미지파일 업로드
+	public JSONObject brdSummernoteImgUploading(MultipartHttpServletRequest req) { //썸머노트 이미지파일 업로드
 		JSONObject json = new JSONObject();
 		String filePath = req.getSession().getServletContext().getRealPath("/blog/summernoteImage/"); //저장될 외부 파일 경로
 		MultipartFile file = req.getFile("file"); //input File의 name
@@ -30,7 +30,7 @@ public class FileUpload {
 		try {
 				InputStream fileStream = file.getInputStream();
 				FileUtils.copyInputStreamToFile(fileStream, targetFile); //파일 저장
-				
+				json.put("noteImg", sysFileName);
 				json.put("url", "./summernoteImage/" + sysFileName);
 				json.put("responseCode", "success");
 		} catch (Exception e) {
@@ -38,7 +38,7 @@ public class FileUpload {
 			json.put("responseCode", "error");
 			e.printStackTrace();
 		}
-		return json.toJSONString();
+		return json;
 	}
 	
 	public BlogBoardVo brdFileUploading(MultipartHttpServletRequest req) {
@@ -51,6 +51,7 @@ public class FileUpload {
 			String oriFileName = file.getOriginalFilename(); 
 			String extension = oriFileName.substring(oriFileName.lastIndexOf("."));
 			String sysFileName = UUID.randomUUID() + extension;
+			/*File targetFile = new File(filePath + sysFileName);*/
 			File targetFile = new File(filePath + sysFileName);
 			
 			try {
@@ -89,7 +90,7 @@ public class FileUpload {
 					brdVo.setContent(req.getParameter("c_content"));
 					break;
 				case "c_tagContent" :
-					brdVo.setTContent(req.getParameter("c_tagContent"));
+					brdVo.settContent(req.getParameter("c_tagContent"));
 					break;
 				case "c_basicSet" :
 					brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));

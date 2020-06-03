@@ -1,7 +1,17 @@
 let blog = {}
 
+blog.logout = function(){
+	$.post("../blogLogout.mem", function(data, state) {
+		history.go(-2);
+	});
+}
+
 blog.mainContent = function () { //블로그 메인
 	$("#c_blogContent").load("../blogMain.bg");
+}
+
+blog.manage = function () { //블로그 관리 메인
+	$("#c_top_frm").attr("action", "?inc=../blogManageMain.bg").submit();
 }
 
 blog.mainTag = function (keyword) { //주제 누르면 뜨는 블로그 메인
@@ -19,9 +29,8 @@ blog.mainTag = function (keyword) { //주제 누르면 뜨는 블로그 메인
 	});
 }
 
-blog.myblog = function (mId) { //내 블로그
-	$("#c_mId").val(mId);//로그인한 회원 아이디	
-	$("#c_blog_frm").attr("action", "?inc=../myblogMain.bg").submit();
+blog.myblog = function () { //내 블로그
+	$("#c_top_frm").attr("action", "?inc=../myblogMain.bg").submit();
 }
 
 blog.otherBlog = function () { //다른 사람 블로그
@@ -45,8 +54,9 @@ blog.brdModify = function () { //게시물 수정
 
 blog.brdDelete = function () { //게시물 삭제
 	let param = $("#c_blog_frm").serialize();
-	$.post("../brdDelete.bg", param, function(data, state) { 
-		$("#c_blogMain").html(data);
+	$.post("../brdDelete.bg", param, function(data, state) {
+		history.go(-2);
+		/*$("#c_blogMain").html(data);*/
 	});
 }
 
@@ -54,12 +64,6 @@ blog.brdInsert = function (mId) { //글 쓰기
 	$("#c_mId").val(mId);
 	$("#c_blog_frm").attr("action", "?inc=../brdInsert.bg").submit();
 
-}
-
-
-
-blog.manageMain = function () { //블로그 관리
-	location.href = "?inc=./blog_manage.jsp";
 }
 
 /*blog.func = function(){
@@ -84,8 +88,8 @@ blog.myblog_func = function () {
 			$("#c_dimmedSidebar").css("position", "");
 		});
 	
-	$("#c_btnBrdLike").click(function () { //공감버튼
-		/*let mId = session.getSession("mId");*/
+	/*$("#c_btnBrdLike").click(function () { //공감버튼
+		let mId = session.getSession("mId");
 		let brdLike = $("#c_brdLike");
 		
 		if ($(this).hasClass("glyphicon-heart-empty")) {
@@ -103,9 +107,9 @@ blog.myblog_func = function () {
 				$(this).text(brdLike.val());
 			}
 		}
-		/*$("#c_mId").val(mId);*/
+		$("#c_mId").val(mId);
 		blog.brdLikeUpdate();
-	});
+	});*/
 	
 	$("#c_btnRepl").click(function () {
 		$(".modal-title").text("답글 입력");
@@ -135,9 +139,32 @@ blog.myblog_func = function () {
 }
 
 
-blog.brdLikeUpdate = function () { //공감버튼 값 변경
+blog.brdLike = function (mId) { //공감버튼 값 변경
+	let brdLike = $("#c_btnBrdLike");
+
+	if (brdLike.hasClass("glyphicon-heart-empty")) {//공감 버튼 처음 눌렀을 때
+		brdLike.removeClass("glyphicon-heart-empty");
+		brdLike.addClass("glyphicon-heart");
+		if (brdLike.text() == "공감") {
+			brdLike.text(1);
+		} else {
+			brdLike.text(Number(brdLike.text()) + 1);		
+		}
+		$("#c_likeFlag").val("i");
+	} else { //공감 해제할 때
+		brdLike.removeClass("glyphicon-heart");
+		brdLike.addClass("glyphicon-heart-empty");
+		$("#c_likeFlag").val("d");
+		let like = Number(brdLike.text()) - 1;
+		if (like == 0) { //공감 수가 0이면
+			brdLike.text("공감");				
+		} else {
+			brdLike.text(like);
+		}
+	}
+	$("#c_mId").val(mId);
 	let param = $("#c_brd_frm").serialize(); 
-	$.post("../blogBrd.bg", param, function(data, state) {
+	$.post("../blogbrdLike.bg", param, function(data, state) {
 	});
 }
 
