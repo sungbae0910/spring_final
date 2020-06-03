@@ -47,34 +47,13 @@
 		<!-- Header Start -->
 		<div class="header-area">
 			<div class="main-header ">
-				<div class="header-top black-bg d-none d-md-block">
-					<div class="container">
-						<div class="col-xl-12">
-							<div
-								class="row d-flex justify-content-between align-items-center">
-								<div class="header-info-left">
-									<ul>
-										<li><img src="${pageContext.request.contextPath}/news/img/icon/header_icon1.png" alt="">34ºc,Sunny</li>
-										<li><img src="${pageContext.request.contextPath}/news/img/icon/header_icon1.png" alt="">Tuesday,18th June, 2019</li>
-									</ul>
-								</div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">    
-                                        <li><a href="#"><img src="${pageContext.request.contextPath}/news/img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
-                                        <li><a href="#"><img src="${pageContext.request.contextPath}/news/img/icon/blog_s.png" style="width:25px; height:25px;"></a></li>
-                                    </ul>
-                                </div>								
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="header-mid d-none d-md-block">
 					<div class="container">
 						<div class="row d-flex align-items-center">
 							<!-- Logo -->
 							<div class="col-xl-3 col-lg-3 col-md-3">
 								<div class="logo">
-									<a href="newsMainT.jsp"><!-- <img src="./img/logo/logo.png"alt=""> --></a>
+									<a href="../index.jsp"><img src="../main_lib/images/root.png" alt="" style="height:50px;">logo</a>
 								</div>
 							</div>
 						</div>
@@ -284,7 +263,14 @@
 										<div class="input-group mb-3" style="padding-top: 5px;">
 											<input type="text" id="cC_s2" class="form-control reC${ii.index}" placeholder="댓글을 입력해주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
 											<div class="input-group-append">
-												<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="news_re_comment(${ii.index})">입력</button>
+												<c:choose>
+													<c:when test="${not empty sessionScope.mId}">
+														<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="news_re_comment(${ii.index})">입력</button>
+													</c:when>
+													<c:otherwise>
+														<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="login_s()">입력</button>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 										<c:forEach items="${reComment}" var="re" varStatus="ri">
@@ -316,7 +302,7 @@
 												<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													<img src="${pageContext.request.contextPath}/news/img/icon/vertical-dots.png" > 
 												</a>
-												<c:if test="${sessionScope.mId eq i.mName}">
+												<c:if test="${sessionScope.mId eq re.mName}">
 												<div class="dropdown-menu" style="min-width: 5rem" aria-labelledby="dropdownMenuLink">
 													<a class="dropdown-item" href="#" onclick="news_comment_deletes('${ri.index}','${ii.index}')">삭제</a>
 												</div>

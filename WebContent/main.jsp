@@ -44,6 +44,35 @@
 						<div class="col-sm-3"><span>구독</span></div>	
 						<div class="col-sm-3"><span>쇼핑</span></div>	
 						<div class="col-sm-3"><span>블로그</span></div>
+						
+						<!-- 내 정보 알림 -->
+					<div id="news_comment_s">
+						<div id="commnet_s">
+							<div class="comments-area">
+								<div class="hide_comment${index} hide_come">
+									<div class="comment-list2">
+										<div class="single-comment justify-content-between d-flex">
+											<div class="user justify-content-between d-flex">
+												<div class="desc">
+													<div class="d-flex justify-content-between">
+														<div class="d-flex align-items-center oneLine">
+															<h5>
+																<a href="#">아이디</a>
+															</h5>
+															<span class="date">2020-06-03</span>
+														</div>
+													</div>
+													<p class="comment">내용</p>
+												</div>
+											</div>
+										</div>
+										<hr class="hr_s" />
+									</div>
+								</div>
+								<!-- 대댓글 끝-->
+							</div>
+						</div>
+					</div>						
 					</c:if>
 			</div>
 			<div class="col-xs-12" id="main_shop_frm">

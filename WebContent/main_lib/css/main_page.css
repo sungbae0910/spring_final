@@ -272,3 +272,7 @@ img#logo{
 .page-header .btn::before{
 	background: white;
 }
+
+.d-flex{
+	display: flex!important;
+}

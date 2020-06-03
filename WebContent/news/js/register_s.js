@@ -55,6 +55,7 @@ $('#lPwd').keydown(function(key){
 })
 	
 var login = function(){
+	var nSerial = $('.nSerial').val();
 	var ref = document.referrer;
 	var param = $('#frm_login_s').serialize();
 	$.ajax({
@@ -64,8 +65,8 @@ var login = function(){
 		dataType : "json",
 		data : param,
 		success : function(data){
-			if(data == 1){
-				location.href = ref;
+			if(data.result == 1){
+				location.href = ref+"?nSerial="+data.nSerial;
 			}else{
 				alert("아이디나 비밀번호를 확인해주세요!!");
 				return false;

@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="main_cate_de" parameterType="String" resultMap="mm_news">
-		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.ncategory='${value}' and rownum &lt;= 4
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.ncategory=#{value} and rownum &lt;= 4
 	</select>
 	
 	<select id="main_hit_desc" resultMap="mm_news">

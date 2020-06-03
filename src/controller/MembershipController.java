@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -112,6 +113,8 @@ public class MembershipController {
 		String result = "";
 		String id = req.getParameter("lId");
 		String password = req.getParameter("lPwd");
+		String nSerial = req.getParameter("nSerial");
+		JSONObject ob = new JSONObject();
 		HttpSession httpSession = req.getSession(true);
 		int ck = 0;
 		
@@ -130,7 +133,10 @@ public class MembershipController {
 			result = "0";
 		}
 		
-		return result;
+		ob.put("result", result);
+		ob.put("nSerial", nSerial);
+		
+		return ob.toJSONString();
 	}
 	
 	@RequestMapping(value="/sb_music/sb_login.mem", method= {RequestMethod.GET, RequestMethod.POST})
