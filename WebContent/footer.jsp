@@ -8,9 +8,9 @@ font-size: 1em;
 position: relative;
 left: 680px;
 }
-#w_root{
+#w_foot > #w_root{
 position: relative;
-left: 1013px;
+left: 946px;
 }
 
 </style>
