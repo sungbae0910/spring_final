@@ -1,17 +1,67 @@
 package mybatis;
 
+import java.sql.Date;
+
 public class searchVo {
 
 	String title;
+	
 	String originallink;
 	String link;
 	String description;
 	String bloggername;
 	String bloggerlink;
-
+	
 	String image;
+	String thumnail;
+	
+	String subtitle;
+	Date pubDate;
+	String director;
+	String actor;
+	double userRating;
+	
 	int lprice;
 	int hprice;
+
+	
+	public String getSubtitle() {
+		return subtitle;
+	}
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
+	public Date getPubDate() {
+		return pubDate;
+	}
+	public void setPubDate(Date pubDate) {
+		this.pubDate = pubDate;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public String getActor() {
+		return actor;
+	}
+	public void setActor(String actor) {
+		this.actor = actor;
+	}
+	
+	public double getUserRating() {
+		return userRating;
+	}
+	public void setUserRating(double userRating) {
+		this.userRating = userRating;
+	}
+	public String getThumnail() {
+		return thumnail;
+	}
+	public void setThumnail(String thumnail) {
+		this.thumnail = thumnail;
+	}
 	
 	public String getImage() {
 		return image;

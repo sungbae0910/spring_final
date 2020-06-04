@@ -1,40 +1,46 @@
 package controller;
 
-import java.util.Date;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import bean.MembershipDao;
 import blogController.BlogBoardVo;
+import lolVo.GameIdVo;
+import lolVo.LeagueVo;
+import lolVo.ParticipantStatsVo;
+import lolVo.ParticipantVo;
+import lolVo.PlayerVo;
+import lolVo.SummonerVo;
 import mybatis.MembershipVo;
 import mybatis.sb_clientVo;
 import mybatis.searchVo;
-import newsCommand.NewsService;
-import newsCommand.SendMail;
-import shopController.ShopItemVo;
-import newsController.CommentVo;
-import newsController.NewsDao;
 import newsController.NewsPhotoVo;
 import newsController.NewsVo;
-import newsController.Page;
+import shopController.ShopItemVo;
 
 @Controller
 public class MembershipController {
@@ -171,13 +177,11 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/sb_music/sb_logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView musicLogout(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
+	public String musicLogout(HttpSession session) {
 		
-		req.getSession().invalidate();
-		
-		mv.setViewName("/sb_music/sb_main");
-		return mv;
+		session.removeAttribute("mId");
+	
+		return "redirect:/sb_main.jsp";
 	}
 	
 	@RequestMapping(value="/sb_music/logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
@@ -313,6 +317,49 @@ public class MembershipController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/dictionary.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView dictionary(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		try {
+			String search = req.getParameter("searchBar");
+			
+			List<searchVo> list = dao.dictionary(search);
+			
+			mv.addObject("dictionaryList", list); // 사전
+			
+		} catch (Exception e) {
+			System.out.println("검색값이 공백");
+		}
+		
+		
+		
+		
+		mv.setViewName("/root/dictionary");
+		return mv;
+	}
+
+	@RequestMapping(value="/root/movie.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView movie(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		try {
+			String search = req.getParameter("findStr");
+			
+			List<searchVo> list = dao.movie(search);
+			
+			mv.addObject("movieList",list);
+			
+			System.out.println("여기까지");
+			mv.setViewName("root_movieSearch");
+		} catch (Exception e) {
+			System.out.println("영화 검색값 없엉");
+		}
+		
+
+		return mv;
+	}
+	
 	@RequestMapping(value="/search.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView search(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -357,11 +404,91 @@ public class MembershipController {
 		return "redirect:/news/newsDetail.news?nSerial="+nSerial;
 	}
 	
+	@RequestMapping(value="/root/lol.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView searchSummoner(Model model, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView();
+
+		SummonerVo temp1 = null;
+		LeagueVo temp2 = null;
+		GameIdVo temp3 = null;
+		ParticipantVo temp4= null;
+		ParticipantStatsVo stat = null;
+		List<PlayerVo> PlayerList = null;
+		
+		List<Long> GameIds = new ArrayList<Long>();
+		
+		temp1 = dao.searchSummoner(model, httpServletRequest);
+		String Id = temp1.getId();
+		temp2 = dao.SummonerRank(model, httpServletRequest, Id);
+		String AccountId = temp1.getAccountId();
+		GameIds = dao.GameId(model, httpServletRequest, AccountId);
+		
+		for(long l : GameIds) {
+			System.out.println("게임 번호"+l);
+		}
+		PlayerList = dao.Match(model, httpServletRequest, GameIds); // 플레이어 이름, 아이콘
+		temp4 = dao.LOLInfo(model, httpServletRequest, GameIds);
+		
+		List<Integer> ten = temp4.getPlayerten();
+		List<String> tenC = new ArrayList<String>();
+		
+		System.out.println("ten0" + ten.get(5));
+		String champ = dao.Champion(temp4.getChampionId());
+		String champ1 = dao.Champion(ten.get(0));
+		String champ2 = dao.Champion(ten.get(1));
+		String champ3 = dao.Champion(ten.get(2));
+		String champ4 = dao.Champion(ten.get(3));
+		String champ5 = dao.Champion(ten.get(4));
+		String champ6 = dao.Champion(ten.get(5));
+		String champ7 = dao.Champion(ten.get(6));
+		String champ8 = dao.Champion(ten.get(7));
+		String champ9 = dao.Champion(ten.get(8));
+		String champ10 = dao.Champion(ten.get(9));
+		
+		tenC.add(0, champ1);
+		tenC.add(1, champ2);
+		tenC.add(2, champ3);
+		tenC.add(3, champ4);
+		tenC.add(4, champ5);
+		tenC.add(5, champ6);
+		tenC.add(6, champ7);
+		tenC.add(7, champ8);
+		tenC.add(8, champ9);
+		tenC.add(9, champ10);
+		
+		
+		
+		
+		
+		
+		System.out.println("afterChamp");
+		stat = temp4.getStats();
+		
+		
+		
+		mv.addObject("summoner", temp1);
+		mv.addObject("leagueInfo", temp2);
+		
+		mv.addObject("tierImgURL", "../main_lib/images/tier/" + temp2.getTier() + ".png");
+
+		mv.addObject("imgURL",
+				"http://ddragon.leagueoflegends.com/cdn/9.16.1/img/profileicon/" + temp1.getProfileIconId() + ".png");
+		mv.addObject("Players", PlayerList);
+		mv.addObject("MyInfo", temp4);
+		mv.addObject("champ", champ);
+		mv.addObject("stat", stat);
+		mv.addObject("tenC", tenC);
+		
+		
 	
+		
+		mv.setViewName("root_lol_search");
+		
+		
+		return mv;
+	}
+		
+		
+
+
 }
-
-
-
-
-
-

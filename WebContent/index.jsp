@@ -53,7 +53,7 @@
             <a href="./sb_music/sb_service.jsp" style="color:black;">음악</a>
          </div>
          <div class="col-xs-2">
-            <p>더보기</p>
+            <a href="./root/root_movie.jsp" style="color:black;">영화</a>
          </div>
       </div>
    </div>
