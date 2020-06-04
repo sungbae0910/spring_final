@@ -135,6 +135,7 @@ public class MembershipController {
 		
 		ob.put("result", result);
 		ob.put("nSerial", nSerial);
+		ob.put("mId", id);
 		
 		return ob.toJSONString();
 	}
@@ -356,9 +357,9 @@ public class MembershipController {
 	
 	
 	@RequestMapping(value="/newsDetail.mem", method= {RequestMethod.GET, RequestMethod.POST})
-	public String newsDetail(@RequestParam("s_nserial") String nSerial) {
+	public String newsDetail(@RequestParam("s_nserial") String nSerial, @RequestParam("mId") String mId) {
 		
-		return "redirect:/news/newsDetail.news?nSerial="+nSerial;
+		return "redirect:/news/newsDetail.news?nSerial="+nSerial+"&mId="+mId;
 	}
 	
 	

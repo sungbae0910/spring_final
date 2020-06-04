@@ -20,9 +20,9 @@
 		<div class="">
 			<ol class="ordered-list">
 				<c:forEach var="i" items="${list2}" varStatus="ii">
-					<li onclick="news_detail('${ii.index}')">
+					<li onclick="news_detail2('${ii.index}')">
 						<span>${i.nTitle}</span>
-						<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"/>
+						<input type="hidden" value="${i.nSerial}" class="serial2${ii.index}"/>
 					</li>
 				</c:forEach>
 			</ol>

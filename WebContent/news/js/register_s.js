@@ -66,7 +66,7 @@ var login = function(){
 		data : param,
 		success : function(data){
 			if(data.result == 1){
-				location.href = ref+"?nSerial="+data.nSerial;
+				location.href = ref+"?nSerial="+data.nSerial+"&mId="+data.mId;
 			}else{
 				alert("아이디나 비밀번호를 확인해주세요!!");
 				return false;

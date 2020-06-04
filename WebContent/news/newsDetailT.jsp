@@ -36,7 +36,7 @@
 <form id="tes_s" method="post">
 	<input type="hidden" name="nCategory" class="nCategory"/>
 	<input type="hidden" name="nSerial" class="nSerial" value="${vo.nSerial }"/>
-	<input type="hidden" name="mName" value="${sessionScope.mId}"/>
+	<input type="hidden" name="mId" value="${sessionScope.mId}"/>
 	<input type="hidden" name="cSerial" class="cSerial"/>
 	<input type="hidden" name="indent" class="cIndent"/>
 	<input type="hidden" name="cGroup" class="cGroup"/>
@@ -170,7 +170,7 @@
 						<div id="commnet_s">
 							<div class="comments-area">
 							<c:forEach var="i" items="${comment}" varStatus="ii">
-							<fmt:formatDate value="${i.cDate}" var="fmtDate" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${i.cDate}" var="fmtDate" pattern="yyyy-MM-dd HH:mm:ss"/>
 							<c:set var="indent" value="${i.cIndent }"/>
 							<c:set var="index" value="${ii.index }"/>
 							<c:set var="group" value="${i.cGroup}"/>
@@ -381,9 +381,9 @@
 							<div class="">
 								<ol class="ordered-list">
 									<c:forEach var="i" items="${list}" varStatus="ii">
-										<li onclick="news_detail('${ii.index}')">
+										<li onclick="news_detail2('${ii.index}')">
 											<span>${i.nTitle}</span>
-											<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"/>
+											<input type="hidden" value="${i.nSerial}" class="serial2${ii.index}"/>
 										</li>
 									</c:forEach>
 								</ol>

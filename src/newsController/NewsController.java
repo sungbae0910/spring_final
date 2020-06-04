@@ -132,12 +132,10 @@ public class NewsController {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("cookie"+nSerial)) {
 					result=0;
-					System.out.println("중복 조회");
 					break;
 				}else {
 					Cookie newCookie = new Cookie("cookie"+nSerial, nSerial);
 					res.addCookie(newCookie);
-					System.out.println("처음 조회");
 					result=1;
 				}
 			}
