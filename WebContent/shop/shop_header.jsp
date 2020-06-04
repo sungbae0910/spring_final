@@ -7,8 +7,10 @@
 	        	<div class="col-xs-12">
 					<div class="row">
 						<div class="col-xs-4">
-							<img id="logo" src="../main_lib/images/root.png">
+							<img id="logo" src="../main_lib/images/root.png" onclick="location.href = '${pageContext.request.contextPath}/index.jsp'">
+							<span id="shop_title" onclick="location.href = 'shop_index.jsp'">SHOP</span>
 						</div>
+						
 						<div class="col-xs-4 col-xs-offset-8" id="btn">
 							<div class="row">
 								<div class="col-xs-4 login_frm">

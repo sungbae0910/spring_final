@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div id="shop_itemView">
 	<form name="shop_frm" id="shop_frm" method="post">
 		<div class="container-fluid">
@@ -49,7 +50,10 @@
 										<span id="itemView_price_title">가격</span>
 									</div>
 									<div class="col-xs-8 itemView_price_text">
-										<span id="itemView_price_content">${vo.item_price}</span>
+										<span id="itemView_price_content">
+											<input type="hidden" id="itemView_price_content_in" value="${vo.item_price}" />
+											<fmt:formatNumber value="${vo.item_price}" pattern="#,###" /> 원
+										</span>
 									</div>
 								</div>
 								<div class="row itemView_option_frm">

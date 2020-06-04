@@ -19,15 +19,16 @@ public class ShopController {
 	
 	String url = "./shop/";
 	
-	@RequestMapping(value="/main.shop", method= {RequestMethod.POST})
+	@RequestMapping(value="/main.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
-		List<ShopItemVo> earringList = dao.earringMainSelect();
-		List<ShopItemVo> necklaceList = dao.necklaceMainSelect();
-		List<ShopItemVo> ringList = dao.ringMainSelect();
-		List<ShopItemVo> braceletList = dao.braceletMainSelect();
-		
+		ShopItemVo sVo = new ShopItemVo();
+		System.out.println(1111111);
+		List<ShopItemVo> earringList = dao.earringMainSelect(sVo);
+		List<ShopItemVo> necklaceList = dao.necklaceMainSelect(sVo);
+		List<ShopItemVo> ringList = dao.ringMainSelect(sVo);
+		List<ShopItemVo> braceletList = dao.braceletMainSelect(sVo);
+		System.out.println(222222222);
 		mv.addObject("earringList", earringList);
 		mv.addObject("necklaceList", necklaceList);
 		mv.addObject("ringList", ringList);
