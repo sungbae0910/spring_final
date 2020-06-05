@@ -187,7 +187,7 @@ public class ShopDao {
 		}
 	}
 	
-	/*public List<ShopItemVo> itemLikeList(String mId){
+	public List<ShopItemVo> itemLikeList(String mId){
 		List<ShopItemVo> itemLikeList = null;
 		try {
 			System.out.println("Dao : " + mId);
@@ -198,6 +198,6 @@ public class ShopDao {
 		}finally {
 			return itemLikeList;
 		}
-	}*/
+	}
 
 }
