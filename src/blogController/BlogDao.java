@@ -3,6 +3,8 @@ package blogController;
 import java.io.File;
 import java.util.List;
 
+import javax.swing.GroupLayout.SequentialGroup;
+
 import org.apache.catalina.Session;
 import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -97,13 +99,53 @@ public class BlogDao {
 	public void brdLike(BlogBoardVo brdVo, String flag) {
 		try {
 			if (flag.equals("i")) { //공감 눌렀을 때
-				sqlSession.insert("brdLikeInsert", brdVo);				
+				sqlSession.insert("blog.brdLikeInsert", brdVo);				
 			} else { //공감 해제 했을 때
-				sqlSession.delete("brdLikeDelete", brdVo);
+				sqlSession.delete("blog.brdLikeDelete", brdVo);
 			}
 
 			sqlSession.commit();
 		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public List<BlogCmtVo> brdCmtView(int brdNo){
+		List<BlogCmtVo> cmtList = null;
+		try {
+			cmtList = sqlSession.selectList("blog.cmtView", brdNo);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cmtList;
+	}
+	
+	public void brdCmtInsert(BlogCmtVo cmtVo){
+		try {
+			sqlSession.insert("blog.cmtInsert", cmtVo);
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public void brdCmtModify(BlogCmtVo cmtVo){
+		try {
+			sqlSession.update("blog.cmtModify", cmtVo);
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public void brdCmtDelete(int cmtNo){
+		try {
+			sqlSession.delete("blog.cmtDelete", cmtNo);
+			sqlSession.commit();
+		} catch(Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 		}

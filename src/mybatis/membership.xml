@@ -54,10 +54,13 @@
 	
 	
 	<!-- 블로그 게시물 -->
-	<select id="blogSelect" resultType="blogController.BlogBoardVo">
+	<select id="blogSelect" parameterType="java.util.ArrayList" resultType="blogController.BlogBoardVo">
 		select B.* from (
-			select bNo, brdNo, mId, brdHeader, subject, content, brdDate from blog_board where basicSet=0 order by hit desc) B 
-		where rownum &lt;=5
+			select bNo, B.brdNo, mId, brdHeader, subject, content, brdDate from blog_board B join blog_tag T
+			on B.brdNo = T.brdNo 
+			where basicSet=0 and<foreach collection="array" item="item" index="index" separator="or">tContent like '%${item}%'</foreach>
+			order by hit desc) B 
+		where rownum &lt;=2
 	</select>
 
 	<!-- shop -->

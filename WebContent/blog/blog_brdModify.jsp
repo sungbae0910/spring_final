@@ -80,7 +80,7 @@
 	blog.brdAction(); 
 	blog.myblog_func();
 	
-	//카테고리 데이터에 맞게 선택#가나다라
+	//카테고리 데이터에 맞게 선택
 	let cName = $("#c_cName").val();
 	$("#c_brdCategory").val(cName).prop("selected", true);
 	

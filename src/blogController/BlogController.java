@@ -56,10 +56,12 @@ public class BlogController {
 
 	@RequestMapping(value = "/myblogMain.bg", method = {RequestMethod.POST})
 	public ModelAndView myblogMain(HttpServletRequest req) {
+		System.out.println("들어왔당");
 		ModelAndView mv = new ModelAndView();
 		Map<String, String> category = new HashMap<String, String>();
 		BlogBoardVo boardVo = new BlogBoardVo();
 		String mId = req.getParameter("c_mId");
+		System.out.println(mId);
 		boardVo.setmId(mId);
 		
 		if (req.getParameter("c_cName") =="" || req.getParameter("c_cName") == null) { //전체 글
@@ -75,7 +77,6 @@ public class BlogController {
 		
 		String cnt = String.valueOf(myblogBrdList.size());
 		category.put("cnt", cnt);
-			
 		mv.addObject("category", category);
 		mv.addObject("myblogHeader", myblogHeader);
 		mv.addObject("myblogBrdList", myblogBrdList);
@@ -86,15 +87,100 @@ public class BlogController {
 	@RequestMapping(value = "/blogBrd.bg", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView blogBrdView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		int brdLike = -1;
+		BlogService service = new BlogService();
+
 		String mId = req.getParameter("c_mId");
 		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
 		
 		BlogVo myblogHeader = blogDao.myblogHeaderSelect(mId);
 		BlogBoardVo board = blogDao.brdView(brdNo);
-		mv.addObject("board", board);
+		List<String> tagList = service.tagSplit(board.gettContent());
+		
 		mv.addObject("myblogHeader", myblogHeader);
+		mv.addObject("board", board);
+		mv.addObject("tagList", tagList);
 		mv.setViewName("myblog_brd");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdCmtView.bg", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView brdCmtView(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
+
+		mv.addObject("brdNo", brdNo);
+		mv.addObject("cmtList", cmtList);
+		mv.setViewName("myblog_comment");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdCmtInsert.bg", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView brdCmtInsert(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		BlogCmtVo cmtVo = new BlogCmtVo();
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		cmtVo.setBrdNo(brdNo);
+		cmtVo.setCmtBasicSet(Integer.parseInt(req.getParameter("c_cmtBasicSet")));
+		cmtVo.setCmtMid(req.getParameter("c_cmtMid"));
+		cmtVo.setCmtContent(req.getParameter("c_cmtContent"));
+		
+		System.out.println(brdNo);
+		System.out.println(req.getParameter("c_cmtBasicSet"));
+		System.out.println(req.getParameter("c_cmtMid"));
+		System.out.println(req.getParameter("c_cmtContent"));
+		
+		blogDao.brdCmtInsert(cmtVo);
+		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
+		
+		mv.addObject("brdNo", brdNo);
+		mv.addObject("cmtList", cmtList);
+		mv.setViewName("myblog_comment");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdCmtModify.bg", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView brdCmtModify(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		BlogCmtVo cmtVo = new BlogCmtVo();
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		cmtVo.setBrdNo(brdNo);
+		cmtVo.setCmtNo(Integer.parseInt(req.getParameter("c_cmtNo")));
+		cmtVo.setCmtContent(req.getParameter("c_modifyContent"));
+		
+		System.out.println(brdNo);
+		System.out.println(req.getParameter("c_cmtNo"));
+		System.out.println(req.getParameter("c_modifyContent"));
+		
+		blogDao.brdCmtModify(cmtVo);
+		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
+		
+		mv.addObject("brdNo", brdNo);
+		mv.addObject("cmtList", cmtList);
+		mv.setViewName("myblog_comment");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdCmtDelete.bg", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView brdCmtDelete(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		int cmtNo = Integer.parseInt(req.getParameter("c_cmtNo"));
+		
+		System.out.println(brdNo);
+		System.out.println(cmtNo);
+		
+		blogDao.brdCmtDelete(cmtNo);
+		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
+		
+		mv.addObject("brdNo", brdNo);
+		mv.addObject("cmtList", cmtList);
+		mv.setViewName("myblog_comment");
 		return mv;
 	}
 	
@@ -179,26 +265,14 @@ public class BlogController {
 		return mv;
 	}
 	
-	/*@RequestMapping(value = "/brdDelete.bg", method = {RequestMethod.POST})
-	public ModelAndView brdDelete(HttpServletRequest req) {
-		System.out.println("삭제");
-		ModelAndView mv = new ModelAndView();
-		String mId = req.getParameter("c_mId");
-		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
-		blogDao.brdDelete(brdNo);
-		
-		mv.addObject("myblogHeader.mId", mId);
-		mv.setViewName("myblogMain");
-		return mv;
-	}*/
-	
 	@RequestMapping(value = "/brdDelete.bg", method = {RequestMethod.POST})
+	@ResponseBody
 	public void brdDelete(HttpServletRequest req) {
-		System.out.println("삭제");
-		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
-		System.out.println(brdNo + "게시글 번호");
+		System.out.println(req.getParameter("brdNo"));
+		System.out.println(req.getParameter("mId"));
+		int brdNo = Integer.parseInt(req.getParameter("brdNo"));
+		String mId = req.getParameter("mId");
 		blogDao.brdDelete(brdNo);
-
 		return;
 	}
 	
@@ -225,14 +299,16 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value = "/blogbrdLike.bg", method = {RequestMethod.POST})
+	@ResponseBody
 	public void blogBrdLike(HttpServletRequest req) {
 		BlogBoardVo brdVo = new BlogBoardVo();
 		System.out.println("공감 왔다!");
-		String flag = req.getParameter("c_likeFlag");
+		String flag = req.getParameter("c_likeFlag"); //공감 추가인지, 해제인지 구분
 		brdVo.setmId(req.getParameter("c_mId"));
 		brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));
 		
 		blogDao.brdLike(brdVo, flag);
+		return;
 	}
 	
 	@RequestMapping(value = "/cmtManage.bg", method = {RequestMethod.POST})

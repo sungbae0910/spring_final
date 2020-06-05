@@ -1,9 +1,7 @@
 let blog = {}
 
 blog.logout = function(){
-	$.post("../blogLogout.mem", function(data, state) {
-		history.go(-2);
-	});
+	location.href = "../blogLogout.mem";
 }
 
 blog.mainContent = function () { //블로그 메인
@@ -48,15 +46,110 @@ blog.brdView = function (mId, brdNo) { //게시물 페이지
 	$("#c_blog_frm").attr("action", "?inc=../blogBrd.bg").submit();
 }
 
+blog.cmtView = function () { //댓글 페이지
+	let param = $("#c_brd_frm").serialize(); 
+	$.ajax({
+		url : "../brdCmtView.bg", 
+		method : "post",
+		data : param, 
+		success : function (data, state) {
+			$("#c_cmtContent").html(data);
+		},
+		error: function () {
+			alert("실패");
+		}
+	});
+}
+
+blog.cmtInsert = function () { //댓글 입력
+	let cmtTextarea = $("#c_cmtContent");
+	if (cmtTextarea.value != ""){ //댓글 내용을 입력하면
+		alert(cmtTextarea.value);
+		if ($("#c_cmtSecret").is(":checked")) { //비밀글 체크
+			$("#c_cmtBasicSet").val(1);
+		} else { //비밀글 체크해제
+			$("#c_cmtBasicSet").val(0);
+		}
+
+		let param = $("#c_cmt_frm").serialize(); 
+		
+		$.ajax({
+			url : "../brdCmtInsert.bg", 
+			method : "post",
+			data : param, 
+			success : function (data, state) {
+				$("#c_cmtContent").html(data);
+			},
+			error: function () {
+				alert("댓글 입력 실패");
+			}
+		});
+	} else {
+		alert("댓글 내용을 입력해주세요.");
+	}
+}
+
+blog.cmtModify = function (cmtNo, cmtContent) { //댓글수정
+	//모달 창에  수정하고자 하는 댓글번호와 내용정보.
+	$("#c_cmtNo").val(cmtNo);
+	$("#c_modifyContent").val(cmtContent);
+}
+
+blog.cmtModifyR = function (cmtNo, cmtContent) { //댓글 입력
+	let cmtTextarea = $("#c_modifyContent").val();
+	if (cmtTextarea != ""){ //댓글 내용을 입력하면
+		alert(cmtTextarea);
+
+		let param = $("#c_cmt_frm").serialize(); 
+		
+		$.ajax({
+			url : "../brdCmtModify.bg", 
+			method : "post",
+			data : param, 
+			success : function (data, state) {
+				$("#c_cmtContent").html(data);
+			},
+			error: function () {
+				alert("댓글 수정 실패");
+			}
+		});
+	} else {
+		alert("댓글 내용을 입력해주세요.");
+	}
+}
+
+blog.cmtDelete = function (cmtNo) {
+	$("#c_cmtNo").val(cmtNo);
+	let param = $("#c_cmt_frm").serialize(); 
+	$.ajax({
+		url : "../brdCmtDelete.bg", 
+		method : "post",
+		data : param, 
+		success : function (data, state) {
+			$("#c_cmtContent").html(data);
+			alert("댓글이 삭제 되었습니다.");
+		},
+		error: function () {
+			alert("댓글 삭제 실패");
+		}
+	});
+}
+
 blog.brdModify = function () { //게시물 수정
 	$("#c_blog_frm").attr("action", "?inc=../brdModify.bg").submit();
 }
 
-blog.brdDelete = function () { //게시물 삭제
-	let param = $("#c_blog_frm").serialize();
-	$.post("../brdDelete.bg", param, function(data, state) {
-		history.go(-2);
-		/*$("#c_blogMain").html(data);*/
+blog.brdDelete = function (brdNo, mId) { //게시물 삭제
+	$.ajax({
+		url : "../brdDelete.bg", 
+		method : "post",
+		data : {"brdNo" : brdNo, "mId" : mId}, 
+		success : function(data, state) {
+			$("#c_top_frm").attr("action", "?inc=../myblogMain.bg").submit();
+		},
+		error: function() {
+			alert("실패");
+		}
 	});
 }
 
@@ -88,29 +181,6 @@ blog.myblog_func = function () {
 			$("#c_dimmedSidebar").css("position", "");
 		});
 	
-	/*$("#c_btnBrdLike").click(function () { //공감버튼
-		let mId = session.getSession("mId");
-		let brdLike = $("#c_brdLike");
-		
-		if ($(this).hasClass("glyphicon-heart-empty")) {
-			$(this).removeClass("glyphicon-heart-empty");
-			$(this).addClass("glyphicon-heart");
-			brdLike.val(Number(brdLike.val()) + 1);
-			$(this).text(brdLike.val());
-		} else {
-			$(this).removeClass("glyphicon-heart");
-			$(this).addClass("glyphicon-heart-empty");
-			brdLike.val(Number(brdLike.val()) - 1);
-			if (brdLike.val() == 0) {
-				$(this).text("공감");				
-			} else {
-				$(this).text(brdLike.val());
-			}
-		}
-		$("#c_mId").val(mId);
-		blog.brdLikeUpdate();
-	});*/
-	
 	$("#c_btnRepl").click(function () {
 		$(".modal-title").text("답글 입력");
 	});
@@ -138,34 +208,36 @@ blog.myblog_func = function () {
 	}
 }
 
-
 blog.brdLike = function (mId) { //공감버튼 값 변경
 	let brdLike = $("#c_btnBrdLike");
-
-	if (brdLike.hasClass("glyphicon-heart-empty")) {//공감 버튼 처음 눌렀을 때
-		brdLike.removeClass("glyphicon-heart-empty");
-		brdLike.addClass("glyphicon-heart");
-		if (brdLike.text() == "공감") {
-			brdLike.text(1);
-		} else {
-			brdLike.text(Number(brdLike.text()) + 1);		
+	
+	//로그인 했을 때만 공감 누를 수 있게
+	if ($("#loginId").val().trim() != "") {
+		if (brdLike.hasClass("glyphicon-heart-empty")) {//공감 버튼 처음 눌렀을 때
+			brdLike.removeClass("glyphicon-heart-empty");
+			brdLike.addClass("glyphicon-heart");
+			if (brdLike.text() == "공감") {
+				brdLike.text(1);
+			} else {
+				brdLike.text(Number(brdLike.text()) + 1);		
+			}
+			$("#c_likeFlag").val("i");
+		} else { //공감 해제할 때
+			brdLike.removeClass("glyphicon-heart");
+			brdLike.addClass("glyphicon-heart-empty");
+			$("#c_likeFlag").val("d");
+			let like = Number(brdLike.text()) - 1;
+			if (like == 0) { //공감 수가 0이면
+				brdLike.text("공감");				
+			} else {
+				brdLike.text(like);
+			}
 		}
-		$("#c_likeFlag").val("i");
-	} else { //공감 해제할 때
-		brdLike.removeClass("glyphicon-heart");
-		brdLike.addClass("glyphicon-heart-empty");
-		$("#c_likeFlag").val("d");
-		let like = Number(brdLike.text()) - 1;
-		if (like == 0) { //공감 수가 0이면
-			brdLike.text("공감");				
-		} else {
-			brdLike.text(like);
-		}
+		$("#c_mId").val(mId);
+		let param = $("#c_brd_frm").serialize(); 
+		$.post("../blogbrdLike.bg", param, function(data, state) {
+		});
 	}
-	$("#c_mId").val(mId);
-	let param = $("#c_brd_frm").serialize(); 
-	$.post("../blogbrdLike.bg", param, function(data, state) {
-	});
 }
 
 blog.brdAction = function () {
@@ -251,14 +323,6 @@ blog.brdAction = function () {
 	            return word !== "";
 	        });
 	    }
-	    
-	 	/* // 서버에 넘기기
-	    $("#tag-form").on("submit", function (e) {
-	        var value = marginTag(); // return array
-	        $("#rdTag").val(value); //hidden input에 값 넣기
-	        $(this).submit();
-	    }); */
-
 
 	    $(".c_tag").on("keypress", function (e) {
 	        // input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동

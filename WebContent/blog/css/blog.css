@@ -133,14 +133,18 @@ textarea:focus {outline: 1px solid #000;}
 #c_myBlog_header #c_brdItem #c_brd_Subject {font-size: 3em; font-weight: bold;}
 #c_myBlog_header #c_brdItem #c_brd_Date {font-size: medium; margin-top: 15px;}
 #c_brd {margin: 70px 0;}
+#c_brd #c_brdTag {font-size: 17px; font-weight: 500; border-top: 2px solid #eee; border-bottom: 2px solid #eee; padding: 15px 20px;}
+#c_brd #c_brdTag h3 {margin-top: 0; margin-bottom: 20px;}
+#c_brd #c_brdTag span {padding: 0 5px;}
 #c_brd #c_brd_btn_group {text-align: center; width: 115px; margin: 35px 0; border-radius: 16px; border: 1px solid rgba(185,185,185,0.5); box-shadow: 0 2px 15px rgba(0,0,0,0.150); color: #666; cursor: pointer;}
 #c_brd #c_brd_btn_group .glyphicon-heart:before {color: #f56363;}
 #c_brd #c_brd_btn_group #c_btnBrdLike {padding: 8px 0px;}
 #c_brd #c_brd_btn_group #c_brd_manage {float: right; margin-right: 14px; padding: 8px 0;}
 #c_brd #c_brd_btn_group #c_brd_manage .dropdown-toggle {padding: 6px;}
+/* myblog_comment */
 #c_brd #c_cmt #c_cmt_title {font-size: 1.3em; font-weight: bold;}
 #c_brd #c_cmt img {float: left; margin-right: 20px; width: 65px; height: 65px;}
-#c_brd #c_cmt #c_cmt_manage {cursor: pointer; float: right;}
+#c_brd #c_cmt .dropdown.c_cmt_manage {cursor: pointer; float: right;}
 #c_brd #c_cmt .dropdown-menu {left: -80px; min-width: 95px;}
 #c_brd #c_cmt .dropdown-menu .c_modify, .dropdown-menu .c_delete {padding: 3px 15px; border-bottom: 1px solid #eee;}
 #c_brd #c_cmt .dropdown-menu .c_modify:hover, .dropdown-menu .c_delete:hover {background-color: #eee;}   
@@ -152,9 +156,9 @@ textarea:focus {outline: 1px solid #000;}
 #c_brd .c_cmtMid:hover, #c_brd .c_cmtBlame:hover, #c_brd .c_btnRepl:hover {cursor: pointer; text-decoration-line: underline;}
 #c_brd #c_cmt .c_repl {background-color: #fafafa; padding: 17px 0 35px 80px; border-top: 1px solid #eee;}
 #c_brd #c_cmt .c_repl .c_cmtBlame {width: 400px;}
-#c_brd #c_cmt textarea {width: 100%; height: 90px; padding: 10px; margin: 15px 0;}
-#c_brd #c_cmt input[type=checkbox] {width:20px; height:20px;}
-#c_brd #c_cmt #c_cmtInsert {float: right; padding: 4px 30px; background-color: black; color: white; border: none; border-radius: 15px;}
+#c_brd #c_cmtInsert textarea {width: 100%; height: 90px; padding: 10px; margin: 15px 0;}
+#c_brd #c_cmtInsert input[type=checkbox] {width:20px; height:20px;}
+#c_brd #c_cmtInsert #c_btnCmtInsert {float: right; padding: 4px 30px; background-color: black; color: white; border: none; border-radius: 15px;}
 #c_brd #myModal .modal-dialog {position: relative; top: 250px; border-radius: 4px;}
 #c_brd #myModal .modal-dialog .modal-content {border-radius: 8px;}
 #c_brd #myModal .modal-dialog .modal-header {background-color: #F0F3F7; border-radius: 8px;}

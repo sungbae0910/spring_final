@@ -78,6 +78,13 @@
 	<select id="brdLikeMid" parameterType="Integer" resultType="String">
 		select likeMid from blog_brdLike where brdNo = ${brdNo}
 	</select>
+	<select id="cmtView" parameterType="Integer" resultType="blogController.BlogCmtVo">
+		select Cmt.* from (
+			select cmtNo, brdNo, cmtBasicSet, cmtMid, cmtDate, cmtContent, cmtRepl, blogCmtCnt(brdNo) cnt
+			from blog_comment 
+			connect by prior cmtNo=cmtRepl start with cmtRepl=0 order siblings by cmtRepl desc) Cmt
+		where Cmt.brdNo = ${brdNo}
+	</select>
 	
 	<insert id="brdInsert" parameterType="blogController.BlogBoardVo">
 		insert into blog_board(brdNo, bNo, cName, mId, brdHeader, oriBrdHeader, subject, content, brdDate) 
@@ -88,6 +95,9 @@
 	</insert>
 	<insert id="brdLikeInsert" parameterType="blogController.BlogBoardVo">
 		insert into blog_brdLike(likeNo, brdNo, likeMid) values(seq_blog_likeNo.nextval, ${brdNo}, #{mId})
+	</insert>
+	<insert id="cmtInsert" parameterType="blogController.BlogCmtVo">
+		insert into blog_comment(cmtNo, brdNo, cmtBasicSet, cmtMid, cmtDate, cmtContent) values(seq_blog_cmtNo.nextval, ${brdNo}, ${cmtBasicSet}, #{cmtMid}, sysdate, #{cmtContent})
 	</insert>
 	
 	<update id="brdModify" parameterType="blogController.BlogBoardVo">
@@ -102,11 +112,17 @@
 	<update id="brdHitUp" parameterType="Integer">
 		update blog_board set hit = hit + 1 where brdNo = ${brdNo}
 	</update>
+	<update id="cmtModify" parameterType="blogController.BlogCmtVo">
+		update blog_comment set cmtContent = #{cmtContent} where cmtNo = ${cmtNo}
+	</update>
 	
 	<delete id="brdLikeDelete" parameterType="blogController.BlogBoardVo">
 		delete from blog_brdLike where brdNo = ${brdNo} and likeMid = #{mId}
 	</delete>
 	<delete id="brdDelete" parameterType="Integer">
 		delete from blog_board where brdNo = ${brdNo}
+	</delete>
+	<delete id="cmtDelete" parameterType="Integer">
+		delete from blog_comment where cmtNo = ${cmtNo}
 	</delete>
 </mapper>

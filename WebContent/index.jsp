@@ -39,7 +39,7 @@
 </div>
    <hr>
    <div class="container" id="header_bot">
-      <div class="row" align="center" >
+      <div class="row" align="center">
          <div class="col-xs-2">
             <a href="${pageContext.request.contextPath}/news/newsMainT.jsp" style="color:black;">뉴스</a>
          </div>
