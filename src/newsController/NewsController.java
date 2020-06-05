@@ -268,6 +268,7 @@ public class NewsController {
 		Page p = new Page();
 		List<CommentVo> comment = null;
 		List<CommentVo> reComment = null;
+		String cnt = "";
 		
 		String nSerial = req.getParameter("nSerial");
 		String cIndent = req.getParameter("indent");
@@ -288,9 +289,11 @@ public class NewsController {
 		
 		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial);
+		cnt = ns.commentCnt(nSerial);
 		
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
+		mv.addObject("cnt", cnt);
 		
 		mv.setViewName("newsComment");
 		
@@ -309,7 +312,7 @@ public class NewsController {
 		
 		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
 		int cSerial = Integer.parseInt(req.getParameter("cSerial"));
-		String mName = req.getParameter("mName");
+		String mName = req.getParameter("mId");
 		
 		like.setnSerial(nSerial);
 		like.setcSerial(cSerial);
@@ -342,7 +345,7 @@ public class NewsController {
 		
 		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
 		int cSerial = Integer.parseInt(req.getParameter("cSerial"));
-		String mName = req.getParameter("mName");
+		String mName = req.getParameter("mId");
 		
 		like.setnSerial(nSerial);
 		like.setcSerial(cSerial);

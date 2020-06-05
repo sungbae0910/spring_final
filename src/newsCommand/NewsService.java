@@ -163,7 +163,7 @@ public class NewsService {
 	public void commentInsert(HttpServletRequest req) {
 		CommentVo vo = new CommentVo();
 		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
-		String mName = req.getParameter("mName");
+		String mName = req.getParameter("mId");
 		String cContent = req.getParameter("content");
 		
 		
@@ -186,7 +186,7 @@ public class NewsService {
 		int nSerial = Integer.parseInt(req.getParameter("nSerial"));
 		String nSerial2 = req.getParameter("nSerial");
 		int cGroup = Integer.parseInt(req.getParameter("cGroup"));
-		String mName = req.getParameter("mName");
+		String mName = req.getParameter("mId");
 		String cContent = req.getParameter("reContent");
 		
 		vo.setnSerial(nSerial);
