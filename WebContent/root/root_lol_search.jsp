@@ -18,7 +18,7 @@
 	<div class="container-fluid" id="top_con">
 		<div id="top_nav">
 			<div class="col-sm-10">
-				<span id="ls_logo" onclick="location.href='../root/root_lol.jsp'">ROOT.GG</span>
+				<span id="ls_logo" onclick="location.href='../root/gg.mem'">ROOT.GG</span>
 			</div>
 			<div class="col-sm-2">
 				<form action="lol.mem">
@@ -66,9 +66,10 @@
 					<div class="col-sm-12">
 						승리!!
 					</div>
-					<div class="col-sm-8" id="g_left">
+					<div class="col-sm-7" id="g_left">
 						<!-- 사진 -->
 						<div class="col-sm-2">
+
 							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/champion/${champ }.png" width="100px" id="gd_img">
 						</div>
 						<!-- 스펠 -->
@@ -77,7 +78,8 @@
 							<img src="../main_lib/images/spell/spell${MyInfo.spell2Id}.png" width="40px">			
 						</div>
 						<!-- kda -->
-						<div class="col-sm-3" id="gd_kda">	
+						<div class="col-sm-3" id="gd_kda">
+							<h5>킬뎃</h5>
 							<span id="kda">${stat.kills }킬</span><br>
 							<span id="kda2">${stat.deaths }</span><span id="kda">데스</span><br>
 							<span id="kda">${stat.assists }어시</span><br>
@@ -85,14 +87,15 @@
 							<fmt:formatNumber value="${cKDA}" pattern="##.##" />:1 KDA	
 						</div>	
 						<!-- 아이템 -->
-						<div class="col-sm-6">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item0}.png" width="40px">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item1}.png" width="40px">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item2}.png" width="40px">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item6}.png" width="40px">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item3}.png" width="40px">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item4}.png" width="40px">
-							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item5}.png" width="40px">
+						<div class="col-sm-5">
+							<h5>아이템</h5>
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item0}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item1}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item2}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item6}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item3}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item4}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
+							<img src="http://ddragon.leagueoflegends.com/cdn/10.11.1/img/item/${stat.item5}.png" width="30px" height="30px" onerror="this.src='../main_lib/images/none.png'">
 						</div>
 						
 					</div>
@@ -106,7 +109,7 @@
 							</c:if>
 						</c:forEach>
 					</div>
-					<div class="col-sm-3" id="gd_ids">
+					<div class="col-sm-4" id="gd_ids">
 						<c:forEach items="${Players }" var="v" varStatus="s">
 							<c:if test="${s.index < 5 }">
 
@@ -124,6 +127,8 @@
 						</c:forEach>
 					</div>
 			</div>
+				
+			
 	
 	</div>
 	

@@ -58,7 +58,7 @@
 				<div class="dropdown-content">
 					<a href="./root/root_dictionary.jsp">사전</a>
 					<a href="./root/root_movie.jsp">영화</a>
-					<a href="./root/root_lol.jsp">ROOT.GG</a>
+					<a href="./root/gg.mem">ROOT.GG</a>
 				</div>
 			</div>
          </div>
