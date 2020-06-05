@@ -9,11 +9,12 @@
 %>
 <div id="c_cmt">
 	<c:if test="${not empty cmtList}">
+		<input type="hidden" id="cmtCnt" value="${cmtList[0].cnt}"/>
 	  	<span id="c_cmt_title">댓글 ${cmtList[0].cnt}</span>
 	    <hr/>
-		<c:forEach var="cmt" items="${cmtList}">
-			<c:choose>
-				<c:when test="${cmt.cmtRepl eq 0}">
+		<c:forEach var="cmt" items="${cmtList}" varStatus="index">
+			<input type="hidden" class="cmtFlag${index.index}" value="${cmt.cmtRepl}"/>
+			<input type="hidden" id="index" value="${index.index}">
 					<div class="c_cmt">
 				    	<img src="./blog_image/cat.jpg" class="img-circle">
 				      	<div class="dropdown c_cmt_manage">
@@ -36,11 +37,9 @@
 				      	<div class="c_cmtMid">${cmt.cmtMid}</div>
 				      	<div class="c_cmtDate">${cmt.cmtDate}</div>
 				      	<div class="c_cmtContent">${cmt.cmtContent}</div>
-				      	<div class="c_btnRepl" data-toggle="modal" data-target="#myModal" onclick="blog.replInsert()">답글</div>
+				      	<div class="c_btnRepl" data-toggle="modal" data-target="#myModal" onclick="blog.replInsert(${cmt.cmtNo})">답글</div>
 					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="c_repl">
+					<%-- <div class="c_repl">
 						<img src="./blog_image/landscape.jpg" class="img-circle">
 					    <div class="dropdown c_cmt_manage">
 					   		<span class="dropdown-toggle" data-toggle="dropdown">
@@ -61,9 +60,7 @@
 					    <div class="c_cmtMid">${cmt.cmtMid}</div>
 					    <div class="c_cmtDate">${cmt.cmtDate}</div>
 					    <div class="c_cmtContent">${cmt.cmtContent}</div>
-					</div>
-				</c:otherwise>
-			</c:choose>
+					</div> --%>
 		</c:forEach>
 	</c:if>
 </div>
@@ -98,3 +95,17 @@
 		</div>
 	</div>
 </form>
+<script>
+	//댓글이 답글일 경우
+	$(document).ready(function(){
+		let cmtCnt = $("#cmtCnt").val();
+		let cnt = $("#index").val()
+		let flag = $(".cmtFlag" + cnt).val();
+		for (var i=0; i<cmtCnt; i++) {
+			if (flag != 0) {
+				$(".c_cmt").addClass("repl");
+			alert($(".cmtFlag" + cnt).val());
+			}
+		}
+	})
+</script>

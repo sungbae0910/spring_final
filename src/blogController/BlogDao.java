@@ -122,6 +122,7 @@ public class BlogDao {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("끝2");
 		return cmtList;
 	}
 	
@@ -143,6 +144,7 @@ public class BlogDao {
 			e.printStackTrace();
 			sqlSession.rollback();
 		}
+		System.out.println("끝1");
 	}
 	
 	public void brdCmtModify(BlogCmtVo cmtVo){

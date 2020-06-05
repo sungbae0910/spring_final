@@ -152,6 +152,7 @@ textarea:focus {outline: 1px solid #000;}
 #c_brd #c_cmt .c_cmtDate {margin-right: 10px; color: #999;}
 #c_brd #c_cmt .c_cmtBlame {color: #999; width: 330px;}
 #c_brd #c_cmt .c_cmtContent {margin-top: 5px; width: 90%; padding-left: 85px;}
+#c_brd #c_cmt .c_cmt.repl {margin-left: 50px;}
 #c_brd #c_cmt .c_cmt .c_btnRepl {color: #999; margin: 12px 0;}
 #c_brd .c_cmtMid:hover, #c_brd .c_cmtBlame:hover, #c_brd .c_btnRepl:hover {cursor: pointer; text-decoration-line: underline;}
 #c_brd #c_cmt .c_repl {background-color: #fafafa; padding: 17px 0 35px 80px; border-top: 1px solid #eee;}

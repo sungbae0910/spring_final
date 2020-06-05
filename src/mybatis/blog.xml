@@ -82,11 +82,13 @@
 		<!-- select Cmt.* from (
 			select cmtNo, brdNo, cmtMid, cmtDate, cmtContent, cmtRepl, blogCmtCnt(brdNo) cnt
 			from blog_comment 
-			connect by prior cmtNo=cmtRepl start with cmtRepl=0 order siblings by cmtRepl desc) Cmt
+			connect by prior cmtNo=cmtRepl start with cmtRepl=cmtRepl order siblings by cmtNo asc) Cmt
 		where Cmt.brdNo = ${brdNo} -->
-		select cmtNo, brdNo, cmtMid, cmtDate, cmtContent, cmtRepl, blogCmtCnt(brdNo) cnt
-		from blog_comment 
-		where brdNo = ${brdNo}
+		select Cmt.* from (
+			select cmtNo, brdNo, cmtMid, cmtDate, cmtContent, cmtRepl, blogCmtCnt(brdNo) cnt
+			from blog_comment 
+			connect by prior cmtNo=cmtRepl start with cmtRepl=cmtRepl order siblings by cmtNo asc) Cmt
+		where Cmt.brdNo = ${brdNo}
 	</select>
 	
 	<insert id="brdInsert" parameterType="blogController.BlogBoardVo">
@@ -103,7 +105,7 @@
 		insert into blog_comment(cmtNo, brdNo, cmtBasicSet, cmtMid, cmtDate, cmtContent) values(seq_blog_cmtNo.nextval, ${brdNo}, ${cmtBasicSet}, #{cmtMid}, sysdate, #{cmtContent})
 	</insert>
 	<insert id="replInsert" parameterType="blogController.BlogCmtVo">
-		insert into blog_comment(cmtNo, brdNo, cmtMid, cmtDate, cmtContent, cmtRepl) values(seq_blog_cmtNo.nextval, ${brdNo}, #{cmtMid}, sysdate, #{cmtContent}, ${brdNo})
+		insert into blog_comment(cmtNo, brdNo, cmtMid, cmtDate, cmtContent, cmtRepl) values(seq_blog_cmtNo.nextval, ${brdNo}, #{cmtMid}, sysdate, #{cmtContent}, ${cmtNo})
 	</insert>
 	
 	<update id="brdModify" parameterType="blogController.BlogBoardVo">

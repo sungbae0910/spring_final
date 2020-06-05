@@ -143,12 +143,13 @@ public class BlogController {
 		BlogCmtVo cmtVo = new BlogCmtVo();
 		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
 		cmtVo.setBrdNo(brdNo);
+		cmtVo.setCmtNo(Integer.parseInt(req.getParameter("c_cmtNo")));
 		cmtVo.setCmtMid(req.getParameter("c_cmtMid"));
 		cmtVo.setCmtContent(req.getParameter("c_modifyContent"));
 		
 		blogDao.brdReplInsert(cmtVo);
 		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
-		
+		System.out.println("dao끝");
 		mv.addObject("brdNo", brdNo);
 		mv.addObject("cmtList", cmtList);
 		mv.setViewName("myblog_comment");

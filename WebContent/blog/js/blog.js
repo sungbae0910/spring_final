@@ -130,8 +130,9 @@ blog.cmtModifyR = function () { //댓글 입력
 	}
 }
 
-blog.replInsert = function () { //답글 입력
+blog.replInsert = function (cmtNo) { //답글 입력
 	$("#cmtModalTitle").text("답글 입력");
+	$("#c_cmtNo").val(cmtNo);
 }
 
 blog.cmtDelete = function (cmtNo) {
