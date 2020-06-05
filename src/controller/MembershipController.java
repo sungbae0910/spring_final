@@ -32,6 +32,7 @@ import bean.MembershipDao;
 import blogController.BlogBoardVo;
 import lolVo.GameIdVo;
 import lolVo.LeagueVo;
+import lolVo.LotationVo;
 import lolVo.ParticipantStatsVo;
 import lolVo.ParticipantVo;
 import lolVo.PlayerVo;
@@ -424,6 +425,65 @@ public class MembershipController {
 		return "redirect:/news/newsDetail.news?nSerial="+nSerial+"&mId="+mId;
 	}
 	
+	@RequestMapping(value="/root/gg.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView gg(Model model, HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		LotationVo lotation = dao.lol_lotation();
+		String lo1 = "";
+		String lo2 = "";
+		String lo3 = "";
+		String lo4 = "";
+		String lo5 = "";
+		String lo6 = "";
+		String lo7 = "";
+		String lo8 = "";
+		String lo9 = "";
+		String lo10 = "";
+		String lo11 = "";
+		String lo12 = "";
+		String lo13 = "";
+		String lo14 = "";
+		
+		List<Integer> list = new ArrayList<Integer>();
+		list = lotation.getFreeChampions();
+		lo1 = dao.Champion(list.get(0));
+		lo2 = dao.Champion(list.get(1));
+		lo3 = dao.Champion(list.get(2));
+		lo4 = dao.Champion(list.get(3));
+		lo5 = dao.Champion(list.get(4));
+		lo6 = dao.Champion(list.get(5));
+		lo7 = dao.Champion(list.get(6));
+		lo8 = dao.Champion(list.get(7));
+		lo9 = dao.Champion(list.get(8));
+		lo10 = dao.Champion(list.get(9));
+		lo11 = dao.Champion(list.get(10));
+		lo12 = dao.Champion(list.get(11));
+		lo13 = dao.Champion(list.get(12));
+		lo14 = dao.Champion(list.get(13));
+		
+		mv.addObject("lo1", lo1);
+		mv.addObject("lo2", lo2);
+		mv.addObject("lo3", lo3);
+		mv.addObject("lo4", lo4);
+		mv.addObject("lo5", lo5);
+		mv.addObject("lo6", lo6);
+		mv.addObject("lo7", lo7);
+		mv.addObject("lo8", lo8);
+		mv.addObject("lo9", lo9);
+		mv.addObject("lo10", lo10);
+		mv.addObject("lo11", lo11);
+		mv.addObject("lo12", lo12);
+		mv.addObject("lo13", lo13);
+		mv.addObject("lo14", lo14);
+		
+		
+		
+		mv.setViewName("root_lol");
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/root/lol.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView searchSummoner(Model model, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView();
@@ -449,10 +509,12 @@ public class MembershipController {
 		PlayerList = dao.Match(model, httpServletRequest, GameIds); // 플레이어 이름, 아이콘
 		temp4 = dao.LOLInfo(model, httpServletRequest, GameIds);
 		
+		
+		
 		List<Integer> ten = temp4.getPlayerten();
 		List<String> tenC = new ArrayList<String>();
 		
-		System.out.println("ten0" + ten.get(5));
+		// 게임한 소환사들 챔피언
 		String champ = dao.Champion(temp4.getChampionId());
 		String champ1 = dao.Champion(ten.get(0));
 		String champ2 = dao.Champion(ten.get(1));
@@ -476,6 +538,7 @@ public class MembershipController {
 		tenC.add(8, champ9);
 		tenC.add(9, champ10);
 		
+		// 이번주 로테이션
 		
 		
 		

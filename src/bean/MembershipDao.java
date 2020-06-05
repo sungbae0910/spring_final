@@ -28,6 +28,7 @@ import com.google.gson.reflect.TypeToken;
 import blogController.BlogBoardVo;
 import lolVo.GameIdVo;
 import lolVo.LeagueVo;
+import lolVo.LotationVo;
 import lolVo.ParticipantStatsVo;
 import lolVo.ParticipantVo;
 import lolVo.PlayerVo;
@@ -43,6 +44,8 @@ import shopController.ShopItemVo;
 public class MembershipDao {
 
 	SqlSession sqlSession;
+	String API_KEY = "RGAPI-a4f2de99-790f-4ef2-881a-273429bc1ca9"; // api key
+
 	
 	String[] champions = {"Aatrox",	"Ekko",	"Jinx",	"MissFortune",	"Shen",	"Varus",
 			"Ahri",	"Elise",	"Kalista",	"Mordekaiser",	"Shyvana",	"Vayne",
@@ -693,12 +696,14 @@ public class MembershipDao {
 			return list;
 		}
 	}
-	String API_KEY = "RGAPI-1e2b935e-9f88-45c7-8c31-313b65dfa503";
 	
 	// 소환사 레벨 닉네임
 	public SummonerVo searchSummoner(Model model, HttpServletRequest httpServletRequest) {
 		BufferedReader br = null;
 		String SummonerName = httpServletRequest.getParameter("findStr");
+		
+		SummonerName = SummonerName.replace(" ", "%20");
+		
 		System.out.println("소환사명: " + SummonerName);
 		
 		SummonerVo temp = null;
@@ -946,10 +951,10 @@ public class MembershipDao {
 	}
 	
 	public String Champion(int num) {
-		BufferedReader br = null;
 		int compare = num;
 		String str = "";
 		int eq = 0;
+		BufferedReader br = null;
 		String urlstr = "http://ddragon.leagueoflegends.com/cdn/10.11.1/data/ko_KR/champion.json";
 		System.out.println("찾을 챔피언 번호 : " + num);
 		try {
@@ -994,6 +999,55 @@ public class MembershipDao {
 		System.out.println("str = " + str);
 		
 		return str;
+	}
+	
+	public LotationVo lol_lotation() {
+		LotationVo vo = null;
+		BufferedReader br = null;
+		String urlstr = "https://kr.api.riotgames.com/lol/platform/v3/champion-rotations"
+				+ "?api_key=" + API_KEY;
+		List<Integer> list = new ArrayList<Integer>();
+		try {
+			
+				URL url = new URL(urlstr);
+				HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+				urlconnection.setRequestMethod("GET");
+				br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+				// 여기에 문자열을 받아와라.
+				String result = "";
+				String line;
+				while ((line = br.readLine()) != null) {
+					// 그 받아온 문자열을 계속 br에서 줄단위로 받고 출력하겠다.
+					result = result + line;
+				} 
+				
+				System.out.println("lotation"+result);
+				JsonParser p = new JsonParser();
+				JsonObject jo = p.parse(result).getAsJsonObject();
+				
+				
+				JsonArray c = jo.get("freeChampionIds").getAsJsonArray();
+				
+				for(int i = 0; i<c.size(); i++) {
+					JsonElement je = c.get(i);
+					list.add(je.getAsInt());
+				}
+				
+				vo = new LotationVo(list);
+			/*	
+				c = c.replace("[", "");
+				c = c.replace("]", "");*/
+				
+				System.out.println(c);
+				
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		
+		
+		return vo;
 	}
 	
 
