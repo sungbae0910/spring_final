@@ -34,6 +34,7 @@ import lolVo.PlayerVo;
 import lolVo.SummonerVo;
 import mybatis.Factory;
 import mybatis.MembershipVo;
+import mybatis.dictionaryVo;
 import mybatis.sb_clientVo;
 import mybatis.searchVo;
 import newsController.NewsPhotoVo;
@@ -310,15 +311,17 @@ public class MembershipDao {
 		}
 	}
 
-	public List<searchVo> dictionary(String query) {
-		List<searchVo> list = null;
+	public List<dictionaryVo> dictionary(String query) {
+		List<dictionaryVo> list = null;
 		String clientID = "nUaA_ODtTxwyOvPV3Bqx";
 		String clientSecret = "QM5FKfGNfj";
-
+		System.out.println("q = "+query);
+	
 		try {
 			URL url;
-			url = new URL(
-					"https://openapi.naver.com/v1/search/" + "encyc.xml?query=" + URLEncoder.encode(query, "UTF-8"));
+			url = new URL("https://openapi.naver.com/v1/search/" + "encyc.xml?query=" + URLEncoder.encode(query, "UTF-8")
+					+ "&display=10"
+					);
 
 			URLConnection urlConn = url.openConnection();
 			urlConn.setRequestProperty("X-Naver-Client-Id", clientID);
@@ -329,13 +332,14 @@ public class MembershipDao {
 			parser.setInput(new InputStreamReader(urlConn.getInputStream()));
 
 			int eventType = parser.getEventType();
-			searchVo vo = null;
+			dictionaryVo vo = null;
 			while (eventType != XmlPullParser.END_DOCUMENT) {
 				switch (eventType) {
 				case XmlPullParser.END_DOCUMENT: // 문서의 끝
+					
 					break;
 				case XmlPullParser.START_DOCUMENT:
-					list = new ArrayList<searchVo>();
+					list = new ArrayList<dictionaryVo>();
 					break;
 				case XmlPullParser.END_TAG: {
 					String tag = parser.getName();
@@ -349,7 +353,7 @@ public class MembershipDao {
 					String tag = parser.getName();
 					switch (tag) {
 					case "item":
-						vo = new searchVo();
+						vo = new dictionaryVo();
 						break;
 					case "title":
 						if (vo != null)
@@ -363,9 +367,9 @@ public class MembershipDao {
 						if (vo != null)
 							vo.setDescription(parser.nextText());
 						break;
-					case "thumnail":
+					case "thumbnail":
 						if (vo != null)
-							vo.setDescription(parser.nextText());
+							vo.setThumnail(parser.nextText());
 						break;
 
 					}

@@ -37,6 +37,7 @@ import lolVo.ParticipantVo;
 import lolVo.PlayerVo;
 import lolVo.SummonerVo;
 import mybatis.MembershipVo;
+import mybatis.dictionaryVo;
 import mybatis.sb_clientVo;
 import mybatis.searchVo;
 import newsController.NewsPhotoVo;
@@ -331,14 +332,18 @@ public class MembershipController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/dictionary.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="*/dictionary.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView dictionary(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
 		try {
-			String search = req.getParameter("searchBar");
+			String search = req.getParameter("w_bar");
 			
-			List<searchVo> list = dao.dictionary(search);
+			List<dictionaryVo> list = dao.dictionary(search);
+			
+			dictionaryVo vo = list.get(0);
+			System.out.println("섬 + "+vo.getThumnail());
+			
 			
 			mv.addObject("dictionaryList", list); // 사전
 			
@@ -349,7 +354,7 @@ public class MembershipController {
 		
 		
 		
-		mv.setViewName("/root/dictionary");
+		mv.setViewName("root_dictionary");
 		return mv;
 	}
 

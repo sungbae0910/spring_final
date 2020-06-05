@@ -15,6 +15,8 @@ public class searchVo {
 	String image;
 	String thumnail;
 	
+	
+	
 	String subtitle;
 	Date pubDate;
 	String director;

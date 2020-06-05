@@ -13,6 +13,7 @@
 <script src="../main_lib/js/bootstrap.min.js"></script>
 </head>
 <body>
+<form name='frm_dic' id='frm_dic' method='post' enctype='multipart/form-data'>
 <div id="w_border">
 </div>
  <div id="w_borderline">
@@ -24,20 +25,24 @@
   <div id = "w_ba">
    <a href="../wpy/w_index.jsp"><img src="../wpy/w_images/w_foodB2.jpg"></a>
   </div>
- <c:forEach begin="0" end="10">
+  
+ <c:forEach var="i" items="${dictionaryList }" >
   <div id="w_dicmain">
-   	<img id="w_img" src="../main_lib/images/dogimg.jpg">
+   	<img id="w_img" src="${i.thumnail}">
+   	
      <ul id="w_tag">
-     <a id="w_atag" href="#"><li>단어</li></a>
-     <li>단어 정보:</li>
+    	 <a id="w_atag" href="${i.link}"><li>${i.title}</li></a>
+     <li>${i.description }</li>
      </ul>
   </div>
  </c:forEach>
  </div>
-
+</form>
 <div>
 <jsp:include page="../footer.jsp"></jsp:include>
 </div>
+
+
 
 </body>
 </html>
