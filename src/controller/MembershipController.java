@@ -298,7 +298,10 @@ public class MembershipController {
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
 		ShopItemVo sVo = new ShopItemVo();
-		List<BlogBoardVo> blogList = dao.blogSelect();
+		List<BlogBoardVo> blogLife = dao.blogLife();
+		List<BlogBoardVo> blogTravel = dao.blogTravel();
+		List<BlogBoardVo> blogIt = dao.blogIt();
+		
 		List<ShopItemVo> earringList = dao.earringList(sVo);
 		List<ShopItemVo> necklaceList = dao.necklaceList(sVo);
 		List<ShopItemVo> ringList = dao.ringList(sVo);
@@ -309,7 +312,11 @@ public class MembershipController {
 		
 		mv.addObject("newsInfo", newsInfo);
 		mv.addObject("newsPhoto", newsPhoto);
-		mv.addObject("blogList", blogList);
+		
+		mv.addObject("blogLife", blogLife);
+		mv.addObject("blogTravel", blogTravel);
+		mv.addObject("blogIt", blogIt);
+		
 		mv.addObject("earringList", earringList);
 		mv.addObject("necklaceList", necklaceList);
 		mv.addObject("ringList", ringList);
@@ -355,6 +362,14 @@ public class MembershipController {
 		return "redirect:index.jsp";
 	}
 	
+	/*@RequestMapping(value="/blogLogout.mem", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String blogLogout(HttpSession session, HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String url = req.getHeader("referer");
+		session.invalidate();
+		return url;
+	}*/
 	
 	@RequestMapping(value="/newsDetail.mem", method= {RequestMethod.GET, RequestMethod.POST})
 	public String newsDetail(@RequestParam("s_nserial") String nSerial, @RequestParam("mId") String mId) {

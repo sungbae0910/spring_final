@@ -161,15 +161,40 @@ public class MembershipDao {
 		
 	}
 
-	public List<BlogBoardVo> blogSelect() {
-		List<BlogBoardVo> blogList = null;
+	public List<BlogBoardVo> blogLife() {
+		List<BlogBoardVo> blogLife = null;
 		try {
-			blogList = sqlSession.selectList("membership.blogSelect");
+			String[] tag = {"일상", "데일리", "라이프", "날씨"};
+			blogLife = sqlSession.selectList("membership.blogSelect", tag);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return blogList;
+		return blogLife;
+	}
+	
+	public List<BlogBoardVo> blogTravel() {
+		List<BlogBoardVo> blogTravel = null;
+		try {
+			String[] tag = {"여행", "제주도", "맛집", "먹거리"};
+			blogTravel = sqlSession.selectList("membership.blogSelect", tag);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return blogTravel;
+	}
+	
+	public List<BlogBoardVo> blogIt() {
+		List<BlogBoardVo> blogIt = null;
+		try {
+			String[] tag = {"it", "IT", "컴퓨터", "전자기기", "핸드폰", "아이폰", "갤럭시"};
+			blogIt = sqlSession.selectList("membership.blogSelect", tag);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return blogIt;
 	}
 	
 	public List<searchVo> Search(String query){

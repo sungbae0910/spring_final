@@ -7,6 +7,10 @@
  		mId = (String)session.getAttribute("mId");	
 	}
 %>
+<form id="c_top_frm" name="c_top_frm" method="post">
+	<input type="hidden" name="c_mId" value="<%=mId%>">
+	<input type="hidden" name="c_cName">
+</form>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="c_blogNavbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -32,10 +36,10 @@
 			      		  <li class="dropdown-header" id="c_menuManage">계정 관리</li>
 			      		  <li class="divider"></li>
 			      		  <li class="dropdown-header blog">운영중인 블로그</li>
-			      		  <li onclick="blog.myblog('<%=mId%>')"><span id="c_btnMenuMyBlog">내 블로그</span></li>
-			      		  <li onclick="blog.manageMain()"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></li>
+			      		  <li onclick="blog.myblog()"><span id="c_btnMenuMyBlog">내 블로그</span></li>
+			      		  <li onclick="blog.manage()"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></li>
 			      		  <li class="divider"></li>
-			      		  <li><span class="glyphicon glyphicon-log-in"></span> 로그아웃 하기</li>
+			      		  <li onclick="blog.logout()"><span class="glyphicon glyphicon-log-in"></span> 로그아웃 하기</li>
 				        </ul>
 		      		</li>
    				</c:otherwise>

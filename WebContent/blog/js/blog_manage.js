@@ -1,5 +1,12 @@
 let manage = {}
 
+manage.manageMainContent = function () { //블로그 관리 메인(블로그 설정)
+	let param = $("#c_manage_frm").serialize();
+	$.post("../blogSetManage.bg", param, function(data, state) { 
+		$("#c_manageContent").html(data);
+	});
+}
+
 manage.view = function(){
 	/* myblog_manageSet */
 	$("#c_myblog_headerImg_add").click(function(){

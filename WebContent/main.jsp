@@ -161,7 +161,52 @@
 			
 			<div class="col-xs-12 blog">
 				<div id="blog" class="list">
-	        		<c:forEach  var="bList" items="${blogList}">
+					<h3>라이프</h3>
+	        		<c:forEach var="bList" items="${blogLife}">
+		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
+		        			<div class="row">
+		        				<div class="col-xs-4 col-md-3">
+		        					<c:choose>
+		        						<c:when test="${empty bList.brdHeader}">
+		        							<img src="${pageContext.request.contextPath}/blog/blog_image/life.jpg" class="img-rounded">
+		        						</c:when>
+		        						<c:otherwise>
+				        					<img src="${pageContext.request.contextPath}/blog/blog_image/${bList.brdHeader}" class="img-rounded">
+			        					</c:otherwise>
+		        					</c:choose>
+		        				</div>
+	       						<div class="col-xs-8 col-md-9">
+				        			<div class="subject blog">${bList.subject}</div>
+				        			<div class="content blog">${bList.content}</div>
+				        			<time class="date" datetime="${bList.brdDate}"></time>
+	       						</div>
+       						</div>
+		        		</div>
+	        		</c:forEach>
+	        		<h3 >여행.맛집</h3>
+	        		<c:forEach var="bList" items="${blogTravel}">
+		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
+		        			<div class="row">
+		        				<div class="col-xs-4 col-md-3">
+		        					<c:choose>
+		        						<c:when test="${empty bList.brdHeader}">
+		        							<img src="${pageContext.request.contextPath}/blog/blog_image/life.jpg" class="img-rounded">
+		        						</c:when>
+		        						<c:otherwise>
+				        					<img src="${pageContext.request.contextPath}/blog/blog_image/${bList.brdHeader}" class="img-rounded">
+			        					</c:otherwise>
+		        					</c:choose>
+		        				</div>
+	       						<div class="col-xs-8 col-md-9">
+				        			<div class="subject blog">${bList.subject}</div>
+				        			<div class="content blog">${bList.content}</div>
+				        			<time class="date" datetime="${bList.brdDate}"></time>
+	       						</div>
+       						</div>
+		        		</div>
+	        		</c:forEach>
+	        		<h3>IT</h3>
+	        		<c:forEach var="bList" items="${blogIt}">
 		        		<div class="listItem" onclick="main.brdView('${bList.mId}', ${bList.brdNo})">
 		        			<div class="row">
 		        				<div class="col-xs-4 col-md-3">
