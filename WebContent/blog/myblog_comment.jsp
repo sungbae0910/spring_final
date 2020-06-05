@@ -36,7 +36,7 @@
 				      	<div class="c_cmtMid">${cmt.cmtMid}</div>
 				      	<div class="c_cmtDate">${cmt.cmtDate}</div>
 				      	<div class="c_cmtContent">${cmt.cmtContent}</div>
-				      	<div class="c_btnRepl" data-toggle="modal" data-target="#myModal">답글</div>
+				      	<div class="c_btnRepl" data-toggle="modal" data-target="#myModal" onclick="blog.replInsert()">답글</div>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -83,7 +83,7 @@
 		    <div class="modal-content">
 		    	<div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
-			        <h4 class="modal-title">댓글 수정</h4>
+			        <h4 class="modal-title" id="cmtModalTitle">댓글 수정</h4>
 				</div>
 			    <div class="modal-body">
 			    	<img id="c_modifyImg" src="./blog_image/landscape.jpg" class="img-circle">
