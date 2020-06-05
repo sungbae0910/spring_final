@@ -20,6 +20,18 @@
 		from shop_item
 		where item_id = #{item_id}
 	</select>
+	<insert id="item_like" parameterType="shopController.ShopItemVo">
+		insert into shop_item_like values(seq_shop_like.nextval, #{mId}, #{item_id})
+	</insert> 
+	<delete id="item_like_delete" parameterType="shopController.ShopItemVo">
+		delete from shop_item_like where item_id = #{item_id}
+	</delete>
+	<!-- <select id="item_like_select" parameterType="String" resultType="shopController.ShopItemVo">
+		select I.item_name, I.item_price, I.item_main_photo, I.item_id, L.mId
+		from shop_item I join shop_item_like L
+		on I.item_id = L.item_id
+		where mId = #{_parameter}
+	</select> -->
 	<select id="item_option" parameterType="shopController.ShopItemVo" resultType="shopController.ShopItemVo">
 		select N.option_name_values, O.option_name
 		from shop_option_name N join shop_item_option O

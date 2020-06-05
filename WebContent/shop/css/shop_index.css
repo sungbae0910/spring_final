@@ -25,10 +25,20 @@
 #shop_header #btn .login_frm{	
 	left: 15%;
 }
+#shop_header #btn .logout_frm{	
+	left: 15%;
+}
 #shop_header #btn .basket_frm{
 	left: 7%;
 }
 #shop_header .btn_login{
+	border-style: none;
+	text-decoration: underline;
+	text-decoration-color: darkgray;
+	font-size: 150%;
+	margin-left: 190%;
+}
+#shop_header .btn_logout{
 	border-style: none;
 	text-decoration: underline;
 	text-decoration-color: darkgray;
@@ -300,6 +310,11 @@
     }
 } 
 #shop_header .btn_login:hover, #shop_header .btn_login:focus, #shop_header .btn_login:visited, #shop_header .btn_login:active{
+	background-color: white;
+	border-style: none;
+	text-decoration-color: red;
+}
+#shop_header .btn_logout:hover, #shop_header .btn_logout:focus, #shop_header .btn_logout:visited, #shop_header .btn_logout:active{
 	background-color: white;
 	border-style: none;
 	text-decoration-color: red;

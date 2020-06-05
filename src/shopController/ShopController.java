@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ShopController {
+	private static final String HttpServletRequest = null;
 	ShopDao dao;
 	
 	public ShopController(ShopDao dao) {
@@ -23,12 +25,12 @@ public class ShopController {
 	public ModelAndView shopMain(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		ShopItemVo sVo = new ShopItemVo();
-		System.out.println(1111111);
+
 		List<ShopItemVo> earringList = dao.earringMainSelect(sVo);
 		List<ShopItemVo> necklaceList = dao.necklaceMainSelect(sVo);
 		List<ShopItemVo> ringList = dao.ringMainSelect(sVo);
 		List<ShopItemVo> braceletList = dao.braceletMainSelect(sVo);
-		System.out.println(222222222);
+		
 		mv.addObject("earringList", earringList);
 		mv.addObject("necklaceList", necklaceList);
 		mv.addObject("ringList", ringList);
@@ -51,7 +53,6 @@ public class ShopController {
 	public ModelAndView shopView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		ShopItemVo sVo = new ShopItemVo();
-		System.out.println(1);
 		String item_id = req.getParameter("item_id");
 		sVo.setItem_id(item_id);
 				
@@ -76,6 +77,27 @@ public class ShopController {
 		
 		return mv;
 	}
+
+	@RequestMapping(value="/itemLike.shop", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public void itemLike(HttpServletRequest req) {
+		ShopItemVo vo = new ShopItemVo();
+		vo.setmId(req.getParameter("mId"));
+		vo.setItem_id(req.getParameter("item_id"));
+		dao.itemLike(vo);
+		
+		return;
+	}
+	
+	@RequestMapping(value="/itemLikeDelete.shop", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public void itemLikeDelete(HttpServletRequest req) {
+		ShopItemVo vo = new ShopItemVo();
+		vo.setItem_id(req.getParameter("item_id"));
+		dao.itemLikeDelete(vo);
+		
+		return;
+	}
 	
 	@RequestMapping(value="/basket.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopBasket(HttpServletRequest req) {
@@ -87,8 +109,16 @@ public class ShopController {
 	
 	@RequestMapping(value="/myPage.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopMyPage(HttpServletRequest req) {
+		/*System.out.println(10101010);*/
 		ModelAndView mv = new ModelAndView();
 		
+		/*System.out.println(202020);
+		String mId = req.getParameter("mId");
+		System.out.println("myPage : " + mId);
+		
+		List<ShopItemVo> itemLikeList = dao.itemLikeList(mId);
+		
+		mv.addObject("itemLikeList", itemLikeList);*/
 		mv.setViewName("shop_myPage");
 		return mv;
 	}

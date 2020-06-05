@@ -77,6 +77,14 @@ shop.countDown = function(value){
 		}
 	}
 }
+shop.myPage = function(mId){
+	$("#mId").val(mId);
+	alert(mId);
+	let param = $("#shop_frm").serialize();
+	$.post("../myPage.shop", param, function(data, state){
+		$("#main").html(data);
+	})
+}
 /*
 shop.totPrice_remove = function(option){
 	let item_price = Number($("#itemView_price_content_in").val());
@@ -126,12 +134,6 @@ shop.func = function(){
 		})
 	})
 	
-	$(".btn_my").click(function(){
-		let param = $("#shop_frm").serialize();
-		$.post("../myPage.shop", param, function(data, state){
-			$("#main").html(data);
-		})
-	})
 
 	$(".btn_itemView_payment").click(function(){
 		alert("결제하시겠습니까?")
@@ -142,7 +144,7 @@ shop.func = function(){
 	})
 	
 	$(".btn_itemView_basket").click(function(){
-		alert("장바구니로 이동하시겠습니까?")
+		alert("장바구니에 추가되었습니다.")
 		let param = $("#shop_frm").serialize();
 		$.post("../basket.shop", param, function(data, state){
 			$("#main").html(data);
@@ -150,16 +152,44 @@ shop.func = function(){
 	})
 	
 	$(".btn_itemView_like").click(function(){
+		alert("회원 아이디 : " + mId + "상품 아이디 : " + item_id);
 		if($("#btn_itemView_like_click").hasClass("glyphicon-heart-empty")){
 			alert("찜 목록에 추가되었습니다.")
 			$("#btn_itemView_like_click").removeClass("glyphicon-heart-empty")
 			$("#btn_itemView_like_click").addClass("glyphicon-heart")
 			document.getElementById("btn_itemView_like_click").style.color = "red";
+			
+			/*찜하기 등록*/ 
+			$.ajax({
+				url : "../itemLike.shop",
+				dataType : "json",
+				type : "post",
+				data : {
+					"mId" : $("#mId").val(),
+					"item_id" : $("#item_id").val()
+				},
+				success :function(){
+					alert("성공");
+				}
+			});
+			
 		}else{
 			alert("찜 목록에서 삭제되었습니다.")
 			$("#btn_itemView_like_click").removeClass("glyphicon-heart")
 			$("#btn_itemView_like_click").addClass("glyphicon-heart-empty")
 			document.getElementById("btn_itemView_like_click").style.color = "black";
+			
+			/*찜하기 삭제*/
+			$.ajax({
+				url : "../itemLikeDelete.shop",
+				type : "post",
+				data : {
+					"item_id" : $("#item_id").val()
+				},
+				success : function(){
+					alert("삭제 성공");
+				}
+			})
 		}
 	})
 	
@@ -171,7 +201,8 @@ shop.func = function(){
 		})
 	})
 	
-	$(".basket_cancel").click(function(){
+	$(".basket_cancel").click(function(mId){
+		$("#mId").val = mId;
 		alert("마이페이지로 이동합니다.")
 		let param = $("#shop_frm").serialize();
 		$.post("../myPage.shop", param, function(data, state){

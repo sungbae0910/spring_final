@@ -2,12 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	String mId = "";
+	if(session.getAttribute("mId") != null){
+ 		mId = (String)session.getAttribute("mId");	
+	}
+%>
 <div id="shop_itemView">
 	<form name="shop_frm" id="shop_frm" method="post">
 		<div class="container-fluid">
 		    <div class="row">
 				<div class="col-xs-12">
-				<input type="hidden" name="item_id" value="${vo.item_id}" />
+				<input type="text" name="mId" id="mId" value="<%=mId%>"/>
+				<input type="hidden" name="item_id" id="item_id" value="${vo.item_id}" />
 					<div class="row">
 						<div class="col-xs-6 itemView_photo">
 							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">		

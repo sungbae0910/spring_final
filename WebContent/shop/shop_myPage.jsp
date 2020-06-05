@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	String mId = "";
+	if(session.getAttribute("mId") != null){
+ 		mId = (String)session.getAttribute("mId");	
+	}
+%>
 <div id="shop_myPage">
 	<form name="shop_frm" id="shop_frm" method="post">
 		<div class="container-fluid">
@@ -11,7 +19,8 @@
 						    	<div class="thumbnail member_thumbnail">
 						      		<img src="./image/1.jpg" alt="...">
 						      		<div class="caption">
-						      			<h3 id="member_id_frm">회원 아이디</h3>
+						      			<h3 id="member_id_frm"><%=mId%></h3>
+						      			<%-- <input type="text" name="mId" id="mId" value="${itemLikeList.mId}" /> --%>
 						        		<p><a data-toggle="modal" data-target="#myModal" class="btn btn-default btn_modify" role="button">회원 정보 수정</a></p>
 						      		</div>
 						    	</div>
@@ -202,54 +211,14 @@
 			        					<div class="row">
 											<div class="col-sm-6 col-md-4">
 										    	<div class="thumbnail like_thumbnail" id="like_item_first">
-										      		<img src="./image/1.jpg" alt="...">
-										      		<div class="caption">
-										        		<h3>아이템1</h3>
-										        		<p>아이템 정보</p>
-										        		<p><a href="#" class="btn btn-default btn_like_detail" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
-										      		</div>
-										    	</div>
-										  	</div>
-										</div>
-			        				</div>
-			        				<div class="col-xs-3 like_item">
-			        					<div class="row">
-											<div class="col-sm-6 col-md-4">
-										    	<div class="thumbnail like_thumbnail" id="like_item_second">
-										      		<img src="./image/1.jpg" alt="...">
-										      		<div class="caption">
-										        		<h3>아이템2</h3>
-										        		<p>아이템 정보</p>
-										        		<p><a href="#" class="btn btn-default btn_like_detail" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
-										      		</div>
-										    	</div>
-										  	</div>
-										</div>
-			        				</div>
-			        				<div class="col-xs-3 like_item">
-			        					<div class="row">
-										  	<div class="col-sm-6 col-md-4">
-										    	<div class="thumbnail like_thumbnail" id="like_item_third">
-										      		<img src="./image/1.jpg" alt="...">
-										      		<div class="caption">
-										        		<h3>아이템3</h3>
-										        		<p>아이템 정보</p>
-										        		<p><a href="#" class="btn btn-default btn_like_detail" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
-										      		</div>
-										    	</div>
-										  	</div>
-										</div>
-			        				</div>
-			        				<div class="col-xs-3 like_item">
-			        					<div class="row">
-										  	<div class="col-sm-6 col-md-4">
-										    	<div class="thumbnail like_thumbnail" id="like_item_forth">
-										      		<img src="./image/1.jpg" alt="...">
-										      		<div class="caption">
-										        		<h3>아이템4</h3>
-										        		<p>아이템 정보</p>
-										        		<p><a href="#" class="btn btn-default btn_like_detail" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
-										      		</div>
+										    		<c:forEach var="i" items="${itemLikeList}">
+											      		<img src="./image/${i.item_main_photo}" alt="...">
+											      		<div class="caption">
+											        		<h3>${i.item_name}</h3>
+											        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
+											        		<p><a href="#" class="btn btn-default btn_like_detail" onclick="shop.itemView('${i.item_id}')" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
+											      		</div>
+										    		</c:forEach>
 										    	</div>
 										  	</div>
 										</div>
