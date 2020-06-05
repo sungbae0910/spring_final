@@ -74,6 +74,7 @@ shop.countDown = function(value){
 		}
 	}
 }
+
 shop.myPage = function(mId){
 	$("#mId").val(mId);
 	let param = $("#shop_frm").serialize();
@@ -81,6 +82,15 @@ shop.myPage = function(mId){
 		$("#main").html(data);
 	})
 }
+
+shop.likeDelete = function(item_id){
+	$("#item_id").val(item_id);
+	let param = $("#shop_frm").serialize();
+	$.post("../itemLikeDelete.shop", param, function(data, state){
+		$("#main").html(data);
+	})
+}
+
 /*
 shop.totPrice_remove = function(option){
 	let item_price = Number($("#itemView_price_content_in").val());

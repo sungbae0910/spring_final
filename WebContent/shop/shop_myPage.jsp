@@ -20,7 +20,7 @@
 						      		<img src="./image/1.jpg" alt="...">
 						      		<div class="caption">
 						      			<h3 id="member_id_frm"><%=mId%></h3>
-						      			<%-- <input type="text" name="mId" id="mId" value="${itemLikeList.mId}" /> --%>
+						      			<input type="hidden" name="mId" id="mId" />
 						        		<p><a data-toggle="modal" data-target="#myModal" class="btn btn-default btn_modify" role="button">회원 정보 수정</a></p>
 						      		</div>
 						    	</div>
@@ -212,6 +212,7 @@
 											<div class="col-sm-6 col-md-3">
 										    	<div class="thumbnail like_thumbnail" id="like_item_first">
 										     		<img src="./image/${i.item_main_photo}" alt="...">
+									      			<!-- <input type="hidden" name="item_id" id="item_id" /> -->
 										     		<div class="caption">
 										        		<h3>${i.item_name}</h3>
 										        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
