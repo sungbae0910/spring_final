@@ -19,7 +19,7 @@ ul > li {
 #w_search{
     float: left;
     margin-left: 1%;
-    width:5%;
+    width:6%;
     padding-top: 18px;
 
 }
@@ -39,6 +39,8 @@ ul > li {
     height: 51px;
 	position: relative;
     top: 24px;
+    LEFT: 60PX;
+    
     font-size: 30px;
 }
 
@@ -47,6 +49,7 @@ ul > li {
     width: 836px;
     height: 63px;
     border: solid 1px #1DDB16;
+    font-size: 1.5em;
     }
 #w_bar:hover{
     color: green;

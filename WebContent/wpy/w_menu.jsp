@@ -109,6 +109,9 @@
 						</div>
 				</div>
 			</div>
-<script>fd.func()</script>
+<script>
+	fd.foodj('전');
+	fd.func();
+</script>
 	</body>
 </html>

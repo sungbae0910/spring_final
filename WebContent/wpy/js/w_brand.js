@@ -17,7 +17,6 @@ fd.foodj = function(type) {
 }
 */
 fd.foodv = function(foodCode){
-
 	$.post("../w_view.fd",{"foodCode" : foodCode}, function(data,state){
 		$(".w_tab_container").html(data)
 	})
