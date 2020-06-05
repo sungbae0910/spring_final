@@ -216,9 +216,11 @@
 	padding: 1%;
 }
 #shop_myPage .like_thumbnail{
-    width: 400%;
-    margin: 0;
+    width: 100%;
+    margin: 0px;
     text-align: center;
+    margin-bottom: 5%;
+    min-height: 385px;
 }
 #shop_myPage .like_thumbnail .btn_like_remove{
     font-size: 150%;

@@ -109,10 +109,8 @@ public class ShopController {
 	
 	@RequestMapping(value="/myPage.shop", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView shopMyPage(HttpServletRequest req) {
-		System.out.println(10101010);
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(202020);
 		String mId = req.getParameter("mId");
 		System.out.println("myPage : " + mId);
 		

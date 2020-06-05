@@ -20,7 +20,7 @@
 						      		<img src="./image/1.jpg" alt="...">
 						      		<div class="caption">
 						      			<h3 id="member_id_frm"><%=mId%></h3>
-						      			<%-- <input type="text" name="mId" id="mId" value="${itemLikeList.mId}" /> --%>
+						      			<input type="hidden" name="mId" id="mId" />
 						        		<p><a data-toggle="modal" data-target="#myModal" class="btn btn-default btn_modify" role="button">회원 정보 수정</a></p>
 						      		</div>
 						    	</div>
@@ -207,21 +207,20 @@
 			        		</div>
 			        		<div class="col-xs-12">
 			        			<div class="row like_item_list">
-			        				<div class="col-xs-3 like_item">
-			        					<div class="row">
-											<div class="col-sm-6 col-md-4">
+			        				<div class="like_item">
+										<c:forEach var="i" items="${itemLikeList}">
+											<div class="col-sm-6 col-md-3">
 										    	<div class="thumbnail like_thumbnail" id="like_item_first">
-										    		<c:forEach var="i" items="${itemLikeList}">
-											      		<img src="./image/${i.item_main_photo}" alt="...">
-											      		<div class="caption">
-											        		<h3>${i.item_name}</h3>
-											        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
-											        		<p><a href="#" class="btn btn-default btn_like_detail" onclick="shop.itemView('${i.item_id}')" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
-											      		</div>
-										    		</c:forEach>
+										     		<img src="./image/${i.item_main_photo}" alt="...">
+									      			<!-- <input type="hidden" name="item_id" id="item_id" /> -->
+										     		<div class="caption">
+										        		<h3>${i.item_name}</h3>
+										        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
+										        		<p><a href="#" class="btn btn-default btn_like_detail" onclick="shop.itemView('${i.item_id}')" role="button">상세보기</a><a href="#" class="btn btn-default glyphicon glyphicon-remove btn_like_remove" role="button"></a></p>
+										      		</div>
 										    	</div>
-										  	</div>
-										</div>
+									 		</div>
+							    		</c:forEach>
 			        				</div>
 			        			</div>
 			        		</div>
