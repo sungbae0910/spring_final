@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="main_cate_de" parameterType="String" resultMap="mm_news">
-		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.ncategory='${value}' and rownum &lt;= 4
+		select * from (select * from news_photo where rowid in (select max(rowid) from news_photo group by nserial) order by nserial desc)a join news_info b on a.nserial = b.nserial where b.ncategory=#{value} and rownum &lt;= 4
 	</select>
 	
 	<select id="main_hit_desc" resultMap="mm_news">
@@ -113,6 +113,14 @@
 		)where nserial = #{value}
 	</select>
 	
+	<select id="like_ck_l" parameterType="String" resultType="newsController.LikeVo">
+		select * from news_like where mName = #{value} and cLike = 1
+	</select>
+	
+	<select id="like_ck_cl" parameterType="String" resultType="newsController.LikeVo">
+		select * from news_like where mName = #{value} and cDiLike = 1
+	</select>	
+	
 	
 	<!-- insert -->
 	<insert id='news_insert' parameterType="newsController.NewsVo">
@@ -162,23 +170,23 @@
 
 	<!-- update -->
 	<update id="like_in_update" parameterType="newsController.LikeVo">
-		update news_comment set cLike=cLike+1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cLike=cLike+1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="like_out_update" parameterType="newsController.LikeVo">
-		update news_comment set cLike=cLike-1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cLike=cLike-1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="un_like_in_update" parameterType="newsController.LikeVo">
-		update news_comment set cDiLike=cDiLike+1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cDiLike=cDiLike+1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="un_like_out_update" parameterType="newsController.LikeVo">
-		update news_comment set cDiLike=cDiLike-1 where cSerial=#{cSerial} and mName=#{mName}
+		update news_comment set cDiLike=cDiLike-1 where cSerial=#{cSerial} and nSerial=#{nSerial}
 	</update>
 	
 	<update id="up_hit" parameterType="String">
-		update news_info set nHit=nHit+1 where nSerial=${value}
+		update news_info set nHit=nHit+1 where nSerial=#{value}
 	</update>
 	
 	<!-- resultMap -->

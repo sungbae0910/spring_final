@@ -102,8 +102,8 @@
 	                                                    </c:forEach>
 	                                                </div>
 	                                                <div class="what-cap">
-	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <span class="color1">${i.nCategory }</span>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">${i.nTitle}</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -125,8 +125,8 @@
 	                                                    </c:forEach>
 	                                                </div>
 	                                                <div class="what-cap">
-	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <span class="color1">${i.nCategory }</span>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">${i.nTitle }</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -148,8 +148,8 @@
 	                                                    </c:forEach>
 	                                                </div>
 	                                                <div class="what-cap">
-	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <span class="color1">${i.nCategory }</span>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">${i.nTitle }</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -171,8 +171,8 @@
 	                                                    </c:forEach>
 	                                                </div>
 	                                                <div class="what-cap">
-	                                                    <span class="color1">Night party</span>
-	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">Welcome To The Best Model  Winner Contest</a></h4>
+	                                                    <span class="color1">${i.nCategory }</span>
+	                                                    <h4><a href="#" onclick="news_detail3(${ii.index})">${i.nTitle }</a></h4>
 	                                                </div>
 	                                            </div>
 	                                        </div>

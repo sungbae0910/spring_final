@@ -114,29 +114,35 @@ public class NewsController {
 		Page p = new Page();
 		NewsVo vo = null;
 		String cnt = "";
+		//세션 비교
+		int result = 0;
 		Cookie[] cookies = req.getCookies();
 		List<NewsVo> list = null;
 		//댓글
 		List<CommentVo> comment = null;
 		//대댓글
 		List<CommentVo> reComment = null;
+		List<LikeVo> likeCk = null;
+		List<LikeVo> likeCd = null;
 		String nSerial = req.getParameter("nSerial");
+		String mId = req.getParameter("mId");
 		
 		// 쿠키를 확인하여 조회수 중복 증가 방지
 		if(cookies != null && cookies.length >0) {
 			for(int i=0; i<cookies.length; i++) {
 				if(cookies[i].getName().equals("cookie"+nSerial)) {
-					System.out.println("중복 조회");
+					result=0;
 					break;
 				}else {
 					Cookie newCookie = new Cookie("cookie"+nSerial, nSerial);
-					ns.upHit(nSerial);
 					res.addCookie(newCookie);
-					System.out.println("처음 조회");
+					result=1;
 				}
 			}
 		}
-		
+		if(result==1) {
+			ns.upHit(nSerial);
+		}
 		
 		p.setnSerial(nSerial);
 		if(req.getParameter("nowPage") == null || req.getParameter("nowPage") == "") {
@@ -150,7 +156,8 @@ public class NewsController {
 		comment = ns.commentView(p);
 		reComment = ns.reComment(nSerial);
 		cnt = ns.commentCnt(nSerial);
-		
+		likeCk = ns.likeCk(mId);
+		likeCd = ns.likeCd(mId);
 		
 		mv.addObject("p", p);
 		mv.addObject("list", list);
@@ -158,6 +165,8 @@ public class NewsController {
 		mv.addObject("comment", comment);
 		mv.addObject("reComment", reComment);
 		mv.addObject("cnt", cnt);
+		mv.addObject("likeCk", likeCk);
+		mv.addObject("likeCd", likeCd);
 		
 		mv.setViewName("newsDetailT");
 		

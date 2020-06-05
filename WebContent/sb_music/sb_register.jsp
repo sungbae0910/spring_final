@@ -18,7 +18,7 @@
 	
 	<br><br><br><br>
 	<div align="center">
-		<h1>로고</h1>
+		<h1><a href="../index.jsp"><img src="../main_lib/images/root.png" alt="" style="height:50px;"></a></h1>
 		<br><br>
 		<div class="container">	
 			<form id="frm_register" name="frm_register">

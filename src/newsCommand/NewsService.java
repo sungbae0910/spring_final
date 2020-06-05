@@ -292,9 +292,24 @@ public class NewsService {
 	
 	// 조회수 증가(쿠키를 사용하여 중복 조회 방지)
 	public void upHit(String nSerial) {
-		System.out.println(nSerial);
 		dao.upHit(nSerial);
 		
 	}
 	
+	public List<LikeVo> likeCk(String mId){
+		List<LikeVo> likeCk = null;
+		
+		likeCk = dao.likeCk(mId);
+		
+		return likeCk;
+	}
+	
+	public List<LikeVo> likeCd(String mId){
+		List<LikeVo> likeCd = null;
+		
+		likeCd = dao.likeCd(mId);
+		
+		return likeCd;
+		
+	}
 }

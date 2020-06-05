@@ -11,6 +11,7 @@
 </form>
 <form id="s_news_frm" method="post">
 	<input type="hidden" class="s_nserial" name="s_nserial">
+	<input type="hidden" class="mId" name="mId" value="${sessionScope.mId}"/>
 </form>
 <%
 	String mId = "";
@@ -139,7 +140,7 @@
 	        			<div class="row">
 	        				<c:forEach begin="0" end="3" var="i" items="${newsInfo}" varStatus="ii">
 	        				<input type="hidden" value="${i.nSerial}" class="serial${ii.index}"> 
-	        				<div class="col-xs-4 col-md-3">
+	        				<div onclick="news_detail(${ii.index})" class="col-xs-4 col-md-3">
 	                            <div class="single-bottom mb-35">
 	                                <div class="trend-bottom-img mb-30">
 	                                	<c:forEach begin="${ii.index}" end="${ii.index}" var="pho" items="${newsPhoto}">
@@ -148,7 +149,7 @@
 	                                </div>
 	                                <div class="trend-bottom-cap indexNews_s">
 	                                    <span class="color1 indexNewsT">${i.nCompany}</span>
-	                                    <h5><a href="#" onclick="news_detail(${ii.index})">${i.nTitle}</a></h5>
+	                                    <h5>${i.nTitle}</h5>
 	                                </div>
 	                            </div>
 	        				</div>	

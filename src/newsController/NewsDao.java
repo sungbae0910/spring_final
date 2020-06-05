@@ -447,5 +447,28 @@ public class NewsDao {
 		}
 		
 	}
-
+	
+	public List<LikeVo> likeCk(String mId){
+		List<LikeVo> likeCk = new ArrayList<LikeVo>();
+		
+		try {
+			likeCk = sqlSession.selectList("news.like_ck_l", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeCk;
+	}
+	
+	public List<LikeVo> likeCd(String mId){
+		List<LikeVo> likeCd = new ArrayList<LikeVo>();
+		
+		try {
+			likeCd = sqlSession.selectList("news.like_ck_cl", mId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeCd;
+	}
 }

@@ -19,6 +19,9 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<form id="idFind_s" method="post">
+					<div align="center">
+						<a href="index.jsp"><img src="./main_lib/images/root.png" alt="" style="height:50px;"></a>
+					</div>
 					<div class="pw_find_tt" style="text-align: center;">
 						<span class="pw_find_top">아이디 찾기</span><br/>
 					</div>

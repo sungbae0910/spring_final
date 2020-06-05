@@ -13,6 +13,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -118,6 +119,8 @@ public class MembershipController {
 		String result = "";
 		String id = req.getParameter("lId");
 		String password = req.getParameter("lPwd");
+		String nSerial = req.getParameter("nSerial");
+		JSONObject ob = new JSONObject();
 		HttpSession httpSession = req.getSession(true);
 		int ck = 0;
 		
@@ -136,7 +139,11 @@ public class MembershipController {
 			result = "0";
 		}
 		
-		return result;
+		ob.put("result", result);
+		ob.put("nSerial", nSerial);
+		ob.put("mId", id);
+		
+		return ob.toJSONString();
 	}
 	
 	@RequestMapping(value="/sb_music/sb_login.mem", method= {RequestMethod.GET, RequestMethod.POST})
@@ -388,20 +395,18 @@ public class MembershipController {
 	}
 	
 	@RequestMapping(value="/logout.mem", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView logout(HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+	public String logout(HttpSession session) {
 		
-		session.invalidate();
+		session.removeAttribute("mId");
 		
-		mv.setViewName("index");
-		return mv;
+		return "redirect:index.jsp";
 	}
 	
 	
 	@RequestMapping(value="/newsDetail.mem", method= {RequestMethod.GET, RequestMethod.POST})
-	public String newsDetail(@RequestParam("s_nserial") String nSerial) {
+	public String newsDetail(@RequestParam("s_nserial") String nSerial, @RequestParam("mId") String mId) {
 		
-		return "redirect:/news/newsDetail.news?nSerial="+nSerial;
+		return "redirect:/news/newsDetail.news?nSerial="+nSerial+"&mId="+mId;
 	}
 	
 	@RequestMapping(value="/root/lol.mem", method= {RequestMethod.GET, RequestMethod.POST})

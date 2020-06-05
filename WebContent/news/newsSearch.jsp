@@ -36,33 +36,13 @@
         <!-- Header Start -->
        <div class="header-area">
             <div class="main-header ">
-                <div class="header-top black-bg d-none d-md-block">
-                   <div class="container">
-                       <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left">
-                                    <ul>     
-                                        <li><img src="./img/icon/header_icon1.png" alt="">34ºc </li>
-                                        <li><img src="./img/icon/header_icon1.png" alt=""><script>document.write(new Date().getFullYear());</script></li>
-                                    </ul>
-                                </div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">    
-                                        <li><a href="#" class="ins_s" onclick="weekly()"><img src="./img/icon/insta_s.png" style="width:25px; height:25px;"></a></li>
-                                        <li><a href="#"><img src="./img/icon/blog_s.png" style="width:25px; height:25px;"></a></li>
-                                    </ul>
-                                </div>	                                
-                            </div>
-                       </div>
-                   </div>
-                </div>
                 <div class="header-mid d-none d-md-block">
                    <div class="container">
                         <div class="row d-flex align-items-center">
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="newsMainT.jsp"><!-- <img src="./img/logo/logo.png" alt=""> -->logo</a>
+                                    <a href="../index.jsp"><img src="../main_lib/images/root.png" alt="" style="height:50px;">logo</a>
                                 </div>
                             </div>
                         </div>

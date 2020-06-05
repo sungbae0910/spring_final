@@ -15,10 +15,11 @@
 <body>
 	<br><br><br><br>
 	<div align="center">
-		<h1>로고</h1>
+		<h1><a href="index.jsp"><img src="./main_lib/images/root.png" alt="" style="height:50px;"></a></h1>
 		<br><br>
 		<div class="container">	
 			<form id="frm_login_s" method="post" name="frm_register">
+				<input type="hidden" class="nSerial" name="nSerial" value="${param.nSerial}"/>
 				<div class="login_form">
 					<span>아이디</span><br> 
 					<input type="text" id="lId" name="lId" placeholder="아이디"><div id="checkId" ></div><br>
