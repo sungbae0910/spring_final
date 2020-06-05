@@ -7,7 +7,7 @@
 			<div id="c_myblog_manageSet">
 				<label>블로그 헤더사진</label><br/>
 				<div id="c_myblog_headerImg">
-					<img id="c_bHeaderImg">
+					<img id="c_bHeaderImg" src="./blog_image/${bVo.hPhoto}">
 					<input type="file" id="c_btn_bHeaderImg">
 					<button type="button" id="c_myblog_headerImg_add" class="btn btn-default btn-lg">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -18,7 +18,7 @@
 				</div>
 				<div id="c_myblog_setCon">
 					<label>블로그 이름</label><br/>
-					<input type="text" id="c_bTitle">
+					<input type="text" id="c_bTitle" value="${bVo.bTitle}">
 					<button type="button" id="c_myblog_btnSetCon">변경사항 저장</button>
 				</div>
 	    	</div>
@@ -35,4 +35,3 @@
 		</div>
 	</div>
 </div>
-<script>manage.view();</script>

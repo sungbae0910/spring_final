@@ -17,8 +17,9 @@ public class BlogBoardVo {
 	int hit; //게시물 조회 수
 	int brdLike; //게시물 공감 수
 	List<BlogVo> blogInfo = new ArrayList<BlogVo>(); //블로그 이름, 유저사진
-	String tContent = "";
-	int basicSet;
+	String tContent = ""; //게시글 태그
+	int basicSet; //게시글 공개여부
+	List<String> likeMid = new ArrayList<String>(); //해당 게시글에 공감버튼을 누른 회원목록
 	
 	public BlogBoardVo() {}
 	
@@ -48,9 +49,11 @@ public class BlogBoardVo {
 	public void setBrdLike(int brdLike) {this.brdLike = brdLike;}
 	public List<BlogVo> getBlogInfo() {return blogInfo;}
 	public void setBlogInfo(List<BlogVo> blogInfo) {this.blogInfo = blogInfo;}
-	public String getTContent() {return tContent;}
-	public void setTContent(String tContent) {this.tContent = tContent;}
+	public String gettContent() {return tContent;}
+	public void settContent(String tContent) {this.tContent = tContent;}
 	public int getBasicSet() {return basicSet;}
 	public void setBasicSet(int basicSet) {this.basicSet = basicSet;}
+	public List<String> getLikeMid() {return likeMid;}
+	public void setLikeMid(List<String> likeMid) {this.likeMid = likeMid;}
 	
 }

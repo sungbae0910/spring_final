@@ -3,6 +3,9 @@ package blogController;
 import java.io.File;
 import java.util.List;
 
+import javax.swing.GroupLayout.SequentialGroup;
+
+import org.apache.catalina.Session;
 import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -72,14 +75,80 @@ public class BlogDao {
 	
 	public BlogBoardVo brdView(int brdNo) {
 		BlogBoardVo board = null;
+		int cnt = 0;
 		try {
 			//게시물 상세보기
 			board = sqlSession.selectOne("blog.brdView", brdNo);
-			//선택한 게시물 조회
+			//해당 게시글에 공감 누른 회원 아이디
+			List<String> likeMid = sqlSession.selectList("blog.brdLikeMid", brdNo);
+			board.setLikeMid(likeMid);
+			//게시물 상세보기하면 조회수 +1
+			cnt = sqlSession.update("blog.brdHitUp", brdNo);
+			
+			if (cnt > 0) { //조회수가 정상적으로 update되면
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return board;
+	}
+	
+	public void brdLike(BlogBoardVo brdVo, String flag) {
+		try {
+			if (flag.equals("i")) { //공감 눌렀을 때
+				sqlSession.insert("blog.brdLikeInsert", brdVo);				
+			} else { //공감 해제 했을 때
+				sqlSession.delete("blog.brdLikeDelete", brdVo);
+			}
+
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public List<BlogCmtVo> brdCmtView(int brdNo){
+		List<BlogCmtVo> cmtList = null;
+		try {
+			cmtList = sqlSession.selectList("blog.cmtView", brdNo);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cmtList;
+	}
+	
+	public void brdCmtInsert(BlogCmtVo cmtVo){
+		try {
+			sqlSession.insert("blog.cmtInsert", cmtVo);
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public void brdCmtModify(BlogCmtVo cmtVo){
+		try {
+			sqlSession.update("blog.cmtModify", cmtVo);
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public void brdCmtDelete(int cmtNo){
+		try {
+			sqlSession.delete("blog.cmtDelete", cmtNo);
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
 	}
 	
 	public List<BlogVo> category(int bNo) {
@@ -123,7 +192,7 @@ public class BlogDao {
 			}
 			
 			//태그 내용 입력 또는 수정
-			if (!brdVo.getTContent().isEmpty()) { //태그를 입력했을 때
+			if (!brdVo.gettContent().isEmpty()) { //태그를 입력했을 때
 				sqlSession.update("blog.brdTagModify", brdVo);				
 				/*//게시물에 태그가 있는 지 확인
 				int tagCount = sqlSession.selectOne("blog.tagSelect", brdVo.getBrdNo());
@@ -162,6 +231,19 @@ public class BlogDao {
 			sqlSession.rollback();
 		}
 	}
+	
+	public BlogVo blogManageView(String mId) {
+		BlogVo bVo = null;
+		try {
+			bVo = sqlSession.selectOne("blog.blogManageView", mId);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return bVo;
+	}
+	
+	
 	
 	/*public BlogBoardVo brdView(String brdLike,String brdNo, String mId) {
 		BlogBoardVo brdVo = null;

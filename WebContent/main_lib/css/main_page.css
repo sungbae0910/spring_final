@@ -200,11 +200,12 @@ img#logo{
 #mainContent .col-xs-12 {margin: 10px 0;}
 #mainContent #promotion img {width: 100%;}
 #mainContent .col-xs-12.blog {border-top: 2px solid #eee; border-bottom: 2px solid #eee;}
+#mainContent .col-xs-12.blog h3 {margin-top: 30px; font-weight: bold;}
 #mainContent .list img {width: 100%; height: 120px;}
 #mainContent .list .listItem {margin: 15px 0;}
 #mainContent .list .listItem:hover {cursor: pointer;}
-#mainContent .list .listItem .subject{font-size: 15px; font-weight: bold; margin-top: 10px;}
-#mainContent .list .listItem .subject.blog{margin-bottom: 5px;}
+#mainContent .list .listItem .subject{font-size: 17px; font-weight: bolder; margin-top: 10px; margin-bottom: 5px;}
+#mainContent .list .listItem .subject:hover{text-decoration-line: underline;}
 #mainContent .list .content {overflow: hidden; text-overflow: ellipsis; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
 #mainContent .list .listItem .content.blog{margin-bottom: 10px;}
 #mainContent .list .content p {line-height: 20px;}

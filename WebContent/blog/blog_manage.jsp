@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<form id="c_manage_frm" name="c_manage_frm" method="post">
+	<input type="hidden" name="c_mId" value="${bVo.mId}"/>
+</form>
 <div id="c_blog_manage">
 	<div class="container-fluid">
 	    <div class="row">
@@ -11,14 +14,14 @@
 			        	<form id="c_blog_frm" name="c_blog_frm" method="post">
 				        	<div id="c_manage_sub">
 				        		<div id="c_subProfile">
-				        			<img src="./blog_image/boy.jpg" onclick="manage.blogSet()"/>
+				        			<img src="./blog_image/${bVo.mPhoto}" onclick="manage.blogSet()"/>
 				        			<div>
-					        			<span id="c_subBtitle">블로그 이름</span><br/>
-					        			<span id="c_subMid">gus927@naver.com</span>
+					        			<span id="c_subBtitle">${bVo.bTitle}</span><br/>
+					        			<span id="c_subMid">${bVo.mId}</span>
 				        			</div>
 				        		</div>
 				         		<div id="c_bManage_menu">
-				        			<div class="c_Msubmenu home" onclick="blog.manageMain()">
+				        			<div class="c_Msubmenu home" onclick="manage.manageMainContent()">
 			  							<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 블로그관리 홈
 				        			</div>
 				        			<div id="c_Msubmenu_content" class="c_Msubmenu_group">
@@ -107,9 +110,7 @@
 	        		</div>
 			        <div class="col-sm-9 col-md-10">
 		        	   <!-- 관리 컨텐츠 -->
-			        	<div id="c_manageContent">
-			        		
-				        </div>
+			        	<div id="c_manageContent"></div>
 			        </div>
 	    		</div>
 	        </div>
@@ -117,9 +118,4 @@
 	    </div>
 	</div>
 </div>
-
-<script>
-	$.post("../blogSetManage.bg", function(data, state) { 
-		$("#c_manageContent").html(data);
-	});
-</script>
+<script>manage.manageMainContent();</script>
