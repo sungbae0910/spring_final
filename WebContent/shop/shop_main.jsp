@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div id="shop_main">
 	<form name="shop_frm" id="shop_frm" method="post">
 		<div class="container-fluid">
@@ -24,7 +25,7 @@
 										        		<h3>${i.item_name}</h3>
 										      		</div>
 										      		<div class="col-xs-12">
-										        		<p>${i.item_price}</p>
+										        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
 										      		</div>
 										      		<div class="col-xs-12">
 										        		<p><a href="#" class="btn btn-default btn_detail" onclick="shop.itemView('${i.item_id}')">상세보기</a></p>
@@ -53,7 +54,7 @@
 										        		<h3>${i.item_name}</h3>
 										        	</div>
 										        	<div class="col-xs-12">
-										        		<p>${i.item_price}</p>
+										        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
 										        	</div>
 										        	<div class="col-xs-12">
 										        		<p><a href="#" class="btn btn-default btn_detail" onclick="shop.itemView('${i.item_id}')">상세보기</a></p>
@@ -82,7 +83,7 @@
 												        <h3>${i.item_name}</h3>
 													</div>
 													<div class="col-xs-12">
-												        <p>${i.item_price}</p>
+												        <fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
 													</div>
 													<div class="col-xs-12">
 												        <p><a href="#" class="btn btn-default btn_detail" onclick="shop.itemView('${i.item_id}')">상세보기</a></p>
@@ -111,7 +112,7 @@
 										        		<h3>${i.item_name}</h3>
 										      		</div>
 										      		<div class="col-xs-12">
-										        		<p>${i.item_price}</p>
+										        		<fmt:formatNumber value="${i.item_price}" pattern="#,###" /> 원
 										      		</div>
 										      		<div class="col-xs-12">
 										        		<p><a href="#" class="btn btn-default btn_detail" onclick="shop.itemView('${i.item_id}')">상세보기</a></p>
@@ -128,5 +129,7 @@
 		    </div>
 		</div>
 	</form>
-	<script>shop.func()</script>
+	<script>
+	shop.func();
+	</script>
 </div>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopItemVo {
+	String mId;
 	String item_serial;
 	String item_id;
 	int item_category;
@@ -20,7 +21,23 @@ public class ShopItemVo {
 	String item_main_photo;
 	String item_photo;
 	String photo_serial;
+	String like_serial;
 	
+	public String getLike_serial() {
+		return like_serial;
+	}
+
+	public void setLike_serial(String like_serial) {
+		this.like_serial = like_serial;
+	}
+
+	public String getmId() {
+		return mId;
+	}
+	
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
 	public String getItem_serial() {
 		return item_serial;
 	}

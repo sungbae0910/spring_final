@@ -14,10 +14,11 @@ public class ShopDao {
 		/*sqlSession = Factory.getFactory().openSession();*/
 	}
 
-	public List<ShopItemVo> earringMainSelect(){
+	public List<ShopItemVo> earringMainSelect(ShopItemVo vo){
 		List<ShopItemVo> earringList = null;
+		vo.setItem_category(0);
 		try {
-			earringList = sqlSession.selectList("shop.main_earring_select");
+			earringList = sqlSession.selectList("shop.main_select", vo);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -25,10 +26,11 @@ public class ShopDao {
 		}
 	}
 	
-	public List<ShopItemVo> necklaceMainSelect(){
+	public List<ShopItemVo> necklaceMainSelect(ShopItemVo vo){
 		List<ShopItemVo> necklaceList = null;
+		vo.setItem_category(1);
 		try {
-			necklaceList = sqlSession.selectList("shop.main_necklace_select");
+			necklaceList = sqlSession.selectList("shop.main_select", vo);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -36,10 +38,11 @@ public class ShopDao {
 		}
 	}
 	
-	public List<ShopItemVo> ringMainSelect(){
+	public List<ShopItemVo> ringMainSelect(ShopItemVo vo){
 		List<ShopItemVo> ringList = null;
+		vo.setItem_category(2);
 		try {
-			ringList = sqlSession.selectList("shop.main_ring_select");
+			ringList = sqlSession.selectList("shop.main_select", vo);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -47,10 +50,11 @@ public class ShopDao {
 		}
 	}
 	
-	public List<ShopItemVo> braceletMainSelect(){
+	public List<ShopItemVo> braceletMainSelect(ShopItemVo vo){
 		List<ShopItemVo> braceletList = null;
+		vo.setItem_category(3);
 		try {
-			braceletList = sqlSession.selectList("shop.main_bracelet_select");
+			braceletList = sqlSession.selectList("shop.main_select", vo);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -162,4 +166,38 @@ public class ShopDao {
 			return photo;
 		}
 	}
+
+	public void itemLike(ShopItemVo vo) {
+		try {
+			sqlSession.insert("shop.item_like", vo);
+			sqlSession.commit();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public void itemLikeDelete(ShopItemVo vo) {
+		try {
+			sqlSession.delete("shop.item_like_delete", vo);
+			sqlSession.commit();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
+	
+	public List<ShopItemVo> itemLikeList(String mId){
+		List<ShopItemVo> itemLikeList = null;
+		try {
+			System.out.println("Dao : " + mId);
+			itemLikeList = sqlSession.selectList("shop.item_like_select", mId);
+			System.out.println(303030);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return itemLikeList;
+		}
+	}
+
 }

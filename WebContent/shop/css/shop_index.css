@@ -6,6 +6,14 @@
 	width: 40%;
     margin-top: 2%;
 }
+#shop_header #shop_title{
+    font-size: 250%;
+    font-weight: 750;
+    color: darkgray;
+    position: absolute;
+    top: 33%;
+    left: 40%;
+}
 #shop_header #btn{
 	text-align: end;
 	margin-left: 65%;
@@ -17,10 +25,20 @@
 #shop_header #btn .login_frm{	
 	left: 15%;
 }
+#shop_header #btn .logout_frm{	
+	left: 15%;
+}
 #shop_header #btn .basket_frm{
 	left: 7%;
 }
 #shop_header .btn_login{
+	border-style: none;
+	text-decoration: underline;
+	text-decoration-color: darkgray;
+	font-size: 150%;
+	margin-left: 190%;
+}
+#shop_header .btn_logout{
 	border-style: none;
 	text-decoration: underline;
 	text-decoration-color: darkgray;
@@ -91,6 +109,9 @@
 	#shop_header #logo{
 		margin-top: 4%;
 	}
+	#shop_header #shop_title{
+        top: 40%;
+	}
 	#shop_header #btn{
         left: -7%;
     }
@@ -130,6 +151,10 @@
 	#shop_header #logo{
 		margin-bottom: -5%;
 	}
+	#shop_header #shop_title{
+        top: 55%;
+        font-size: 200%;
+    }
 	#shop_header #btn{
         left: -10%;
     }
@@ -167,6 +192,10 @@
 	#shop_header #logo{
 		margin-bottom: -10%;
 	}
+	#shop_header #shop_title{
+        top: 90%;
+        font-size: 170%;
+    }
     #shop_header #btn .login_frm{
         left: -25%;
     }
@@ -200,6 +229,9 @@
 	#shop_header #logo{
        	width: 60%;
 	}
+	#shop_header #shop_title{
+        left: 55%;
+    }
 	#shop_header #btn{
         left: -20%;
     }
@@ -211,45 +243,62 @@
     }
 }
 @media(max-width: 650px){
+	#shop_header #shop_title{
+        top: 55%;
+        left: 75%;
+        font-size: 250%;
+    }
     #shop_header #btn .login_frm{
-        left: -60%;
+        width: 0;
+        margin-left: 5%;
     }
     #shop_header #btn .basket_frm{
-         left: -35%;
+        width: 0;
+        margin-left: 20%;
+    }
+    #shop_header #btn .my_frm{
+        width: 0;
+        margin-left: 20%;
     }
 }
 @media(max-width: 600px){
 	#shop_header #logo{
-        width: 70%;
-    	margin-bottom: -20%;
-	}
-	#shop_header #btn{
-        left: -25%;
+        width: 80%;
+        margin-bottom: -20%;
     }
 	#shop_header #btn .login_frm{
-        left: -70%;
+        width: 0;
+        margin-left: 5%;
     }
-    #shop_header #btn .basket_frm{
-         left: -40%;
+	#shop_header #btn{
+        left: -30%;
+        margin-top: 7%;
     }
 }
 @media(max-width: 550px){
 	#shop_header #logo{
         width: 100%;
-    	margin-bottom: 10%;
-    	margin-left: 135%;
-	}
+        margin-bottom: -20%;
+    }
+	#shop_header #shop_title{
+        top: 65%;
+        left: 85%;
+        font-size: 250%;
+    }
 	#shop_header #btn .login_frm{
-        left: -130%;
+        left: -100%;
     }
     #shop_header #btn .basket_frm{
-         left: -70%;
+         left: -55%;
     }
     #shop_header #btn .my_frm{
-    	margin-left: -5%;
+    	margin-left: 15%;
     }
 }
 @media(max-width: 500px){
+	#shop_header #shop_title{		
+        font-size: 220%;
+	}
     #shop_header #btn{
         left: -33%;
     }
@@ -261,6 +310,11 @@
     }
 } 
 #shop_header .btn_login:hover, #shop_header .btn_login:focus, #shop_header .btn_login:visited, #shop_header .btn_login:active{
+	background-color: white;
+	border-style: none;
+	text-decoration-color: red;
+}
+#shop_header .btn_logout:hover, #shop_header .btn_logout:focus, #shop_header .btn_logout:visited, #shop_header .btn_logout:active{
 	background-color: white;
 	border-style: none;
 	text-decoration-color: red;

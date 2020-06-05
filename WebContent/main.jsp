@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <form id="c_blog_frm" name="c_blog_frm" method="post">
 	<input type="hidden" id="c_mId" name="c_mId">
 	<input type="hidden" id="c_brdNo" name="c_brdNo">
 </form>
 <form id="h_shop_frm" name="h_shop_frm" method="post">
 	<input type="hidden" id="item_id" name="item_id">
-	<input type="hidden" name="h_item_category" id="h_item_category"/>
+	<input type="hidden" name="item_category" id="item_category"/>
 </form>
 <form id="s_news_frm" method="post">
 	<input type="hidden" class="s_nserial" name="s_nserial">
@@ -54,7 +56,7 @@
 					</div>
 					<div class="row" id="shop_earringList">
 						<div class="page-header">
-					  		<h4>귀걸이<small><button type="button" onclick="shop.category(0)" class="btn btn-default btn_more">더보기</button></small></h4>
+					  		<h4>귀걸이</h4>
 						</div>
 						<c:forEach var="i" items="${earringList}" begin="0" end="1">
 							<div id="main_shop_earringList" onclick="main.shopView('${i.item_id}')">
@@ -64,7 +66,9 @@
 									</div>
 									<div id="shop_earring_information">
 										<div class="earring_name">${i.item_name}</div>
-										<div class="earring_price">${i.item_price}</div>
+										<div class="earring_price">
+											<fmt:formatNumber value="${i.item_price}" pattern="#,###" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -72,7 +76,7 @@
 					</div>
 					<div class="row" id="shop_necklaceList">
 						<div class="page-header">
-					  		<h4>목걸이<small><button type="button" onclick="shop.category(1)" class="btn btn-default btn_more">더보기</button></small></h4>
+					  		<h4>목걸이</h4>
 						</div>
 						<c:forEach var="i" items="${necklaceList}" begin="0" end="1">
 							<div id="main_shop_necklaceList" onclick="main.shopView('${i.item_id}')">
@@ -82,7 +86,9 @@
 									</div>
 									<div id="shop_necklace_information">
 										<div class="necklace_name">${i.item_name}</div>
-										<div class="necklace_price">${i.item_price}</div>
+										<div class="necklace_price">
+											<fmt:formatNumber value="${i.item_price}" pattern="#,###" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -90,7 +96,7 @@
 					</div>
 					<div class="row" id="shop_ringList">
 						<div class="page-header">
-					  		<h4>반지<small><button type="button" onclick="shop.category(2)" class="btn btn-default btn_more">더보기</button></small></h4>
+					  		<h4>반지</h4>
 						</div>
 						<c:forEach var="i" items="${ringList}" begin="0" end="1">
 							<div id="main_shop_ringList" onclick="main.shopView('${i.item_id}')">
@@ -100,7 +106,9 @@
 									</div>
 									<div id="shop_ring_information">
 										<div class="ring_name">${i.item_name}</div>
-										<div class="ring_price">${i.item_price}</div>
+										<div class="ring_price">
+											<fmt:formatNumber value="${i.item_price}" pattern="#,###" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -108,7 +116,7 @@
 					</div>
 					<div class="row" id="shop_braceletList">
 						<div class="page-header">
-					  		<h4>팔찌<small><button type="button" onclick="shop.category(3)" class="btn btn-default btn_more">더보기</button></small></h4>
+					  		<h4>팔찌</h4>
 						</div>
 						<c:forEach var="i" items="${braceletList}" begin="0" end="1">
 							<div id="main_shop_braceletList" onclick="main.shopView('${i.item_id}')">
@@ -118,7 +126,9 @@
 									</div>
 									<div id="shop_bracelet_information">
 										<div class="bracelet_name">${i.item_name}</div>
-										<div class="bracelet_price">${i.item_price}</div>
+										<div class="bracelet_price">
+											<fmt:formatNumber value="${i.item_price}" pattern="#,###" />
+										</div>
 									</div>
 								</div>
 							</div>
