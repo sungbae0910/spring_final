@@ -28,16 +28,18 @@
     font-size: 200%;
     margin-top: 2%;
 }
-
+#shop_basket .item_information #item_num{
+    margin-left: -10%;
+}
 #shop_basket .item_information #item_price {
-    margin-left: -11%;
+    margin-left: 13%;
 }
 #shop_basket .shop_basket_frm .btn_remove{
 	font-size: 130%;
 	border-style: none;
 	color: darkgray;
 	margin-top: -3%;
-	margin-left: -35%;
+	margin-left: 10%;
 }
 #shop_basket .shop_basket_tot{
 	height: auto;

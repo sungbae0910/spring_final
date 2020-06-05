@@ -14,13 +14,16 @@
 				    			<div class="row">
 					    			<div class="col-xs-10 col-xs-offset-2 item_title">
 					    				<div class="row">
-					    					<div class="col-xs-4">
+					    					<div class="col-xs-3">
 								    			<span id="item_name_title">상품 명</span>
 								    		</div>
-								    		<div class="col-xs-4">
+								    		<div class="col-xs-3">
+								    			<span id="item_num_title">수량</span>
+								    		</div>
+								    		<div class="col-xs-3">
 								    			<span id="item_price_title">상품 가격</span>
 								    		</div>
-								    		<div class="col-xs-4">
+								    		<div class="col-xs-3">
 								    			<span id="item_remove_title">상품 삭제</span>
 								    		</div>
 								    	</div>
@@ -31,10 +34,13 @@
 							    				<img src="./image/1.jpg" alt="..." class="img-circle item_photo">
 							    			</div>
 							    			<div class="item_information">
-							   					<div class="col-xs-4">
+							   					<div class="col-xs-3">
 									    			<span id="item_name">가나다</span>
 									    		</div>
-									    		<div class="col-xs-4">
+									    		<div class="col-xs-2">
+									    			<span id="item_num">1</span>
+									    		</div>
+									    		<div class="col-xs-3">
 									    			<span id="item_price">10000원</span>
 									    		</div>
 									    		<div class="col-xs-2">

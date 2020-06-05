@@ -22,7 +22,7 @@
 </head>
 <body>
 <%
-   String inc = "./shop_main.jsp"; 
+   String inc ="../main.shop"; 
    if (request.getParameter("inc") != null) {
       inc = request.getParameter("inc");
    }

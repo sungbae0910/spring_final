@@ -1017,8 +1017,8 @@ public class MembershipDao {
 		}
 		return photo;
 	}
-
-	public List<ShopItemVo> earringList(ShopItemVo vo) {
+	
+	public List<ShopItemVo> earringList(ShopItemVo vo){
 		List<ShopItemVo> earringList = null;
 		vo.setItem_category(0);
 		try {
@@ -1065,4 +1065,5 @@ public class MembershipDao {
 			return braceletList;
 		}
 	}
+	
 }
