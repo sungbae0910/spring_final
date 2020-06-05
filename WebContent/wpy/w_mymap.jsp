@@ -49,9 +49,6 @@
 						<!-- Content -->
 						<div id="content" class="8u skel-cell-important">		
 			              <div class="w_wrap">
-							<div class="w_t_tab">
-							  <a href="#"class="on">매장위치</a>
-							</div>
 						</div>
 						   <h4 class="w_tab_sub">매장위치</h4>
 						   <article id="w_v" style="width: 100%">
@@ -97,7 +94,7 @@
 						         <span><img src="./w_images/w_shop_icon1_on.png" alt width="19">예약가능</span>
 						         <span><img src="./w_images/w_shop_icon2_on.png" alt width="19">포장가능</span>
 						         <span><img src="./w_images/w_shop_icon3_on.png" alt width="19">주차가능</span>
-						         <span><img src="./w_images/w_shop_icon4.png" alt width="19">24시간영업불가능</span>   
+						         <span><img src="./w_images/w_shop_icon4.png" alt width="19">24시간영업</span>   
 						   	    </td>
 						   	    </tr>
 						   	  </tbody>
