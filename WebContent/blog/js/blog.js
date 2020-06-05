@@ -62,9 +62,9 @@ blog.cmtView = function () { //댓글 페이지
 }
 
 blog.cmtInsert = function () { //댓글 입력
-	let cmtTextarea = $("#c_cmtContent");
-	if (cmtTextarea.value != ""){ //댓글 내용을 입력하면
-		alert(cmtTextarea.value);
+	let cmtTextarea = $("[name='c_cmtContent']").val();
+	
+	if (cmtTextarea != ""){ //댓글 내용을 입력하면
 		if ($("#c_cmtSecret").is(":checked")) { //비밀글 체크
 			$("#c_cmtBasicSet").val(1);
 		} else { //비밀글 체크해제
@@ -95,27 +95,44 @@ blog.cmtModify = function (cmtNo, cmtContent) { //댓글수정
 	$("#c_modifyContent").val(cmtContent);
 }
 
-blog.cmtModifyR = function (cmtNo, cmtContent) { //댓글 입력
+blog.cmtModifyR = function () { //댓글 입력
 	let cmtTextarea = $("#c_modifyContent").val();
 	if (cmtTextarea != ""){ //댓글 내용을 입력하면
-		alert(cmtTextarea);
-
 		let param = $("#c_cmt_frm").serialize(); 
 		
-		$.ajax({
-			url : "../brdCmtModify.bg", 
-			method : "post",
-			data : param, 
-			success : function (data, state) {
-				$("#c_cmtContent").html(data);
-			},
-			error: function () {
-				alert("댓글 수정 실패");
-			}
-		});
+		if ($("#cmtModalTitle").text() == "댓글 수정") {
+			$.ajax({
+				url : "../brdCmtModify.bg", 
+				method : "post",
+				data : param, 
+				success : function (data, state) {
+					$("#c_cmtContent").html(data);
+				},
+				error: function () {
+					alert("댓글 수정 실패");
+				}
+			});
+		} else {
+			$.ajax({
+				url : "../brdReplInsert.bg", 
+				method : "post",
+				data : param, 
+				success : function (data, state) {
+					$("#c_cmtContent").html(data);
+				},
+				error: function () {
+					alert("답글 입력 실패");
+				}
+			});
+		}
 	} else {
 		alert("댓글 내용을 입력해주세요.");
 	}
+}
+
+blog.replInsert = function (cmtNo) { //답글 입력
+	$("#cmtModalTitle").text("답글 입력");
+	$("#c_cmtNo").val(cmtNo);
 }
 
 blog.cmtDelete = function (cmtNo) {
@@ -136,7 +153,7 @@ blog.cmtDelete = function (cmtNo) {
 }
 
 blog.brdModify = function () { //게시물 수정
-	$("#c_blog_frm").attr("action", "?inc=../brdModify.bg").submit();
+	$("#c_brd_frm").attr("action", "?inc=../brdModify.bg").submit();
 }
 
 blog.brdDelete = function (brdNo, mId) { //게시물 삭제

@@ -97,15 +97,7 @@ public class FileUpload {
 					break;
 			}
 		}
-		/*
-		//게시물 정보
-		brdVo.setbNo(Integer.parseInt(req.getParameter("c_bNo")));
-		brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));
-		brdVo.setcName(req.getParameter("c_cName"));
-		brdVo.setSubject(req.getParameter("c_subject"));
-		brdVo.setContent(req.getParameter("c_content"));
-		brdVo.setTContent(req.getParameter("c_tagContent"));
-		brdVo.setBasicSet(Integer.parseInt(req.getParameter("c_basicSet")));*/
+		
 		return brdVo;
 	}
 }

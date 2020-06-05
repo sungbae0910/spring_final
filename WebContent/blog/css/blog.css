@@ -133,7 +133,7 @@ textarea:focus {outline: 1px solid #000;}
 #c_myBlog_header #c_brdItem #c_brd_Subject {font-size: 3em; font-weight: bold;}
 #c_myBlog_header #c_brdItem #c_brd_Date {font-size: medium; margin-top: 15px;}
 #c_brd {margin: 70px 0;}
-#c_brd #c_brdTag {font-size: 17px; font-weight: 500; border-top: 2px solid #eee; border-bottom: 2px solid #eee; padding: 15px 20px;}
+#c_brd #c_brdTag {font-size: 17px; font-weight: 500; border-top: 2px solid #eee; border-bottom: 2px solid #eee; padding: 15px 20px; margin-top: 30px;}
 #c_brd #c_brdTag h3 {margin-top: 0; margin-bottom: 20px;}
 #c_brd #c_brdTag span {padding: 0 5px;}
 #c_brd #c_brd_btn_group {text-align: center; width: 115px; margin: 35px 0; border-radius: 16px; border: 1px solid rgba(185,185,185,0.5); box-shadow: 0 2px 15px rgba(0,0,0,0.150); color: #666; cursor: pointer;}
@@ -149,9 +149,10 @@ textarea:focus {outline: 1px solid #000;}
 #c_brd #c_cmt .dropdown-menu .c_modify, .dropdown-menu .c_delete {padding: 3px 15px; border-bottom: 1px solid #eee;}
 #c_brd #c_cmt .dropdown-menu .c_modify:hover, .dropdown-menu .c_delete:hover {background-color: #eee;}   
 #c_brd #c_cmt .c_cmtMid {float: left; margin-right: 13px; font-weight: bold;}
-#c_brd #c_cmt .c_cmtDate {float: left; margin-right: 10px; color: #999;}
+#c_brd #c_cmt .c_cmtDate {margin-right: 10px; color: #999;}
 #c_brd #c_cmt .c_cmtBlame {color: #999; width: 330px;}
 #c_brd #c_cmt .c_cmtContent {margin-top: 5px; width: 90%; padding-left: 85px;}
+#c_brd #c_cmt .c_cmt.repl {margin-left: 50px;}
 #c_brd #c_cmt .c_cmt .c_btnRepl {color: #999; margin: 12px 0;}
 #c_brd .c_cmtMid:hover, #c_brd .c_cmtBlame:hover, #c_brd .c_btnRepl:hover {cursor: pointer; text-decoration-line: underline;}
 #c_brd #c_cmt .c_repl {background-color: #fafafa; padding: 17px 0 35px 80px; border-top: 1px solid #eee;}

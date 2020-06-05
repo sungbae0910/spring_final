@@ -56,12 +56,11 @@ public class BlogController {
 
 	@RequestMapping(value = "/myblogMain.bg", method = {RequestMethod.POST})
 	public ModelAndView myblogMain(HttpServletRequest req) {
-		System.out.println("들어왔당");
 		ModelAndView mv = new ModelAndView();
 		Map<String, String> category = new HashMap<String, String>();
 		BlogBoardVo boardVo = new BlogBoardVo();
+		
 		String mId = req.getParameter("c_mId");
-		System.out.println(mId);
 		boardVo.setmId(mId);
 		
 		if (req.getParameter("c_cName") =="" || req.getParameter("c_cName") == null) { //전체 글
@@ -128,14 +127,29 @@ public class BlogController {
 		cmtVo.setCmtMid(req.getParameter("c_cmtMid"));
 		cmtVo.setCmtContent(req.getParameter("c_cmtContent"));
 		
-		System.out.println(brdNo);
-		System.out.println(req.getParameter("c_cmtBasicSet"));
-		System.out.println(req.getParameter("c_cmtMid"));
-		System.out.println(req.getParameter("c_cmtContent"));
-		
 		blogDao.brdCmtInsert(cmtVo);
 		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
 		
+		mv.addObject("brdNo", brdNo);
+		mv.addObject("cmtList", cmtList);
+		mv.setViewName("myblog_comment");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/brdReplInsert.bg", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView brdReplInsert(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		BlogCmtVo cmtVo = new BlogCmtVo();
+		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
+		cmtVo.setBrdNo(brdNo);
+		cmtVo.setCmtNo(Integer.parseInt(req.getParameter("c_cmtNo")));
+		cmtVo.setCmtMid(req.getParameter("c_cmtMid"));
+		cmtVo.setCmtContent(req.getParameter("c_modifyContent"));
+		
+		blogDao.brdReplInsert(cmtVo);
+		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
+		System.out.println("dao끝");
 		mv.addObject("brdNo", brdNo);
 		mv.addObject("cmtList", cmtList);
 		mv.setViewName("myblog_comment");
@@ -152,10 +166,6 @@ public class BlogController {
 		cmtVo.setCmtNo(Integer.parseInt(req.getParameter("c_cmtNo")));
 		cmtVo.setCmtContent(req.getParameter("c_modifyContent"));
 		
-		System.out.println(brdNo);
-		System.out.println(req.getParameter("c_cmtNo"));
-		System.out.println(req.getParameter("c_modifyContent"));
-		
 		blogDao.brdCmtModify(cmtVo);
 		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
 		
@@ -171,9 +181,6 @@ public class BlogController {
 		ModelAndView mv = new ModelAndView();
 		int brdNo = Integer.parseInt(req.getParameter("c_brdNo"));
 		int cmtNo = Integer.parseInt(req.getParameter("c_cmtNo"));
-		
-		System.out.println(brdNo);
-		System.out.println(cmtNo);
 		
 		blogDao.brdCmtDelete(cmtNo);
 		List<BlogCmtVo> cmtList = blogDao.brdCmtView(brdNo);
@@ -200,7 +207,7 @@ public class BlogController {
 		String mId = req.getParameter("c_mId");
 		
 		List<BlogVo> category = blogDao.category(bNo);
-		System.out.println(category.get(0).getbNo());
+
 		mv.addObject("category", category);
 		mv.addObject("mId", mId);
 		mv.setViewName("blog_brdInsert");
@@ -230,8 +237,8 @@ public class BlogController {
 		
 		//태그 리스트형태로 만들기
 		BlogService service = new BlogService();
-		/*List<String> tagList = service.tagSplit(board.getTContent());*/
 		List<String> tagList = service.tagSplit(board.gettContent());
+		
 		mv.addObject("category", category);
 		mv.addObject("board", board);
 		mv.addObject("tagList", tagList);			
@@ -248,16 +255,6 @@ public class BlogController {
 			FileUpload upload = new FileUpload();
 			brdVo = upload.brdFileUploading(req);
 		}
-		System.out.println(brdVo.getmId());
-		System.out.println(brdVo.getbNo());
-		System.out.println(brdVo.getBrdNo());
-		System.out.println(brdVo.getcName());
-		System.out.println(brdVo.getSubject());
-		System.out.println(brdVo.getContent());
-		System.out.println(brdVo.gettContent());
-		System.out.println(brdVo.getBasicSet());
-		System.out.println(brdVo.getOriBrdHeader());
-		System.out.println(brdVo.getBrdHeader());
 		
 		blogDao.brdModifyR(brdVo, req);
 		
@@ -268,8 +265,6 @@ public class BlogController {
 	@RequestMapping(value = "/brdDelete.bg", method = {RequestMethod.POST})
 	@ResponseBody
 	public void brdDelete(HttpServletRequest req) {
-		System.out.println(req.getParameter("brdNo"));
-		System.out.println(req.getParameter("mId"));
 		int brdNo = Integer.parseInt(req.getParameter("brdNo"));
 		String mId = req.getParameter("mId");
 		blogDao.brdDelete(brdNo);
@@ -302,7 +297,6 @@ public class BlogController {
 	@ResponseBody
 	public void blogBrdLike(HttpServletRequest req) {
 		BlogBoardVo brdVo = new BlogBoardVo();
-		System.out.println("공감 왔다!");
 		String flag = req.getParameter("c_likeFlag"); //공감 추가인지, 해제인지 구분
 		brdVo.setmId(req.getParameter("c_mId"));
 		brdVo.setBrdNo(Integer.parseInt(req.getParameter("c_brdNo")));

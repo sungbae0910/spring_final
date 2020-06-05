@@ -115,9 +115,14 @@ public class BlogDao {
 		List<BlogCmtVo> cmtList = null;
 		try {
 			cmtList = sqlSession.selectList("blog.cmtView", brdNo);
+			for(BlogCmtVo vo : cmtList) {
+				System.out.println(vo.getCmtRepl());
+				System.out.println(vo.getCmtContent());
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("끝2");
 		return cmtList;
 	}
 	
@@ -129,6 +134,17 @@ public class BlogDao {
 			e.printStackTrace();
 			sqlSession.rollback();
 		}
+	}
+	
+	public void brdReplInsert(BlogCmtVo cmtVo){
+		try {
+			sqlSession.insert("blog.replInsert", cmtVo);
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+		System.out.println("끝1");
 	}
 	
 	public void brdCmtModify(BlogCmtVo cmtVo){

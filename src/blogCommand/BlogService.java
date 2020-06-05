@@ -11,13 +11,8 @@ public class BlogService {
 		List<String> tagList = new ArrayList<String>();
 		String[] tag = tContent.split(",");
 
-		System.out.println(tContent);
-		System.out.println(1);
-		System.out.println(tag);
-		for(String t : tag) {
+		for (String t : tag) {
 			tagList.add(t);
-			System.out.println(2);
-			System.out.println(tagList);
 		}
 		
 		return tagList;
