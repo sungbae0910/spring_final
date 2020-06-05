@@ -39,7 +39,6 @@ shop.optionValue_click = function(option_value){
 					
 	$("#select_item_frm_ul").append(option_list);
 	var totItemPrice = Number($("#itemView_price_content_in").val())*$(".itemView_num_count").length;
-	alert(totItemPrice);
 	$("#select_item_tot_price_text").text(totItemPrice);
 }
 
@@ -51,21 +50,20 @@ shop.countUp = function(value){
 	let item_price = Number($("#itemView_price_content_in").val());
 	let item_tot_price = Number($("#select_item_tot_price_text").text());
 	let ea = 0;
-	alert(item_price);
+	
 	$("#select_item_tot_price_text").html(item_tot_price);
 	if(value == value){
 		ea = Number($(value).parents().prev("input").val())+1;
 		$(value).parents().prev("input").val(ea);
 		item_tot_price = item_tot_price+item_price;
 		$("#select_item_tot_price_text").html(item_tot_price);
-		alert(item_tot_price);
 	}
 }
 
 shop.countDown = function(value){
 	let item_price = Number($("#itemView_price_content_in").val());
 	let ea = 0;
-	alert(item_price);
+
 	if(value == value){
 		item_tot_price = Number($("#select_item_tot_price_text").text());
 		if(Number($(value).parents().prev("input").val())>1){			
@@ -73,13 +71,11 @@ shop.countDown = function(value){
 			$(value).parents().prev("input").val(ea);
 			item_tot_price = item_tot_price-item_price;
 			$("#select_item_tot_price_text").html(item_tot_price);
-			alert(item_tot_price);
 		}
 	}
 }
 shop.myPage = function(mId){
 	$("#mId").val(mId);
-	alert(mId);
 	let param = $("#shop_frm").serialize();
 	$.post("../myPage.shop", param, function(data, state){
 		$("#main").html(data);
@@ -152,7 +148,6 @@ shop.func = function(){
 	})
 	
 	$(".btn_itemView_like").click(function(){
-		alert("회원 아이디 : " + mId + "상품 아이디 : " + item_id);
 		if($("#btn_itemView_like_click").hasClass("glyphicon-heart-empty")){
 			alert("찜 목록에 추가되었습니다.")
 			$("#btn_itemView_like_click").removeClass("glyphicon-heart-empty")

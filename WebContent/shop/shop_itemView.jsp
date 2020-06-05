@@ -13,7 +13,7 @@
 		<div class="container-fluid">
 		    <div class="row">
 				<div class="col-xs-12">
-				<input type="text" name="mId" id="mId" value="<%=mId%>"/>
+				<input type="hidden" name="mId" id="mId" value="<%=mId%>"/>
 				<input type="hidden" name="item_id" id="item_id" value="${vo.item_id}" />
 					<div class="row">
 						<div class="col-xs-6 itemView_photo">
